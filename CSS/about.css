@@ -187,7 +187,6 @@ footer{
 
     .wrapper .img{
         transform: scale(.6);
-        width: 325px;
     }
 
     .wrapper .img:hover{
