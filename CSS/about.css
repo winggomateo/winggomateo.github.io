@@ -155,6 +155,12 @@ footer{
 }
 
 @media only screen and (max-width: 1050px) {
+    .wrapper{
+        display: flex;
+        align-items: stretch;
+        min-height: auto;
+    }
+    
     .wrapper .main-content{
         margin-left: 0;
     }
