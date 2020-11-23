@@ -36,6 +36,7 @@ header{
 
 .wrapper{
     display: flex;
+    flex-wrap: wrap;
     align-items: stretch;
     min-height: 100vh;
 }
@@ -140,7 +141,7 @@ h1{
 
 
 .wrapper .soc {
-    padding: 10%;
+    padding: 10px;
     padding-top: 60%;
 }
 
@@ -177,7 +178,7 @@ footer{
     }
 
     .wrapper .soc {
-        padding: 5%;
+        padding: 5px;
         padding-top: 70%;
     }
     
@@ -224,7 +225,7 @@ footer{
     }
 
     .wrapper .soc {
-        padding: 5%;
+        padding: 5px;
         padding-top: 80%;
     }
     
@@ -245,7 +246,7 @@ footer{
     }
 
     .wrapper .soc {
-        padding: 3%;
+        padding: 2px;
         padding-top: 80%;
     }
     
@@ -260,7 +261,6 @@ footer{
 
 @media only screen and (max-width: 320px){
     .wrapper .soc {
-        padding: 3%;
         padding-top: 55%;
     }
     
