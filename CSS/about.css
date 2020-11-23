@@ -178,12 +178,12 @@ footer{
     }
 
     .wrapper .img{
-        transform: scale(1);
+        transform: scale(.6);
         width: 325px;
     }
 
     .wrapper .img:hover{
-        transform: scale(1);
+        transform: scale(.6);
     }
 
     footer{
