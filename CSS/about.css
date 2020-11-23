@@ -72,7 +72,7 @@ h1{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: top;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
 }
@@ -82,14 +82,8 @@ h1{
     cursor: default;;
     padding-left: 20px;
     padding-right: 20px;
-    max-width: 100%;
-    height: auto;   
 }
 
-.wrapper .img:hover{
-    transform: scale(1.01);
-    border: red;
-}
 .wrapper .about-me{
     padding-top: 10px;
     font-size: 23px;
@@ -123,6 +117,8 @@ h1{
     font-size: 60px;
     
 }
+
+
 
 .wrapper .cont::before{
     color: red;
@@ -164,8 +160,8 @@ footer{
     }
 
     .wrapper .img{
-        padding-left: 0;
-    padding-right: 0;
+        padding-left: 10px;
+    padding-right: 10px;
     }
     
     .wrapper .main-content{
@@ -191,11 +187,7 @@ footer{
     }
 
     .wrapper .img{
-        transform: scale(.6);
-    }
-
-    .wrapper .img:hover{
-        transform: scale(.6);
+        transform: scale(.55);
     }
 
     footer{
