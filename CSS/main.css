@@ -266,7 +266,7 @@ footer{
   @media only screen and (max-width: 550px) {
 
     .wrapper .main-content{
-        padding-right: 5%;
+        padding-right: 0;
         padding-top: 55%;
         align-items: center;
         justify-content: center;
