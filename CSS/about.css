@@ -86,11 +86,13 @@ h1{
 
 .wrapper .about-me{
     padding-top: 10px;
-    font-size: 23px;
+    font-size: 21px;
     margin:0;
     width: 500px;
     text-align: left;
 }
+
+
 
 .wrapper .bio2{
     padding-top: 5px;
