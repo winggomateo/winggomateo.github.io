@@ -90,17 +90,60 @@ h1{
 } */
 
 .wrapper .text{
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     font-size: 20px;
     margin:0;
-    width: 750px;
+    width: 77%;
     text-align: left;
 }
 
 .wrapper .bio2{
     text-indent: 40px;
     
+}
+
+.wrapper .contact{
+    padding-top: 60px;
+    padding-bottom: 30px;
+    text-align: center;
+    color: red;
+    
+}
+
+.wrapper .contact:visited{
+    color: red;
+}
+
+.wrapper .cont{
+    padding-top: 20px;
+    position: relative;
+    font-size: 55px;
+    transition: 1s ease;
+}
+.wrapper .cont:hover{
+    font-size: 60px;
+    
+}
+
+.wrapper .cont::before{
+    color: red;
+    transition: 1s ease;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: red;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.wrapper .cont:hover::before{
+    visibility: visible;
+    transform: scaleX(1);
 }
 
 footer{
