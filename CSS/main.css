@@ -187,6 +187,17 @@ h1:hover{
     display: none;
 }
 
+/* .portrait{
+    left: 55% !important; 
+    top: 15%;
+    transform: translate(-50%,0); 
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    z-index: -1;
+} */
+
 footer{
     position: fixed;
     left: 0;
