@@ -77,15 +77,46 @@ h1{
     margin-right: auto;
 }
 
-.wrapper .img{
+.wrapper .container{
+    position: relative;
     transition: .5s ease;
     cursor: pointer;
     padding-left: 20px;
     padding-right: 20px;
+    font-size: 35px;
+    font-weight: 600;
+    color: yellow;
+
 }
-.wrapper .img:hover{
+
+.wrapper .container a:link{
+    color:white
+}
+
+.wrapper .container a:visited{
+    color:white
+}
+
+.wrapper .container:hover{
     transform: scale(1.05);
-    border: red;
+}
+
+.wrapper .container:hover > .img{
+    filter: brightness(80%);
+}
+
+.wrapper .description{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: default;
+    user-select: none;
+    visibility: hidden;
+}
+
+.wrapper .container:hover > .description{
+    visibility: visible;
 }
 
 .wrapper .clicky{
@@ -119,7 +150,7 @@ footer{
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 770px) {
     .wrapper .main-content{
         margin-left: 1%;
         margin-right: 1%;
@@ -130,13 +161,26 @@ footer{
         margin: 0%;
     }
 
-    .wrapper .img{
+    .wrapper .container{
         transform: scale(.55);
     }
 
-    .wrapper .img:hover{
+    .wrapper .container:hover{
         transform: scale(.58);
     }
+
+    .wrapper .description{
+        visibility: visible;
+       font-size: 60px;
+       font-weight: 900;
+       color:white;
+    }
+
+    .wrapper .img{
+        filter: brightness(90%);
+    }
+
+   
 
     footer{
         text-align: center;
