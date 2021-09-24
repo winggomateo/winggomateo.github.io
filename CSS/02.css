@@ -49,6 +49,16 @@ header{
     justify-content: center;
 }
 
+.wrapper .fragile{
+    color: rgb(157, 157, 157);
+    font-size: 14px;
+    
+}
+
+.wrapper .fragile:hover{
+    color: red;
+}
+
 .red{
     color: red;
     pointer-events: none;
