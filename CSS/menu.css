@@ -13,6 +13,7 @@ a:active{
 a{
     color: black;
 }
+
 .wrapper .sidebar{
     position: fixed;
     width: 225px;
