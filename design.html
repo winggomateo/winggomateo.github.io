@@ -1,79 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="CSS/design.css">
-    <link rel="stylesheet" type="text/css" href="CSS/menu.css">
+    <link rel="stylesheet" type="text/css" href="CSS/main.css">
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo Design</title>
+    <title>Mateo's Portfolio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
-    </style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+     </style>
 </head>
-<body>
-    <header>
-        <a href="index">Go Home</a>
-    </header>
+<body class="body" >
+   
+
+    <!-- MENU BAR -->
     <div class="wrapper">
         <div class="sidebar">
             <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
-                    <div>
+         <div class="hamburger"><div></div></div>
+         <div class="menu">
+             <div>
+                 <div>
                         <ul>
-                            <li><a href="about">About</a></li>
-                            <li><a href="design" class="red">Design</a></li>
-                            <li><a href="photography">Photography</a></li>
-                            <li><a href="contact">Contact</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="design.html" id="clicked">Design</a></li>
+                            <li><a href="photography.html">Photography</a></li>
                         </ul>
                     </div>
                 </div> 
             </div> 
-        </div>
+        </div>   
+    <!-- Main Content -->
         <div class="main-content">
-            <div class="header"> <h1>Design<h1></div>
-            <div class="info">
-                <div> 
-                    <p> A collection of my design work over the years. </p> 
-                    <p class="clicky"> <br> Click Images to Learn More</p>
+            <div class="block3"> 
+                <!-- Twelve Twelve -->
+                <div class="container3">
+                    <a href="twelveTwelve.html">
+                        <img class="cover" src="design/TwelveTwelve2.jpg"  alt="twelveTwelve" width="500px" height="auto">
+                        <h2 class="description">Twelve Twelve</h2>
+                    </a>
                 </div>
+
+                <!-- The Future Fashion Group -->
+                <div class="container3">
+                    <a href="futureFashion.html">
+                        <img class="cover" src="design/FutureFashion.jpg" alt="futureFashionGroup" width="500px" height="auto">
+                        <h2 class="description">The Future Fashion Group</h2>
+                    </a>
+                </div>
+
+                <!-- Zachary Parker for Ward 5 -->
+                <div class="container3">
+                    <a href="zacharyParker.html">
+                        <img class="cover" src="design/ZacharyParker.jpg" alt="zacharyParker" width="500px" height="auto">
+                        <h2 class="description">Zachary Parker</h2>
+                    </a>
+                </div>
+
+                <!-- Neighborly Fences -->
+                <div class="container3">
+                    <a href="neighborlyFences.html">
+                        <img class="cover" src="design/Neighborly.jpg" alt="neighborlyFences" width="500px" height="auto">
+                        <h2 class="description">Neighborly Fences</h2>
+                    </a>
+                </div>
+
+                <!-- Warbler Meadows -->
+                <div class="container3">
+                    <a href="Warbler.html">
+                        <img class="cover" src="design/WarblerMeadows.jpg" alt="warblerMeadows" width="500px" height="auto">
+                        <h2 class="description">Warbler Meadows</h2>
+                    </a>
+                </div>
+
+                <!-- Vinyl Playing Cards -->
+                <div class="container3">
+                    <a href="vinyl.html">
+                        <img class="cover" src="design/Vinyl.jpg" alt="vinylPlayingCards" width="500px" height="auto">
+                        <h2 class="description">Vinyl Playing Cards</h2>
+                    </a>
+                </div>
+
+                <!-- Circulo -->
+                <div class="container3">
+                    <a href="circulo.html">
+                        <img class="cover" src="design/Circulo.jpg" alt="circuloPlayingCards" width="500px" height="auto">
+                        <h2 class="description">Circulo Playing Cards</h2>
+                    </a>
+                </div>
+
+                <!-- Rorscach -->
+                <div class="container3">
+                    <a href="rorschach.html">
+                        <img class="cover" src="design/rorscachCover.jpg" alt="circuloPlayingCards" width="500px" height="auto">
+                        <h2 class="description">Rorscach Playing Cards</h2>
+                    </a>
+                </div>
+
+                <!-- Rodchenko Poster -->
+                <div class="container3">
+                    <a href="rodchenko.html">
+                        <img class="cover" src="design/Rodchenko.jpg" alt="rodchenkoPoster" width="500px" height="auto">
+                        <h2 class="description">Rodchenko Poster</h2>
+                    </a>
+                </div>
+                
             </div>
-            <div class="photos">
-                <div class="container">
-                    <a href="07" loading="eager" class="img"><img src="design/zparker.png" alt="ZParker" width="500px"></a>
-                    <div class="description"><a href="07">Zachary Parker</a></div>
-                </div>
-                <div class="container">
-                    <a href="05" loading="eager" class="img"><img src="design/05/WarblerMeadow.png" alt="Warbler" width="500px"></a>
-                    <div class="description"><a href="05">Warbler Meadows</a></div>
-                </div>
-                <div class="container"> 
-                    <a href="01" loading="lazy" class="img"><img src="design/CardV.png" alt="Vinyl playing Card" width="500px"></a>
-                    <div class="description"><a href="01">Vinyl Playing Cards</a></div>
-                </div>  
-                <div class="container">
-                    <a href="04" loading="eager" class="img"><img src="design/cardR.png" alt="Rorschach Card" width="500px"></a>
-                    <div class="description"><a href="04"> Rorschach Playing Cards</a></div>
-                </div>
-                <div class="container">
-                        <a href="03"  class="img"><img src="design/CardC.png" alt="Circulo Playing Cards" width="500px"></a>
-                        <div class="description"><a href="03">Circulo Playing Cards</a></div>
-                </div>
-                <div class="container">
-                    <a href="02" loading="lazy" class="img"><img src="design/PosterR.png" alt="Rodchenko Poster" width="500px"></a>
-                    <div class="description"><a href="02">Rodchenko Poster</a></div>
-                </div>
-                <div class="container">
-                    <a href="06" loading="lazy" class="img"><img src="design/06/Hand-Painted (2 of 6).jpg" alt="Hand-Painted" width="500px"></a>
-                    <div class="description"><a href="06">Hand Painted Playing Cards</a></div>
-                </div>
-            </div>
+        </div>  
+            
         </div>
     </div>
-    <footer> 
-        Website Designed and Coded by Mateo Villalba-Rodriguez
-   </footer>
-</body>
-</html>
+<footer>
+    <p class="bottom">mateovr.com</p>
+    <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a> </p>
+    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+    <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
+
+</footer> 

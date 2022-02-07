@@ -1,4 +1,9 @@
 :root{
+    --background: rgb(255, 246, 224);
+    --primary-color:rgba(255, 254, 251, 0);
+    --text-color: rgb(0, 0, 0);
+    --overaly-color: #1B998B;
+    --menu-speed: 1s;
     font-family: 'EB Garamond', serif;  
     text-align: center;
     font-size: 2em;

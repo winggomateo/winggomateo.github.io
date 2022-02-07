@@ -1,61 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="favicon/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="CSS/main.css">
-    <link rel="stylesheet" type="text/css" href="CSS/menu.css">
-    <script src="JS/script.js"></script>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo Design</title>
+    <title>Mateo's Portfolio</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
-    </style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+     </style>
 </head>
-<body>
+<body class="body" >
+
+    <!-- Circle Animation -->
     <div class="Circ">
-        <a href="Images/Circle.svg">
-            <img id= circle2 src="Images/Circle.svg" alt="circle2" 
+        <a href="img/Circle.svg">
+            <img id= circle2 src="img/Circle.svg" alt="circle2" 
             width="200">
-            <img id= circle3 src="Images/Circle.svg" alt="circle3" 
+            <img id= circle3 src="img/Circle.svg" alt="circle3" 
             width="200">
-            <img id= circle4 src="Images/Circle.svg" alt="circle4" 
+            <img id= circle4 src="img/Circle.svg" alt="circle4" 
             width="150">
-            <img id= circle5 src="Images/Circle.svg" alt="circle5" 
+            <img id= circle5 src="img/Circle.svg" alt="circle5" 
             width="150">
         </a>
     </div>
+
+    <!-- MENU BAR -->
     <div class="wrapper">
         <div class="sidebar">
             <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
-                    <div>
+         <div class="hamburger"><div></div></div>
+         <div class="menu">
+             <div>
+                 <div>
                         <ul>
-                            <li><a href="about">About</a></li>
-                            <li><a href="design">Design</a></li>
-                            <li><a href="photography">Photography</a></li>
-                            <li><a href="contact">Contact</a></li>
+                            <li><a href="index.html" id="clicked">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="design.html">Design</a></li>
+                            <li><a href="photography.html">Photography</a></li>
                         </ul>
                     </div>
                 </div> 
             </div> 
-        </div>
+        </div>   
+
+    <!-- Main Content -->
         <div class="main-content">
-            <!-- <img class="portrait" src="about/portrait001.jpg" alt="me" width="800px"> -->
-            <div class="header"> <h1>¡hello!<h1></div>
-            <div class="info">
-                <div> 
-                    <p> I am Mateo J. Villalba-Rodriguez</p>
-                    <p class="small">Graphic design, Photography, and other Creative Abilities</p>
-                   
+            <div class="block1">
+                <div class="header"> <h1>Mateo J. Villalba-Rodriguez<h1></div>
+                <div class="info">
+                <p>Based in New York City</p>
+                <p>Designer & Photographer</p>
                 </div>
             </div>
+            <div class="block2"> 
+                <div class="container">
+                    <a href="photography.html">
+                        <img class="cover" id="photography" src="none" alt="photography" width="500px" height="auto">
+                        <h2 class="description">Photography</h2>
+                    </a>
+                </div>
+                <div class="container">
+                    <a href="design.html">
+                        <img class="cover" id="design" src="none" alt="design" width="500px" height="auto">
+                        <h2 class="description">Design</h2>
+                    </a>
+                </div>                
+            </div>
+        </div>  
+            
         </div>
     </div>
-    <footer> 
-        Website Designed and Coded by Mateo Villalba-Rodriguez
-   </footer>
+<footer>
+    <p class="bottom">mateovr.com</p>
+    <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a> </p>
+    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+    <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
+
+</footer> 
+<script type="text/javascript">
+    // Image Slideshow
+    let photo = document.getElementById('photography');
+    let design = document.getElementById('design');
+    var i = 0;
+    var ii = 0;
+    var images = [];
+    var designs = [];   
+    var time = 800;
+
+    //Images List
+    images[0] = 'slide/photo1.jpg';
+    images[1] = 'slide/photo2.jpg';
+    images[2] = 'slide/photo3.jpg';
+    images[3] = 'slide/photo4.jpg';
+    images[4] = 'slide/photo5.jpg';
+    images[5] = 'slide/photo6.jpg';
+    images[6] = 'slide/photo7.jpg';
+
+    designs[0] = 'slide/design1.jpg';
+    designs[1] = 'slide/design2.jpg';
+    designs[2] = 'slide/design3.jpg';
+    designs[3] = 'slide/design4.jpg';
+    designs[4] = 'slide/design5.jpg';
+    designs[5] = 'slide/design6.jpg';
+
+    //Change Image
+    function changeImg(){
+        photo.src = images[i];
+        design.src = designs[ii];
+
+        if(i < images.length - 1){
+            i++;
+        } else {
+            i = 0;
+        }
+
+        if(ii < designs.length - 1){
+            ii++;
+        } else {
+            ii = 0;
+        }
+
+
+        setTimeout("changeImg()", time);
+    }
+
+    window.onload = changeImg;
+
+//     const [red, green, blue] = [255, 239, 203]
+//     const section1 = document.querySelector('.body')
+
+//     window.addEventListener('scroll', () => {
+//     const y = 1 + (window.scrollY || window.pageYOffset) / 150
+//     const [r, g, b] = [red/y, green/y, blue/y].map(Math.round)
+//     section1.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+// })
+</script> 
 </body>
 </html>
