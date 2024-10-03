@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="CSS/mainDraft.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo's Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+     </style>
+</head>
+<canvas id="noise" class="noise"></canvas>
+<body class="body" >
+    <!-- MENU BAR -->
+    <div class="wrapper">
+        <div class="sidebar">
+            <input type="checkbox" class="toggler">
+         <div class="hamburger"><div></div></div>
+         <div class="menu">
+             <div>
+                 <div>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="design.html" id="clicked">Design</a></li>
+                            <li><a href="photography.html">Photography</a></li>
+                        </ul>
+                    </div>
+                </div> 
+            </div> 
+        </div>   
+        
+    <!-- Main Content -->
+        <div class="main-content">
+            <div class="project-info">
+                <h2>Biking in NYC</h2>
+                <p class="date">October 2023 – <i>Data Visualization</i></p>
+                <p class="description">
+                  A set of data visualizations exploring the safety of biking in NYC, created using publicly available data. The visualizations reveal trends in Bicycle Counts, Bike Lane Amounts, Distribution, and Injuries.
+                </p>
+            </div>
+            
+            <div class="grid-container">
+                <img src="design/bikingNYC/Biking02.png" alt="Bicycle Count Growth">
+                <img src="design/bikingNYC/Biking03.png" alt="Injury Data">
+                <img src="design/bikingNYC/Biking04.png" alt="NYC Bike Lanes">
+            </div>
+
+            <a href="design.html" class="read-more-btn">View Other Work</a>
+                     
+        </div>  
+            
+        </div>
+    </div>
+<footer>
+    <p class="bottom">mateovr.com</p>
+    <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a> </p>
+    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+    <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
+
+</footer> 
+<script src="java/noise.js"></script>
