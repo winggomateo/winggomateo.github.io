@@ -737,7 +737,7 @@ footer p{
 }
 
 .read-more-btn:hover {
-    background-color: #676767;
+    background-color: #53d8c9;
 }
 
 /* .read-more-btn:active {
@@ -842,7 +842,6 @@ footer p{
  .container5{
     width: 45vw;
     height: auto;
-    border-radius: 10%;
     margin-left: 4vh;
     margin-right: auto;
     margin-top: 1em;
@@ -853,7 +852,6 @@ footer p{
  .container6{
     width: 92vw;
     height: auto;
-    border-radius: 8%;
     margin: auto;
     margin-top: 1em;
     margin-bottom: 1em;
