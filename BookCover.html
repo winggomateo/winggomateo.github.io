@@ -1,74 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo's Portfolio</title>
+    <title>Biking in NYC</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-     </style>
+    </style>
 </head>
-<canvas id="noise" class="noise"></canvas>
-<body class="body" >
-    <!-- MENU BAR -->
+<body class="body">
+
+    <!-- Sidebar Navigation -->
     <div class="wrapper">
         <div class="sidebar">
             <input type="checkbox" class="toggler">
-         <div class="hamburger"><div></div></div>
-         <div class="menu">
-             <div>
-                 <div>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="design.html" id="clicked">Design</a></li>
-                            <li><a href="photography.html">Photography</a></li>
-                        </ul>
-                    </div>
-                </div> 
-            </div> 
-        </div>   
-        
-    <!-- Main Content -->
-        <div class="main-content">
-            <div class="heading"> <h3>On Writing Well<h3></div>
-            <div class="caption">
-                <div> 
-                     <p> December 2022 – <i>Book Cover Design</i></p>
-                 </div>
-            </div>
-            <div class="block4"> 
-                    <div class="container6">
-                        <img class="cover" src="design/BookCover/Cover1.jpg"  alt="Cover1" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/BookCover/Cover2.jpg"  alt="Cover2" width="500px" height="auto">
-                    </div>
-                    <div class="textContainer">
-                        <p class="explain"> On Writing Well by William Zinsser is a guidebook on non-fiction writing. As part of a school project, I was tasked to redesign a book cover. Often, guidebooks have straightforward and unexciting covers, so with this project, my goal was to redesign the cover for more visual interest while maintaining visual coherency with the topic of non-fiction writing. </p>
-                        <p class="explain"> The first design uses a series of rectangles organized to appear reminiscent of words in a paragraph. The title, embedded within the rectangles, contrasts significantly to ensure it is still the main focus on the cover. Because the book was originally in 1976, a type-writer-like font was used to reflect the era and the history of typewriters as a writing tool.</p>
-                        <p class="explain">The second design takes inspiration from the book's content, where William Zinsser emphasizes the countless drafting phases a writer should go through before reaching a final copy of their work. A portion of the book is shown on the cover with pen marks, resembling edits on a draft. The title is pasted over that text with a white border, allowing the title to remain a focus despite the busy background. Blue is the dominant color of the cover to evoke a sense of trust.  </p>
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/BookCover/Cover3.jpg"  alt="Cover3" width="500px" height="auto">
-                    </div>
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+                <div>
+                    <div>
+                           <ul>
+                               <li><a href="index.html">Home</a></li>
+                               <li><a href="about.html">About</a></li>
+                               <li><a href="design.html" id="clicked">Design</a></li>
+                               <li><a href="photography.html">Photography</a></li>
+                           </ul>
+                   </div> 
+               </div> 
+           </div>   
+        </div>
 
-                    <a href="design.html" class="textReturn">
-                        <h3>View Other Work</h3>
-                    </a>
-                     
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Top Section: Title and Summary -->
+            <div class="project-top">
+                <div class="project-left">
+                    <h1>On Writing Well</h1>
+                    <p>December 2022</p>
+                    <p><i>Book Cover Design</i></p>
+                    <p><small><i>This was a project for <a href="#">Design Media Concepts</a>, a course taught by Amy Finkel</i></small></p>
+                </div>
+                <div class="project-right">
+                    <p>I redesigned the cover of On Writing Well by William Zinsser, a well-known guidebook on non-fiction writing. The original design was straightforward, but lacked visual interest, which is common for many guidebooks. For this redesign, I aimed to make the cover more visually engaging while maintaining a strong connection to the book’s content, which emphasizes the craft of writing. My goal was to create a cover proposal that would capture the essence of non-fiction writing—structured, yet creative—while appealing to a wide audience of writers looking to improve their skills.
+                        </p>
+                </div>
             </div>
-        </div>  
             
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/BookCover/Cover1.jpg" alt="Two book laid on a white background, with their covers facing up. They depict the same book, but in two different design proposals.">
+            </div>
+
+            <!-- Section: Additional Text -->
+            <div class="project-text">
+                <p>In the first design, I wanted to convey the concept of writing and structure, so I used a series of rectangles to simulate the appearance of words in a paragraph. The title is intertwined into this pattern, ensuring it remains the focal point through contrast in size and shape. I chose a typewriter-style font to match the 1976 publication year and the historical role of typewriters in the writing process, tying the design to the book's era.</p>
+               <br>
+                <p>For the second design, I focused on Zinsser’s advice, which emphasizes the revisions a writer goes through before finalizing their work. I decided to incorporate a portion of the book’s text with pen marks to evoke the process of editing and refining. The title is placed over this with a white border to keep it readable against the busy background. Blue was chosen as the dominant color to evoke trust and reliability, creating a calm, professional tone for the cover.</p>
+            </div>
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/BookCover/Cover2.jpg" alt="Image of Book Cover Design, Proposal 1">
+                <img src="design/BookCover/Cover3.jpg" alt="Image of Book Cover Design, Proposal 2">
+            </div>
+
+            <!-- CTA Button -->
+            <a href="design.html" class="textReturn">
+                View Other Work
+            </a>
         </div>
     </div>
-<footer>
-    <p class="bottom">mateovr.com</p>
-    <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a> </p>
-    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-    <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
 
-</footer> 
-<script src="java/noise.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p class="bottom">mateovr.com</p>
+        <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a></p>
+        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+        <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
+    </footer>
+
+    <!-- Grain Effect -->
+    <canvas id="noise" class="noise"></canvas>
+    <script src="java/noise.js"></script>
+</body>
+</html>

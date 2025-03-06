@@ -1,75 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo's Portfolio</title>
+    <title>Biking in NYC</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-     </style>
+    </style>
 </head>
-<canvas id="noise" class="noise"></canvas>
-<body class="body" >
-    <!-- MENU BAR -->
+<body class="body">
+
+    <!-- Sidebar Navigation -->
     <div class="wrapper">
         <div class="sidebar">
             <input type="checkbox" class="toggler">
-         <div class="hamburger"><div></div></div>
-         <div class="menu">
-             <div>
-                 <div>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="design.html" id="clicked">Design</a></li>
-                            <li><a href="photography.html">Photography</a></li>
-                        </ul>
-                    </div>
-                </div> 
-            </div> 
-        </div>   
-        
-    <!-- Main Content -->
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+                <div>
+                    <div>
+                           <ul>
+                               <li><a href="index.html">Home</a></li>
+                               <li><a href="about.html">About</a></li>
+                               <li><a href="design.html" id="clicked">Design</a></li>
+                               <li><a href="photography.html">Photography</a></li>
+                           </ul>
+                   </div> 
+               </div> 
+           </div>   
+        </div>
+
+        <!-- Main Content -->
         <div class="main-content">
-            <div class="heading"> <h3>Zachary Parker<h3></div>
-            <div class="caption">
-                <div> 
-                     <p> August 2021 – <i>Visual Identity & Print Design</i></p>
-                 </div>
+
+            <!-- Top Section: Title and Summary -->
+            <div class="project-top">
+                <div class="project-left">
+                    <h1>Zachary Parker</h1>
+                    <p>August 2021</p>
+                    <p><b>Brand Designer</b></p>
+                    <p><i>Visual Identity & Print Design</i></p>
+                </div>
+                <div class="project-right">
+                    <p>For Zachary Parker, the Ward 5 representative and president of the Washington, D.C. State Board of Education, I developed a visual identity that is both informative and visually striking. The design seeks to balance imagery and text, creating a cohesive representation of Parker’s brand. The logo was kept simple yet meaningful, reflecting Washington, D.C.'s iconic flag with its two stripes and three stars.
+                        The color palette combines a traditional campaign blue with an energetic orange, symbolizing Parker’s dynamic energy and his fresh ideas for the future of Washington, D.C.</p>
+                </div>
             </div>
-            <div class="block4"> 
-                    <div class="container6">
-                        <img class="cover" src="design/zachary/zachary4.jpg"  alt="zacharyParker4" width="500px" height="auto">
-                    </div>
-                    <!-- <div class="container5">
-                        <img class="cover" src="design/zachary/zachary1.jpg"  alt="zacharyParker1" width="500px" height="auto">
-                    </div> -->
-                    <div class="textContainer">
-                            <p class="explain"> Zachary Parker is the both the ward 5 representative and president of the Washington, D.C. State Board of Education since January of 2019. In 2021, Zachary Parker announced his plan to run for the Ward 5 seat on the D.C. Council. The visual identity is meant to be both visual and informative, creating a balanced relationship between imagery and text on his literature. Parker’s new logo is kept simple yet maintains close ties with Washington, D.C. in the way it mimics the two stripes and three stars found on the D.C. flag.</p>
-                            <p class="explain"> The color palette consists of a traditional campaign blue, paired with an energetic orange, bringing focus to Parker’s energy and new ideas for the city of Washington, D.C.</p>
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/zachary/zachary2.jpg"  alt="zacharyParker2" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/zachary/zachary3.jpg"  alt="zacharyParker3" width="500px" height="auto">
-                    </div>
-                    <a href="design.html" class="textReturn">
-                        <h3>View Other Work</h3>
-                    </a>
-                     
-            </div>
-        </div>  
             
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/zachary/zachary4.jpg" alt="Visualization of Bicycle Count Volume">
+                <img src="design/zachary/zachary2.jpg" alt="Visualization of Bicycle Count Volume">
+                <img src="design/zachary/zachary3.jpg" alt="Visualization of Bicycle Count Volume">
+            </div>
+
+            <!-- CTA Button -->
+            <a href="design.html" class="textReturn">
+                View Other Work
+            </a>
         </div>
     </div>
-<footer>
-    <p class="bottom">mateovr.com</p>
-    <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a> </p>
-    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-    <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
 
-</footer> 
-<script src="java/noise.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p class="bottom">mateovr.com</p>
+        <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a></p>
+        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+        <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
+    </footer>
+
+    <!-- Grain Effect -->
+    <canvas id="noise" class="noise"></canvas>
+    <script src="java/noise.js"></script>
+</body>
+</html>

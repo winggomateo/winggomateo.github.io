@@ -673,7 +673,6 @@ footer p{
     display: flex;
     flex-wrap: wrap;
     width: 46vw;
-    /* max-width: 1000px; */
     margin: 20px auto;
     border: 2px solid black;
     overflow: hidden;

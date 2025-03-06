@@ -1,90 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo's Portfolio</title>
+    <title>Biking in NYC</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-     </style>
+    </style>
 </head>
-<canvas id="noise" class="noise"></canvas>
-<body class="body" >
-    <!-- MENU BAR -->
+<body class="body">
+
+    <!-- Sidebar Navigation -->
     <div class="wrapper">
         <div class="sidebar">
             <input type="checkbox" class="toggler">
-         <div class="hamburger"><div></div></div>
-         <div class="menu">
-             <div>
-                 <div>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="design.html" id="clicked">Design</a></li>
-                            <li><a href="photography.html">Photography</a></li>
-                        </ul>
-                    </div>
-                </div> 
-            </div> 
-        </div>   
-        
-    <!-- Main Content -->
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+                <div>
+                    <div>
+                           <ul>
+                               <li><a href="index.html">Home</a></li>
+                               <li><a href="about.html">About</a></li>
+                               <li><a href="design.html" id="clicked">Design</a></li>
+                               <li><a href="photography.html">Photography</a></li>
+                           </ul>
+                   </div> 
+               </div> 
+           </div>   
+        </div>
+
+        <!-- Main Content -->
         <div class="main-content">
-            <div class="heading"> <h3>Vinyl Playing Cards<h3></div>
-            <div class="caption">
-                <div> 
-                     <p> November 2020 – <i>Visual Identity & Print Design</i></p>
-                 </div>
+
+            <!-- Top Section: Title and Summary -->
+            <div class="project-top">
+                <div class="project-left">
+                    <h1>Vinyl Playing Cards</h1>
+                    <p>November 2020</p>
+                    <p><i>Visual Identity & Print Design</i></p>
+                </div>
+                <div class="project-right">
+                    <p>Vinyl Playing Cards is a personal project to create a deck of playing cards to be used for Cardistry, a performance art relating to the display and arrangement of card flourishes. Contrasting from magic, cardistry is meant to be focused on visual impressiveness derived from the difficulty to perform specific flourishes.</p>
+                    <p>Because of cardistry’s inherent vibrance, the design of the playing cards is made to juxtapose the eye-catching movements, bringing further excitement to the performance. The back design contains a strong contrast between a series of white circular outlines with black vertical stripes, immediately striking attention visually. The deck especially comes to life under circular movements, creating a unique blur of the card’s lines while the center circle remains clear.</p>
+                </div>
             </div>
-            <div class="block4"> 
-                    <div class="container6">
-                        <img class="cover" src="design/vinyl/vinylLong.jpg"  alt="circulo1" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/vinyl/vinyl3.jpg"  alt="vinyl3" width="500px" height="auto">
-                    </div>
-                    <div class="textContainer">
-                            <p class="explain"> Vinyl Playing Cards is a personal project to create a deck of playing cards to be used for Cardistry. Cardistry is an art relating to the performance of card flourishes. Contrasting from magic, cardistry is meant to be focused on visual impressiveness in the difficulty to perform specific flourishes.</p>
-                            <p class="explain"> Because of cardistry’s inherent vibrance, the design of the playing cards should juxtapose the eye-catching movements to bring further excitement to the art. The back design contains a strong contrast between a series of white circular outlines with black vertical stripes, immediately striking attention visually. The deck especially comes to life under circular movements, creating an appealing blur of the card’s lines while the center circle remains clear.</p>
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/vinyl/vinyl1.jpg"  alt="vinyl1" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/vinyl/vinyl2.jpg"  alt="vinyl2" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/vinyl/vinylDesk3.jpg"  alt="vinylDesk3" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/vinyl/vinylDesk1.jpg"  alt="vinylDesk1" width="500px" height="auto">
-                    </div>
-                    <div class="container6">
-                        <img class="cover" src="design/vinyl/VinylDeskLong.jpg"  alt="VinylDeskLong" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/vinyl/vinylDesk2.jpg"  alt="VinylDesk2" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/vinyl/vinylDesk4.jpg"  alt="VinylDesk4" width="500px" height="auto">
-                    </div>
-                    <a href="design.html" class="textReturn">
-                        <h3>View Other Work</h3>
-                    </a>
-                     
-            </div>
-        </div>  
             
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/vinyl/vinylDesk1.jpg" alt="Visualization of Bicycle Count Volume">
+                <img src="design/vinyl/VinylDeskLong.jpg" alt="Visualization of Bicycle Count Volume">
+                <img src="design/vinyl/VinylDeskLong2.jpg" alt="Visualization of Bicycle Count Volume">
+                <img src="design/vinyl/vinyl1.jpg" alt="Visualization of Bicycle Count Volume">
+                <img src="design/vinyl/vinylLong.jpg" alt="Visualization of Bicycle Count Volume">
+
+            </div>
+
+            <!-- CTA Button -->
+            <a href="design.html" class="textReturn">
+                View Other Work
+            </a>
         </div>
     </div>
-<footer>
-    <p class="bottom">mateovr.com</p>
-    <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a> </p>
-    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-    <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
 
-</footer> 
-<script src="java/noise.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p class="bottom">mateovr.com</p>
+        <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a></p>
+        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+        <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
+    </footer>
+
+    <!-- Grain Effect -->
+    <canvas id="noise" class="noise"></canvas>
+    <script src="java/noise.js"></script>
+</body>
+</html>

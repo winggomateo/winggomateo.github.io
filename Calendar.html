@@ -1,83 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo's Portfolio</title>
+    <title>Biking in NYC</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-     </style>
+    </style>
 </head>
-<canvas id="noise" class="noise"></canvas>
-<body class="body" >
-    <!-- MENU BAR -->
+<body class="body">
+
+    <!-- Sidebar Navigation -->
     <div class="wrapper">
         <div class="sidebar">
             <input type="checkbox" class="toggler">
-         <div class="hamburger"><div></div></div>
-         <div class="menu">
-             <div>
-                 <div>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="design.html" id="clicked">Design</a></li>
-                            <li><a href="photography.html">Photography</a></li>
-                        </ul>
-                    </div>
-                </div> 
-            </div> 
-        </div>   
-        
-    <!-- Main Content -->
-        <div class="main-content">
-            <div class="heading"> <h3>CMEP Fall Calendar<h3></div>
-            <div class="caption">
-                <div> 
-                     <p> September 2022 – <i>Poster & Print Design</i></p>
-                 </div>
-            </div>
-            <div class="block4"> 
-                    <div class="container6">
-                        <img class="cover" src="design/Calendar/Calendar1.png"  alt="CalendarLong" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/Calendar/Calendar2.png"  alt="twelveTwelveSeed" width="500px" height="auto">
-                    </div>
-                    <div class="textContainer">
-                        <p class="explain"> A double–sided Poster designed for New York University's Center for Multicultural Education and Programs (CMEP). Every Semester, CMEP distributes a calendar to inform the NYU community of major upcoming events and programs from the center. Additionally, a quote is chosen to represent every semester, therefore the design was created off the June Jordan quote, "We are the ones we have been waiting for", representing the Fall Semester of 2022. While serving as informational material, the opposite side shows the quote as a poster, giving the calendar an aesthetical function as well.</p>
-                        <p class="explain"> As the calendar is distributed to the large and diverse community of NYU, accessibility is an important factor in the design. All text is above 14pt in size to allow for visual accessibility. Furthermore, a QR on the calendar leads to a digitized calendar of events able to read using a text to speech reader. </p>
-                        <p class="explain">In addition to the Calendar, the poster side was reformatted into small sticker for distribution, and a large wall vinyl to be hung in the CMEP student lounge.</p>
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/Calendar/Calendar3.jpg"  alt="Calendar3" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/Calendar/Calendar5.jpg"  alt="Calendar5" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/Calendar/Calendar4.jpg"  alt="Calendar4" width="500px" height="auto">
-                    </div>
-                    
-                    
-                    
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+                <div>
+                    <div>
+                           <ul>
+                               <li><a href="index.html">Home</a></li>
+                               <li><a href="about.html">About</a></li>
+                               <li><a href="design.html" id="clicked">Design</a></li>
+                               <li><a href="photography.html">Photography</a></li>
+                           </ul>
+                   </div> 
+               </div> 
+           </div>   
+        </div>
 
-                    <a href="design.html" class="textReturn">
-                        <h3>View Other Work</h3>
-                    </a>
-                     
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Top Section: Title and Summary -->
+            <div class="project-top">
+                <div class="project-left">
+                    <h1>CMEP Calendar</h1>
+                    <p>September 2022</p>
+                    <p><b>Lead Designer</b></p>
+                    <p><i>Poster & Layout Design</i></p>
+                    <p><small><i>This was a project for <a href="#">The Center of Multicultural Education and Programs</a> at NYU</i></small></p>
+                </div>
+                <div class="project-right">
+                    <p>Each semester, the Center for Multicultural Education and Programs (CMEP) distributes a calendar to keep the NYU community informed of major events and programs. Each calendar also features a quote that represents the semester, with the Fall Semester of 2022 highlighting the June Jordan quote, 'We are the ones we have been waiting for.' The design not only serves as an informative tool but also features the quote on the reverse side, transforming the calendar into a poster and adding an aesthetic dimension.
+                        </p>
+                </div>
             </div>
-        </div>  
             
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/Calendar/Calendar1.png" alt="Visualization of Bicycle Count Volume">
+            </div>
+
+            <!-- Section: Additional Text -->
+            <div class="project-text">
+                <p>Given the diverse and expansive community at NYU, accessibility is a key consideration in the design of the calendar. All text is set to a minimum of 14pt to ensure readability. Additionally, a QR code on the calendar links to a digital version, where the events can be accessed and read aloud using text-to-speech technology.</p>
+                <p>In addition to the Calendar, the poster side was reformatted into small sticker for distribution and a large wall vinyl to be hung in the CMEP student lounge.</p>
+            </div>
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/Calendar/Calendar2.png" alt="Graph showing bike volume growth">
+                <img src="design/Calendar/CalendarStickers.png" alt="Graph showing bike volume growth">
+                <img src="design/Calendar/CalendarLounge.png" alt="Graph showing bike volume growth">
+            </div>
+
+            <!-- CTA Button -->
+            <a href="design.html" class="textReturn">
+                View Other Work
+            </a>
         </div>
     </div>
-<footer>
-    <p class="bottom">mateovr.com</p>
-    <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a> </p>
-    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-    <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
 
-</footer> 
-<script src="java/noise.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p class="bottom">mateovr.com</p>
+        <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a></p>
+        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+        <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
+    </footer>
+
+    <!-- Grain Effect -->
+    <canvas id="noise" class="noise"></canvas>
+    <script src="java/noise.js"></script>
+</body>
+</html>

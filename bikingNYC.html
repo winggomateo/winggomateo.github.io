@@ -1,143 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="CSS/main.css">
+    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo's Portfolio</title>
+    <title>Biking in NYC</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-     </style>
+    </style>
 </head>
-<canvas id="noise" class="noise"></canvas>
-<body class="body" >
-    <!-- MENU BAR -->
+<body class="body">
+
+    <!-- Sidebar Navigation -->
     <div class="wrapper">
         <div class="sidebar">
             <input type="checkbox" class="toggler">
-         <div class="hamburger"><div></div></div>
-         <div class="menu">
-             <div>
-                 <div>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="design.html" id="clicked">Design</a></li>
-                            <li><a href="photography.html">Photography</a></li>
-                        </ul>
-                    </div>
-                </div> 
-            </div> 
-        </div>   
-        
-    <!-- Main Content -->
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+                <div>
+                    <div>
+                           <ul>
+                               <li><a href="index.html">Home</a></li>
+                               <li><a href="about.html">About</a></li>
+                               <li><a href="design.html" id="clicked">Design</a></li>
+                               <li><a href="photography.html">Photography</a></li>
+                           </ul>
+                   </div> 
+               </div> 
+           </div>   
+        </div>
+
+        <!-- Main Content -->
         <div class="main-content">
-            <div class="heading"> <h3>How Safe Is It To Bike In NYC?<h3></div>
-            <div class="caption">
-                <div> 
-                     <p> October 2023 – <i>Data Visualization</i></p>
-                 </div>
-            </div>
-            <div class="block4"> 
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking02.png"  alt="Biking in New York City has Become more popular over time" width="500px" height="auto">
-                    </div>
-                    <div class="textContainer">
-                        <p class="explain"> The project is a set of data visualizations aiming to answer the question - how safe is it to bike in NYC? These visualizations were made using publicly available data sets about biking in New York City, revealing information on Bicycle Counts, Bike Lane Amounts, Biking Distribution, and Injury and Fatality Counts throughout the past decade.</p>
-                        <p class="explain"> The New York City Department of Transportation and the New York City Department of Planning made the data sets available. 
+
+            <!-- Top Section: Title and Summary -->
+            <div class="project-top">
+                <div class="project-left">
+                    <h1>Biking in NYC</h1>
+                    <p>October 2023</p>
+                    <p><i>Data Visualization</i></p>
+                    <p><small><i>This was a project for <a href="#">Information Design</a>, a course taught by Katherine Dillon.</i></small></p>
+                </div>
+                <div class="project-right">
+                    <p>The project is a set of data visualizations aiming to answer the question - how safe is it to bike in NYC? These visualizations were made using publicly available data sets about biking in New York City, revealing information on Bicycle Counts, Bike Lane Amounts, Biking Distribution, and Injury and Fatality Counts throughout the past decade.
                         </p>
-                    </div>
-                    
-                    <div class="container6">
-                        <img class="cover" src="design/bikingNYC/Biking03.png"  alt="Graph showing Bicycle Count Volume on a weekday from 10 locations in Manhattan per year" width="500px" height="auto">
-                    </div>
-
-                    <div class="container6">
-                        <img class="cover" src="design/bikingNYC/Biking04.png"  alt="Graph showing Bicycle Count growth" width="500px" height="auto">
-                    </div>
-
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking05.png"  alt="As of 2022" width="500px" height="auto">
-                    </div>
-                    <div class="textContainer">
-                        <p class="explain"> I began the project by creating visualizations to explain the current biking state in NYC. I want the audience to understand how common it is and the growth trend of biking, therefore establishing the importance of these visualizations.</p>
-                        <p class="explain"> Within this goal, I balanced complex and straightforward visualizations to bring two representations to the project. The complexity of the bicycle count graph emphasizes how widespread or significant biking has become, while the pictorial graph highlights how common biking is simply and directly.</p>
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking06.png"  alt="1 out of 7 New Yorkers Ride a Bike Regularly" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking07.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container6">
-                        <img class="cover" src="design/bikingNYC/Biking08.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking09.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking10.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking11.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking12.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container6">
-                        <img class="cover" src="design/bikingNYC/Biking13.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking14.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking15.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container6">
-                        <img class="cover" src="design/bikingNYC/Biking16.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container6">
-                        <img class="cover" src="design/bikingNYC/Biking17.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container5">
-                        <img class="cover" src="design/bikingNYC/Biking18.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="textContainer">
-                        <p class="explain"> There existed an obvious risk with biking as there existed data for the fatality and injury count, yet when compared to the fatalities and injuries within all accidents, bicyclists took up a minority in those percentages. In this sense, biking is not a prominent cause for concern.</p>
-                        <p class="explain"> At the end of the visualizations, I wanted to create a connection to the future of biking in New York City. Because of this, I ended with a snapshot of bike lane counts in the city, subtly hinting at this positive characteristic of the city.</p>
-                    </div>
-                    <div class="container6">
-                        <img class="cover" src="design/bikingNYC/Biking19.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-                    <div class="container6">
-                        <img class="cover" src="design/bikingNYC/Biking20.png"  alt="1 out of 4 New Yorkers Ride a Bike Once a Year" width="500px" height="auto">
-                    </div>
-
-
-
-
-
-
-                    
-                    
-                    
-                    
-
-                    <a href="design.html" class="textReturn">
-                        <h3>View Other Work</h3>
-                    </a>
-                     
+                    <p>
+                        The New York City Department of Transportation and the New York City Department of Planning are the sources of the data sets.
+                    </p>
+                </div>
             </div>
-        </div>  
             
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/bikingNYC/Biking03.png" alt="Visualization of Bicycle Count Volume">
+            </div>
+
+            <!-- Section: Additional Text -->
+            <div class="project-text">
+                <p>The design of the visualizations was intentionally crafted to balance complexity and simplicity. The bicycle count graph, for example, is detailed to emphasize the widespread adoption of biking in the city, while a simpler pictorial graph gives a quick and direct snapshot of biking’s prevalence in the city. These choices were made to ensure accessibility for a broad audience, allowing for both in-depth analysis and immediate understanding.</p>
+            </div>
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/bikingNYC/BikingCollage1.png" alt="Graph showing bike volume growth">
+                <img src="design/bikingNYC/BikingCollage2.png" alt="Bike Lane Growth Over Time">
+            </div>
+
+            <!-- Section: Additional Text -->
+            <div class="project-text">
+                <p>To represent biking safety, I used a layered approach with the injury and fatality data. The visualizations are designed to be clear and not overwhelming, highlighting that although risks exist, the percentage of cyclists involved in total traffic accidents is relatively small. This design choice aims to provide clarity around the safety aspect without diminishing the importance of the data.</p>
+            </div>
+
+             <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/bikingNYC/BikingCollage3.png" alt="Bike Lane Growth Over Time">
+                <img src="design/bikingNYC/BikingCollage4.png" alt="Bike Lane Growth Over Time">
+                <img src="design/bikingNYC/BikingCollage5.png" alt="Bike Lane Growth Over Time">
+            </div>
+
+            <!-- Section: Additional Text -->
+            <div class="project-text">
+                <p>Finally, the project concludes with a design focus on the future of biking. The bike lane count visualizations are presented in a way that signals the positive growth of biking infrastructure, subtly reinforcing the city's commitment to improving biking conditions.</p>
+            </div>
+
+            <div class="project-image-section">
+                <img src="design/bikingNYC/BikingCollage8.png" alt="Bike Lane Growth Over Time">
+            </div>
+
+            <!-- CTA Button -->
+            <a href="design.html" class="textReturn">
+                View Other Work
+            </a>
         </div>
     </div>
-<footer>
-    <p class="bottom">mateovr.com</p>
-    <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a> </p>
-    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-    <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
 
-</footer> 
-<script src="java/noise.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p class="bottom">mateovr.com</p>
+        <p class="bottom"><a href="mailto:winggomateowork@gmail.com">winggomateowork@gmail.com</a></p>
+        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+        <p class="bottom"><a href="https://www.linkedin.com/in/mateo-v-b76754139/">LinkedIn</a></p>
+    </footer>
+
+    <!-- Grain Effect -->
+    <canvas id="noise" class="noise"></canvas>
+    <script src="java/noise.js"></script>
+</body>
+</html>
