@@ -408,6 +408,7 @@ footer a::before {
 
 .wrapper .main-content .header{
     margin: 0 5% 0 5%;
+    user-select: none;
 }
 
 .wrapper .title{
