@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLK Week</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+    </style>
+</head>
+<body class="body">
+
+    <!-- Sidebar Navigation -->
+    <div class="wrapper">
+        <div class="sidebar">
+            <input type="checkbox" class="toggler">
+            <div class="hamburger"><div></div></div>
+            <div class="menu">
+                <div>
+                    <div>
+                           <ul>
+                               <li><a href="index.html">Home</a></li>
+                               <li><a href="about.html">About</a></li>
+                               <li><a href="design.html" id="clicked">Design</a></li>
+                               <li><a href="photography.html">Photography</a></li>
+                           </ul>
+                   </div> 
+               </div> 
+           </div>   
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
+            <!-- Top Section: Title and Summary -->
+            <div class="project-top">
+                <div class="project-left">
+                    <h1>CMEP Prints & Signs</h1>
+                    <p>Spring–Summer 2026</p>
+                    <p><b>Lead Designer</b></p>
+                    <p><i>Print, Signage & Illustration
+
+                    </i></p>
+                </div>
+                <div class="project-right">
+                    <p>Print is one of several ways NYU's Center for Multicultural Education and Programs (CMEP) communicates its resources, programs, and mission to students and the NYU community.</p>
+                    <p>This series explores how playful design can support that messaging, spanning postcards, signage, and spatial design. Each piece pairs original visuals with the information CMEP needs to share, aiming to make content feel engaging and digestible rather than solely informational.</p>
+                </div>
+            </div>
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/cmepPrints/cmepPostCard.png" alt="Visualization of Bicycle Count Volume">
+                <img src="design/cmepPrints/cmepBookmark.png" alt="Visualization of Bicycle Count Volume">
+                <img src="design/cmepPrints/cmepSticker.png" alt="Visualization of Bicycle Count Volume">
+
+            </div>
+            
+            <!-- Section: Additional Text -->
+           <div class="project-text">
+            <h3>CMEP Info Materials</h3>
+            <p>The info card and bookmark/sticker set are both introductions to CMEP, designed to catch attention before asking for a read. The info card is a double-sided postcard: an illustrated collage of students and CMEP moments on the front, with office info on the back.</p>
+            <p>The bookmark and sticker follow the same idea for Fall 2026, built around a quote from Tricia Hersey. Each piece pairs a short description with a QR code, giving people an easy way to learn more once the design has pulled them in.</p>
+           </div>
+
+            <!-- Section: Image -->
+            <div class="project-image-section">
+                <img src="design/cmepPrints/cmepSigns.png" alt="Visualization of Bicycle Count Volume">
+            </div>
+
+            <!-- Section: Additional Text -->
+           <div class="project-text">
+            <h3>Lounge Signage</h3>
+            <p>A set of signs for the CMEP Lounge, covering the office, its resources, and how to get involved, from posting on the bulletin board to reserving the space.</p>
+           </div>
+
+            <!-- CTA Button -->
+            <a href="design.html" class="textReturn">
+                View Other Work
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
+        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+    </footer>
+
+    <!-- Grain Effect -->
+    <canvas id="noise" class="noise"></canvas>
+    <script src="java/noise.js"></script>
+</body>
+</html>
