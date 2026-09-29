@@ -1,77 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zachary Parker Campaign</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    </style>
-</head>
-<body class="body">
-
-    <!-- Sidebar Navigation -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zachary Parker Campaign</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
                     <div>
-                           <ul>
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="design.html" id="clicked">Design</a></li>
-                               <li><a href="photography.html">Photography</a></li>
-                           </ul>
-                   </div> 
-               </div> 
-           </div>   
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Section: Title and Summary -->
+                <div class="project-top">
+                    <div class="project-left">
+                        <h1>Zachary Parker</h1>
+                        <p>August 2021</p>
+                        <p><b>Brand Designer</b></p>
+                        <p><i>Visual Identity & Print Design</i></p>
+                    </div>
+                    <div class="project-right">
+                        <p>
+                            For Zachary Parker, the Ward 5 representative and president of the Washington, D.C. State
+                            Board of Education, I developed a visual identity that is both informative and visually
+                            striking. The design seeks to balance imagery and text, creating a cohesive representation
+                            of Parker’s brand. The logo was kept simple yet meaningful, reflecting Washington, D.C.'s
+                            iconic flag with its two stripes and three stars. The color palette combines a traditional
+                            campaign blue with an energetic orange, symbolizing Parker’s dynamic energy and his fresh
+                            ideas for the future of Washington, D.C.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img src="design/zachary/zachary4.jpg" alt="Two Zachary Parker campaign business cards" />
+                    <img
+                        src="design/zachary/zachary2.jpg"
+                        alt="Zachary Parker campaign door hanger with his photo and message" />
+                    <img
+                        src="design/zachary/zachary3.jpg"
+                        alt="Zachary Parker yard sign for DC Council Ward 5"
+                        loading="lazy" />
+                </div>
+
+                <!-- CTA Button -->
+                <a href="design.html" class="textReturn"> View Other Work </a>
+            </main>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-            <!-- Top Section: Title and Summary -->
-            <div class="project-top">
-                <div class="project-left">
-                    <h1>Zachary Parker</h1>
-                    <p>August 2021</p>
-                    <p><b>Brand Designer</b></p>
-                    <p><i>Visual Identity & Print Design</i></p>
-                </div>
-                <div class="project-right">
-                    <p>For Zachary Parker, the Ward 5 representative and president of the Washington, D.C. State Board of Education, I developed a visual identity that is both informative and visually striking. The design seeks to balance imagery and text, creating a cohesive representation of Parker’s brand. The logo was kept simple yet meaningful, reflecting Washington, D.C.'s iconic flag with its two stripes and three stars.
-                        The color palette combines a traditional campaign blue with an energetic orange, symbolizing Parker’s dynamic energy and his fresh ideas for the future of Washington, D.C.</p>
-                </div>
-            </div>
-            
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/zachary/zachary4.jpg" alt="Visualization of Bicycle Count Volume">
-                <img src="design/zachary/zachary2.jpg" alt="Visualization of Bicycle Count Volume">
-                <img src="design/zachary/zachary3.jpg" alt="Visualization of Bicycle Count Volume">
-            </div>
-
-            <!-- CTA Button -->
-            <a href="design.html" class="textReturn">
-                View Other Work
-            </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
-    </footer>
-
-    <!-- Grain Effect -->
-    <canvas id="noise" class="noise"></canvas>
-    <script src="java/noise.js"></script>
-</body>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
 </html>

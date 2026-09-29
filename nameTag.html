@@ -1,90 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMEP Name Tag</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    </style>
-</head>
-<body class="body">
-
-    <!-- Sidebar Navigation -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CMEP Name Tag</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
                     <div>
-                           <ul>
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="design.html" id="clicked">Design</a></li>
-                               <li><a href="photography.html">Photography</a></li>
-                           </ul>
-                   </div> 
-               </div> 
-           </div>   
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Section: Title and Summary -->
+                <div class="project-top">
+                    <div class="project-left">
+                        <h1>CMEP Name Tag</h1>
+                        <p>December 2024</p>
+                        <!-- <p><b>Lead Designer</b></p> -->
+                        <p><i>Print Design </i></p>
+                    </div>
+                    <div class="project-right">
+                        <p>
+                            For NYU's Center for Multicultural Education and Programs (CMEP), I designed a set of
+                            interactive name tags intended to foster connection and conversation at events. Each tag
+                            features three distinct sections: a primary space for one’s name, an area to indicate
+                            pronouns, and a separate box for participants to answer one of twelve conversation-starting
+                            questions.
+                        </p>
+                        <p>
+                            Twelve different name tag variations were created, each featuring a unique question and
+                            color while maintaining a consistent layout. The interactive design encourages attendees to
+                            share their identities and experiences, promoting inclusive conversations and a sense of
+                            community.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/nameTag/cmepNameTags.gif"
+                        alt="Animated CMEP name tag cycling through icebreaker questions" />
+                    <img
+                        src="design/nameTag/cmepNameTag1.jpg"
+                        alt="Twelve CMEP name tags in different colors laid out on a table" />
+                    <img
+                        src="design/nameTag/cmepNameTag2.jpg"
+                        alt="Angled close-up of the colorful name tags"
+                        loading="lazy" />
+                </div>
+
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <h3>Name Tags In Use</h3>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/nameTag/cmepNameTagUse3.jpg"
+                        alt="Students laughing and talking at a CMEP event while wearing the name tags"
+                        loading="lazy" />
+                    <img
+                        src="design/nameTag/cmepNameTagUse2.jpg"
+                        alt="Three people chatting at a CMEP event wearing the name tags"
+                        loading="lazy" />
+                </div>
+
+                <!-- CTA Button -->
+                <a href="design.html" class="textReturn"> View Other Work </a>
+            </main>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-            <!-- Top Section: Title and Summary -->
-            <div class="project-top">
-                <div class="project-left">
-                    <h1>CMEP Name Tag</h1>
-                    <p>December 2024</p>
-                    <!-- <p><b>Lead Designer</b></p> -->
-                    <p><i>Print Design
-
-                    </i></p>
-                </div>
-                <div class="project-right">
-                    <p>For NYU's Center for Multicultural Education and Programs (CMEP), I designed a set of interactive name tags intended to foster connection and conversation at events. Each tag features three distinct sections: a primary space for one’s name, an area to indicate pronouns, and a separate box for participants to answer one of twelve conversation-starting questions.</p>
-                    <p>Twelve different name tag variations were created, each featuring a unique question and color while maintaining a consistent layout. The interactive design encourages attendees to share their identities and experiences, promoting inclusive conversations and a sense of community.</p>
-                </div>
-            </div>
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/nameTag/cmepNameTags.gif" alt="Visualization of Bicycle Count Volume">
-                <img src="design/nameTag/cmepNameTag1.jpg" alt="Visualization of Bicycle Count Volume">
-                <img src="design/nameTag/cmepNameTag2.jpg" alt="Visualization of Bicycle Count Volume">
-            </div>
-            
-            <!-- Section: Additional Text -->
-           <div class="project-text">
-            <h3>Name Tags In Use</h3>
-           </div>
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/nameTag/cmepNameTagUse3.jpg" alt="Visualization of Bicycle Count Volume">
-                <img src="design/nameTag/cmepNameTagUse2.jpg" alt="Visualization of Bicycle Count Volume">
-            </div>
-
-            <!-- CTA Button -->
-            <a href="design.html" class="textReturn">
-                View Other Work
-            </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
-    </footer>
-
-    <!-- Grain Effect -->
-    <canvas id="noise" class="noise"></canvas>
-    <script src="java/noise.js"></script>
-</body>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
 </html>

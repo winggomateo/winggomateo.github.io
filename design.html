@@ -1,51 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Projects</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-     </style>
-</head>
-<canvas id="noise" class="noise"></canvas>
-<body class="body" >
-   
-
-    <!-- MENU BAR -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-         <div class="hamburger"><div></div></div>
-         <div class="menu">
-             <div>
-                 <div>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="design.html" id="clicked">Design</a></li>
-                            <li><a href="photography.html">Photography</a></li>
-                        </ul>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Design Projects</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div> 
-            </div> 
-        </div>   
-    <!-- Main Content -->
-        <div class="main-content">
-                <div class="block3"> 
+                </div>
+            </nav>
 
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="block3">
                     <!-- CMEP Prints & Signs -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="cmepPrints.html"><img src="design/cmepPrints.png " alt="Project Image" width="500px" height="auto"></a>
+                            <a href="cmepPrints.html"
+                                ><img src="design/cmepPrints.png" alt="CMEP Prints and Signs project cover"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>CMEP Prints & Signs</h2>
                             <p><em>Print, Signage & Illustration</em></p>
-                            <p>A series of playful print materials for the CMEP at NYU, communicating office resources and programs</i></p>
+                            <p>
+                                A series of playful print materials for the CMEP at NYU, communicating office resources
+                                and programs.
+                            </p>
                             <a href="cmepPrints.html" class="read-more-btn">Read More</a>
                         </div>
                     </div>
@@ -53,12 +56,15 @@
                     <!-- NYU MLK Week -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="mlkWeek.html"><img src="design/mlk2024.png " alt="Project Image" width="500px" height="auto"></a>
+                            <a href="mlkWeek.html"><img src="design/mlk2024.png" alt="NYU MLK Week project cover" /></a>
                         </div>
                         <div class="project-info">
                             <h2>MLK Week</h2>
                             <p><em>Brand, Print & Merchandising Design</em></p>
-                            <p>A fresh visual identity for NYU’s 19th Annual MLK celebration, inspired by the theme <i>Powered by Love.</i></p>
+                            <p>
+                                A fresh visual identity for NYU’s 19th Annual MLK celebration, inspired by the theme
+                                <i>Powered by Love.</i>
+                            </p>
                             <a href="mlkWeek.html" class="read-more-btn">Read More</a>
                         </div>
                     </div>
@@ -66,12 +72,16 @@
                     <!-- Twelve Twelve -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="twelveTwelve.html"><img src="design/TwelveTwelve2.jpg" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="twelveTwelve.html"
+                                ><img src="design/TwelveTwelve2.jpg" alt="Twelve Twelve project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>Twelve Twelve</h2>
                             <p><em>Brand Design</em></p>
-                            <p>Visual identity for a brand specializing in sustainably supplying Cannabis sativa seeds.</p>
+                            <p>
+                                Visual identity for a brand specializing in sustainably supplying Cannabis sativa seeds.
+                            </p>
                             <a href="twelveTwelve.html" class="read-more-btn">Read More</a>
                         </div>
                     </div>
@@ -79,7 +89,9 @@
                     <!-- Biking NYC -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="bikingNYC.html"><img src="design/bikingNYC.png" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="bikingNYC.html"
+                                ><img src="design/bikingNYC.png" alt="Biking NYC project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>Biking NYC</h2>
@@ -92,25 +104,38 @@
                     <!-- Future Fashion Group -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="futureFashion.html"><img src="design/FutureFashion.jpg" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="futureFashion.html"
+                                ><img
+                                    src="design/FutureFashion.jpg"
+                                    alt="Future Fashion Group project cover"
+                                    loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>Future Fashion Group</h2>
                             <p><em>Brand, Print & Social Design</em></p>
-                            <p>A playful and organic visual identity for an NYU club focused on sustainability in the fashion industry.</p>
+                            <p>
+                                A playful and organic visual identity for an NYU club focused on sustainability in the
+                                fashion industry.
+                            </p>
                             <a href="futureFashion.html" class="read-more-btn">Read More</a>
                         </div>
                     </div>
-                    
-                     <!-- MisMatch -->
-                     <div class="project-card">
+
+                    <!-- MisMatch -->
+                    <div class="project-card">
                         <div class="project-image">
-                            <a href="misMatch.html"><img src="design/misMatch.png" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="misMatch.html"
+                                ><img src="design/misMatch.png" alt="MisMatch project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>MisMatch</h2>
                             <p><em>Type Design</em></p>
-                            <p>A typeface inspired by an accidental calligraphic stroke, combining traditional script with a modern twist.</p>
+                            <p>
+                                A typeface inspired by an accidental calligraphic stroke, combining traditional script
+                                with a modern twist.
+                            </p>
                             <a href="misMatch.html" class="read-more-btn">Read More</a>
                         </div>
                     </div>
@@ -118,7 +143,9 @@
                     <!-- Al Sadeem -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="alSadeem.html"><img src="design/alSadeem.png" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="alSadeem.html"
+                                ><img src="design/alSadeem.png" alt="Al Sadeem project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>Al Sadeem</h2>
@@ -127,11 +154,13 @@
                             <a href="alSadeem.html" class="read-more-btn">Read More</a>
                         </div>
                     </div>
-                    
+
                     <!-- CMEP Name Tag -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="nameTag.html"><img src="design/cmepNameTag.png" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="nameTag.html"
+                                ><img src="design/cmepNameTag.png" alt="CMEP Name Tag project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>CMEP Name Tag</h2>
@@ -144,12 +173,17 @@
                     <!-- CMEP Calendar -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="Calendar.html"><img src="design/CalendarCover.jpg" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="Calendar.html"
+                                ><img src="design/CalendarCover.jpg" alt="CMEP Calendar project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>CMEP Calendar</h2>
                             <p><em>Poster & Layout Design</em></p>
-                            <p>A double-sided poster designed for New York University's Center for Multicultural Education and Programs (CMEP)...</p>
+                            <p>
+                                A double-sided poster designed for New York University's Center for Multicultural
+                                Education and Programs (CMEP)...
+                            </p>
                             <a href="Calendar.html" class="read-more-btn">Read More</a>
                         </div>
                     </div>
@@ -157,7 +191,9 @@
                     <!-- PGIL -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="PGIL.html"><img src="design/PGIL.jpg" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="PGIL.html"
+                                ><img src="design/PGIL.jpg" alt="PGIL project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>PGIL</h2>
@@ -167,11 +203,12 @@
                         </div>
                     </div>
 
-
-                     <!-- Vinyl Playing Cards -->
-                     <div class="project-card">
+                    <!-- Vinyl Playing Cards -->
+                    <div class="project-card">
                         <div class="project-image">
-                            <a href="vinyl.html"><img src="design/Vinyl.jpg" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="vinyl.html"
+                                ><img src="design/Vinyl.jpg" alt="Vinyl Playing Cards project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>Vinyl Playing Cards</h2>
@@ -184,7 +221,9 @@
                     <!-- On Writing Well -->
                     <div class="project-card">
                         <div class="project-image">
-                            <a href="BookCover.html"><img src="design/BookCover.jpg" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="BookCover.html"
+                                ><img src="design/BookCover.jpg" alt="On Writing Well project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>On Writing Well</h2>
@@ -194,10 +233,12 @@
                         </div>
                     </div>
 
-                     <!-- Zachary Parker -->
-                     <div class="project-card">
+                    <!-- Zachary Parker -->
+                    <div class="project-card">
                         <div class="project-image">
-                            <a href="zacharyParker.html"><img src="design/ZacharyParker.jpg" alt="Project Image" width="500px" height="auto"></a>
+                            <a href="zacharyParker.html"
+                                ><img src="design/ZacharyParker.jpg" alt="Zachary Parker project cover" loading="lazy"
+                            /></a>
                         </div>
                         <div class="project-info">
                             <h2>Zachary Parker</h2>
@@ -206,112 +247,20 @@
                             <a href="zacharyParker.html" class="read-more-btn">Read More</a>
                         </div>
                     </div>
-
-
-
                 </div>
-            </div>  
-            
+            </main>
         </div>
-    </div>
-<footer>
-    <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-    <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-    <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
 
-</footer> 
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-<script>
-    // Noise
-    const noise = () => {
-    let canvas, ctx;
-
-    let wWidth, wHeight;
-
-    let noiseData = [];
-    let frame = 0;
-
-    let loopTimeout;
-
-
-    // Create Noise
-    const createNoise = () => {
-        const idata = ctx.createImageData(wWidth, wHeight);
-        const buffer32 = new Uint32Array(idata.data.buffer);
-        const len = buffer32.length;
-
-        for (let i = 0; i < len; i++) {
-            if (Math.random() < 0.5) {
-                buffer32[i] = 0xff000000;
-            }
-        }
-
-        noiseData.push(idata);
-    };
-
-
-    // Play Noise
-    const paintNoise = () => {
-        if (frame === 9) {
-            frame = 0;
-        } else {
-            frame++;
-        }
-
-        ctx.putImageData(noiseData[frame], 0, 0);
-    };
-
-
-    // Loop
-    const loop = () => {
-        paintNoise(frame);
-
-        loopTimeout = window.setTimeout(() => {
-            window.requestAnimationFrame(loop);
-        }, (1000 / 25));
-    };
-
-
-    // Setup
-    const setup = () => {
-        wWidth = window.innerWidth;
-        wHeight = window.innerHeight;
-
-        canvas.width = wWidth;
-        canvas.height = wHeight;
-
-        for (let i = 0; i < 10; i++) {
-            createNoise();
-        }
-
-        loop();
-    };
-
-
-    // Reset
-    let resizeThrottle;
-    const reset = () => {
-        window.addEventListener('resize', () => {
-            window.clearTimeout(resizeThrottle);
-
-            resizeThrottle = window.setTimeout(() => {
-                window.clearTimeout(loopTimeout);
-                setup();
-            }, 200);
-        }, false);
-    };
-
-
-    // Init
-    const init = (() => {
-        canvas = document.getElementById('noise');
-        ctx = canvas.getContext('2d');
-
-        setup();
-    })();
-};
-
-noise();
-</script>
-<script src="java/noise.js"></script>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
+</html>

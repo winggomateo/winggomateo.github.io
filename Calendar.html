@@ -1,90 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMEP Calendar</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    </style>
-</head>
-<body class="body">
-
-    <!-- Sidebar Navigation -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CMEP Calendar</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
                     <div>
-                           <ul>
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="design.html" id="clicked">Design</a></li>
-                               <li><a href="photography.html">Photography</a></li>
-                           </ul>
-                   </div> 
-               </div> 
-           </div>   
-        </div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-
-            <!-- Top Section: Title and Summary -->
-            <div class="project-top">
-                <div class="project-left">
-                    <h1>CMEP Calendar</h1>
-                    <p>September 2022</p>
-                    <p><b>Lead Designer</b></p>
-                    <p><i>Poster & Layout Design</i></p>
-                    <p><small><i>This was a project for <a href="#">The Center of Multicultural Education and Programs</a> at NYU</i></small></p>
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-right">
-                    <p>Each semester, the Center for Multicultural Education and Programs (CMEP) distributes a calendar to keep the NYU community informed of major events and programs. Each calendar also features a quote that represents the semester, with the Fall Semester of 2022 highlighting the June Jordan quote, 'We are the ones we have been waiting for.' The design not only serves as an informative tool but also features the quote on the reverse side, transforming the calendar into a poster and adding an aesthetic dimension.
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Section: Title and Summary -->
+                <div class="project-top">
+                    <div class="project-left">
+                        <h1>CMEP Calendar</h1>
+                        <p>September 2022</p>
+                        <p><b>Lead Designer</b></p>
+                        <p><i>Poster & Layout Design</i></p>
+                        <p>
+                            <small
+                                ><i
+                                    >This was a project for
+                                    <a href="#">The Center of Multicultural Education and Programs</a> at NYU</i
+                                ></small
+                            >
                         </p>
+                    </div>
+                    <div class="project-right">
+                        <p>
+                            Each semester, the Center for Multicultural Education and Programs (CMEP) distributes a
+                            calendar to keep the NYU community informed of major events and programs. Each calendar also
+                            features a quote that represents the semester, with the Fall Semester of 2022 highlighting
+                            the June Jordan quote, 'We are the ones we have been waiting for.' The design not only
+                            serves as an informative tool but also features the quote on the reverse side, transforming
+                            the calendar into a poster and adding an aesthetic dimension.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            
 
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/Calendar/Calendar1.png" alt="Visualization of Bicycle Count Volume">
-            </div>
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/Calendar/Calendar1.png"
+                        alt='Calendar poster artwork with colorful blocks reading "We are the ones we have been waiting for," a June Jordan quote' />
+                </div>
 
-            <!-- Section: Additional Text -->
-            <div class="project-text">
-                <p>Given the diverse and expansive community at NYU, accessibility is a key consideration in the design of the calendar. All text is set to a minimum of 14pt to ensure readability. Additionally, a QR code on the calendar links to a digital version, where the events can be accessed and read aloud using text-to-speech technology.</p>
-                <p>In addition to the Calendar, the poster side was reformatted into small sticker for distribution and a large wall vinyl to be hung in the CMEP student lounge.</p>
-            </div>
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <p>
+                        Given the diverse and expansive community at NYU, accessibility is a key consideration in the
+                        design of the calendar. All text is set to a minimum of 14pt to ensure readability.
+                        Additionally, a QR code on the calendar links to a digital version, where the events can be
+                        accessed and read aloud using text-to-speech technology.
+                    </p>
+                    <p>
+                        In addition to the Calendar, the poster side was reformatted into small sticker for distribution
+                        and a large wall vinyl to be hung in the CMEP student lounge.
+                    </p>
+                </div>
 
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/Calendar/Calendar2.png" alt="Graph showing bike volume growth">
-                <img src="design/Calendar/CalendarStickers.png" alt="Graph showing bike volume growth">
-                <img src="design/Calendar/CalendarLounge.png" alt="Graph showing bike volume growth">
-            </div>
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/Calendar/Calendar2.png"
+                        alt="Back of the poster: the Fall 2022 CMEP calendar of events" />
+                    <img
+                        src="design/Calendar/CalendarStickers.png"
+                        alt="Close-up of holographic stickers printed with the calendar artwork"
+                        loading="lazy" />
+                    <img
+                        src="design/Calendar/CalendarLounge.png"
+                        alt="The calendar artwork as a large wall graphic in the CMEP lounge"
+                        loading="lazy" />
+                </div>
 
-            <!-- CTA Button -->
-            <a href="design.html" class="textReturn">
-                View Other Work
-            </a>
+                <!-- CTA Button -->
+                <a href="design.html" class="textReturn"> View Other Work </a>
+            </main>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
-    </footer>
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-    <!-- Grain Effect -->
-    <canvas id="noise" class="noise"></canvas>
-    <script src="java/noise.js"></script>
-</body>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
 </html>

@@ -1,89 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MisMatch Type</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    </style>
-</head>
-<body class="body">
-
-    <!-- Sidebar Navigation -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MisMatch Type</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
                     <div>
-                           <ul>
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="design.html" id="clicked">Design</a></li>
-                               <li><a href="photography.html">Photography</a></li>
-                           </ul>
-                   </div> 
-               </div> 
-           </div>   
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Section: Title and Summary -->
+                <div class="project-top">
+                    <div class="project-left">
+                        <h1>MisMatch</h1>
+                        <p>May 2023</p>
+                        <p><i>Type Design</i></p>
+                        <p>
+                            <small
+                                ><i
+                                    >This was a project for <a href="#">Types of Art</a>, a course taught by Goffredo
+                                    Puccetti.</i
+                                ></small
+                            >
+                        </p>
+                    </div>
+                    <div class="project-right">
+                        <p>
+                            MisMatch is a typeface inspired by an accident in my calligraphic practice, in which the
+                            letter ‘e’ developed a mismatched joint on its top edge. Although the style of the type is
+                            visually traditional and script-like, the energy created by the mismatched joint adds a
+                            modern touch to this style.
+                        </p>
+                        <p>
+                            At the moment, the typeface is still a work in progress. For this reason, only lower-case
+                            glyphs are shown.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/misMatch/misMatch1.png"
+                        alt="The MisMatch typeface alphabet in lowercase letters" />
+                </div>
+
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <p>
+                        When creating the typeface, I made all the other letters based on the letter ‘e’. Yet not all
+                        the letters have the mismatched joint; instead, they mimic the sudden angle shift in the
+                        mismatched joint. In this sense, this ensures the type, when together, does not become too
+                        overwhelming to the reader.
+                    </p>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/misMatch/misMatch2.png"
+                        alt='A large cream lowercase "e" from MisMatch on a purple gradient' />
+                    <img src="design/misMatch/misMatch5.png" alt="MisMatch type specimen poster" loading="lazy" />
+                </div>
+
+                <!-- CTA Button -->
+                <a href="design.html" class="textReturn"> View Other Work </a>
+            </main>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-            <!-- Top Section: Title and Summary -->
-            <div class="project-top">
-                <div class="project-left">
-                    <h1>MisMatch</h1>
-                    <p>May 2023</p>
-                    <p><i>Type Design</i></p>
-                    <p><small><i>This was a project for <a href="#">Types of Art</a>, a course taught by Goffredo Puccetti.</i></small></p>
-                </div>
-                <div class="project-right">
-                    <p>MisMatch is a typeface inspired by an accident in my calligraphic practice, in which the letter ‘e’ developed a mismatched joint on its top edge. Although the style of the type is visually traditional and script-like, the energy created by the mismatched joint adds a modern touch to this style.
-                        </p>
-                    <p>At the moment, the typeface is still a work in progress. For this reason, only lower-case glyphs are shown. 
-                        </p>
-                </div>
-            </div>
-            
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/misMatch/misMatch1.png" alt="Visualization of Bicycle Count Volume">
-            </div>
-
-            <!-- Section: Additional Text -->
-            <div class="project-text">
-                <p> When creating the typeface, I made all the other letters based on the letter ‘e’. Yet not all the letters have the mismatched joint; instead, they mimic the sudden angle shift in the mismatched joint. In this sense, this ensures the type, when together, does not become too overwhelming to the reader.</p>
-            </div>
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/misMatch/misMatch2.png" alt="Graph showing bike volume growth">
-                <img src="design/misMatch/misMatch5.png" alt="Bike Lane Growth Over Time">
-            </div>
-
-            <!-- CTA Button -->
-            <a href="design.html" class="textReturn">
-                View Other Work
-            </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
-    </footer>
-
-    <!-- Grain Effect -->
-    <canvas id="noise" class="noise"></canvas>
-    <script src="java/noise.js"></script>
-</body>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
 </html>

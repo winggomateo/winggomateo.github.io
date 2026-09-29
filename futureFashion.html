@@ -1,117 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Fashion Group</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    </style>
-</head>
-<body class="body">
-
-    <!-- Sidebar Navigation -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Future Fashion Group</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
                     <div>
-                           <ul>
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="design.html" id="clicked">Design</a></li>
-                               <li><a href="photography.html">Photography</a></li>
-                           </ul>
-                   </div> 
-               </div> 
-           </div>   
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Section: Title and Summary -->
+                <div class="project-top">
+                    <div class="project-left">
+                        <h1>The Future Fashion Group</h1>
+                        <p>2022–2024</p>
+                        <p><b>Lead Designer & Creative Director</b></p>
+                        <p><i>Visual Identity, Social, Print, & Art Direction</i></p>
+                    </div>
+                    <div class="project-right">
+                        <p>
+                            The Future Fashion Group is a club at NYU focusing on sustainability within the fashion
+                            industry. As the head designer, I took on the project of rebranding FFG to create a fun,
+                            consistent, and bold aesthetic. FFG’s visual identity is meant to balance a playful and
+                            thoughtful style, reflecting a similar dynamic in the fashion industry. The logo consists of
+                            the club name written in rough yet organic-like letters, creating a connection with organic
+                            approaches to sustainable fashion. At the same time, its bold weight highlights the club’s
+                            seriousness, balancing the playful side of the project.
+                        </p>
+                        <p>
+                            FFG’s social media approach continues to embody dynamic thought as it switches between
+                            bright and colorful imagery versus muted and minimal visuals; yet, its publications remain
+                            coherent through layout and font choice.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/futureFashion/futureLong.jpg"
+                        alt="The Future Fashion Group logo over a photo of a person running through a poppy field" />
+                </div>
+
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <h3>Event Graphics</h3>
+                    <!-- <p>I designed an email campaign to promote NYU MLK Week 2024, highlighting key events and information through clear, engaging visuals. Additionally, I adapted the visual identity across multiple social media platforms, creating tailored graphics optimized for various formats to maintain a cohesive and impactful online presence.</p> -->
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/futureFashion/FFG_Insta1.png"
+                        alt="Grid of Instagram event posts with collaged photos and colorful dots" />
+                    <img
+                        src="design/futureFashion/FFG_Event.gif"
+                        alt="Animated event posts for a clothing repair workshop and a clothing swap"
+                        loading="lazy" />
+                    <img
+                        src="design/futureFashion/FFG_Insta2.png"
+                        alt="Second grid of Instagram event posts"
+                        loading="lazy" />
+                </div>
+
+                <div class="project-image-section">
+                    <img
+                        src="design/futureFashion/futreBackDrop.jpg"
+                        alt="Event backdrop: a photo of a garden overlaid with white asterisk shapes"
+                        loading="lazy" />
+                </div>
+
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <h3>Social Campaigns</h3>
+                    <!-- <p>I designed an email campaign to promote NYU MLK Week 2024, highlighting key events and information through clear, engaging visuals. Additionally, I adapted the visual identity across multiple social media platforms, creating tailored graphics optimized for various formats to maintain a cohesive and impactful online presence.</p> -->
+                </div>
+
+                <div class="project-image-section">
+                    <img
+                        src="design/futureFashion/FFG_News.gif"
+                        alt="Animated Weekly News Digest post with a pink handbag and a news headline"
+                        loading="lazy" />
+                    <img
+                        src="design/futureFashion/FFG_NewsStory.png"
+                        alt="Weekly News Digest Instagram stories on sustainable fashion news"
+                        loading="lazy" />
+                    <img
+                        src="design/futureFashion/FFG_lightStory.png"
+                        alt="Pink Instagram stories spotlighting a business and a designer"
+                        loading="lazy" />
+                </div>
+
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <h3>Zine Spreads</h3>
+                    <!-- <p>I designed an email campaign to promote NYU MLK Week 2024, highlighting key events and information through clear, engaging visuals. Additionally, I adapted the visual identity across multiple social media platforms, creating tailored graphics optimized for various formats to maintain a cohesive and impactful online presence.</p> -->
+                </div>
+
+                <div class="project-image-section">
+                    <img
+                        src="design/futureFashion/FFG_ZineSpread.png"
+                        alt='Zine spread titled "Rediscovering Style and Self"'
+                        loading="lazy" />
+                    <img
+                        src="design/futureFashion/futureZine.jpg"
+                        alt="Hand holding the printed zine open to a spread on women-owned sustainable brands"
+                        loading="lazy" />
+                </div>
+
+                <!-- CTA Button -->
+                <a href="design.html" class="textReturn"> View Other Work </a>
+            </main>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-            <!-- Top Section: Title and Summary -->
-            <div class="project-top">
-                <div class="project-left">
-                    <h1>The Future Fashion Group</h1>
-                    <p>2022–2024</p>
-                    <p><b>Lead Designer & Creative Director</b></p>
-                    <p><i>Visual Identity, Social, Print, & Art Direction</i></p>
-                </div>
-                <div class="project-right">
-                    <p>The Future Fashion Group is a club at NYU focusing on sustainability within the fashion industry. As the head designer, I took on the project of rebranding FFG to create a fun, consistent, and bold aesthetic. FFG’s visual identity is meant to balance a playful and thoughtful style, reflecting a similar dynamic in the fashion industry. The logo consists of the club name written in rough yet organic-like letters, creating a connection with organic approaches to sustainable fashion. At the same time, its bold weight highlights the club’s seriousness, balancing the playful side of the project.</p>
-                    <p>FFG’s social media approach continues to embody dynamic thought as it switches between bright and colorful imagery versus muted and minimal visuals; yet, its publications remain coherent through layout and font choice.</p>
-                </div>
-            </div>
-            
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/futureFashion/futureLong.jpg" alt="Visualization of Bicycle Count Volume">
-            </div>
-
-            <!-- Section: Additional Text -->
-           <div class="project-text">
-            <h3>Event Graphics</h3>
-            <!-- <p>I designed an email campaign to promote NYU MLK Week 2024, highlighting key events and information through clear, engaging visuals. Additionally, I adapted the visual identity across multiple social media platforms, creating tailored graphics optimized for various formats to maintain a cohesive and impactful online presence.</p> -->
-           </div>
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/futureFashion/FFG_Insta1.png" alt="Graph showing bike volume growth">
-                <img src="design/futureFashion/FFG_Event.gif" alt="Graph showing bike volume growth">
-                <img src="design/futureFashion/FFG_Insta2.png" alt="Graph showing bike volume growth">
-
-            </div>
-
-            <div class="project-image-section">
-                <img src="design/futureFashion/futreBackDrop.jpg" alt="Bike Lane Growth Over Time">
-            </div>
-
-            <!-- Section: Additional Text -->
-           <div class="project-text">
-            <h3>Social Campaigns</h3>
-            <!-- <p>I designed an email campaign to promote NYU MLK Week 2024, highlighting key events and information through clear, engaging visuals. Additionally, I adapted the visual identity across multiple social media platforms, creating tailored graphics optimized for various formats to maintain a cohesive and impactful online presence.</p> -->
-           </div>
-            
-            <div class="project-image-section">
-                <img src="design/futureFashion/FFG_News.gif" alt="Bike Lane Growth Over Time">
-                <img src="design/futureFashion/FFG_NewsStory.png" alt="Bike Lane Growth Over Time">
-                <img src="design/futureFashion/FFG_lightStory.png" alt="Bike Lane Growth Over Time">
-            </div>
-
-            <!-- Section: Additional Text -->
-           <div class="project-text">
-            <h3>Zine Spreads</h3>
-            <!-- <p>I designed an email campaign to promote NYU MLK Week 2024, highlighting key events and information through clear, engaging visuals. Additionally, I adapted the visual identity across multiple social media platforms, creating tailored graphics optimized for various formats to maintain a cohesive and impactful online presence.</p> -->
-           </div>
-
-            <div class="project-image-section">
-                <img src="design/futureFashion/FFG_ZineSpread.png" alt="Bike Lane Growth Over Time">
-                <img src="design/futureFashion/futureZine.jpg" alt="Bike Lane Growth Over Time">
-            </div>
-
-            <!-- CTA Button -->
-            <a href="design.html" class="textReturn">
-                View Other Work
-            </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
-    </footer>
-
-    <!-- Grain Effect -->
-    <canvas id="noise" class="noise"></canvas>
-    <script src="java/noise.js"></script>
-</body>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
 </html>

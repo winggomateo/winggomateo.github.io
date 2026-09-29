@@ -1,81 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PGIL Video Series</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    </style>
-</head>
-<body class="body">
-
-    <!-- Sidebar Navigation -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PGIL Video Series</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
                     <div>
-                           <ul>
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="design.html" id="clicked">Design</a></li>
-                               <li><a href="photography.html">Photography</a></li>
-                           </ul>
-                   </div> 
-               </div> 
-           </div>   
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Section: Title and Summary -->
+                <div class="project-top">
+                    <div class="project-left">
+                        <h1>Pronouns & Gender Inclusive Language</h1>
+                        <p>October 2022</p>
+                        <p><b>Lead Designer</b></p>
+                        <p><i>Visual Identity</i></p>
+                        <p>
+                            <small
+                                ><i>This was a project for <a href="#">The LGBTQ+ Center</a> at NYU</i></small
+                            >
+                        </p>
+                    </div>
+                    <div class="project-right">
+                        <p>
+                            Pronouns and Gender Inclusive Language (PGIL) is an educational video series created by the
+                            NYU’s LGBTQ+ Center targeted for both the NYU community and the general public. It’s visual
+                            identity is characterized by a pattern of interlocking clusters that, when in motion, sway
+                            between interlocked and floating states.
+                        </p>
+                        <p>
+                            The design aims to reflect the concept of togetherness as the once losely floating clusters
+                            come together in an interlocking pattern. Yet, it also highlights individualism, as the
+                            clusters are all different colors and are capable of floating independently.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/PGIL/PGIL1.gif"
+                        alt="Animated title card: Pronouns and Gender Inclusive Language, with colorful floating shapes" />
+                    <img
+                        src="design/PGIL/PGIL_Slide1.png"
+                        alt="Two title slide layouts for the Pronouns and Gender Inclusive Language series" />
+                    <img
+                        src="design/PGIL/PGIL4.png"
+                        alt="Pattern of interlocking circles in pink, red, yellow and navy"
+                        loading="lazy" />
+                    <img
+                        src="design/PGIL/PGIL_Slide2.png"
+                        alt="Two content slides defining social transition and gender transition"
+                        loading="lazy" />
+                </div>
+
+                <!-- CTA Button -->
+                <a href="design.html" class="textReturn"> View Other Work </a>
+            </main>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-            <!-- Top Section: Title and Summary -->
-            <div class="project-top">
-                <div class="project-left">
-                    <h1>Pronouns & Gender Inclusive Language</h1>
-                    <p>October 2022</p>
-                    <p><b>Lead Designer</b></p>
-                    <p><i>Visual Identity</i></p>
-                    <p><small><i>This was a project for <a href="#">The LGBTQ+ Center</a> at NYU</i></small></p>
-
-                </div>
-                <div class="project-right">
-                    <p>Pronouns and Gender Inclusive Language (PGIL) is an educational video series created by the NYU’s LGBTQ+ Center targeted for both the NYU community and the general public. It’s visual identity is characterized by a pattern of interlocking clusters that, when in motion, sway between interlocked and floating states.</p>
-                    <p>The design aims to reflect the concept of togetherness as the once losely floating clusters come together in an interlocking pattern. Yet, it also highlights individualism, as the clusters are all different colors and are capable of floating independently.</p>
-                </div>
-            </div>
-            
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/PGIL/PGIL1.gif" alt="Visualization of Bicycle Count Volume">
-                <img src="design/PGIL/PGIL_Slide1.png" alt="Visualization of Bicycle Count Volume">
-                <img src="design/PGIL/PGIL4.png" alt="Visualization of Bicycle Count Volume">
-                <img src="design/PGIL/PGIL_Slide2.png" alt="Visualization of Bicycle Count Volume">
-            </div>
-
-            <!-- CTA Button -->
-            <a href="design.html" class="textReturn">
-                View Other Work
-            </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
-    </footer>
-
-    <!-- Grain Effect -->
-    <canvas id="noise" class="noise"></canvas>
-    <script src="java/noise.js"></script>
-</body>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
 </html>

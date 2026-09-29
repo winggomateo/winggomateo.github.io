@@ -1,111 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biking in NYC</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    </style>
-</head>
-<body class="body">
-
-    <!-- Sidebar Navigation -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Biking in NYC</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
                     <div>
-                           <ul>
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="design.html" id="clicked">Design</a></li>
-                               <li><a href="photography.html">Photography</a></li>
-                           </ul>
-                   </div> 
-               </div> 
-           </div>   
-        </div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-
-            <!-- Top Section: Title and Summary -->
-            <div class="project-top">
-                <div class="project-left">
-                    <h1>Biking in NYC</h1>
-                    <p>October 2023</p>
-                    <p><i>Data Visualization</i></p>
-                    <p><small><i>This was a project for <a href="#">Information Design</a>, a course taught by Katherine Dillon.</i></small></p>
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-right">
-                    <p>The project is a set of data visualizations aiming to answer the question - how safe is it to bike in NYC? These visualizations were made using publicly available data sets about biking in New York City, revealing information on Bicycle Counts, Bike Lane Amounts, Biking Distribution, and Injury and Fatality Counts throughout the past decade.
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Section: Title and Summary -->
+                <div class="project-top">
+                    <div class="project-left">
+                        <h1>Biking in NYC</h1>
+                        <p>October 2023</p>
+                        <p><i>Data Visualization</i></p>
+                        <p>
+                            <small
+                                ><i
+                                    >This was a project for <a href="#">Information Design</a>, a course taught by
+                                    Katherine Dillon.</i
+                                ></small
+                            >
                         </p>
+                    </div>
+                    <div class="project-right">
+                        <p>
+                            The project is a set of data visualizations aiming to answer the question - how safe is it
+                            to bike in NYC? These visualizations were made using publicly available data sets about
+                            biking in New York City, revealing information on Bicycle Counts, Bike Lane Amounts, Biking
+                            Distribution, and Injury and Fatality Counts throughout the past decade.
+                        </p>
+                        <p>
+                            The New York City Department of Transportation and the New York City Department of Planning
+                            are the sources of the data sets.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/bikingNYC/Biking03.png"
+                        alt="Bubble chart of weekday bicycle counts at 10 Manhattan locations from 2005 to 2015" />
+                </div>
+
+                <!-- Section: Additional Text -->
+                <div class="project-text">
                     <p>
-                        The New York City Department of Transportation and the New York City Department of Planning are the sources of the data sets.
+                        The design of the visualizations was intentionally crafted to balance complexity and simplicity.
+                        The bicycle count graph, for example, is detailed to emphasize the widespread adoption of biking
+                        in the city, while a simpler pictorial graph gives a quick and direct snapshot of biking’s
+                        prevalence in the city. These choices were made to ensure accessibility for a broad audience,
+                        allowing for both in-depth analysis and immediate understanding.
                     </p>
                 </div>
-            </div>
-            
 
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/bikingNYC/Biking03.png" alt="Visualization of Bicycle Count Volume">
-            </div>
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/bikingNYC/BikingCollage1.png"
+                        alt="Charts showing annual bike trips growing in NYC and how many adults ride regularly" />
+                    <img
+                        src="design/bikingNYC/BikingCollage2.png"
+                        alt="Bubble charts of biking injuries and fatalities per borough in 2022"
+                        loading="lazy" />
+                </div>
 
-            <!-- Section: Additional Text -->
-            <div class="project-text">
-                <p>The design of the visualizations was intentionally crafted to balance complexity and simplicity. The bicycle count graph, for example, is detailed to emphasize the widespread adoption of biking in the city, while a simpler pictorial graph gives a quick and direct snapshot of biking’s prevalence in the city. These choices were made to ensure accessibility for a broad audience, allowing for both in-depth analysis and immediate understanding.</p>
-            </div>
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <p>
+                        To represent biking safety, I used a layered approach with the injury and fatality data. The
+                        visualizations are designed to be clear and not overwhelming, highlighting that although risks
+                        exist, the percentage of cyclists involved in total traffic accidents is relatively small. This
+                        design choice aims to provide clarity around the safety aspect without diminishing the
+                        importance of the data.
+                    </p>
+                </div>
 
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/bikingNYC/BikingCollage1.png" alt="Graph showing bike volume growth">
-                <img src="design/bikingNYC/BikingCollage2.png" alt="Bike Lane Growth Over Time">
-            </div>
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/bikingNYC/BikingCollage3.png"
+                        alt="Charts showing that injuries and fatalities have fallen relative to bike trips since 2012"
+                        loading="lazy" />
+                    <img
+                        src="design/bikingNYC/BikingCollage4.png"
+                        alt="Statistics on how rare fatal and injury-causing bike rides were in 2021"
+                        loading="lazy" />
+                    <img
+                        src="design/bikingNYC/BikingCollage5.png"
+                        alt="Bar charts comparing injuries and fatalities by road user type in 2022"
+                        loading="lazy" />
+                </div>
 
-            <!-- Section: Additional Text -->
-            <div class="project-text">
-                <p>To represent biking safety, I used a layered approach with the injury and fatality data. The visualizations are designed to be clear and not overwhelming, highlighting that although risks exist, the percentage of cyclists involved in total traffic accidents is relatively small. This design choice aims to provide clarity around the safety aspect without diminishing the importance of the data.</p>
-            </div>
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <p>
+                        Finally, the project concludes with a design focus on the future of biking. The bike lane count
+                        visualizations are presented in a way that signals the positive growth of biking infrastructure,
+                        subtly reinforcing the city's commitment to improving biking conditions.
+                    </p>
+                </div>
 
-             <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/bikingNYC/BikingCollage3.png" alt="Bike Lane Growth Over Time">
-                <img src="design/bikingNYC/BikingCollage4.png" alt="Bike Lane Growth Over Time">
-                <img src="design/bikingNYC/BikingCollage5.png" alt="Bike Lane Growth Over Time">
-            </div>
+                <div class="project-image-section">
+                    <img
+                        src="design/bikingNYC/BikingCollage8.png"
+                        alt="Pie chart: 42 percent of NYC bike lane miles are protected"
+                        loading="lazy" />
+                </div>
 
-            <!-- Section: Additional Text -->
-            <div class="project-text">
-                <p>Finally, the project concludes with a design focus on the future of biking. The bike lane count visualizations are presented in a way that signals the positive growth of biking infrastructure, subtly reinforcing the city's commitment to improving biking conditions.</p>
-            </div>
-
-            <div class="project-image-section">
-                <img src="design/bikingNYC/BikingCollage8.png" alt="Bike Lane Growth Over Time">
-            </div>
-
-            <!-- CTA Button -->
-            <a href="design.html" class="textReturn">
-                View Other Work
-            </a>
+                <!-- CTA Button -->
+                <a href="design.html" class="textReturn"> View Other Work </a>
+            </main>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
-    </footer>
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-    <!-- Grain Effect -->
-    <canvas id="noise" class="noise"></canvas>
-    <script src="java/noise.js"></script>
-</body>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
 </html>

@@ -1,95 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main2.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Sadeem</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-    </style>
-</head>
-<body class="body">
-
-    <!-- Sidebar Navigation -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-            <div class="hamburger"><div></div></div>
-            <div class="menu">
-                <div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Al Sadeem</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
                     <div>
-                           <ul>
-                               <li><a href="index.html">Home</a></li>
-                               <li><a href="about.html">About</a></li>
-                               <li><a href="design.html" id="clicked">Design</a></li>
-                               <li><a href="photography.html">Photography</a></li>
-                           </ul>
-                   </div> 
-               </div> 
-           </div>   
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html" id="clicked" aria-current="page">Design</a></li>
+                                <li><a href="photography.html">Photography</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Top Section: Title and Summary -->
+                <div class="project-top">
+                    <div class="project-left">
+                        <h1>Al Sadeem</h1>
+                        <p>May 2023</p>
+                        <p><b>Designer & Project Lead</b></p>
+                        <p><i>Wayfinding Design </i></p>
+                        <p>
+                            <small
+                                ><i
+                                    >This was a project for <a href="#">Wayfinding</a>, a course taught by Goffredo
+                                    Puccetti</i
+                                ></small
+                            >
+                        </p>
+                    </div>
+                    <div class="project-right">
+                        <p>
+                            Al Sadeem Observatory is dedicated to making astronomy accessible through stargazing
+                            experiences and guided tours. Located in the desert of Abu Dhabi, Al Sadeem is essential in
+                            promoting astronomy education in the UAE.
+                        </p>
+                        <p>
+                            In line with Al Sadeem’s mission to promote space and astronomy, my team was tasked with
+                            designing a proposal for a wayfinding system. This system was intended to improve ground
+                            navigation while adding to the visitor experience through placemaking. The designs aimed to
+                            blend functional clarity with the observatory’s education and exploratory atmosphere,
+                            guiding visitors through the site and fueling a connection to the cosmos.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img src="design/alSadeem/signage.png" alt="Directional Signs for 3 buildings at the Observatory" />
+                    <img src="design/alSadeem/decisionMap2.png" alt="Overhead map of observatory grounds" />
+                </div>
+
+                <!-- Section: Additional Text -->
+                <div class="project-text">
+                    <h3>Signage Design</h3>
+                    <p>
+                        We divided navigation into two spaces – outside and within the observatory. We developed a
+                        flexible signage system for navigation within observatory grounds to accommodate different
+                        priorities, including, identification, information, or world-building. Being in Abu Dhabi, we
+                        also acknowledged the need to design signs in both Arabic and English, paying attention to the
+                        diversity among visitors.
+                    </p>
+                    <p>
+                        In planning signage placement, we relied upon satellite imagery, our observatory visit, and
+                        visitors' testimony. From all our research, we analyzed and identified decision points in the
+                        user journey when navigating and decided on what areas made the most sense to place a sign.
+                    </p>
+                </div>
+
+                <!-- Section: Image -->
+                <div class="project-image-section">
+                    <img
+                        src="design/alSadeem/observatory2.jpg"
+                        alt="Night photo of observatory with informational sign"
+                        loading="lazy" />
+                    <img
+                        src="design/alSadeem/observatory1.jpg"
+                        alt="Night photo of outside office entrance with informational sign"
+                        loading="lazy" />
+                    <img
+                        src="design/alSadeem/observatory3.jpg"
+                        alt="Photo of road with directional sign towards observatory"
+                        loading="lazy" />
+                    <img
+                        src="design/alSadeem/journeyMapping.png"
+                        alt="Printed out satellite imagery of observatory annotated with sticky notes"
+                        loading="lazy" />
+                </div>
+
+                <!-- CTA Button -->
+                <a href="design.html" class="textReturn"> View Other Work </a>
+            </main>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
 
-            <!-- Top Section: Title and Summary -->
-            <div class="project-top">
-                <div class="project-left">
-                    <h1>Al Sadeem</h1>
-                    <p>May 2023</p>
-                    <p><b>Designer & Project Lead</b></p>
-                    <p><i>Wayfinding Design
-
-                    </i></p>
-                    <p><small><i>This was a project for <a href="#">Wayfinding</a>, a course taught by Goffredo Puccetti</i></small></p>
-                </div>
-                <div class="project-right">
-                    <p>Al Sadeem Observatory is dedicated to making astronomy accessible through stargazing experiences and guided tours. Located in the desert of Abu Dhabi, Al Sadeem is essential in promoting astronomy education in the UAE. </p>
-                    <p>In line with Al Sadeem’s mission to promote space and astronomy, my team was tasked with designing a proposal for a wayfinding system. This system was intended to improve ground navigation while adding to the visitor experience through placemaking. The designs aimed to blend functional clarity with the observatory’s education and exploratory atmosphere, guiding visitors through the site and fueling a connection to the cosmos.</p>
-                </div>
-            </div>
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/alSadeem/signage.png" alt="Directional Signs for 3 buildings at the Observatory">
-                <img src="design/alSadeem/decisionMap2.png" alt="Overhead map of observatory grounds">
-            </div>
-            
-            <!-- Section: Additional Text -->
-           <div class="project-text">
-            <h3>Signage Design</h3>
-            <p>We divided navigation into two spaces – outside and within the observatory. We developed a flexible signage system for navigation within observatory grounds to accommodate different priorities, including, identification, information, or world-building. Being in Abu Dhabi, we also acknowledged the need to design signs in both Arabic and English, paying attention to the diversity among visitors.</p>
-            <p>In planning signage placement, we relied upon satellite imagery, our observatory visit, and visitors' testimony. From all our research, we analyzed and identified decision points in the user journey when navigating and decided on what areas made the most sense to place a sign. </p>
-           </div>
-
-            <!-- Section: Image -->
-            <div class="project-image-section">
-                <img src="design/alSadeem/observatory2.jpg" alt="Night photo of observatory with informational sign">
-                <img src="design/alSadeem/observatory1.jpg" alt="Night photo of outside office entrance with informational sign">
-                <img src="design/alSadeem/observatory3.jpg" alt="Photo of road with directional sign towards observatory">
-                <img src="design/alSadeem/journeyMapping.png" alt="Printed out satellite imagery of observatory annotated with sticky notes">
-
-            </div>
-
-            <!-- CTA Button -->
-            <a href="design.html" class="textReturn">
-                View Other Work
-            </a>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-        <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-        <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-        <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
-    </footer>
-
-    <!-- Grain Effect -->
-    <canvas id="noise" class="noise"></canvas>
-    <script src="java/noise.js"></script>
-</body>
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
 </html>

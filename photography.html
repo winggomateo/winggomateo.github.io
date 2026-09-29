@@ -1,77 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" type="text/css" href="CSS/main.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
-     </style>
-</head>
-<canvas id="noise" class="noise"></canvas>
-<body class="body" >
-    <!-- MENU BAR -->
-    <div class="wrapper">
-        <div class="sidebar">
-            <input type="checkbox" class="toggler">
-         <div class="hamburger"><div></div></div>
-         <div class="menu">
-             <div>
-                 <div>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="design.html">Design</a></li>
-                            <li><a href="photography.html" id="clicked">Photography</a></li>
-                        </ul>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Photography</title>
+        <link rel="icon" type="image/png" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap" />
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="body">
+        <div class="wrapper">
+            <!-- Navigation (same on every page; the current page gets id="clicked") -->
+            <nav class="sidebar">
+                <input type="checkbox" class="toggler" aria-label="Open menu" />
+                <div class="hamburger"><div></div></div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="design.html">Design</a></li>
+                                <li><a href="photography.html" id="clicked" aria-current="page">Photography</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div> 
-            </div> 
-        </div>   
-    <!-- Main Content -->
-        <div class="main-content">
-            <div class="block3"> 
-                <div class="container4">
-                    <img class="cover" src="photo/photo1.jpg" srcset="photo/photo1 2x.jpg 2x" alt="Photo1" width="500px" height="auto">
                 </div>
-                <div class="container4">
-                    <img class="cover" src="photo/photo2.jpg" srcset="photo/photo2 2x.jpg 2x"alt="Photo1" width="500px" height="auto">
-                </div>
-                <div class="container4">
-                    <img class="cover" src="photo/photo3.jpeg" srcset="photo/photo3 2x.jpg 2x" alt="Photo 1" width="500px" height="auto">
-                </div>
-                <div class="container4">
-                    <img class="cover" src="photo/photo4.jpg" srcset="photo/photo4 2x.jpg 2x" alt="Photo 1" width="500px" height="auto">
-                </div>
-                <div class="container4">
-                    <img class="cover" src="photo/photo5.jpg" srcset="photo/photo5 2x.jpg 2x" alt="Photo 1" width="500px" height="auto">
-                </div>
-                <div class="container4">
-                    <img class="cover" src="photo/photo6.jpg" srcset="photo/photo6 2x.jpg 2x" alt="Photo 1" width="500px" height="auto">
-                </div>
-                <div class="container4">
-                    <img class="cover" src="photo/photo7.jpg" srcset="photo/photo7 2x.jpg 2x" alt="Photo 1" width="500px" height="auto">
-                </div>
-                <div class="container4">
-                    <img class="cover" src="photo/photo8.jpg" srcset="photo/photo8 2x.jpg 2x" alt="Photo 1" width="500px" height="auto">
-                </div>
-                <div class="container4">
-                    <img class="cover" src="photo/photo9.jpeg" srcset="photo/photo9 2x.jpg 2x" alt="Photo 1" width="500px" height="auto">
-                </div>
-                
-            </div>
-        </div>  
-            
-        </div>
-    </div>
-<footer>
-    <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
-    <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a> </p>
-    <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
-    <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+            </nav>
 
-</footer> 
-<script src="java/noise.js"></script>
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="block3">
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo1.jpg"
+                            srcset="photo/photo1-2x.jpg 2x"
+                            alt="Two friends sitting on a park bench in the sun" />
+                    </div>
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo2.jpg"
+                            srcset="photo/photo2-2x.jpg 2x"
+                            alt="Person in a blue cap standing at night under a streetlight" />
+                    </div>
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo3.jpeg"
+                            srcset="photo/photo3-2x.jpeg 2x"
+                            alt="Football player in a helmet pointing at the camera on a field"
+                            loading="lazy" />
+                    </div>
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo4.jpg"
+                            srcset="photo/photo4-2x.jpg 2x"
+                            alt="Person in a bucket hat eating from a pizza box on a bench"
+                            loading="lazy" />
+                    </div>
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo5.jpg"
+                            srcset="photo/photo5-2x.jpg 2x"
+                            alt="Man lounging in an office chair against a white wall"
+                            loading="lazy" />
+                    </div>
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo6.jpg"
+                            srcset="photo/photo6-2x.jpg 2x"
+                            alt="Tattooed man sitting on a bench in the sun"
+                            loading="lazy" />
+                    </div>
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo7.jpg"
+                            srcset="photo/photo7-2x.jpg 2x"
+                            alt="Man in a face mask standing on a sidewalk holding a bicycle wheel"
+                            loading="lazy" />
+                    </div>
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo8.jpg"
+                            srcset="photo/photo8-2x.jpg 2x"
+                            alt="Fire hydrant in a grassy clearing surrounded by trees"
+                            loading="lazy" />
+                    </div>
+                    <div class="container4">
+                        <img
+                            class="cover"
+                            src="photo/photo9.jpeg"
+                            srcset="photo/photo9-2x.jpeg 2x"
+                            alt="Close-up of a football player in a helmet with a mirrored visor"
+                            loading="lazy" />
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer (same on every page) -->
+        <footer>
+            <p class="bottom"><em>Designed &amp; Built by Mateo</em></p>
+            <p class="bottom"><a href="mailto:design@mateovr.com">design@mateovr.com</a></p>
+            <p class="bottom"><a href="https://dribbble.com/winggomateo">Dribbble</a></p>
+            <p class="bottom"><a href="https://www.instagram.com/mateovr.design/">Instagram</a></p>
+        </footer>
+
+        <!-- Film grain effect -->
+        <canvas id="noise" class="noise"></canvas>
+        <script src="js/noise.js"></script>
+    </body>
+</html>
