@@ -7,7 +7,7 @@
    3.  Text and links
    4.  Navigation (sideways bar on desktop, hamburger menu on mobile)
    5.  Page layout (wrapper, main content, footer)
-   6.  Home page (name block, Design/Photography tiles)
+   6.  Home page (name block; the project cards below it are in section 9)
    7.  About page
    8.  Photography page
    9.  Design page (project cards)
@@ -381,39 +381,14 @@ footer p {
     user-select: none;
 }
 
-/* Row of square tiles (also wraps the About page content) */
+/* Wraps the About page content */
 .wrapper .block2 {
     display: flex;
     flex-wrap: wrap;
     align-items: start;
 }
 
-/* Square Design / Photography tiles with the slideshow inside */
-.wrapper .container {
-    width: 40vw;
-    height: 40vw;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    text-align: center;
-    position: relative;
-    transition: .5s ease;
-    border: 2px solid black;
-    margin-top: 2.5vw;
-    margin-bottom: 2.5vw;
-}
-
-.wrapper .container:hover {
-    transform: scale(1.05);
-}
-
-.wrapper .container:hover > a img {
-    filter: brightness(50%) blur(2.5px);
-}
-
-/* Image that fills its box (home tiles, About portrait, photos) */
+/* Image that fills its box (About portrait, photos) */
 .wrapper .cover {
     width: 100%;
     height: auto;
@@ -421,22 +396,6 @@ footer p {
     margin-left: auto;
     display: block;
     object-fit: cover;
-}
-
-/* "Design" / "Photography" label, appears on hover */
-.wrapper .description {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--background);
-    user-select: none;
-    visibility: hidden;
-}
-
-.wrapper .container:hover > a .description {
-    visibility: visible;
-    cursor: pointer;
 }
 
 @media only screen and (max-width: 1050px) {
@@ -470,26 +429,10 @@ footer p {
         padding-bottom: 5vw;
         padding-top: 5vw;
     }
-
-    .wrapper .container {
-        width: 70vw;
-        height: 70vw;
-        margin-top: 2.5vw;
-        margin-bottom: 2.5vw;
-    }
 }
 
 @media only screen and (max-width: 800px) {
     h2 { font-size: 10vw; }
-
-    /* No hover on touch screens, so always show the label */
-    .wrapper .description {
-        visibility: visible;
-    }
-
-    .wrapper .container > a img {
-        filter: brightness(70%);
-    }
 }
 
 @media only screen and (max-width: 550px) {
@@ -503,11 +446,6 @@ footer p {
 
     .wrapper .block1 {
         padding-bottom: 10vw;
-    }
-
-    .wrapper .container {
-        width: 70vw;
-        height: 70vw;
     }
 
     .wrapper .container2 {
@@ -603,7 +541,7 @@ footer p {
 /* 9. Design page
    ========================================================================== */
 
-/* Grid that holds the project cards (also used on the Photography page) */
+/* Grid that holds the project cards (Home and Design pages; also the Photography page grid) */
 .wrapper .block3 {
     width: 100%;
     height: auto;
