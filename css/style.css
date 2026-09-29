@@ -817,8 +817,10 @@ footer p {
 
 /* 11. Floating circles (home page)
    Four copies of img/Circle.svg drift around and fade in and out.
+   js/circles.js fades them away as you scroll down to the projects.
    ========================================================================== */
 .Circ {
+    transition: opacity 0.2s linear;   /* smooths the fade in js/circles.js */
     position: fixed;
     pointer-events: none;
     width: 100%;
