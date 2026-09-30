@@ -12,7 +12,7 @@
    8.  Photography page
    9.  Design page (project cards)
    10. Project pages (title, summary, images, "View Other Work")
-   11. Floating circles (home page animation)
+   11. Floating shapes (home page animation)
    12. Archived pages
 
    Screen sizes used throughout:
@@ -815,13 +815,13 @@ footer p {
 }
 
 
-/* 11. Floating circles (home page)
-   Four copies of img/Circle.svg drift around and fade in and out.
-   js/circles.js adds on top of that: they fade away as you scroll down to
+/* 11. Floating shapes (home page)
+   Four shapes from img/shapes/ drift around and fade in and out.
+   js/shapes.js adds on top of that: they fade away as you scroll down to
    the projects, gently grow and shrink, and drift around the mouse.
    ========================================================================== */
-.Circ {
-    transition: opacity 0.2s linear;   /* smooths the fade in js/circles.js */
+.shapes {
+    transition: opacity 0.2s linear;   /* smooths the fade in js/shapes.js */
     position: fixed;
     pointer-events: none;
     width: 100%;
@@ -829,40 +829,40 @@ footer p {
     overflow: hidden;
 }
 
-#circle2,
-#circle3,
-#circle4,
-#circle5 {
+#shape-burst,
+#shape-flower,
+#shape-star,
+#shape-sparkle {
     position: absolute;
     opacity: 85%;
     pointer-events: none;
 }
 
-#circle2 {
+#shape-burst {
     left: 10%;
     top: 60%;
-    animation: Circ2 10s infinite;
+    animation: drift-burst 10s infinite;
 }
 
-#circle3 {
+#shape-flower {
     left: 80%;
     top: 1%;
-    animation: Circ3 10s infinite;
+    animation: drift-flower 10s infinite;
 }
 
-#circle4 {
+#shape-star {
     left: 8%;
     top: 1%;
-    animation: Circ4 10s infinite;
+    animation: drift-star 10s infinite;
 }
 
-#circle5 {
+#shape-sparkle {
     left: 65%;
     top: 70%;
-    animation: Circ5 10s infinite;
+    animation: drift-sparkle 10s infinite;
 }
 
-@keyframes Circ2 {
+@keyframes drift-burst {
     0%   { opacity: 0; }
     25%  { opacity: 1; left: 30%; top: 50%; }
     50%  { opacity: 0; left: 60%; top: 10%; }
@@ -870,7 +870,7 @@ footer p {
     100% { opacity: 0; }
 }
 
-@keyframes Circ3 {
+@keyframes drift-flower {
     0%   { opacity: 0; }
     25%  { opacity: 1; left: 15%; top: 88%; }
     50%  { opacity: 0; left: 7%; top: 7%; }
@@ -878,7 +878,7 @@ footer p {
     100% { opacity: 0; }
 }
 
-@keyframes Circ4 {
+@keyframes drift-star {
     0%   { opacity: 0; }
     25%  { opacity: 1; left: 70%; top: 68%; }
     50%  { opacity: 0; left: 90%; top: 45%; }
@@ -886,7 +886,7 @@ footer p {
     100% { opacity: 0; }
 }
 
-@keyframes Circ5 {
+@keyframes drift-sparkle {
     0%   { opacity: 0; }
     25%  { opacity: 1; left: 30%; top: 25%; }
     50%  { opacity: 0; left: 15%; top: 58%; }

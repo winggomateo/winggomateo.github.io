@@ -1,4 +1,4 @@
-// Home page circles
+// Home page shapes
 // Two parts:
 // 1. Scroll fade: they fade out as you scroll down, so they're part of the
 //    intro and don't distract once you reach the project cards.
@@ -8,8 +8,8 @@
 // Scroll fade
 
 (() => {
-    const circles = document.querySelector(".Circ");
-    if (!circles) return;
+    const shapes = document.querySelector(".shapes");
+    if (!shapes) return;
 
     // How far you scroll (as a share of the screen height) before they're gone.
     // 0.75 = fully faded after scrolling 75% of one screen.
@@ -22,7 +22,7 @@
     let ticking = false;
     const update = () => {
         const progress = scrollAmount() / (window.innerHeight * FADE_DISTANCE);
-        circles.style.opacity = Math.max(0, 1 - progress);
+        shapes.style.opacity = Math.max(0, 1 - progress);
         ticking = false;
     };
 
@@ -42,11 +42,11 @@
 })();
 
 // Floating motion
-// The circles follow their paths from the stylesheet (section 11). On top of that:
+// The shapes follow their paths from the stylesheet (section 11). On top of that:
 //  - each one gently grows and shrinks ("breathing"), on its own rhythm
-//  - when the mouse comes near, a circle slowly drifts aside and curves around
+//  - when the mouse comes near, a shape slowly drifts aside and curves around
 //    it, shrinking a little, then settles back onto its path once the mouse
-//    moves on. Circles far from the mouse don't react.
+//    moves on. Shapes far from the mouse don't react.
 // Phones and tablets get the breathing (there's no mouse).
 // Visitors with "reduce motion" turned on get neither.
 
@@ -58,31 +58,31 @@
 
     const BREATHE_AMOUNT = 0.06; // how much they grow and shrink (0.06 = 6%)
 
-    const RADIUS = 150; // how close the mouse gets (in pixels) before a circle reacts
-    const PUSH = 60; // how far a circle can drift away from the mouse, in pixels
-    const SHRINK = 0.15; // how much a circle shrinks when the mouse is right next to it (0.15 = 15%)
+    const RADIUS = 150; // how close the mouse gets (in pixels) before a shape reacts
+    const PUSH = 60; // how far a shape can drift away from the mouse, in pixels
+    const SHRINK = 0.15; // how much a shape shrinks when the mouse is right next to it (0.15 = 15%)
     const SWIRL = 0.5; // how much it curves around the mouse instead of moving straight away
     const FLOAT_AWAY = 0.012; // how fast it reacts to the mouse (lower = lazier)
     const FLOAT_BACK = 0.006; // how fast it settles back (lower = lazier)
 
     // --- End of settings ---
 
-    const layer = document.querySelector(".Circ");
+    const layer = document.querySelector(".shapes");
     if (!layer) return;
 
-    // Seconds per breath, and where in the breath each circle starts,
+    // Seconds per breath, and where in the breath each shape starts,
     // so they never pulse in sync
     const breathing = {
-        circle2: { seconds: 7.3, start: 0 },
-        circle3: { seconds: 9.1, start: 2.1 },
-        circle4: { seconds: 8.2, start: 4.0 },
-        circle5: { seconds: 6.4, start: 1.3 },
+        "shape-burst": { seconds: 7.3, start: 0 },
+        "shape-flower": { seconds: 9.1, start: 2.1 },
+        "shape-star": { seconds: 8.2, start: 4.0 },
+        "shape-sparkle": { seconds: 6.4, start: 1.3 },
     };
 
-    const circles = Object.keys(breathing)
+    const shapes = Object.keys(breathing)
         .map((id) => ({ el: document.getElementById(id), breath: breathing[id], x: 0, y: 0, shrink: 0 }))
         .filter((c) => c.el);
-    if (!circles.length) return;
+    if (!shapes.length) return;
 
     let mouseX = -9999;
     let mouseY = -9999;
@@ -104,17 +104,17 @@
     const start = performance.now();
 
     const step = (now) => {
-        // Skip the work while the circles are faded out
+        // Skip the work while the shapes are faded out
         if (parseFloat(layer.style.opacity || 1) > 0) {
             const t = (now - start) / 1000;
 
-            circles.forEach((c) => {
+            shapes.forEach((c) => {
                 let targetX = 0;
                 let targetY = 0;
                 let targetShrink = 0;
 
                 if (hasMouse) {
-                    // Where the circle is on its path, without our nudge
+                    // Where the shape is on its path, without our nudge
                     const box = c.el.getBoundingClientRect();
                     const cx = box.left + box.width / 2 - c.x;
                     const cy = box.top + box.height / 2 - c.y;
