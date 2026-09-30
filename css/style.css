@@ -99,7 +99,9 @@
     --button-hover: rgba(27, 153, 139, 0.12);   /* pale wash of the teal behind buttons on hover */
     --card-background: rgba(255, 255, 255, .25);   /* soft fill behind the project cards (use transparent for none) */
     --menu-text: #ebfff3;               /* links and X in the open mobile menu (between the gradient mint and white) */
-    --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
+    --menu-speed: 1s;
+    --hover-speed: 0.5s;                /* how long the project card hover takes (bigger = slower, smoother) */
+    --hover-ease: cubic-bezier(0.4, 0, 0.2, 1);   /* starts gently and settles gently */                   /* how fast the mobile menu circle opens */
 }
 
 
@@ -668,7 +670,8 @@ footer p {
     border: 2px solid black;
     overflow: hidden;
     background-color: var(--card-background);
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--hover-speed) var(--hover-ease), border-color var(--hover-speed) var(--hover-ease),
+        box-shadow var(--hover-speed) var(--hover-ease);
 }
 
 /* Hover (and keyboard focus): the card lifts a little, its border turns
@@ -690,7 +693,7 @@ footer p {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition: transform var(--hover-speed) var(--hover-ease), filter var(--hover-speed) var(--hover-ease);
 }
 
 .project-card:hover .project-image img,
@@ -711,7 +714,7 @@ footer p {
     font-size: 1.5em;
     margin-bottom: 6px;   /* tags sit close to the title */
     color: #333;
-    transition: color 0.3s ease;
+    transition: color var(--hover-speed) var(--hover-ease);
 }
 
 /* Title turns teal along with the border */
@@ -751,7 +754,8 @@ footer p {
     padding: 10px 15px;
     font-size: 1em;
     width: fit-content;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    transition: background-color var(--hover-speed) var(--hover-ease), border-color var(--hover-speed) var(--hover-ease),
+        color var(--hover-speed) var(--hover-ease);
 }
 
 .project-card:hover .read-more-btn,
