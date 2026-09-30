@@ -841,57 +841,115 @@ footer p {
 #shape-burst {
     left: 10%;
     top: 60%;
-    animation: drift-burst 10s infinite;
+    animation: drift-burst 40s infinite;
 }
 
 #shape-flower {
     left: 80%;
     top: 1%;
-    animation: drift-flower 10s infinite;
+    animation: drift-flower 40s infinite;
 }
 
 #shape-star {
     left: 8%;
     top: 1%;
-    animation: drift-star 10s infinite;
+    animation: drift-star 40s infinite;
 }
 
 #shape-sparkle {
     left: 65%;
     top: 70%;
-    animation: drift-sparkle 10s infinite;
+    animation: drift-sparkle 40s infinite;
 }
+
+/* The shapes fade in at a new spot, pause there, fade out while moving on,
+   then fade in at the next spot. Each "layout" below is one of those spots
+   for every shape (8 layouts in all, one every 5 seconds, 40 seconds
+   per full loop). To add a layout, add a line to each shape and space the
+   percentages evenly; the lines in between with only an opacity are the
+   moments they're faded out. */
 
 @keyframes drift-burst {
-    0%   { opacity: 0; }
-    25%  { opacity: 1; left: 30%; top: 50%; }
-    50%  { opacity: 0; left: 60%; top: 10%; }
-    75%  { opacity: 1; left: 93%; top: 80%; }
-    100% { opacity: 0; }
+    0%      { opacity: 0; }
+    6.25%   { opacity: 1; left: 30%; top: 50%; }   /* layout 1 */
+    12.5%   { opacity: 0; }
+    18.75%  { opacity: 1; left: 78%; top: 12%; }   /* layout 2 */
+    25%     { opacity: 0; }
+    31.25%  { opacity: 1; left: 90%; top: 80%; }   /* layout 3 */
+    37.5%   { opacity: 0; }
+    43.75%  { opacity: 1; left: 20%; top: 15%; }   /* layout 4 */
+    50%     { opacity: 0; }
+    56.25%  { opacity: 1; left: 50%; top: 82%; }   /* layout 5 */
+    62.5%   { opacity: 0; }
+    68.75%  { opacity: 1; left: 8%; top: 75%; }   /* layout 6 */
+    75%     { opacity: 0; }
+    81.25%  { opacity: 1; left: 85%; top: 30%; }   /* layout 7 */
+    87.5%   { opacity: 0; }
+    93.75%  { opacity: 1; left: 35%; top: 5%; }   /* layout 8 */
+    100%    { opacity: 0; }
 }
+
 
 @keyframes drift-flower {
-    0%   { opacity: 0; }
-    25%  { opacity: 1; left: 15%; top: 88%; }
-    50%  { opacity: 0; left: 7%; top: 7%; }
-    75%  { opacity: 1; left: 86%; top: 57%; }
-    100% { opacity: 0; }
+    0%      { opacity: 0; }
+    6.25%   { opacity: 1; left: 15%; top: 85%; }   /* layout 1 */
+    12.5%   { opacity: 0; }
+    18.75%  { opacity: 1; left: 8%; top: 40%; }   /* layout 2 */
+    25%     { opacity: 0; }
+    31.25%  { opacity: 1; left: 86%; top: 57%; }   /* layout 3 */
+    37.5%   { opacity: 0; }
+    43.75%  { opacity: 1; left: 60%; top: 30%; }   /* layout 4 */
+    50%     { opacity: 0; }
+    56.25%  { opacity: 1; left: 70%; top: 5%; }   /* layout 5 */
+    62.5%   { opacity: 0; }
+    68.75%  { opacity: 1; left: 40%; top: 60%; }   /* layout 6 */
+    75%     { opacity: 0; }
+    81.25%  { opacity: 1; left: 25%; top: 8%; }   /* layout 7 */
+    87.5%   { opacity: 0; }
+    93.75%  { opacity: 1; left: 90%; top: 75%; }   /* layout 8 */
+    100%    { opacity: 0; }
 }
+
 
 @keyframes drift-star {
-    0%   { opacity: 0; }
-    25%  { opacity: 1; left: 70%; top: 68%; }
-    50%  { opacity: 0; left: 90%; top: 45%; }
-    75%  { opacity: 1; left: 30%; top: 23%; }
-    100% { opacity: 0; }
+    0%      { opacity: 0; }
+    6.25%   { opacity: 1; left: 70%; top: 68%; }   /* layout 1 */
+    12.5%   { opacity: 0; }
+    18.75%  { opacity: 1; left: 45%; top: 78%; }   /* layout 2 */
+    25%     { opacity: 0; }
+    31.25%  { opacity: 1; left: 30%; top: 23%; }   /* layout 3 */
+    37.5%   { opacity: 0; }
+    43.75%  { opacity: 1; left: 10%; top: 70%; }   /* layout 4 */
+    50%     { opacity: 0; }
+    56.25%  { opacity: 1; left: 85%; top: 40%; }   /* layout 5 */
+    62.5%   { opacity: 0; }
+    68.75%  { opacity: 1; left: 62%; top: 8%; }   /* layout 6 */
+    75%     { opacity: 0; }
+    81.25%  { opacity: 1; left: 55%; top: 55%; }   /* layout 7 */
+    87.5%   { opacity: 0; }
+    93.75%  { opacity: 1; left: 15%; top: 35%; }   /* layout 8 */
+    100%    { opacity: 0; }
 }
 
+
 @keyframes drift-sparkle {
-    0%   { opacity: 0; }
-    25%  { opacity: 1; left: 30%; top: 25%; }
-    50%  { opacity: 0; left: 15%; top: 58%; }
-    75%  { opacity: 1; left: 55%; top: 79%; }
-    100% { opacity: 0; }
+    0%      { opacity: 0; }
+    6.25%   { opacity: 1; left: 30%; top: 25%; }   /* layout 1 */
+    12.5%   { opacity: 0; }
+    18.75%  { opacity: 1; left: 88%; top: 60%; }   /* layout 2 */
+    25%     { opacity: 0; }
+    31.25%  { opacity: 1; left: 55%; top: 79%; }   /* layout 3 */
+    37.5%   { opacity: 0; }
+    43.75%  { opacity: 1; left: 80%; top: 82%; }   /* layout 4 */
+    50%     { opacity: 0; }
+    56.25%  { opacity: 1; left: 12%; top: 55%; }   /* layout 5 */
+    62.5%   { opacity: 0; }
+    68.75%  { opacity: 1; left: 20%; top: 10%; }   /* layout 6 */
+    75%     { opacity: 0; }
+    81.25%  { opacity: 1; left: 40%; top: 82%; }   /* layout 7 */
+    87.5%   { opacity: 0; }
+    93.75%  { opacity: 1; left: 75%; top: 45%; }   /* layout 8 */
+    100%    { opacity: 0; }
 }
 
 

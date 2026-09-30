@@ -47,7 +47,7 @@
 //    like something floating on water
 //  - each one gently grows and shrinks ("breathing")
 //  - when the mouse comes near, a shape slowly drifts aside and curves around
-//    it, shrinking a little, then settles back onto its path once the mouse
+//    it, shrinking and turning a little, then settles back onto its path once the mouse
 //    moves on. Shapes far from the mouse don't react.
 // Every shape has its own rhythm for all of this, so they never move in sync.
 // Phones and tablets get everything except the mouse part.
@@ -66,6 +66,7 @@
     const RADIUS = 150; // how close the mouse gets (in pixels) before a shape reacts
     const PUSH = 60; // how far a shape can drift away from the mouse, in pixels
     const SHRINK = 0.15; // how much a shape shrinks when the mouse is right next to it (0.15 = 15%)
+    const TURN = 25; // how far a shape turns as the mouse brushes past it, in degrees
     const SWIRL = 0.5; // how much it curves around the mouse instead of moving straight away
     const FLOAT_AWAY = 0.012; // how fast it reacts to the mouse (lower = lazier)
     const FLOAT_BACK = 0.006; // how fast it settles back (lower = lazier)
@@ -92,6 +93,7 @@
             x: 0,
             y: 0,
             shrink: 0,
+            turn: 0,
             offX: 0,
             offY: 0,
         }))
@@ -132,6 +134,7 @@
                 let targetX = 0;
                 let targetY = 0;
                 let targetShrink = 0;
+                let targetTurn = 0;
 
                 if (hasMouse) {
                     // Where the shape is on its path, without our extra movement
@@ -153,6 +156,8 @@
                         targetX = (awayX - awayY * SWIRL) * closeness * PUSH;
                         targetY = (awayY + awayX * SWIRL) * closeness * PUSH;
                         targetShrink = closeness * SHRINK;
+                        // Turn away from the side the mouse is on, as if brushed past
+                        targetTurn = closeness * TURN * awayX;
                     }
                 }
 
@@ -162,13 +167,14 @@
                 c.x += (targetX - c.x) * ease;
                 c.y += (targetY - c.y) * ease;
                 c.shrink += (targetShrink - c.shrink) * ease;
+                c.turn += (targetTurn - c.turn) * ease;
 
                 const r = c.rhythm;
 
                 // Bobbing and swaying
                 const bobX = BOB * wave(t, r.bobX, r.start);
                 const bobY = BOB * wave(t, r.bobY, r.start + 1);
-                const tilt = SWAY * wave(t, r.sway, r.start + 2);
+                const tilt = SWAY * wave(t, r.sway, r.start + 2) + c.turn;
 
                 // Breathing: a slow grow and shrink
                 const breath = 1 + BREATHE_AMOUNT * wave(t, r.breathe, r.start);
