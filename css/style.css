@@ -579,6 +579,15 @@ footer {
     border-top: 2px solid black;
 }
 
+/* On desktop the footer starts at the sidebar, so its top line meets the
+   sidebar line instead of running through the menu */
+@media only screen and (min-width: 1051px) {
+    footer {
+        width: auto;
+        margin-left: var(--sidebar-width);
+    }
+}
+
 footer .bottom {
     margin: auto;
     margin-bottom: 10px;
