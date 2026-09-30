@@ -1397,13 +1397,14 @@ footer p {
     position: relative;
 }
 
-/* A frosted glass pill, desktop only. It stays hidden until you move the
-   mouse over the intro, then fades in (and stays while you're using it). */
+/* A frosted glass pill in the bottom-left corner of the intro, desktop only.
+   It appears when the mouse moves and fades away when the mouse rests
+   (see js/speed-control.js), and stays while you're using it. */
 .speed-control {
     position: absolute;
-    left: 50%;
-    bottom: 30px;
-    transform: translate(-50%, 6px);
+    left: 30px;       /* same spacing as the cards' gap from the sidebar line */
+    bottom: calc(2em + 30px);   /* 30px above the bottom of the screen */
+    transform: translateY(6px);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -1414,9 +1415,7 @@ footer p {
     backdrop-filter: blur(12px) saturate(1.4);
     border: 1px solid rgba(255, 255, 255, 0.7);
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 14px;
     color: #555;
     cursor: pointer;
     opacity: 0;
@@ -1424,10 +1423,11 @@ footer p {
     transition: opacity 0.4s var(--hover-ease), transform 0.4s var(--hover-ease);
 }
 
-.wrapper .block1:hover .speed-control,
+.speed-control.visible,
+.speed-control:hover,
 .speed-control:focus-within {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translateY(0);
     pointer-events: auto;
 }
 
