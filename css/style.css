@@ -23,6 +23,69 @@
    ========================================================================== */
 
 
+/* Fonts
+   Source Sans Pro is stored with the site (in /fonts) instead of loading from
+   Google, so it's ready right away and the page doesn't flash a default
+   font first. The two weights the homepage needs first (400 and 700) are
+   also "preloaded" in each page's <head>.
+   ========================================================================== */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/source-sans-pro-latin-300-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/source-sans-pro-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/source-sans-pro-latin-400-italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/source-sans-pro-latin-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/source-sans-pro-latin-600-italic.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/source-sans-pro-latin-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/source-sans-pro-latin-700-italic.woff2') format('woff2');
+}
+
+
 /* 1. Colors and settings
    ========================================================================== */
 :root {
