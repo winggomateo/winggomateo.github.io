@@ -213,7 +213,8 @@ footer a:hover::before {
 /* Desktop: sideways bar */
 @media only screen and (min-width: 1051px) {
     .sidebar .toggler,
-    .sidebar .menu-small {
+    .sidebar .menu-small,
+    .sidebar .menu-burst {
         display: none;
     }
 
@@ -574,6 +575,33 @@ footer a:hover::before {
     /* "Home" shows as a word in the phone menu (the shape is desktop only) */
     .sidebar .home-shape {
         display: none;
+    }
+
+    /* Burst mark in the top-left corner of the open menu, across from the X.
+       Like the links, it's placed from the growing circle's corner (see the
+       note on the links above); 24px and 18px are the real spacing from the
+       screen's left and top edges. */
+    .sidebar .menu > div > .menu-burst {
+        display: block;
+        position: absolute;
+        left: calc(75vw + 24px);
+        top: calc(125vw - 50vh + 18px);
+        top: calc(125vw - 50dvh + 18px);
+        width: 40px;
+        height: 40px;
+        fill: var(--menu-text);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .sidebar .toggler:checked ~ .menu > div > .menu-burst {
+        opacity: 1;
+        transition-delay: 0.25s;
+        animation: menu-burst-spin 24s linear infinite;
+    }
+
+    @keyframes menu-burst-spin {
+        to { transform: rotate(360deg); }
     }
 
     /* Smaller links (Email, Instagram) under the main ones */
