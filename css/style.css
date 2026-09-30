@@ -638,7 +638,7 @@ footer p {
 }
 
 
-/* Home page section headings ("Design", "Photography") */
+/* Home page section heading ("Design") */
 .section-title {
     font-size: 2.5em;
     font-weight: 600;
@@ -646,55 +646,14 @@ footer p {
     margin-top: 1.2em;
 }
 
-/* Home page photography preview: a row of photos that link to the gallery.
-   To change which photos show, edit the <img> tags in index.html. */
-.photo-preview {
+/* Home page link to the photography gallery */
+.photo-link {
     padding-bottom: 4em;
-}
-
-/* The design grid above already leaves plenty of space */
-.photo-preview .section-title {
-    margin-top: 0;
-}
-
-.photo-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);   /* 4 photos across */
-    gap: 20px;
-    width: 96%;   /* lines up with the edges of the project cards */
-    margin: 1.5em auto 2.5em;
-}
-
-.photo-row a {
-    display: block;
-    overflow: hidden;
-    border: 2px solid black;
-    aspect-ratio: 2 / 3;   /* all photos cropped to the same portrait shape */
-}
-
-.photo-row img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* Same slight zoom and darken as the project cards */
-.photo-row a:hover img {
-    transform: scale(1.02);
-    filter: brightness(0.85);
 }
 
 @media only screen and (max-width: 800px) {
     .section-title {
         font-size: 2em;
-    }
-
-    .photo-row {
-        grid-template-columns: repeat(2, 1fr);   /* 2 across on phones */
-        gap: 12px;
-        width: 80%;
     }
 }
 
