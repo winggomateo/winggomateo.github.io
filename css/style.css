@@ -98,7 +98,7 @@
     --accent-text: #137267;             /* darker teal for text, so it's easy to read on the light background */
     --button-hover: rgba(27, 153, 139, 0.12);   /* pale wash of the teal behind buttons on hover */
     --card-background: rgba(255, 255, 255, .25);   /* soft fill behind the project cards (use transparent for none) */
-    --menu-text: rgb(255, 246, 224);    /* links and X in the open mobile menu (cream) */
+    --menu-text: #ebfff3;               /* links and X in the open mobile menu (between the gradient mint and white) */
     --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
 }
 
