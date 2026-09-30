@@ -43,11 +43,14 @@
 
 // Floating motion
 // The shapes follow their paths from the stylesheet (section 11). On top of that:
-//  - each one gently grows and shrinks ("breathing"), on its own rhythm
+//  - each one bobs gently and sways (tilts back and forth) as it travels,
+//    like something floating on water
+//  - each one gently grows and shrinks ("breathing")
 //  - when the mouse comes near, a shape slowly drifts aside and curves around
 //    it, shrinking a little, then settles back onto its path once the mouse
 //    moves on. Shapes far from the mouse don't react.
-// Phones and tablets get the breathing (there's no mouse).
+// Every shape has its own rhythm for all of this, so they never move in sync.
+// Phones and tablets get everything except the mouse part.
 // Visitors with "reduce motion" turned on get neither.
 
 (() => {
@@ -56,6 +59,8 @@
 
     // --- Settings you can tweak ---
 
+    const BOB = 12; // how far they bob around their path, in pixels
+    const SWAY = 12; // how far they tilt back and forth, in degrees
     const BREATHE_AMOUNT = 0.06; // how much they grow and shrink (0.06 = 6%)
 
     const RADIUS = 150; // how close the mouse gets (in pixels) before a shape reacts
@@ -70,19 +75,34 @@
     const layer = document.querySelector(".shapes");
     if (!layer) return;
 
-    // Seconds per breath, and where in the breath each shape starts,
-    // so they never pulse in sync
-    const breathing = {
-        "shape-burst": { seconds: 7.3, start: 0 },
-        "shape-flower": { seconds: 9.1, start: 2.1 },
-        "shape-star": { seconds: 8.2, start: 4.0 },
-        "shape-sparkle": { seconds: 6.4, start: 1.3 },
+    // Each shape's rhythm, in seconds per cycle (bigger = slower).
+    // Two numbers mean two waves mixed together, which feels less mechanical.
+    // start: where in its rhythm each shape begins.
+    const rhythms = {
+        "shape-burst": { bobX: [5.1, 8.3], bobY: [6.7, 3.9], sway: [9.4, 5.6], breathe: 7.3, start: 0 },
+        "shape-flower": { bobX: [6.2, 4.4], bobY: [5.3, 8.9], sway: [11.2, 6.8], breathe: 9.1, start: 2.1 },
+        "shape-star": { bobX: [4.7, 7.6], bobY: [7.1, 4.2], sway: [8.6, 12.3], breathe: 8.2, start: 4.0 },
+        "shape-sparkle": { bobX: [7.3, 5.2], bobY: [4.6, 6.4], sway: [10.1, 7.2], breathe: 6.4, start: 1.3 },
     };
 
-    const shapes = Object.keys(breathing)
-        .map((id) => ({ el: document.getElementById(id), breath: breathing[id], x: 0, y: 0, shrink: 0 }))
+    const shapes = Object.keys(rhythms)
+        .map((id) => ({
+            el: document.getElementById(id),
+            rhythm: rhythms[id],
+            x: 0,
+            y: 0,
+            shrink: 0,
+            offX: 0,
+            offY: 0,
+        }))
         .filter((c) => c.el);
     if (!shapes.length) return;
+
+    // A smooth back-and-forth from -1 to 1. With two lengths, mixes two waves.
+    const wave = (t, seconds, start) => {
+        const [a, b] = Array.isArray(seconds) ? seconds : [seconds, seconds];
+        return 0.65 * Math.sin((t * 2 * Math.PI) / a + start) + 0.35 * Math.sin((t * 2 * Math.PI) / b + start * 1.7);
+    };
 
     let mouseX = -9999;
     let mouseY = -9999;
@@ -114,10 +134,10 @@
                 let targetShrink = 0;
 
                 if (hasMouse) {
-                    // Where the shape is on its path, without our nudge
+                    // Where the shape is on its path, without our extra movement
                     const box = c.el.getBoundingClientRect();
-                    const cx = box.left + box.width / 2 - c.x;
-                    const cy = box.top + box.height / 2 - c.y;
+                    const cx = box.left + box.width / 2 - c.offX;
+                    const cy = box.top + box.height / 2 - c.offY;
                     const size = c.el.offsetWidth;
 
                     // Drift away from the mouse, gentler the farther away it is
@@ -143,11 +163,22 @@
                 c.y += (targetY - c.y) * ease;
                 c.shrink += (targetShrink - c.shrink) * ease;
 
+                const r = c.rhythm;
+
+                // Bobbing and swaying
+                const bobX = BOB * wave(t, r.bobX, r.start);
+                const bobY = BOB * wave(t, r.bobY, r.start + 1);
+                const tilt = SWAY * wave(t, r.sway, r.start + 2);
+
                 // Breathing: a slow grow and shrink
-                const breath = 1 + BREATHE_AMOUNT * Math.sin((t * 2 * Math.PI) / c.breath.seconds + c.breath.start);
+                const breath = 1 + BREATHE_AMOUNT * wave(t, r.breathe, r.start);
                 const scale = breath * (1 - c.shrink);
 
-                c.el.style.transform = `translate(${c.x.toFixed(1)}px, ${c.y.toFixed(1)}px) scale(${scale.toFixed(3)})`;
+                c.offX = c.x + bobX;
+                c.offY = c.y + bobY;
+                c.el.style.transform =
+                    `translate(${c.offX.toFixed(1)}px, ${c.offY.toFixed(1)}px) ` +
+                    `rotate(${tilt.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
             });
         }
         window.requestAnimationFrame(step);
