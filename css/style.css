@@ -243,7 +243,8 @@ footer a:hover::before {
         align-items: stretch;
         --menu-gap: clamp(22px, 6.8vh, 61px);
         gap: var(--menu-gap);                    /* space between links */
-        padding-right: clamp(18px, 5.2vh, 47px); /* space above "Home" */
+        padding-right: calc(var(--menu-gap) / 2); /* space above the burst: matches the space
+                                                     below it, so it's centered above the divider */
     }
 
     .sidebar ul li {
@@ -295,6 +296,7 @@ footer a:hover::before {
         display: block;
         width: 44px;    /* size of the shape */
         height: 44px;
+        filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.28));   /* soft shadow so it stands out from the background */
         transition: transform var(--hover-speed) var(--hover-ease);
     }
 
