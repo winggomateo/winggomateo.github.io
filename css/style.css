@@ -252,11 +252,10 @@ footer a:hover::before {
                                                     below it, so it's centered above the divider */
     }
 
-    /* Extra room under the burst, so the divider sits between the burst and
-       "Design", with the same space from the divider to "Design" as
-       between the links */
+    /* A little extra room under the burst, so the divider has the same
+       space above it (to the burst) and below it (to "Design") */
     .sidebar ul:not(.menu-small) > li:first-child {
-        margin-left: var(--burst-gap);
+        margin-left: calc(var(--burst-gap) * 2 - var(--menu-gap) - 3px);  /* 3px makes up for the letter spacing after "Design" */
     }
 
     .sidebar ul li {
