@@ -96,6 +96,7 @@
     --text-color: rgb(0, 0, 0);
     --accent-color: #1b998b;            /* teal: active nav link, underlines, mobile menu */
     --button-hover: #53d8c9;            /* light teal behind buttons on hover */
+    --card-background: transparent;     /* fill behind the project cards */
     --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
 }
 
@@ -636,7 +637,8 @@ footer p {
     position: relative;
 }
 
-/* One card: image on the left, text on the right */
+/* One card: image on the left, text on the right.
+   The whole card is one link to the project page. */
 .project-card {
     text-align: left;
     display: flex;
@@ -645,15 +647,23 @@ footer p {
     margin: 20px auto;
     border: 2px solid black;
     overflow: hidden;
+    background-color: var(--card-background);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover (and keyboard focus): the card lifts a little, its border turns
+   teal, and the image zooms and darkens slightly */
+.project-card:hover,
+.project-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    outline: none;
 }
 
 .project-image {
     width: 50%;
-}
-
-.project-image a {
-    display: block;
-    width: 100%;
+    overflow: hidden;
 }
 
 .project-image img {
@@ -663,10 +673,10 @@ footer p {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Slight zoom and darken on hover */
-.project-image a:hover img {
+.project-card:hover .project-image img,
+.project-card:focus-visible .project-image img {
     transform: scale(1.02);
-    filter: brightness(0.85);
+    filter: brightness(0.9);
 }
 
 .project-info {
@@ -681,6 +691,13 @@ footer p {
     font-size: 1.5em;
     margin-bottom: 10px;
     color: #333;
+    transition: color 0.3s ease;
+}
+
+/* Title turns teal along with the border */
+.project-card:hover .project-info h2,
+.project-card:focus-visible .project-info h2 {
+    color: var(--accent-color);
 }
 
 .project-info p {
@@ -689,18 +706,8 @@ footer p {
     color: #666;
 }
 
-.read-more-btn {
-    border: 2px solid black;
-    text-align: center;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 1em;
-    width: fit-content;
-    transition: 0.3s ease;
-}
-
-.read-more-btn:hover {
-    background-color: var(--button-hover);
+.project-info p:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -887,10 +894,6 @@ footer p {
 
     .project-info {
         padding: 15px;
-    }
-
-    .read-more-btn {
-        width: auto;
     }
 }
 
