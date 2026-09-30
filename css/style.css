@@ -867,88 +867,89 @@ footer p {
    for every shape (8 layouts in all, one every 5 seconds, 40 seconds
    per full loop). To add a layout, add a line to each shape and space the
    percentages evenly; the lines in between with only an opacity are the
-   moments they're faded out. */
+   moments they're faded out. scale sets each shape's size in that layout
+   (1 = normal, 1.2 = 20% bigger); sizes change smoothly while faded out. */
 
 @keyframes drift-burst {
     0%      { opacity: 0; }
-    6.25%   { opacity: 1; left: 30%; top: 50%; }   /* layout 1 */
+    6.25%   { opacity: 1; left: 30%; top: 50%; scale: 1; }   /* layout 1 */
     12.5%   { opacity: 0; }
-    18.75%  { opacity: 1; left: 78%; top: 12%; }   /* layout 2 */
+    18.75%  { opacity: 1; left: 78%; top: 12%; scale: 1.2; }   /* layout 2 */
     25%     { opacity: 0; }
-    31.25%  { opacity: 1; left: 90%; top: 80%; }   /* layout 3 */
+    31.25%  { opacity: 1; left: 90%; top: 80%; scale: 0.85; }   /* layout 3 */
     37.5%   { opacity: 0; }
-    43.75%  { opacity: 1; left: 20%; top: 15%; }   /* layout 4 */
+    43.75%  { opacity: 1; left: 20%; top: 15%; scale: 1.1; }   /* layout 4 */
     50%     { opacity: 0; }
-    56.25%  { opacity: 1; left: 50%; top: 82%; }   /* layout 5 */
+    56.25%  { opacity: 1; left: 50%; top: 82%; scale: 0.9; }   /* layout 5 */
     62.5%   { opacity: 0; }
-    68.75%  { opacity: 1; left: 8%; top: 75%; }   /* layout 6 */
+    68.75%  { opacity: 1; left: 8%; top: 75%; scale: 1.25; }   /* layout 6 */
     75%     { opacity: 0; }
-    81.25%  { opacity: 1; left: 85%; top: 30%; }   /* layout 7 */
+    81.25%  { opacity: 1; left: 85%; top: 30%; scale: 0.8; }   /* layout 7 */
     87.5%   { opacity: 0; }
-    93.75%  { opacity: 1; left: 35%; top: 5%; }   /* layout 8 */
+    93.75%  { opacity: 1; left: 35%; top: 5%; scale: 1.05; }   /* layout 8 */
     100%    { opacity: 0; }
 }
 
 
 @keyframes drift-flower {
     0%      { opacity: 0; }
-    6.25%   { opacity: 1; left: 15%; top: 85%; }   /* layout 1 */
+    6.25%   { opacity: 1; left: 15%; top: 85%; scale: 1; }   /* layout 1 */
     12.5%   { opacity: 0; }
-    18.75%  { opacity: 1; left: 8%; top: 40%; }   /* layout 2 */
+    18.75%  { opacity: 1; left: 8%; top: 40%; scale: 0.85; }   /* layout 2 */
     25%     { opacity: 0; }
-    31.25%  { opacity: 1; left: 86%; top: 57%; }   /* layout 3 */
+    31.25%  { opacity: 1; left: 86%; top: 57%; scale: 1.2; }   /* layout 3 */
     37.5%   { opacity: 0; }
-    43.75%  { opacity: 1; left: 60%; top: 30%; }   /* layout 4 */
+    43.75%  { opacity: 1; left: 60%; top: 30%; scale: 0.9; }   /* layout 4 */
     50%     { opacity: 0; }
-    56.25%  { opacity: 1; left: 70%; top: 5%; }   /* layout 5 */
+    56.25%  { opacity: 1; left: 70%; top: 5%; scale: 1.15; }   /* layout 5 */
     62.5%   { opacity: 0; }
-    68.75%  { opacity: 1; left: 40%; top: 60%; }   /* layout 6 */
+    68.75%  { opacity: 1; left: 40%; top: 60%; scale: 0.8; }   /* layout 6 */
     75%     { opacity: 0; }
-    81.25%  { opacity: 1; left: 25%; top: 8%; }   /* layout 7 */
+    81.25%  { opacity: 1; left: 25%; top: 8%; scale: 1.1; }   /* layout 7 */
     87.5%   { opacity: 0; }
-    93.75%  { opacity: 1; left: 90%; top: 75%; }   /* layout 8 */
+    93.75%  { opacity: 1; left: 90%; top: 75%; scale: 0.95; }   /* layout 8 */
     100%    { opacity: 0; }
 }
 
 
 @keyframes drift-star {
     0%      { opacity: 0; }
-    6.25%   { opacity: 1; left: 70%; top: 68%; }   /* layout 1 */
+    6.25%   { opacity: 1; left: 70%; top: 68%; scale: 1; }   /* layout 1 */
     12.5%   { opacity: 0; }
-    18.75%  { opacity: 1; left: 45%; top: 78%; }   /* layout 2 */
+    18.75%  { opacity: 1; left: 45%; top: 78%; scale: 1.15; }   /* layout 2 */
     25%     { opacity: 0; }
-    31.25%  { opacity: 1; left: 30%; top: 23%; }   /* layout 3 */
+    31.25%  { opacity: 1; left: 30%; top: 23%; scale: 0.8; }   /* layout 3 */
     37.5%   { opacity: 0; }
-    43.75%  { opacity: 1; left: 10%; top: 70%; }   /* layout 4 */
+    43.75%  { opacity: 1; left: 10%; top: 70%; scale: 1.2; }   /* layout 4 */
     50%     { opacity: 0; }
-    56.25%  { opacity: 1; left: 85%; top: 40%; }   /* layout 5 */
+    56.25%  { opacity: 1; left: 85%; top: 40%; scale: 0.9; }   /* layout 5 */
     62.5%   { opacity: 0; }
-    68.75%  { opacity: 1; left: 62%; top: 8%; }   /* layout 6 */
+    68.75%  { opacity: 1; left: 62%; top: 8%; scale: 1.05; }   /* layout 6 */
     75%     { opacity: 0; }
-    81.25%  { opacity: 1; left: 55%; top: 55%; }   /* layout 7 */
+    81.25%  { opacity: 1; left: 55%; top: 55%; scale: 0.85; }   /* layout 7 */
     87.5%   { opacity: 0; }
-    93.75%  { opacity: 1; left: 15%; top: 35%; }   /* layout 8 */
+    93.75%  { opacity: 1; left: 15%; top: 35%; scale: 1.25; }   /* layout 8 */
     100%    { opacity: 0; }
 }
 
 
 @keyframes drift-sparkle {
     0%      { opacity: 0; }
-    6.25%   { opacity: 1; left: 30%; top: 25%; }   /* layout 1 */
+    6.25%   { opacity: 1; left: 30%; top: 25%; scale: 1; }   /* layout 1 */
     12.5%   { opacity: 0; }
-    18.75%  { opacity: 1; left: 88%; top: 60%; }   /* layout 2 */
+    18.75%  { opacity: 1; left: 88%; top: 60%; scale: 0.9; }   /* layout 2 */
     25%     { opacity: 0; }
-    31.25%  { opacity: 1; left: 55%; top: 79%; }   /* layout 3 */
+    31.25%  { opacity: 1; left: 55%; top: 79%; scale: 1.25; }   /* layout 3 */
     37.5%   { opacity: 0; }
-    43.75%  { opacity: 1; left: 80%; top: 82%; }   /* layout 4 */
+    43.75%  { opacity: 1; left: 80%; top: 82%; scale: 0.8; }   /* layout 4 */
     50%     { opacity: 0; }
-    56.25%  { opacity: 1; left: 12%; top: 55%; }   /* layout 5 */
+    56.25%  { opacity: 1; left: 12%; top: 55%; scale: 1.1; }   /* layout 5 */
     62.5%   { opacity: 0; }
-    68.75%  { opacity: 1; left: 20%; top: 10%; }   /* layout 6 */
+    68.75%  { opacity: 1; left: 20%; top: 10%; scale: 0.95; }   /* layout 6 */
     75%     { opacity: 0; }
-    81.25%  { opacity: 1; left: 40%; top: 82%; }   /* layout 7 */
+    81.25%  { opacity: 1; left: 40%; top: 82%; scale: 1.2; }   /* layout 7 */
     87.5%   { opacity: 0; }
-    93.75%  { opacity: 1; left: 75%; top: 45%; }   /* layout 8 */
+    93.75%  { opacity: 1; left: 75%; top: 45%; scale: 0.85; }   /* layout 8 */
     100%    { opacity: 0; }
 }
 

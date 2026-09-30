@@ -70,6 +70,7 @@
     const SWIRL = 0.5; // how much it curves around the mouse instead of moving straight away
     const FLOAT_AWAY = 0.012; // how fast it reacts to the mouse (lower = lazier)
     const FLOAT_BACK = 0.006; // how fast it settles back (lower = lazier)
+    const SMOOTHNESS = 0.025; // how gently movements start and stop (lower = softer, 0.1 = crisp)
 
     // --- End of settings ---
 
@@ -94,6 +95,7 @@
             y: 0,
             shrink: 0,
             turn: 0,
+            goal: { x: 0, y: 0, shrink: 0, turn: 0 },
             offX: 0,
             offY: 0,
         }))
@@ -124,11 +126,19 @@
     }
 
     const start = performance.now();
+    let lastFrame = null;
+
+    // Turn a "per frame at 60fps" easing amount into one that fits this frame's length
+    const perFrame = (amount, dt) => 1 - Math.pow(1 - amount, dt * 60);
 
     const step = (now) => {
         // Skip the work while the shapes are faded out
         if (parseFloat(layer.style.opacity || 1) > 0) {
             const t = (now - start) / 1000;
+            // Time since the last frame, so the motion is the same speed on
+            // 60Hz and 120Hz screens
+            const dt = Math.min((now - (lastFrame ?? now)) / 1000, 0.1);
+            lastFrame = now;
 
             shapes.forEach((c) => {
                 let targetX = 0;
@@ -161,13 +171,17 @@
                     }
                 }
 
-                // Ease slowly toward the target: no bounce, no snapping
-                const reacting = Math.hypot(targetX, targetY) > Math.hypot(c.x, c.y);
-                const ease = reacting ? FLOAT_AWAY : FLOAT_BACK;
-                c.x += (targetX - c.x) * ease;
-                c.y += (targetY - c.y) * ease;
-                c.shrink += (targetShrink - c.shrink) * ease;
-                c.turn += (targetTurn - c.turn) * ease;
+                // Ease toward the target in two smooth stages, so the movement
+                // starts gently, glides, and settles gently (ease in and out),
+                // with no bounce or snapping.
+                const reacting = Math.hypot(targetX, targetY) > Math.hypot(c.goal.x, c.goal.y);
+                const ease = perFrame(reacting ? FLOAT_AWAY : FLOAT_BACK, dt);
+                const glide = perFrame(SMOOTHNESS, dt);
+                const target = { x: targetX, y: targetY, shrink: targetShrink, turn: targetTurn };
+                for (const key in target) {
+                    c.goal[key] += (target[key] - c.goal[key]) * ease; // stage 1: where it's heading
+                    c[key] += (c.goal[key] - c[key]) * glide; // stage 2: smooth the start and stop
+                }
 
                 const r = c.rhythm;
 
