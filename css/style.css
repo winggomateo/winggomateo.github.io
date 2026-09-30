@@ -375,20 +375,35 @@ footer a:hover::before {
         transition: all 0.4s ease;
     }
 
+    /* The links, placed in the top-left of the screen, big and left-aligned.
+       They live inside the growing circle, so their position is worked out
+       from the circle's size: the circle's top-left corner is 75vw to the
+       left of the screen and (125vw - 50% of the screen height) above it.
+       The last number in each line (24px, 110px) is the actual spacing from
+       the screen's left edge and top. */
     .sidebar .menu > div > div {
-        text-align: center;
-        max-width: 90vw;
-        max-height: 100vh;
+        position: absolute;
+        left: calc(75vw + 24px);
+        top: calc(125vw - 50vh + 110px);
+        top: calc(125vw - 50dvh + 110px);
+        text-align: left;
         opacity: 0;
         transition: opacity 0.4s ease;
+    }
+
+    /* Fade the links in once the circle has mostly grown */
+    .sidebar .toggler:checked ~ .menu > div > div {
+        transition-delay: 0.25s;
     }
 
     .sidebar .menu > div > div > ul > li {
         list-style: none;
         color: var(--background);
-        font-size: 2rem;
-        font-weight: bold;
-        padding: 2rem;
+        font-size: clamp(44px, 13vw, 72px);   /* grows with the screen, between 44 and 72px */
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: normal;
+        padding: 0;
     }
 
     .sidebar .menu > div > div > ul > li > a {
