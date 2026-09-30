@@ -262,22 +262,23 @@ footer a:hover::before {
         z-index: 1;
     }
 
-    /* Invisible checkbox on top of the hamburger icon. Checking it opens the menu. */
+    /* Invisible checkbox on top of the hamburger icon. Checking it opens the menu.
+       Same size and spot as the icon (top-right corner), so the whole icon is tappable. */
     .sidebar .toggler {
         position: fixed;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        right: 0;
         z-index: 2;
         cursor: pointer;
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         opacity: 0;
     }
 
     .sidebar .hamburger {
         position: fixed;
         top: 0;
-        left: 0;
+        right: 0;
         z-index: 1;
         width: 60px;
         height: 60px;
