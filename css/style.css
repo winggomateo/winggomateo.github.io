@@ -229,6 +229,7 @@ footer a:hover::before {
         transform: rotate(-90deg) translateX(-100%);
         border-bottom: 2px solid black;   /* the vertical line on screen */
         overflow: hidden;
+        z-index: 3;       /* above the floating shapes */
     }
 
     .sidebar .menu,
@@ -368,7 +369,7 @@ footer a:hover::before {
         left: 0;
         bottom: 22px;
         width: var(--sidebar-width);
-        z-index: 2;
+        z-index: 3;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1176,9 +1177,27 @@ footer p {
    js/shapes.js adds on top of that: they fade away as you scroll down to
    the projects, gently grow and shrink, and drift around the mouse.
    ========================================================================== */
+/* On desktop the shapes can be clicked (spin) and grabbed (throw); see
+   js/shape-play.js. Once scrolled away they stop catching clicks. */
+.shapes.playable img {
+    pointer-events: auto;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.shapes.playable img.grabbed {
+    cursor: grabbing;
+}
+
+.shapes.playable.faded img {
+    pointer-events: none;
+}
+
 .shapes {
     transition: opacity 0.2s linear;   /* smooths the fade in js/shapes.js */
     position: fixed;
+    z-index: 1;       /* above the intro text, below the menu and the glass pill */
     pointer-events: none;
     width: 100%;
     height: 100vh;
@@ -1191,7 +1210,6 @@ footer p {
 #shape-sparkle {
     position: absolute;
     opacity: 85%;
-    pointer-events: none;
 }
 
 #shape-burst {
@@ -1401,6 +1419,7 @@ footer p {
    Hidden until the mouse moves; see the three states below. */
 .speed-control {
     position: absolute;
+    z-index: 5;       /* above the floating shapes */
     left: 30px;       /* same spacing as the cards' gap from the sidebar line */
     bottom: calc(2em + 30px);   /* 30px above the bottom of the screen */
     transform: translateY(6px);
@@ -1435,11 +1454,62 @@ footer p {
 /* Keyboard users (tabbing to the slider) also get the full state. Clicking
    it with the mouse doesn't count, so it can still fade away afterwards. */
 .speed-control.active,
-.speed-control:has(input:focus-visible) {
+.speed-control:has(:focus-visible) {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
     transition-duration: 0.4s;
+}
+
+.speed-slider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+/* Thin line between the slider and the shuffle button */
+.pill-divider {
+    width: 1px;
+    height: 18px;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+/* Shuffle button: sends the shapes gliding to a new layout */
+.shuffle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    margin: -4px -6px -4px 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: color var(--hover-speed) var(--hover-ease), background-color var(--hover-speed) var(--hover-ease);
+}
+
+.shuffle-btn:hover {
+    color: var(--accent-text);
+    background-color: var(--button-hover);
+}
+
+.shuffle-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.shuffle-btn:focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 2px;
 }
 
 .speed-control input {

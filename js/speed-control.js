@@ -107,7 +107,7 @@
         hideTimer = setTimeout(rest, ACTIVE_FOR_MS);
     };
     slider.addEventListener("input", markUsed);
-    slider.addEventListener("pointerdown", markUsed);
+    control.addEventListener("pointerdown", markUsed);
 
     // Mouse left the window: hide
     document.documentElement.addEventListener("mouseleave", () => {

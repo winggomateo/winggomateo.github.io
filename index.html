@@ -73,11 +73,18 @@
                         <p>Designer & Photographer</p>
                     </div>
                     <!-- Slider to slow down / speed up the floating shapes -->
-                    <label class="speed-control">
-                        <span>Slow</span>
-                        <input type="range" min="0" max="100" value="50" aria-label="Speed of the floating shapes" />
-                        <span>Fast</span>
-                    </label>
+                    <!-- Glass pill: shape speed slider and shuffle button (desktop only) -->
+                    <div class="speed-control">
+                        <label class="speed-slider">
+                            <span>Slow</span>
+                            <input type="range" min="0" max="100" value="50" aria-label="Speed of the floating shapes" />
+                            <span>Fast</span>
+                        </label>
+                        <span class="pill-divider" aria-hidden="true"></span>
+                        <button type="button" class="shuffle-btn" aria-label="Shuffle the shapes">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h3.5c2.5 0 3.7 1.2 5.5 5s3 5 5.5 5H21M3 17h3.5c1.4 0 2.4-.4 3.3-1.2M14.2 8.2c.9-.8 1.9-1.2 3.3-1.2H21M18 4l3 3-3 3M18 14l3 3-3 3" /></svg>
+                        </button>
+                    </div>
                 </div>
                 <!-- Projects (same cards as the Design page) -->
                 <div class="block3" id="work">
@@ -329,6 +336,7 @@
         <canvas id="noise" class="noise"></canvas>
         <script src="js/shapes.js"></script>
         <script src="js/speed-control.js"></script>
+        <script src="js/shape-play.js"></script>
         <!-- Section indicator on the right edge (desktop only) -->
         <nav class="section-nav" aria-label="Page sections">
             <button type="button" aria-label="Back to top"><span class="line"><span class="fill"></span></span></button>

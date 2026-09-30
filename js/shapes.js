@@ -23,6 +23,8 @@
     const update = () => {
         const progress = scrollAmount() / (window.innerHeight * FADE_DISTANCE);
         shapes.style.opacity = Math.max(0, 1 - progress);
+        // Once mostly faded, stop the shapes from catching clicks
+        shapes.classList.toggle("faded", progress > 0.7);
         ticking = false;
     };
 
@@ -147,6 +149,9 @@
                 let targetY = 0;
                 let targetShrink = 0;
                 let targetTurn = 0;
+                // Don't dodge while being held, or while the mouse is right on
+                // top of it (so it can be clicked or grabbed; see js/shape-play.js)
+                let frozen = c.el.dataset.held === "1";
 
                 if (hasMouse) {
                     // Where the shape is on its path, without our extra movement
@@ -160,6 +165,7 @@
                     const dy = cy - mouseY;
                     const distance = Math.hypot(dx, dy) || 1;
                     const reach = RADIUS + size / 2;
+                    if (distance < size * 0.45) frozen = true;
                     if (distance < reach) {
                         const closeness = (1 - distance / reach) ** 2; // 0 far away, 1 right on top
                         const awayX = dx / distance;
@@ -180,9 +186,11 @@
                 const ease = perFrame(reacting ? FLOAT_AWAY : FLOAT_BACK, dt);
                 const glide = perFrame(SMOOTHNESS, dt);
                 const target = { x: targetX, y: targetY, shrink: targetShrink, turn: targetTurn };
-                for (const key in target) {
-                    c.goal[key] += (target[key] - c.goal[key]) * ease; // stage 1: where it's heading
-                    c[key] += (c.goal[key] - c[key]) * glide; // stage 2: smooth the start and stop
+                if (!frozen) {
+                    for (const key in target) {
+                        c.goal[key] += (target[key] - c.goal[key]) * ease; // stage 1: where it's heading
+                        c[key] += (c.goal[key] - c[key]) * glide; // stage 2: smooth the start and stop
+                    }
                 }
 
                 const r = c.rhythm;
