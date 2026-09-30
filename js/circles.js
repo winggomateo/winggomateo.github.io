@@ -2,7 +2,7 @@
 // Two effects on the floating circles:
 // 1. They fade out as you scroll down, so they're part of the intro and don't
 //    distract once you reach the project cards.
-// 2. They get nudged aside when the mouse comes near (see "Mouse interaction").
+// 2. They slowly drift around the mouse when it comes near (see "Mouse interaction").
 
 // Scroll fade
 
@@ -43,8 +43,9 @@
 
 // Mouse interaction
 // The circles keep drifting on their own. When one floats near the cursor,
-// it gets gently nudged out of the way, then springs back to its path,
-// a bit like pushing something through water. Circles far from the mouse
+// it slowly drifts aside and curves around it, then slowly settles back onto
+// its path once the mouse moves on. Everything moves at a lazy pace on
+// purpose, so the circles never dart or snap. Circles far from the mouse
 // don't react at all.
 // Skipped on phones/tablets (no cursor) and for visitors who have
 // "reduce motion" turned on in their system settings.
@@ -54,16 +55,17 @@
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!hasMouse || reduceMotion) return;
 
-    const RADIUS = 220; // how close the mouse gets (in pixels) before a circle reacts
-    const PUSH = 70; // how far a circle can be nudged, in pixels
-    const SPRINGINESS = 0.05; // how strongly it's pulled back to its path (lower = floatier)
-    const FRICTION = 0.85; // how quickly the motion calms down (lower = less wobble)
+    const RADIUS = 150; // how close the mouse gets (in pixels) before a circle reacts
+    const PUSH = 60; // how far a circle can drift aside, in pixels
+    const SWIRL = 0.5; // how much it curves around the mouse instead of straight away (0 = straight)
+    const FLOAT_AWAY = 0.012; // how fast it drifts aside (lower = lazier)
+    const FLOAT_BACK = 0.006; // how fast it settles back onto its path (lower = lazier)
 
     const layer = document.querySelector(".Circ");
     const circles = ["circle2", "circle3", "circle4", "circle5"]
         .map((id) => document.getElementById(id))
         .filter(Boolean)
-        .map((el) => ({ el, x: 0, y: 0, vx: 0, vy: 0 }));
+        .map((el) => ({ el, x: 0, y: 0 }));
     if (!layer || !circles.length) return;
 
     let mouseX = -9999;
@@ -93,7 +95,7 @@
                 const cx = box.left + box.width / 2 - c.x;
                 const cy = box.top + box.height / 2 - c.y;
 
-                // Push away from the mouse, harder the closer it is
+                // Direction away from the mouse, gentler the farther away it is
                 const dx = cx - mouseX;
                 const dy = cy - mouseY;
                 const distance = Math.hypot(dx, dy) || 1;
@@ -102,15 +104,18 @@
                 let targetY = 0;
                 if (distance < reach) {
                     const strength = (1 - distance / reach) ** 2 * PUSH;
-                    targetX = (dx / distance) * strength;
-                    targetY = (dy / distance) * strength;
+                    const awayX = dx / distance;
+                    const awayY = dy / distance;
+                    // Mix "straight away" with "sideways" so it curves around the mouse
+                    targetX = (awayX - awayY * SWIRL) * strength;
+                    targetY = (awayY + awayX * SWIRL) * strength;
                 }
 
-                // Spring toward the target, with friction so it eases and settles
-                c.vx = (c.vx + (targetX - c.x) * SPRINGINESS) * FRICTION;
-                c.vy = (c.vy + (targetY - c.y) * SPRINGINESS) * FRICTION;
-                c.x += c.vx;
-                c.y += c.vy;
+                // Ease slowly toward the target: no bounce, no snapping
+                const moving = Math.hypot(targetX, targetY) > Math.hypot(c.x, c.y);
+                const speed = moving ? FLOAT_AWAY : FLOAT_BACK;
+                c.x += (targetX - c.x) * speed;
+                c.y += (targetY - c.y) * speed;
                 c.el.style.transform = `translate(${c.x.toFixed(1)}px, ${c.y.toFixed(1)}px)`;
             });
         }
