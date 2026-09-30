@@ -255,15 +255,16 @@ footer a:hover::before {
         transition: color var(--hover-speed) var(--hover-ease);
     }
 
-    /* The marker: a short thick line on the menu's edge, next to a link.
-       Black next to the current page; teal and growing in on hover. */
+    /* The marker: a thin line alongside a link, like an underline (it sits
+       just off the menu's edge, same weight as the scroll lines).
+       Black under the current page; teal and growing in on hover. */
     .sidebar ul li a::after {
         content: "";
         position: absolute;
         left: 0;
         right: 0.1em;
-        bottom: 0;
-        height: 4px;
+        bottom: 8px;      /* distance from the menu's edge line */
+        height: 3px;      /* thickness */
         background: var(--accent-color);
         transform: scaleX(0);
         transition: transform var(--hover-speed) var(--hover-ease);
