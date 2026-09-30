@@ -200,12 +200,8 @@ footer a:hover::before {
    The menu HTML is the same on every page. On desktop it's a bar turned on
    its side along the left edge. On tablets and phones it becomes a
    hamburger button that opens a full-screen teal circle.
-   The current page's link has id="clicked" so it shows in teal.
+   The current page's link has id="clicked".
    ========================================================================== */
-#clicked {
-    color: var(--accent-color);
-}
-
 .sidebar ul li {
     font-size: 25px;
     letter-spacing: .1em;
@@ -213,10 +209,13 @@ footer a:hover::before {
 
 /* Desktop: sideways bar */
 @media only screen and (min-width: 1051px) {
-    .sidebar .toggler {
+    .sidebar .toggler,
+    .sidebar .menu-small {
         display: none;
     }
 
+    /* The bar is turned on its side, so inside it "left to right" runs
+       from the bottom of the screen to the top. */
     .sidebar {
         width: 100vh;
         height: 55px;
@@ -224,26 +223,100 @@ footer a:hover::before {
         background: transparent;
         transform-origin: left top;
         transform: rotate(-90deg) translateX(-100%);
-        border-bottom: 2px solid black;
-        display: flex;
-        align-items: center;
-        justify-content: right;
+        border-bottom: 2px solid black;   /* the vertical line on screen */
         overflow: hidden;
-        padding-left: 4vh;
     }
 
+    .sidebar .menu,
+    .sidebar .menu > div,
+    .sidebar .menu > div > div {
+        height: 100%;
+    }
+
+    /* Links run from the top of the screen down. Spacing is based on the
+       screen height (vh), so short windows never run out of room. */
     .sidebar ul {
-        float: right;
-        margin: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: stretch;
+        gap: clamp(22px, 6.8vh, 61px);           /* space between links */
+        padding-right: clamp(18px, 5.2vh, 47px); /* space above "Home" */
     }
 
     .sidebar ul li {
-        text-align: center;
-        margin-right: 2vh;
-        padding-right: 2vw;
-        padding-left: 1vw;
-        float: right;
-        height: 150%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-size: min(25px, 3.4vh);             /* shrinks a little on short windows */
+    }
+
+    .sidebar ul li a {
+        transition: color var(--hover-speed) var(--hover-ease);
+    }
+
+    /* The marker: a short thick line on the menu's edge, next to a link.
+       Black next to the current page; teal and growing in on hover. */
+    .sidebar ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0.1em;
+        bottom: 0;
+        height: 4px;
+        background: var(--accent-color);
+        transform: scaleX(0);
+        transition: transform var(--hover-speed) var(--hover-ease);
+    }
+
+    .sidebar ul li a:hover {
+        color: var(--accent-text);
+    }
+
+    .sidebar ul li a:hover::after {
+        transform: scaleX(1);
+    }
+
+    .sidebar ul li a#clicked {
+        color: var(--text-color);
+    }
+
+    .sidebar ul li a#clicked::after {
+        background: var(--text-color);
+        transform: scaleX(1);
+    }
+
+    /* Email icon at the bottom of the sidebar */
+    .side-email {
+        position: fixed;
+        left: 15px;
+        bottom: 22px;
+        width: 24px;
+        height: 24px;
+        z-index: 2;
+        color: var(--text-color);
+        transition: color var(--hover-speed) var(--hover-ease);
+    }
+
+    .side-email:hover {
+        color: var(--accent-text);
+    }
+
+    .side-email svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linejoin: round;
+    }
+}
+
+/* Tablet and phone: the email icon is in the menu instead */
+@media only screen and (max-width: 1050px) {
+    .side-email {
+        display: none;
     }
 }
 
@@ -409,6 +482,17 @@ footer a:hover::before {
         line-height: 1.05;
         letter-spacing: normal;
         padding: 0;
+    }
+
+    /* Smaller links (Email, Instagram) under the main ones */
+    .sidebar .menu > div > div > ul.menu-small {
+        margin-top: 36px;
+    }
+
+    .sidebar .menu > div > div > ul.menu-small > li {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.5;
     }
 
     .sidebar .menu > div > div > ul > li > a {
