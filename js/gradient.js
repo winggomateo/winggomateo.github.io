@@ -1,0 +1,13 @@
+// Background gradient sync
+// The background gradient loops every 15 seconds (see "gradient" in
+// css/style.css). Normally it would restart from the beginning on every new
+// page. This works out where in the loop it "should" be right now, based on
+// the clock, and starts the animation from there. Every page does the same,
+// so the gradient carries on smoothly from page to page.
+// This file is loaded in the <head> so it runs before the page is drawn.
+
+(() => {
+    const LOOP_SECONDS = 15; // keep in sync with the animation length in css/style.css
+    const secondsIntoLoop = (Date.now() / 1000) % LOOP_SECONDS;
+    document.documentElement.style.setProperty("--gradient-delay", `-${secondsIntoLoop.toFixed(3)}s`);
+})();
