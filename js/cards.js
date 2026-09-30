@@ -29,8 +29,10 @@
 
     // The drawing effect needs to know how long the outline is, which
     // depends on the card's size, so measure it (and again when it changes)
+    // (a few extra pixels make sure the corner where it starts fully closes)
     const measure = (card) => {
-        const perimeter = 2 * (card.offsetWidth + card.offsetHeight);
+        const outline = card.querySelector(".card-outline");
+        const perimeter = 2 * (outline.clientWidth + outline.clientHeight) + 4;
         card.style.setProperty("--perimeter", `${perimeter}px`);
     };
 

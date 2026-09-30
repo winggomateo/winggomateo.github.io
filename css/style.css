@@ -660,21 +660,25 @@ footer p {
     outline: none;
 }
 
-/* The teal outline, added to each card by js/cards.js. It sits exactly on
-   top of the black border and starts out hidden. */
+/* The teal outline, added to each card by js/cards.js. It sits over the
+   black border, reaching a little outside it so it can be thicker, and
+   starts out hidden. */
 .card-outline {
+    --outline-width: 3px;   /* thickness of the teal outline (the black border is 2px) */
     position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
+    top: calc(-1 * var(--outline-width));
+    left: calc(-1 * var(--outline-width));
+    width: calc(100% + 2 * var(--outline-width));
+    height: calc(100% + 2 * var(--outline-width));
     pointer-events: none;
 }
 
 .card-outline rect {
     fill: none;
     stroke: var(--accent-color);
-    stroke-width: 4;   /* half is hidden past the edge, so it shows as 2px */
+    /* half is hidden past the edge; the extra 2px covers the black border fully
+       even when a card lands between whole pixels */
+    stroke-width: calc(2 * var(--outline-width) + 2px);
     stroke-dasharray: var(--perimeter);
     stroke-dashoffset: var(--perimeter);
     transition: stroke-dashoffset 0.4s ease-in;   /* rewinding when the mouse leaves */
