@@ -251,40 +251,26 @@ footer a:hover::before {
         font-size: min(25px, 3.4vh);             /* shrinks a little on short windows */
     }
 
+    /* Each link can show a soft rounded box behind it, the same shape as the
+       category tags on the project cards. Grey behind the current page;
+       a light teal fades in on hover. Negative margins stop the box from
+       shifting the spacing between links. */
     .sidebar ul li a {
-        transition: color var(--hover-speed) var(--hover-ease);
-    }
-
-    /* The marker: a thin line alongside a link, like an underline (it sits
-       just off the menu's edge, same weight as the scroll lines).
-       Black under the current page; teal and growing in on hover. */
-    .sidebar ul li a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0.1em;
-        bottom: 8px;      /* distance from the menu's edge line */
-        height: 3px;      /* thickness */
-        background: var(--accent-color);
-        transform: scaleX(0);
-        transition: transform var(--hover-speed) var(--hover-ease);
+        padding: 5px 12px;
+        margin: 0 -12px;
+        border-radius: 10px;
+        transition: color var(--hover-speed) var(--hover-ease),
+            background-color var(--hover-speed) var(--hover-ease);
     }
 
     .sidebar ul li a:hover {
         color: var(--accent-text);
-    }
-
-    .sidebar ul li a:hover::after {
-        transform: scaleX(1);
+        background-color: var(--button-hover);
     }
 
     .sidebar ul li a#clicked {
         color: var(--text-color);
-    }
-
-    .sidebar ul li a#clicked::after {
-        background: var(--text-color);
-        transform: scaleX(1);
+        background-color: rgba(0, 0, 0, 0.06);   /* same grey as the tags */
     }
 
     /* Email icon at the bottom of the sidebar */
