@@ -277,8 +277,8 @@ footer a:hover::before {
     }
 
     /* "Home" is the burst shape instead of a word on desktop (the word stays
-       in the phone menu). To use a different shape, change the image in each
-       page's menu (img/shapes/...). It turns a little on hover. */
+       in the phone menu). The outline comes from img/shapes/burst-silhouette.svg.
+       It turns a little on hover. */
     .sidebar .home-label {
         display: none;
     }
@@ -292,20 +292,20 @@ footer a:hover::before {
         border-radius: 23px;   /* same roundness as the tags, scaled up */
     }
 
-    /* The burst shown as a solid black silhouette (a filter turns all its
-       colors black). On hover it turns and fades back to its real colors. */
+    /* The burst silhouette is drawn right in each page's menu (so it can
+       change color): black, turning dark teal on hover like the words */
     .sidebar .home-shape {
         display: block;
         width: 44px;    /* size of the shape */
         height: 44px;
-        filter: brightness(0);
+        fill: var(--text-color);
         transition: transform var(--hover-speed) var(--hover-ease),
-            filter var(--hover-speed) var(--hover-ease);
+            fill var(--hover-speed) var(--hover-ease);
     }
 
     .sidebar .home-link:hover .home-shape {
         transform: rotate(45deg);
-        filter: brightness(1);
+        fill: var(--accent-text);
     }
 
     /* The burst doesn't get the grey "you are here" box, only the hover */
