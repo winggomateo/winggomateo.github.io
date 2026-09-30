@@ -14,6 +14,7 @@
    10. Project pages (title, summary, images, "View Other Work")
    11. Floating shapes (home page animation)
    11b. Section indicator (home page, desktop only)
+   11c. Page transitions
    12. Archived pages
 
    Screen sizes used throughout:
@@ -271,9 +272,40 @@ footer a:hover::before {
         background-color: var(--button-hover);
     }
 
+    /* The grey "you are here" box is its own small element (.nav-marker)
+       behind the current link's text, so that when you move to another
+       page it can glide over to the new link (see "Page transitions"). */
+    .sidebar ul li a {
+        position: relative;
+        z-index: 0;
+    }
+
+    .sidebar .nav-marker {
+        display: none;
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        background-color: rgba(0, 0, 0, 0.06);   /* same grey as the tags */
+        transition: background-color var(--hover-speed) var(--hover-ease);
+    }
+
     .sidebar ul li a#clicked {
         color: var(--text-color);
-        background-color: rgba(0, 0, 0, 0.06);   /* same grey as the tags */
+    }
+
+    .sidebar ul li a#clicked .nav-marker {
+        display: block;
+        view-transition-name: nav-marker;
+    }
+
+    /* Hovering the current page tints its box teal instead */
+    .sidebar ul li a#clicked:hover {
+        background-color: transparent;
+    }
+
+    .sidebar ul li a#clicked:hover .nav-marker {
+        background-color: var(--button-hover);
     }
 
     /* "Home" is the burst shape instead of a word on desktop (the word stays
@@ -309,10 +341,6 @@ footer a:hover::before {
     }
 
     /* The burst doesn't get the grey "you are here" box, only the hover */
-    .sidebar ul li a.home-link#clicked {
-        background-color: transparent;
-    }
-
     .sidebar ul li a.home-link#clicked:hover {
         background-color: var(--button-hover);
     }
@@ -1333,6 +1361,36 @@ footer p {
 @media only screen and (max-width: 1050px) {
     .section-nav {
         display: none;
+    }
+}
+
+
+/* 11c. Page transitions
+   When you click to another page, the old page fades into the new one, and
+   the grey "you are here" box in the menu glides to the new page's link.
+   Works in Chrome, Edge and Safari; other browsers simply switch pages as
+   before. Only works when the site is served (like on GitHub Pages), not
+   when a page is opened straight from a folder.
+   ========================================================================== */
+@view-transition {
+    navigation: auto;
+}
+
+/* The page fade */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.3s;
+}
+
+/* The menu box glide */
+::view-transition-group(nav-marker) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    @view-transition {
+        navigation: none;
     }
 }
 
