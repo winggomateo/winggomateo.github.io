@@ -18,7 +18,9 @@
     // ---------- Click to spin, grab to throw ----------
 
     const FRICTION = 0.9; // how quickly a thrown shape slows down (lower = stops sooner)
-    const RETURN = 0.05; // how quickly it drifts back afterwards (lower = slower)
+    const RETURN_PAUSE = 250; // ms it rests before heading back
+    const RETURN_MIN = 1200; // ms the trip back takes, at the least...
+    const RETURN_MAX = 2800; // ...and at the most (farther throws take longer)
 
     shapes.forEach((el) => {
         el.draggable = false;
@@ -45,33 +47,49 @@
             );
         };
 
-        // After a throw: coast, slow down, then glide back and resume floating
+        // After a throw: coast and slow down, then glide back to the path with
+        // a gentle start and finish, and resume floating
         const settle = () => {
             cancelAnimationFrame(loop);
             let last = performance.now();
+            let returning = null; // { from: [x, y], start, duration } once gliding back
+
             const step = (now) => {
                 const dt = Math.min((now - last) / 16.7, 3); // in 60fps frames
                 last = now;
-                const speed = Math.hypot(vx, vy);
-                if (speed > 0.3) {
+
+                if (!returning) {
+                    // Coasting: keep moving and slow down
                     x += vx * dt;
                     y += vy * dt;
                     vx *= Math.pow(FRICTION, dt);
                     vy *= Math.pow(FRICTION, dt);
+                    if (Math.hypot(vx, vy) < 0.2) {
+                        const distance = Math.hypot(x, y);
+                        returning = {
+                            from: [x, y],
+                            start: now + RETURN_PAUSE,
+                            // farther away = takes a little longer
+                            duration: Math.min(Math.max(RETURN_MIN + distance * 4, RETURN_MIN), RETURN_MAX),
+                        };
+                    }
                 } else {
-                    x += (0 - x) * (1 - Math.pow(1 - RETURN, dt));
-                    y += (0 - y) * (1 - Math.pow(1 - RETURN, dt));
+                    // Gliding back: ease in and out
+                    const p = Math.min(Math.max((now - returning.start) / returning.duration, 0), 1);
+                    const eased = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+                    x = returning.from[0] * (1 - eased);
+                    y = returning.from[1] * (1 - eased);
+                    if (p >= 1) {
+                        el.style.translate = "";
+                        el.dataset.held = "";
+                        const drift = driftOf(el);
+                        if (drift && drift.playState === "paused") drift.play();
+                        x = y = 0;
+                        return;
+                    }
                 }
                 apply();
-                if (speed > 0.3 || Math.hypot(x, y) > 0.5) {
-                    loop = requestAnimationFrame(step);
-                } else {
-                    x = y = 0;
-                    el.style.translate = "";
-                    el.dataset.held = "";
-                    const drift = driftOf(el);
-                    if (drift && drift.playState === "paused") drift.play();
-                }
+                loop = requestAnimationFrame(step);
             };
             loop = requestAnimationFrame(step);
         };
@@ -119,6 +137,8 @@
                 vx = vy = 0;
                 spin();
             }
+            // Held still before letting go: no throw, just float back
+            if (performance.now() - lastT > 100) vx = vy = 0;
             settle();
         };
         el.addEventListener("pointerup", release);
