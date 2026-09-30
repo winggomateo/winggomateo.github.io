@@ -640,25 +640,50 @@ footer p {
 /* One card: image on the left, text on the right.
    The whole card is one link to the project page. */
 .project-card {
+    position: relative;
     text-align: left;
     display: flex;
     flex-wrap: wrap;
     width: 46vw;
     margin: 20px auto;
     border: 2px solid black;
-    overflow: hidden;
     background-color: var(--card-background);
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover (and keyboard focus): the card lifts a little, its border turns
-   teal, and the image zooms and darkens slightly */
+/* Hover (and keyboard focus): the card lifts a little, a teal outline draws
+   itself around it (see .card-outline below), and the image zooms slightly */
 .project-card:hover,
 .project-card:focus-visible {
     transform: translateY(-4px);
-    border-color: var(--accent-color);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     outline: none;
+}
+
+/* The teal outline, added to each card by js/cards.js. It sits exactly on
+   top of the black border and starts out hidden. */
+.card-outline {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    pointer-events: none;
+}
+
+.card-outline rect {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 4;   /* half is hidden past the edge, so it shows as 2px */
+    stroke-dasharray: var(--perimeter);
+    stroke-dashoffset: var(--perimeter);
+    transition: stroke-dashoffset 0.4s ease-in;   /* rewinding when the mouse leaves */
+}
+
+.project-card:hover .card-outline rect,
+.project-card:focus-visible .card-outline rect {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.9s ease-in-out;   /* drawing on hover: bigger = slower */
 }
 
 .project-image {
