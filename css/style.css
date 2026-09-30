@@ -274,8 +274,8 @@ footer a:hover::before {
         background-color: rgba(0, 0, 0, 0.06);   /* same grey as the tags */
     }
 
-    /* "Home" is a shape instead of a word on desktop (the word stays in the
-       phone menu). To use a different shape, change the image in each
+    /* "Home" is the burst shape instead of a word on desktop (the word stays
+       in the phone menu). To use a different shape, change the image in each
        page's menu (img/shapes/...). It turns a little on hover. */
     .sidebar .home-label {
         display: none;
@@ -289,8 +289,8 @@ footer a:hover::before {
 
     .sidebar .home-shape {
         display: block;
-        width: 34px;
-        height: 34px;
+        width: 42px;    /* size of the shape */
+        height: 42px;
         transition: transform var(--hover-speed) var(--hover-ease);
     }
 
