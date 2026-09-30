@@ -1379,12 +1379,12 @@ footer p {
 /* The page fade */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    animation-duration: 0.3s;
+    animation-duration: 0.25s;
 }
 
 /* The menu box glide */
 ::view-transition-group(nav-marker) {
-    animation-duration: 0.5s;
+    animation-duration: 0.4s;
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 

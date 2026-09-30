@@ -10,4 +10,14 @@
     const LOOP_SECONDS = 15; // keep in sync with the animation length in css/style.css
     const secondsIntoLoop = (Date.now() / 1000) % LOOP_SECONDS;
     document.documentElement.style.setProperty("--gradient-delay", `-${secondsIntoLoop.toFixed(3)}s`);
+
+    // If this page was loaded ahead of time in the background (see
+    // "speculationrules" in the <head>), re-sync the moment it's shown
+    document.addEventListener("prerenderingchange", () => {
+        document.getAnimations().forEach((animation) => {
+            if (animation.animationName !== "gradient") return;
+            animation.effect.updateTiming({ delay: 0 });
+            animation.currentTime = Date.now() % (LOOP_SECONDS * 1000);
+        });
+    });
 })();

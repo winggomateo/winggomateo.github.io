@@ -5,6 +5,17 @@
     <link rel="preload" href="../fonts/source-sans-pro-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <script src="../js/gradient.js"></script>
+    <!-- Start loading a page in the background when a link is hovered, so it opens instantly (Chrome and Edge) -->
+    <script type="speculationrules">
+        {
+            "prerender": [
+                {
+                    "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[href^='mailto']" } }] },
+                    "eagerness": "moderate"
+                }
+            ]
+        }
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
