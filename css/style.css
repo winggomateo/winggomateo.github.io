@@ -1354,41 +1354,42 @@ footer p {
    grid is narrowed (evenly on both sides), so the dividing line under the
    name still runs all the way across. */
 @media only screen and (min-width: 1051px) {
-    /* The grid stops 30px from the right edge (where the lines are), and the
-       cards are sized so the space between the sidebar line and the cards
-       equals the space between the cards and the scroll lines.
-       --grid-gap is that space (the gap between the two columns is double). */
+    /* The same space (--grid-gap) sits between the sidebar line and the
+       cards, between the two columns, and between the cards and the scroll
+       lines. The extra 30px on the right is where the lines are.
+       Widths are shares of the grid (%), so a visible scrollbar can't push
+       the second column onto a new row. */
     .home .wrapper .block3 {
         --grid-gap: 30px;
-        padding-left: 0;
-        padding-right: 30px;
+        justify-content: flex-start;
+        column-gap: var(--grid-gap);
+        padding-left: var(--grid-gap);
+        padding-right: calc(30px + var(--grid-gap));
     }
 
     .home .project-card {
-        width: calc((100vw - var(--sidebar-width) - 30px - 4 * var(--grid-gap)) / 2);
+        width: 100%;               /* one column: the full width of the grid */
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
-/* With an odd number of cards, the last one sits alone on its row. An
-   invisible card-sized placeholder fills the empty spot next to it, so the
-   last card lines up with the left column instead of floating in the middle.
-   (With an even number, the placeholder drops to its own row, which has no
-   height, so it changes nothing.) Two-column screens only. */
 @media only screen and (min-width: 1351px) {
-    .block3:has(> .project-card)::after {
-        content: "";
-        width: 46vw;              /* same width as a card (Design page) */
-        margin: 0 auto;           /* same side spacing as a card, no height */
-    }
-
-    .home .block3:has(> .project-card)::after {
-        width: calc((100vw - var(--sidebar-width) - 30px - 4 * var(--grid-gap)) / 2);   /* home card width */
-    }
-}
-
-@media only screen and (min-width: 1051px) and (max-width: 1350px) {
+    /* Two columns on the home page: each card is half the grid, minus half the gap */
     .home .project-card {
-        width: calc(100vw - var(--sidebar-width) - 30px - 2 * var(--grid-gap));
+        width: calc((100% - var(--grid-gap)) / 2);
+    }
+
+    /* Design page: with an odd number of cards, the last one sits alone on
+       its row. An invisible card-sized placeholder fills the empty spot next
+       to it, so the last card lines up with the left column instead of
+       floating in the middle. (With an even number, the placeholder drops to
+       its own row, which has no height, so it changes nothing.) The home
+       page lines its cards up from the left, so it doesn't need this. */
+    .block3:not(.home .block3):has(> .project-card)::after {
+        content: "";
+        width: 46vw;              /* same width as a card */
+        margin: 0 auto;           /* same side spacing as a card, no height */
     }
 }
 
