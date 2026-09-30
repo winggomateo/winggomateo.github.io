@@ -1369,6 +1369,23 @@ footer p {
     }
 }
 
+/* With an odd number of cards, the last one sits alone on its row. An
+   invisible card-sized placeholder fills the empty spot next to it, so the
+   last card lines up with the left column instead of floating in the middle.
+   (With an even number, the placeholder drops to its own row, which has no
+   height, so it changes nothing.) Two-column screens only. */
+@media only screen and (min-width: 1351px) {
+    .block3:has(> .project-card)::after {
+        content: "";
+        width: 46vw;              /* same width as a card (Design page) */
+        margin: 0 auto;           /* same side spacing as a card, no height */
+    }
+
+    .home .block3:has(> .project-card)::after {
+        width: calc((100vw - var(--sidebar-width) - 30px - 4 * var(--grid-gap)) / 2);   /* home card width */
+    }
+}
+
 @media only screen and (min-width: 1051px) and (max-width: 1350px) {
     .home .project-card {
         width: calc(100vw - var(--sidebar-width) - 30px - 2 * var(--grid-gap));
