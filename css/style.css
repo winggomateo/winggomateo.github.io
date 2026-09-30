@@ -241,7 +241,8 @@ footer a:hover::before {
         display: flex;
         flex-direction: row-reverse;
         align-items: stretch;
-        gap: clamp(22px, 6.8vh, 61px);           /* space between links */
+        --menu-gap: clamp(22px, 6.8vh, 61px);
+        gap: var(--menu-gap);                    /* space between links */
         padding-right: clamp(18px, 5.2vh, 47px); /* space above "Home" */
     }
 
@@ -299,6 +300,28 @@ footer a:hover::before {
 
     .sidebar .home-link:hover .home-shape {
         transform: rotate(45deg);
+    }
+
+    /* The burst doesn't get the grey "you are here" box, only the hover */
+    .sidebar ul li a.home-link#clicked {
+        background-color: transparent;
+    }
+
+    .sidebar ul li a.home-link#clicked:hover {
+        background-color: var(--button-hover);
+    }
+
+    /* Dividing line between the burst and the rest of the menu. It runs
+       across the sidebar from the screen edge to the menu line, halfway
+       between the burst and "Design". */
+    .sidebar ul:not(.menu-small) > li:first-child::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: calc(var(--menu-gap) / -2 - 1px);
+        width: 2px;
+        background: black;
     }
 
     /* Email icon at the bottom of the sidebar */
