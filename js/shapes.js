@@ -68,9 +68,9 @@
     const SHRINK = 0.15; // how much a shape shrinks when the mouse is right next to it (0.15 = 15%)
     const TURN = 25; // how far a shape turns as the mouse brushes past it, in degrees
     const SWIRL = 0.5; // how much it curves around the mouse instead of moving straight away
-    const FLOAT_AWAY = 0.012; // how fast it reacts to the mouse (lower = lazier)
-    const FLOAT_BACK = 0.006; // how fast it settles back (lower = lazier)
-    const SMOOTHNESS = 0.025; // how gently movements start and stop (lower = softer, 0.1 = crisp)
+    const FLOAT_AWAY = 0.04; // how fast it reacts to the mouse (lower = lazier)
+    const FLOAT_BACK = 0.015; // how fast it settles back (lower = lazier)
+    const SMOOTHNESS = 0.06; // how gently movements start and stop (lower = softer, 0.1 = crisp)
 
     // --- End of settings ---
 

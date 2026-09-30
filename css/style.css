@@ -370,16 +370,16 @@ footer p {
 /* 6. Home page
    ========================================================================== */
 
-/* Name and tagline, fills the first screen with the text centered in it.
-   (The extra space at the bottom balances the 2em gap above the block, so
-   the text sits in the middle of what you actually see.) */
+/* Name and tagline, fills the first screen with the text a little above
+   center. The 4em at the bottom balances the 2em gap above the block; the
+   10vh lifts the text higher (bigger number = higher). */
 .wrapper .block1 {
     border-bottom: 2px solid black;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: 4em;
+    padding-bottom: calc(4em + 10vh);
 }
 
 .wrapper .main-content .header {
