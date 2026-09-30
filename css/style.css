@@ -99,9 +99,9 @@
     --button-hover: rgba(27, 153, 139, 0.12);   /* pale wash of the teal behind buttons on hover */
     --card-background: rgba(255, 255, 255, .25);   /* soft fill behind the project cards (use transparent for none) */
     --menu-text: #ebfff3;               /* links and X in the open mobile menu (between the gradient mint and white) */
-    --menu-speed: 1s;
+    --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
     --hover-speed: 0.5s;                /* how long the project card hover takes (bigger = slower, smoother) */
-    --hover-ease: cubic-bezier(0.4, 0, 0.2, 1);   /* starts gently and settles gently */                   /* how fast the mobile menu circle opens */
+    --hover-ease: cubic-bezier(0.4, 0, 0.2, 1);   /* starts gently and settles gently */
 }
 
 
