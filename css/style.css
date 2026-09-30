@@ -274,6 +274,30 @@ footer a:hover::before {
         background-color: rgba(0, 0, 0, 0.06);   /* same grey as the tags */
     }
 
+    /* "Home" is a shape instead of a word on desktop (the word stays in the
+       phone menu). To use a different shape, change the image in each
+       page's menu (img/shapes/...). It turns a little on hover. */
+    .sidebar .home-label {
+        display: none;
+    }
+
+    .sidebar .home-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sidebar .home-shape {
+        display: block;
+        width: 34px;
+        height: 34px;
+        transition: transform var(--hover-speed) var(--hover-ease);
+    }
+
+    .sidebar .home-link:hover .home-shape {
+        transform: rotate(45deg);
+    }
+
     /* Email icon at the bottom of the sidebar */
     .side-email {
         position: fixed;
@@ -470,6 +494,11 @@ footer a:hover::before {
         line-height: 1.05;
         letter-spacing: normal;
         padding: 0;
+    }
+
+    /* "Home" shows as a word in the phone menu (the shape is desktop only) */
+    .sidebar .home-shape {
+        display: none;
     }
 
     /* Smaller links (Email, Instagram) under the main ones */
