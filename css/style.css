@@ -363,6 +363,7 @@ footer a:hover::before {
         stroke: currentColor;
         stroke-width: 1.8;
         stroke-linejoin: round;
+        stroke-linecap: round;
     }
 
     .side-link svg .dot {
