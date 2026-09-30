@@ -8,7 +8,7 @@
 
     // How far you scroll (as a share of the screen height) before they're gone.
     // 0.6 = fully faded after scrolling 60% of one screen.
-    const FADE_DISTANCE = 0.6;
+    const FADE_DISTANCE = 0.75;
 
     // The page can scroll on <body> or on the window depending on the browser,
     // so check both.
