@@ -98,6 +98,7 @@
     --accent-text: #137267;             /* darker teal for text, so it's easy to read on the light background */
     --button-hover: rgba(27, 153, 139, 0.12);   /* pale wash of the teal behind buttons on hover */
     --card-background: rgba(255, 255, 255, .25);   /* soft fill behind the project cards (use transparent for none) */
+    --menu-text: rgb(255, 246, 224);    /* links and X in the open mobile menu (cream) */
     --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
 }
 
@@ -246,7 +247,7 @@ footer a:hover::before {
 /* Tablet and phone: hamburger menu */
 @media only screen and (max-width: 1050px) {
     #clicked {
-        color: var(--background);
+        color: var(--menu-text);
     }
 
     .sidebar ul li {
@@ -317,9 +318,10 @@ footer a:hover::before {
         top: 10px;
     }
 
-    /* Menu open: lines turn into an X */
+    /* Menu open: lines turn into an X, in the same color as the menu links */
     .sidebar .toggler:checked + .hamburger > div {
         transform: rotate(135deg);
+        background-color: var(--menu-text);
     }
 
     .sidebar .toggler:checked + .hamburger > div::before,
@@ -398,7 +400,7 @@ footer a:hover::before {
 
     .sidebar .menu > div > div > ul > li {
         list-style: none;
-        color: var(--background);
+        color: var(--menu-text);
         font-size: clamp(44px, 13vw, 72px);   /* grows with the screen, between 44 and 72px */
         font-weight: 700;
         line-height: 1.05;
