@@ -726,6 +726,22 @@ footer p {
     color: #666;
 }
 
+/* Category tags (Brand, Print, ...): small grey boxes under the title */
+.project-info .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.project-info .tags li {
+    font-size: 0.85em;
+    color: #555;
+    background-color: rgba(0, 0, 0, 0.06);   /* soft grey that works on any part of the gradient */
+    padding: 3px 10px;
+    border-radius: 4px;
+}
+
 /* "Read More" label: a hint that the card leads somewhere (especially on
    phones, where there's no hover). The whole card is the link, so the label
    fills teal whenever the card is hovered. */
