@@ -46,8 +46,8 @@
     //   hidden: the mouse is resting (or off the page)
     //   dim:    the mouse is moving somewhere on the page
     //   active: the mouse is near the slider, or it was just used
-    const HIDE_AFTER_MS = 2000; // mouse resting this long hides it
-    const ACTIVE_FOR_MS = 3000; // stays fully visible this long after being used
+    const HIDE_AFTER_MS = 1000; // mouse resting this long hides it
+    const ACTIVE_FOR_MS = 2000; // stays fully visible this long after being used
     const NEAR_PX = 120; // "near" = the mouse is within this distance of it
 
     let hideTimer;
