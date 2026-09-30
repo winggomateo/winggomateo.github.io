@@ -259,7 +259,7 @@ footer a:hover::before {
     .sidebar ul li a {
         padding: 5px 12px;
         margin: 0 -12px;
-        border-radius: 10px;
+        border-radius: 18px;   /* same roundness as the tags, scaled to this box's size */
         transition: color var(--hover-speed) var(--hover-ease),
             background-color var(--hover-speed) var(--hover-ease);
     }
@@ -285,12 +285,15 @@ footer a:hover::before {
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 5px;          /* square box around the shape */
+        margin: 0 -5px;
+        border-radius: 23px;   /* same roundness as the tags, scaled up */
     }
 
     .sidebar .home-shape {
         display: block;
-        width: 42px;    /* size of the shape */
-        height: 42px;
+        width: 44px;    /* size of the shape */
+        height: 44px;
         transition: transform var(--hover-speed) var(--hover-ease);
     }
 
