@@ -706,8 +706,21 @@ footer p {
     color: #666;
 }
 
-.project-info p:last-child {
-    margin-bottom: 0;
+/* "Read More" label: a hint that the card leads somewhere (especially on
+   phones, where there's no hover). The whole card is the link, so the label
+   fills teal whenever the card is hovered. */
+.read-more-btn {
+    border: 2px solid black;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 1em;
+    width: fit-content;
+    transition: background-color 0.3s ease;
+}
+
+.project-card:hover .read-more-btn,
+.project-card:focus-visible .read-more-btn {
+    background-color: var(--button-hover);
 }
 
 
@@ -894,6 +907,10 @@ footer p {
 
     .project-info {
         padding: 15px;
+    }
+
+    .read-more-btn {
+        width: auto;
     }
 }
 
