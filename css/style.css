@@ -96,7 +96,7 @@
     --text-color: rgb(0, 0, 0);
     --accent-color: #1b998b;            /* teal: active nav link, underlines, mobile menu */
     --accent-text: #137267;             /* darker teal for text, so it's easy to read on the light background */
-    --button-hover: #53d8c9;            /* light teal behind buttons on hover */
+    --button-hover: rgba(27, 153, 139, 0.18);   /* pale wash of the teal behind buttons on hover */
     --card-background: rgba(255, 255, 255, .25);   /* soft fill behind the project cards (use transparent for none) */
     --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
 }
@@ -716,12 +716,14 @@ footer p {
     padding: 10px 15px;
     font-size: 1em;
     width: fit-content;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .project-card:hover .read-more-btn,
 .project-card:focus-visible .read-more-btn {
     background-color: var(--button-hover);
+    border-color: var(--accent-color);
+    color: var(--accent-text);
 }
 
 
@@ -815,6 +817,8 @@ footer p {
 
 .textReturn:hover {
     background-color: var(--button-hover);
+    border-color: var(--accent-color);
+    color: var(--accent-text);
 }
 
 
