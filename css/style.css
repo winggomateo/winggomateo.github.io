@@ -1398,8 +1398,7 @@ footer p {
 }
 
 /* A frosted glass pill in the bottom-left corner of the intro, desktop only.
-   It appears when the mouse moves and fades away when the mouse rests
-   (see js/speed-control.js), and stays while you're using it. */
+   Hidden until the mouse moves; see the three states below. */
 .speed-control {
     position: absolute;
     left: 30px;       /* same spacing as the cards' gap from the sidebar line */
@@ -1423,8 +1422,16 @@ footer p {
     transition: opacity 0.4s var(--hover-ease), transform 0.4s var(--hover-ease);
 }
 
-.speed-control.visible,
-.speed-control:hover,
+/* Three states, set by js/speed-control.js:
+   hidden (default) -> faint while the mouse is moving -> full when the
+   mouse is near it or it was just used */
+.speed-control.dim {
+    opacity: 0.35;   /* how faint it is while the mouse moves elsewhere */
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.speed-control.active,
 .speed-control:focus-within {
     opacity: 1;
     transform: translateY(0);

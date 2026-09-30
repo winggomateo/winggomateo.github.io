@@ -1,7 +1,7 @@
 // Shape speed slider (home page, desktop only)
 // Lets visitors slow the floating shapes down or speed them up, within a
 // range where the motion still looks good. Middle of the slider = normal.
-// The slider appears when the mouse moves and fades away when it rests.
+// It stays hidden until the mouse moves (see the three states below).
 // The choice is remembered in this browser for next time.
 
 (() => {
@@ -11,7 +11,6 @@
 
     const MIN_SPEED = 0.5; // far left: half speed
     const MAX_SPEED = 2; // far right: twice as fast
-    const HIDE_AFTER = 2000; // milliseconds of no mouse movement before it fades away
 
     // Slider runs 0 to 100 with normal speed at 50; each half feels even
     const toSpeed = (value) => {
@@ -43,17 +42,79 @@
         } catch (e) {}
     });
 
-    // Show on mouse movement, hide again once the mouse rests
+    // Three states:
+    //   hidden: the mouse is resting (or off the page)
+    //   dim:    the mouse is moving somewhere on the page
+    //   active: the mouse is near the slider, or it was just used
+    const HIDE_AFTER_MS = 2000; // mouse resting this long hides it
+    const ACTIVE_FOR_MS = 3000; // stays fully visible this long after being used
+    const NEAR_PX = 120; // "near" = the mouse is within this distance of it
+
     let hideTimer;
+    let usedUntil = 0;
+    let lastX = null;
+    let lastY = null;
+
+    const isNear = (x, y) => {
+        const r = control.getBoundingClientRect();
+        const dx = Math.max(r.left - x, 0, x - r.right);
+        const dy = Math.max(r.top - y, 0, y - r.bottom);
+        return Math.hypot(dx, dy) <= NEAR_PX;
+    };
+
+    const setState = (state) => {
+        control.classList.toggle("dim", state === "dim");
+        control.classList.toggle("active", state === "active");
+    };
+
+    const update = (x, y) => {
+        const recentlyUsed = Date.now() < usedUntil;
+        setState(isNear(x, y) || recentlyUsed ? "active" : "dim");
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(rest, HIDE_AFTER_MS);
+    };
+
+    // Called once the mouse has rested for a while
+    const rest = () => {
+        // Resting right next to it keeps it visible
+        if (lastX !== null && isNear(lastX, lastY)) return;
+        // Just used: check again once that time is up
+        const usedLeft = usedUntil - Date.now();
+        if (usedLeft > 0) {
+            hideTimer = setTimeout(rest, usedLeft);
+            return;
+        }
+        setState("hidden");
+    };
+
     document.addEventListener(
         "mousemove",
-        () => {
-            control.classList.add("visible");
-            clearTimeout(hideTimer);
-            hideTimer = setTimeout(() => control.classList.remove("visible"), HIDE_AFTER);
+        (e) => {
+            // Browsers sometimes send "moves" when the page changes under a
+            // still mouse; only count real movement
+            if (e.clientX === lastX && e.clientY === lastY) return;
+            lastX = e.clientX;
+            lastY = e.clientY;
+            update(lastX, lastY);
         },
         { passive: true },
     );
+
+    const markUsed = () => {
+        usedUntil = Date.now() + ACTIVE_FOR_MS;
+        setState("active");
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(rest, ACTIVE_FOR_MS);
+    };
+    slider.addEventListener("input", markUsed);
+    slider.addEventListener("pointerdown", markUsed);
+
+    // Mouse left the window: hide
+    document.documentElement.addEventListener("mouseleave", () => {
+        clearTimeout(hideTimer);
+        lastX = lastY = null;
+        if (Date.now() >= usedUntil) setState("hidden");
+    });
 
     apply();
 })();
