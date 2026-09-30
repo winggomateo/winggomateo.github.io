@@ -709,7 +709,7 @@ footer p {
 
 .project-info h2 {
     font-size: 1.5em;
-    margin-bottom: 6px;   /* tags sit close to the title */
+    margin-bottom: 8px;   /* tags sit close to the title */
     color: #333;
     transition: color 0.3s ease;
 }
@@ -739,7 +739,7 @@ footer p {
     color: #555;
     background-color: rgba(0, 0, 0, 0.06);   /* soft grey that works on any part of the gradient */
     padding: 3px 10px;
-    border-radius: 4px;
+    border-radius: 10px;
 }
 
 /* "Read More" label: a hint that the card leads somewhere (especially on
