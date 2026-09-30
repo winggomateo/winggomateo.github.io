@@ -640,54 +640,25 @@ footer p {
 /* One card: image on the left, text on the right.
    The whole card is one link to the project page. */
 .project-card {
-    position: relative;
     text-align: left;
     display: flex;
     flex-wrap: wrap;
     width: 46vw;
     margin: 20px auto;
     border: 2px solid black;
+    overflow: hidden;
     background-color: var(--card-background);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover (and keyboard focus): the card lifts a little, a teal outline draws
-   itself around it (see .card-outline below), and the image zooms slightly */
+/* Hover (and keyboard focus): the card lifts a little, its border turns
+   teal, and the image zooms and darkens slightly */
 .project-card:hover,
 .project-card:focus-visible {
     transform: translateY(-4px);
+    border-color: var(--accent-color);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     outline: none;
-}
-
-/* The teal outline, added to each card by js/cards.js. It sits over the
-   black border, reaching a little outside it so it can be thicker, and
-   starts out hidden. */
-.card-outline {
-    --outline-width: 3px;   /* thickness of the teal outline (the black border is 2px) */
-    position: absolute;
-    top: calc(-1 * var(--outline-width));
-    left: calc(-1 * var(--outline-width));
-    width: calc(100% + 2 * var(--outline-width));
-    height: calc(100% + 2 * var(--outline-width));
-    pointer-events: none;
-}
-
-.card-outline rect {
-    fill: none;
-    stroke: var(--accent-color);
-    /* half is hidden past the edge; the extra 2px covers the black border fully
-       even when a card lands between whole pixels */
-    stroke-width: calc(2 * var(--outline-width) + 2px);
-    stroke-dasharray: var(--perimeter);
-    stroke-dashoffset: var(--perimeter);
-    transition: stroke-dashoffset 0.4s ease-in;   /* rewinding when the mouse leaves */
-}
-
-.project-card:hover .card-outline rect,
-.project-card:focus-visible .card-outline rect {
-    stroke-dashoffset: 0;
-    transition: stroke-dashoffset 0.9s ease-in-out;   /* drawing on hover: bigger = slower */
 }
 
 .project-image {
