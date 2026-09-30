@@ -1,7 +1,7 @@
 // Playing with the floating shapes (home page, desktop only)
 //  - Click a shape: it spins and bounces.
 //  - Grab a shape and throw it: it flies off, slows down, then drifts back
-//    to where it was floating.
+//    to where it was floating, back in step with the other shapes.
 //  - Shuffle button (in the glass pill): all shapes glide to a new layout.
 
 (() => {
@@ -49,8 +49,39 @@
 
         // After a throw: coast and slow down, then glide back to the path with
         // a gentle start and finish, and resume floating
+        // While held, the shape's path was paused. On release, jump its path
+        // back in step with the other shapes (so their fade cycles stay in
+        // sync), without the shape itself jumping: its position and opacity
+        // blend smoothly from where it is into the path's.
+        const resync = () => {
+            const drift = driftOf(el);
+            const ref = shapes
+                .filter((other) => other !== el && other.dataset.held !== "1")
+                .map(driftOf)
+                .find(Boolean);
+            if (!drift) return;
+            const before = el.getBoundingClientRect();
+            const opacityBefore = parseFloat(getComputedStyle(el).opacity);
+            if (ref) {
+                drift.currentTime = ref.currentTime;
+                drift.playbackRate = ref.playbackRate;
+            }
+            drift.play();
+            const after = el.getBoundingClientRect();
+            x += before.left - after.left;
+            y += before.top - after.top;
+            apply();
+            const opacityAfter = parseFloat(getComputedStyle(el).opacity);
+            el.animate([{ opacity: opacityBefore - opacityAfter }, { opacity: 0 }], {
+                duration: 1800,
+                easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+                composite: "add",
+            });
+        };
+
         const settle = () => {
             cancelAnimationFrame(loop);
+            resync();
             let last = performance.now();
             let returning = null; // { from: [x, y], start, duration } once gliding back
 
@@ -82,8 +113,6 @@
                     if (p >= 1) {
                         el.style.translate = "";
                         el.dataset.held = "";
-                        const drift = driftOf(el);
-                        if (drift && drift.playState === "paused") drift.play();
                         x = y = 0;
                         return;
                     }
