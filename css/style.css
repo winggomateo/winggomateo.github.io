@@ -13,6 +13,7 @@
    9.  Design page (project cards)
    10. Project pages (title, summary, images, "View Other Work")
    11. Floating shapes (home page animation)
+   11b. Section indicator (home page, desktop only)
    12. Archived pages
 
    Screen sizes used throughout:
@@ -1095,6 +1096,81 @@ footer p {
     87.5%   { opacity: 0; }
     93.75%  { opacity: 1; left: 75%; top: 45%; scale: 0.85; }   /* layout 8 */
     100%    { opacity: 0; }
+}
+
+
+/* 11b. Section indicator (home page, desktop only)
+   Two lines on the right edge: top = intro, bottom = projects. The line for
+   the section you're in is black; js/section-nav.js makes the black flow
+   from one to the other as you scroll, and jumps to a section on click.
+   ========================================================================== */
+
+/* Leave a gutter on the right of the home page, mirroring the sidebar */
+@media only screen and (min-width: 1051px) {
+    .home .wrapper .main-content {
+        width: calc(100% - 110px);
+        margin-right: 55px;
+    }
+
+    .home .project-card {
+        width: calc((100vw - 110px) / 2 - 44px);
+    }
+}
+
+@media only screen and (min-width: 1051px) and (max-width: 1350px) {
+    .home .project-card {
+        width: calc(100vw - 180px);
+    }
+}
+
+.section-nav {
+    position: fixed;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;          /* space between the two lines */
+    z-index: 60;
+}
+
+/* Each line sits in a wider invisible button, so it's easy to click */
+.section-nav button {
+    display: block;
+    width: 24px;
+    height: 110px;      /* length of each line */
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.section-nav .line {
+    position: relative;
+    display: block;
+    width: 3px;         /* thickness of the lines */
+    height: 100%;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.18);   /* the grey "inactive" line */
+    transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+/* The black part, shown or hidden by js/section-nav.js */
+.section-nav .fill {
+    position: absolute;
+    inset: 0;
+    background: black;
+}
+
+.section-nav button:hover .line {
+    background: rgba(0, 0, 0, 0.4);
+    width: 5px;
+}
+
+@media only screen and (max-width: 1050px) {
+    .section-nav {
+        display: none;
+    }
 }
 
 

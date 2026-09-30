@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/style.css" />
         <script src="js/gradient.js"></script>
     </head>
-    <body class="body">
+    <body class="body home">
         <!-- Floating shapes (decorative). Change width to resize each one. -->
         <div class="shapes" aria-hidden="true">
             <img id="shape-burst" src="img/shapes/burst.svg" alt="" width="150" />
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <!-- Projects (same cards as the Design page) -->
-                <div class="block3">
+                <div class="block3" id="work">
                     <!-- CMEP Prints & Signs -->
                     <a class="project-card" href="cmepPrints.html">
                         <div class="project-image">
@@ -296,6 +296,12 @@
         <!-- Film grain effect -->
         <canvas id="noise" class="noise"></canvas>
         <script src="js/shapes.js"></script>
+        <!-- Section indicator on the right edge (desktop only) -->
+        <nav class="section-nav" aria-label="Page sections">
+            <button type="button" aria-label="Back to top"><span class="line"><span class="fill"></span></span></button>
+            <button type="button" aria-label="Jump to projects"><span class="line"><span class="fill"></span></span></button>
+        </nav>
+        <script src="js/section-nav.js"></script>
         <script src="js/noise.js"></script>
     </body>
 </html>
