@@ -95,6 +95,7 @@
     --background: rgb(255, 246, 224);   /* cream, used for text on dark backgrounds */
     --text-color: rgb(0, 0, 0);
     --accent-color: #1b998b;            /* teal: active nav link, underlines, mobile menu */
+    --accent-text: #137267;             /* darker teal for text, so it's easy to read on the light background */
     --button-hover: #53d8c9;            /* light teal behind buttons on hover */
     --card-background: rgba(255, 255, 255, .25);   /* soft fill behind the project cards (use transparent for none) */
     --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
@@ -697,7 +698,7 @@ footer p {
 /* Title turns teal along with the border */
 .project-card:hover .project-info h2,
 .project-card:focus-visible .project-info h2 {
-    color: var(--accent-color);
+    color: var(--accent-text);
 }
 
 .project-info p {
