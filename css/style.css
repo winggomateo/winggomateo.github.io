@@ -1432,8 +1432,10 @@ footer p {
     transition-duration: 0.4s;   /* fading in */
 }
 
+/* Keyboard users (tabbing to the slider) also get the full state. Clicking
+   it with the mouse doesn't count, so it can still fade away afterwards. */
 .speed-control.active,
-.speed-control:focus-within {
+.speed-control:has(input:focus-visible) {
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
