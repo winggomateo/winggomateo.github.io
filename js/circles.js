@@ -2,7 +2,7 @@
 // Two effects on the floating circles:
 // 1. They fade out as you scroll down, so they're part of the intro and don't
 //    distract once you reach the project cards.
-// 2. They lean toward the mouse (see "Mouse interaction" further down).
+// 2. They get nudged aside when the mouse comes near (see "Mouse interaction").
 
 // Scroll fade
 
@@ -42,8 +42,10 @@
 })();
 
 // Mouse interaction
-// Each circle leans gently toward the cursor while it keeps drifting.
-// Circles move by different amounts, which gives a sense of depth.
+// The circles keep drifting on their own. When one floats near the cursor,
+// it gets gently nudged out of the way, then springs back to its path,
+// a bit like pushing something through water. Circles far from the mouse
+// don't react at all.
 // Skipped on phones/tablets (no cursor) and for visitors who have
 // "reduce motion" turned on in their system settings.
 
@@ -52,68 +54,68 @@
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!hasMouse || reduceMotion) return;
 
-    // Most each circle can move, in pixels. Bigger number = follows the mouse more.
-    // Use a negative number to make a circle move away from the mouse instead.
-    const PULL = {
-        circle2: 40,
-        circle3: 70,
-        circle4: 25,
-        circle5: 55,
-    };
+    const RADIUS = 220; // how close the mouse gets (in pixels) before a circle reacts
+    const PUSH = 70; // how far a circle can be nudged, in pixels
+    const SPRINGINESS = 0.05; // how strongly it's pulled back to its path (lower = floatier)
+    const FRICTION = 0.85; // how quickly the motion calms down (lower = less wobble)
 
-    // How quickly circles catch up to the mouse (0.01 = very slow, 0.3 = snappy)
-    const EASE = 0.06;
+    const layer = document.querySelector(".Circ");
+    const circles = ["circle2", "circle3", "circle4", "circle5"]
+        .map((id) => document.getElementById(id))
+        .filter(Boolean)
+        .map((el) => ({ el, x: 0, y: 0, vx: 0, vy: 0 }));
+    if (!layer || !circles.length) return;
 
-    const circles = Object.keys(PULL)
-        .map((id) => ({ el: document.getElementById(id), pull: PULL[id], x: 0, y: 0 }))
-        .filter((c) => c.el);
-    if (!circles.length) return;
-
-    // Mouse position from -1 to 1, with 0 at the center of the screen
-    let mouseX = 0;
-    let mouseY = 0;
-    let running = false;
-
-    const step = () => {
-        let stillMoving = false;
-
-        circles.forEach((c) => {
-            const targetX = mouseX * c.pull;
-            const targetY = mouseY * c.pull;
-            c.x += (targetX - c.x) * EASE;
-            c.y += (targetY - c.y) * EASE;
-            c.el.style.transform = `translate(${c.x.toFixed(1)}px, ${c.y.toFixed(1)}px)`;
-
-            if (Math.abs(targetX - c.x) > 0.1 || Math.abs(targetY - c.y) > 0.1) {
-                stillMoving = true;
-            }
-        });
-
-        // Stop animating once everything has settled, to save battery
-        running = stillMoving;
-        if (running) window.requestAnimationFrame(step);
-    };
+    let mouseX = -9999;
+    let mouseY = -9999;
 
     window.addEventListener(
         "mousemove",
         (e) => {
-            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-            mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-            if (!running) {
-                running = true;
-                window.requestAnimationFrame(step);
-            }
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         },
         { passive: true },
     );
 
-    // Drift back to the resting position when the mouse leaves the window
+    // Mouse left the window: let everything settle back
     document.addEventListener("mouseleave", () => {
-        mouseX = 0;
-        mouseY = 0;
-        if (!running) {
-            running = true;
-            window.requestAnimationFrame(step);
-        }
+        mouseX = -9999;
+        mouseY = -9999;
     });
+
+    const step = () => {
+        // Skip the work while the circles are faded out
+        if (parseFloat(layer.style.opacity || 1) > 0) {
+            circles.forEach((c) => {
+                // Where the circle would be without the nudge
+                const box = c.el.getBoundingClientRect();
+                const cx = box.left + box.width / 2 - c.x;
+                const cy = box.top + box.height / 2 - c.y;
+
+                // Push away from the mouse, harder the closer it is
+                const dx = cx - mouseX;
+                const dy = cy - mouseY;
+                const distance = Math.hypot(dx, dy) || 1;
+                const reach = RADIUS + box.width / 2;
+                let targetX = 0;
+                let targetY = 0;
+                if (distance < reach) {
+                    const strength = (1 - distance / reach) ** 2 * PUSH;
+                    targetX = (dx / distance) * strength;
+                    targetY = (dy / distance) * strength;
+                }
+
+                // Spring toward the target, with friction so it eases and settles
+                c.vx = (c.vx + (targetX - c.x) * SPRINGINESS) * FRICTION;
+                c.vy = (c.vy + (targetY - c.y) * SPRINGINESS) * FRICTION;
+                c.x += c.vx;
+                c.y += c.vy;
+                c.el.style.transform = `translate(${c.x.toFixed(1)}px, ${c.y.toFixed(1)}px)`;
+            });
+        }
+        window.requestAnimationFrame(step);
+    };
+
+    window.requestAnimationFrame(step);
 })();
