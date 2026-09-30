@@ -1354,42 +1354,35 @@ footer p {
    grid is narrowed (evenly on both sides), so the dividing line under the
    name still runs all the way across. */
 @media only screen and (min-width: 1051px) {
-    /* The same space (--grid-gap) sits between the sidebar line and the
-       cards, between the two columns, and between the cards and the scroll
-       lines. The extra 30px on the right is where the lines are.
-       Widths are shares of the grid (%), so a visible scrollbar can't push
-       the second column onto a new row. */
-    .home .wrapper .block3 {
+    /* Project card grid (Home and Design pages). The same space
+       (--grid-gap) sits between the sidebar line and the cards, between
+       the two columns, and at the right edge. Widths are shares of the
+       grid (%), so a visible scrollbar can't push the second column onto
+       a new row. */
+    .wrapper .block3:has(> .project-card) {
         --grid-gap: 30px;
         justify-content: flex-start;
         column-gap: var(--grid-gap);
         padding-left: var(--grid-gap);
+        padding-right: var(--grid-gap);
+    }
+
+    /* Home page: 30px more on the right, where the scroll lines are */
+    .home .wrapper .block3:has(> .project-card) {
         padding-right: calc(30px + var(--grid-gap));
     }
 
-    .home .project-card {
+    .block3 > .project-card {
         width: 100%;               /* one column: the full width of the grid */
         margin-left: 0;
         margin-right: 0;
     }
 }
 
+/* Two columns: each card is half the grid, minus half the gap */
 @media only screen and (min-width: 1351px) {
-    /* Two columns on the home page: each card is half the grid, minus half the gap */
-    .home .project-card {
+    .block3 > .project-card {
         width: calc((100% - var(--grid-gap)) / 2);
-    }
-
-    /* Design page: with an odd number of cards, the last one sits alone on
-       its row. An invisible card-sized placeholder fills the empty spot next
-       to it, so the last card lines up with the left column instead of
-       floating in the middle. (With an even number, the placeholder drops to
-       its own row, which has no height, so it changes nothing.) The home
-       page lines its cards up from the left, so it doesn't need this. */
-    .block3:not(.home .block3):has(> .project-card)::after {
-        content: "";
-        width: 46vw;              /* same width as a card */
-        margin: 0 auto;           /* same side spacing as a card, no height */
     }
 }
 
