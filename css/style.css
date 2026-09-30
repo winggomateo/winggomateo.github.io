@@ -96,7 +96,7 @@
     --text-color: rgb(0, 0, 0);
     --accent-color: #1b998b;            /* teal: active nav link, underlines, mobile menu */
     --button-hover: #53d8c9;            /* light teal behind buttons on hover */
-    --card-background: rgba(255, 255, 255, 0.45);   /* soft fill behind the project cards (use transparent for none) */
+    --card-background: rgba(255, 255, 255, .25);   /* soft fill behind the project cards (use transparent for none) */
     --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
 }
 
