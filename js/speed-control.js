@@ -116,5 +116,42 @@
         if (Date.now() >= usedUntil) setState("hidden");
     });
 
+    // Eye button: hide or show the shapes. While hidden, their paths are
+    // paused together (so they stay in step) and the other controls rest.
+    const toggle = control.querySelector(".shapes-toggle");
+    const layer = document.querySelector(".shapes");
+    if (toggle && layer) {
+        const setShown = (shown, remember) => {
+            layer.classList.toggle("off", !shown);
+            control.classList.toggle("shapes-off", !shown);
+            toggle.setAttribute("aria-pressed", String(shown));
+            toggle.setAttribute("aria-label", shown ? "Hide the floating shapes" : "Show the floating shapes");
+            document.getAnimations().forEach((animation) => {
+                if (animation.animationName && animation.animationName.startsWith("drift-")) {
+                    if (shown) animation.play();
+                    else animation.pause();
+                }
+            });
+            if (remember) {
+                try {
+                    localStorage.setItem("shapesShown", String(shown));
+                } catch (e) {}
+            }
+        };
+        let shown = true;
+        try {
+            shown = localStorage.getItem("shapesShown") !== "false";
+        } catch (e) {}
+        // On page load, apply the saved choice instantly (no fade)
+        layer.style.transition = "none";
+        setShown(shown, false);
+        layer.getBoundingClientRect();
+        requestAnimationFrame(() => (layer.style.transition = ""));
+        toggle.addEventListener("click", () => {
+            shown = !shown;
+            setShown(shown, true);
+        });
+    }
+
     apply();
 })();

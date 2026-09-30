@@ -137,7 +137,7 @@
 
     const step = (now) => {
         // Skip the work while the shapes are faded out
-        if (parseFloat(layer.style.opacity || 1) > 0) {
+        if (parseFloat(layer.style.opacity || 1) > 0 && !layer.classList.contains("off")) {
             // Time since the last frame, so the motion is the same speed on
             // 60Hz and 120Hz screens
             const dt = Math.min((now - (lastFrame ?? now)) / 1000, 0.1);

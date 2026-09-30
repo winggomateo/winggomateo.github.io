@@ -1179,6 +1179,16 @@ footer p {
    ========================================================================== */
 /* On desktop the shapes can be clicked (spin) and grabbed (throw); see
    js/shape-play.js. Once scrolled away they stop catching clicks. */
+/* Shapes turned off with the eye button: fade the whole layer away */
+.shapes.off {
+    filter: opacity(0);
+    pointer-events: none;
+}
+
+.shapes.off img {
+    pointer-events: none !important;
+}
+
 .shapes.playable img {
     pointer-events: auto;
     cursor: grab;
@@ -1195,7 +1205,7 @@ footer p {
 }
 
 .shapes {
-    transition: opacity 0.2s linear;   /* smooths the fade in js/shapes.js */
+    transition: opacity 0.2s linear, filter 0.6s ease;   /* scroll fade, and the eye button's fade */
     position: fixed;
     z-index: 1;       /* above the intro text, below the menu and the glass pill */
     pointer-events: none;
@@ -1475,7 +1485,8 @@ footer p {
     background: rgba(0, 0, 0, 0.15);
 }
 
-/* Shuffle button: sends the shapes gliding to a new layout */
+/* Show/hide button for the shapes (eye icon), and the shuffle button */
+.shapes-toggle,
 .shuffle-btn {
     display: flex;
     align-items: center;
@@ -1492,11 +1503,35 @@ footer p {
     transition: color var(--hover-speed) var(--hover-ease), background-color var(--hover-speed) var(--hover-ease);
 }
 
+.shapes-toggle:hover,
 .shuffle-btn:hover {
     color: var(--accent-text);
     background-color: var(--button-hover);
 }
 
+.shapes-toggle {
+    margin: -4px 0 -4px -6px;
+}
+
+/* Eye open while the shapes show, crossed out while they're hidden */
+.shapes-toggle .eye-closed,
+.shapes-toggle[aria-pressed="false"] .eye-open {
+    display: none;
+}
+
+.shapes-toggle[aria-pressed="false"] .eye-closed {
+    display: block;
+}
+
+/* While the shapes are hidden, the speed and shuffle controls rest */
+.speed-control.shapes-off .speed-slider,
+.speed-control.shapes-off .shuffle-btn {
+    opacity: 0.35;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.shapes-toggle svg,
 .shuffle-btn svg {
     width: 18px;
     height: 18px;
@@ -1507,6 +1542,7 @@ footer p {
     stroke-linejoin: round;
 }
 
+.shapes-toggle:focus-visible,
 .shuffle-btn:focus-visible {
     outline: 2px solid var(--accent-text);
     outline-offset: 2px;

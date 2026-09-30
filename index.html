@@ -75,6 +75,11 @@
                     <!-- Slider to slow down / speed up the floating shapes -->
                     <!-- Glass pill: shape speed slider and shuffle button (desktop only) -->
                     <div class="speed-control">
+                        <button type="button" class="shapes-toggle" aria-pressed="true" aria-label="Show the floating shapes">
+                            <svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></svg>
+                            <svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" /><path d="M4 4l16 16" /></svg>
+                        </button>
+                        <span class="pill-divider" aria-hidden="true"></span>
                         <label class="speed-slider">
                             <span>Slow</span>
                             <input type="range" min="0" max="100" value="50" aria-label="Speed of the floating shapes" />
