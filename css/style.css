@@ -372,14 +372,14 @@ footer p {
 
 /* Name and tagline, fills the first screen with the text a little above
    center. The 4em at the bottom balances the 2em gap above the block; the
-   10vh lifts the text higher (bigger number = higher). */
+   5vh lifts the text higher (bigger number = higher). */
 .wrapper .block1 {
     border-bottom: 2px solid black;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-bottom: calc(4em + 10vh);
+    padding-bottom: calc(4em + 5vh);
 }
 
 .wrapper .main-content .header {
