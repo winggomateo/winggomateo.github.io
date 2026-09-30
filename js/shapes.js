@@ -149,8 +149,8 @@
                 let targetY = 0;
                 let targetShrink = 0;
                 let targetTurn = 0;
-                // Don't dodge while being held, or while the mouse is right on
-                // top of it (so it can be clicked or grabbed; see js/shape-play.js)
+                // Shapes dodge the mouse (it's part of the fun of catching them),
+                // but hold still once grabbed (see js/shape-play.js)
                 let frozen = c.el.dataset.held === "1";
 
                 if (hasMouse) {
@@ -165,7 +165,6 @@
                     const dy = cy - mouseY;
                     const distance = Math.hypot(dx, dy) || 1;
                     const reach = RADIUS + size / 2;
-                    if (distance < size * 0.45) frozen = true;
                     if (distance < reach) {
                         const closeness = (1 - distance / reach) ** 2; // 0 far away, 1 right on top
                         const awayX = dx / distance;
