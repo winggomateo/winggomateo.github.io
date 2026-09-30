@@ -331,7 +331,7 @@ footer a:hover::before {
         justify-content: center;
         padding: 5px;          /* square box around the shape */
         margin: 0 -5px;
-        border-radius: 23px;   /* same roundness as the tags, scaled up */
+        border-radius: 50%;    /* a full circle */
     }
 
     /* The burst silhouette is drawn right in each page's menu (so it can
