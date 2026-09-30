@@ -333,12 +333,14 @@ footer a:hover::before {
         width: 44px;    /* size of the shape */
         height: 44px;
         fill: var(--text-color);
-        transition: transform var(--hover-speed) var(--hover-ease),
+        animation: menu-burst-spin 24s linear infinite;   /* always turning slowly */
+        transition: rotate var(--hover-speed) var(--hover-ease),
             fill var(--hover-speed) var(--hover-ease);
     }
 
+    /* On hover it gets an extra quarter-ish turn on top of the slow spin */
     .sidebar .home-link:hover .home-shape {
-        transform: rotate(45deg);
+        rotate: 45deg;
         fill: var(--accent-text);
     }
 
@@ -598,10 +600,6 @@ footer a:hover::before {
         opacity: 1;
         transition-delay: 0.25s;
         animation: menu-burst-spin 24s linear infinite;
-    }
-
-    @keyframes menu-burst-spin {
-        to { transform: rotate(360deg); }
     }
 
     /* Smaller links (Email, Instagram) under the main ones */
@@ -1390,6 +1388,19 @@ footer p {
 @media only screen and (max-width: 1050px) {
     .section-nav {
         display: none;
+    }
+}
+
+
+/* Slow spin used by the burst in the desktop sidebar and the phone menu */
+@keyframes menu-burst-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar .home-shape,
+    .sidebar .menu-burst {
+        animation: none !important;
     }
 }
 
