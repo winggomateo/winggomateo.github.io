@@ -330,23 +330,32 @@ footer a:hover::before {
         background: black;
     }
 
-    /* Email icon at the bottom of the sidebar */
-    .side-email {
+    /* Email and Instagram icons at the bottom of the sidebar (email on top) */
+    .side-links {
         position: fixed;
-        left: calc((var(--sidebar-width) - 24px) / 2);   /* centered in the sidebar */
+        left: 0;
         bottom: 22px;
+        width: var(--sidebar-width);
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .side-link {
+        display: block;
         width: 24px;
         height: 24px;
-        z-index: 2;
         color: var(--text-color);
         transition: color var(--hover-speed) var(--hover-ease);
     }
 
-    .side-email:hover {
+    .side-link:hover {
         color: var(--accent-text);
     }
 
-    .side-email svg {
+    .side-link svg {
         display: block;
         width: 100%;
         height: 100%;
@@ -355,11 +364,15 @@ footer a:hover::before {
         stroke-width: 1.8;
         stroke-linejoin: round;
     }
+
+    .side-link svg .dot {
+        fill: currentColor;
+    }
 }
 
-/* Tablet and phone: the email icon is in the menu instead */
+/* Tablet and phone: the email and Instagram links are in the menu instead */
 @media only screen and (max-width: 1050px) {
-    .side-email {
+    .side-links {
         display: none;
     }
 }
