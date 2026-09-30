@@ -72,6 +72,12 @@
                         <p>Based in New York City</p>
                         <p>Designer & Photographer</p>
                     </div>
+                    <!-- Slider to slow down / speed up the floating shapes -->
+                    <label class="speed-control">
+                        <span>Slow</span>
+                        <input type="range" min="0" max="100" value="50" aria-label="Speed of the floating shapes" />
+                        <span>Fast</span>
+                    </label>
                 </div>
                 <!-- Projects (same cards as the Design page) -->
                 <div class="block3" id="work">
@@ -322,6 +328,7 @@
         <!-- Film grain effect -->
         <canvas id="noise" class="noise"></canvas>
         <script src="js/shapes.js"></script>
+        <script src="js/speed-control.js"></script>
         <!-- Section indicator on the right edge (desktop only) -->
         <nav class="section-nav" aria-label="Page sections">
             <button type="button" aria-label="Back to top"><span class="line"><span class="fill"></span></span></button>

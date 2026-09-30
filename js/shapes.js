@@ -125,7 +125,9 @@
         });
     }
 
-    const start = performance.now();
+    // "Time" for the bobbing, swaying and breathing. It moves forward at the
+    // speed set by the slider on the homepage (window.shapeSpeed, 1 = normal).
+    let t = 0;
     let lastFrame = null;
 
     // Turn a "per frame at 60fps" easing amount into one that fits this frame's length
@@ -134,11 +136,11 @@
     const step = (now) => {
         // Skip the work while the shapes are faded out
         if (parseFloat(layer.style.opacity || 1) > 0) {
-            const t = (now - start) / 1000;
             // Time since the last frame, so the motion is the same speed on
             // 60Hz and 120Hz screens
             const dt = Math.min((now - (lastFrame ?? now)) / 1000, 0.1);
             lastFrame = now;
+            t += dt * (window.shapeSpeed ?? 1);
 
             shapes.forEach((c) => {
                 let targetX = 0;

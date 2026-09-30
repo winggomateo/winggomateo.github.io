@@ -1392,6 +1392,88 @@ footer p {
 }
 
 
+/* Shape speed slider (home page, see js/speed-control.js) */
+.wrapper .block1 {
+    position: relative;
+}
+
+.speed-control {
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #555;
+    cursor: pointer;
+}
+
+.speed-control input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 130px;
+    height: 20px;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* The track: a thin black line */
+.speed-control input::-webkit-slider-runnable-track {
+    height: 2px;
+    background: var(--text-color);
+}
+
+.speed-control input::-moz-range-track {
+    height: 2px;
+    background: var(--text-color);
+}
+
+/* The handle: a small black circle that turns teal on hover */
+.speed-control input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: var(--text-color);
+    transition: background-color var(--hover-speed) var(--hover-ease);
+}
+
+.speed-control input::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--text-color);
+}
+
+.speed-control:hover input::-webkit-slider-thumb {
+    background: var(--accent-text);
+}
+
+.speed-control:hover input::-moz-range-thumb {
+    background: var(--accent-text);
+}
+
+.speed-control input:focus-visible {
+    outline: 2px solid var(--accent-text);
+    outline-offset: 4px;
+}
+
+/* On tablets and phones it sits under the tagline instead */
+@media only screen and (max-width: 1050px) {
+    .speed-control {
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
 /* Slow spin used by the burst in the desktop sidebar and the phone menu */
 @keyframes menu-burst-spin {
     to { transform: rotate(360deg); }
