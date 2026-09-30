@@ -370,10 +370,16 @@ footer p {
 /* 6. Home page
    ========================================================================== */
 
-/* Name and tagline, fills the first screen */
+/* Name and tagline, fills the first screen with the text centered in it.
+   (The extra space at the bottom balances the 2em gap above the block, so
+   the text sits in the middle of what you actually see.) */
 .wrapper .block1 {
     border-bottom: 2px solid black;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 4em;
 }
 
 .wrapper .main-content .header {
@@ -381,9 +387,12 @@ footer p {
     user-select: none;
 }
 
-/* Line spacing for the name (the font's default is about 1.25; lower = tighter) */
+/* Line spacing for the name (the font's default is about 1.25; lower = tighter).
+   The bottom padding keeps the gap above "Based in New York City" the same
+   as before, so only the space between the name's lines changes. */
 .wrapper .main-content .header h1 {
     line-height: 1.1;
+    padding-bottom: 0.08em;
 }
 
 /* Wraps the About page content */
