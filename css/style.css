@@ -1105,11 +1105,14 @@ footer p {
    from one to the other as you scroll, and jumps to a section on click.
    ========================================================================== */
 
-/* Leave a gutter on the right of the home page for the lines, mirroring the
-   sidebar. Only the project grid is narrowed, so the dividing line under the
+/* Make room on the right of the home page for the lines. Only the project
+   grid is narrowed (evenly on both sides), so the dividing line under the
    name still runs all the way across. */
 @media only screen and (min-width: 1051px) {
+    /* Equal padding on both sides keeps the cards centered between the
+       sidebar line and the right edge of the screen, same as your name */
     .home .wrapper .block3 {
+        padding-left: 55px;
         padding-right: 55px;
     }
 
