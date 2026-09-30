@@ -100,6 +100,7 @@
     --button-hover: rgba(27, 153, 139, 0.12);   /* pale wash of the teal behind buttons on hover */
     --card-background: rgba(255, 255, 255, .25);   /* soft fill behind the project cards (use transparent for none) */
     --menu-text: #ebfff3;               /* links and X in the open mobile menu (between the gradient mint and white) */
+    --sidebar-width: 70px;              /* width of the sideways menu on desktop */
     --menu-speed: 1s;                   /* how fast the mobile menu circle opens */
     --hover-speed: 0.5s;                /* how long the project card hover takes (bigger = slower, smoother) */
     --hover-ease: cubic-bezier(0.4, 0, 0.2, 1);   /* starts gently and settles gently */
@@ -218,7 +219,7 @@ footer a:hover::before {
        from the bottom of the screen to the top. */
     .sidebar {
         width: 100vh;
-        height: 55px;
+        height: var(--sidebar-width);   /* the bar is on its side, so its height is the width on screen */
         position: fixed;
         background: transparent;
         transform-origin: left top;
@@ -276,7 +277,7 @@ footer a:hover::before {
     /* Email icon at the bottom of the sidebar */
     .side-email {
         position: fixed;
-        left: 15px;
+        left: calc((var(--sidebar-width) - 24px) / 2);   /* centered in the sidebar */
         bottom: 22px;
         width: 24px;
         height: 24px;
@@ -503,7 +504,7 @@ footer a:hover::before {
     height: auto;
     text-align: center;
     padding-top: 2em;
-    margin-left: 55px;   /* leaves room for the sideways nav bar */
+    margin-left: var(--sidebar-width);   /* leaves room for the sideways nav bar */
     margin-right: 0;
 }
 
@@ -1191,13 +1192,13 @@ footer p {
     }
 
     .home .project-card {
-        width: calc((100vw - 85px - 4 * var(--grid-gap)) / 2);
+        width: calc((100vw - var(--sidebar-width) - 30px - 4 * var(--grid-gap)) / 2);
     }
 }
 
 @media only screen and (min-width: 1051px) and (max-width: 1350px) {
     .home .project-card {
-        width: calc(100vw - 85px - 2 * var(--grid-gap));
+        width: calc(100vw - var(--sidebar-width) - 30px - 2 * var(--grid-gap));
     }
 }
 
