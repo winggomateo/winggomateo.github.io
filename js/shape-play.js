@@ -138,21 +138,29 @@
         const current = Math.floor(((drifts[0].currentTime % loopMs) + loopMs) % loopMs / LAYOUT_MS);
         let next = current;
         while (next === current) next = Math.floor(Math.random() * LAYOUTS);
-        // the moment each layout is fully in place
-        const target = next * LAYOUT_MS + LAYOUT_MS / 2;
+        // Land a little before the new layout is fully in place, so the shapes
+        // are still fading in when they arrive and then carry on as usual
+        const target = next * LAYOUT_MS + LAYOUT_MS / 2 - 800;
 
         shapes.forEach((el) => {
             const drift = driftOf(el);
             if (!drift || el.dataset.held === "1") return;
             const before = el.getBoundingClientRect();
+            const opacityBefore = parseFloat(getComputedStyle(el).opacity);
             drift.currentTime = target;
             const after = el.getBoundingClientRect();
+            const opacityAfter = parseFloat(getComputedStyle(el).opacity);
             if (reduceMotion) return;
-            // glide from where it was to its spot in the new layout
+            // Glide from the old spot to the new one, and blend the opacity
+            // from the old value into the path's own fade (added on top of
+            // the path's animation, so nothing jumps at the start or end)
             el.animate(
                 [
-                    { translate: `${before.left - after.left}px ${before.top - after.top}px`, opacity: 1 },
-                    { translate: "0 0", opacity: 1 },
+                    {
+                        translate: `${before.left - after.left}px ${before.top - after.top}px`,
+                        opacity: opacityBefore - opacityAfter,
+                    },
+                    { translate: "0 0", opacity: 0 },
                 ],
                 { duration: 1100, easing: "cubic-bezier(0.4, 0, 0.2, 1)", composite: "add" },
             );
