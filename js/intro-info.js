@@ -32,7 +32,11 @@
         passive: true,
     });
 
-    const openHeight = () => Math.min(body.scrollHeight + 4, window.innerHeight - 180);
+    // Open almost to the top of the screen, leaving a small gap (TOP_GAP) so
+    // the page still shows above it. On a short window the text scrolls
+    // inside the drawer.
+    const TOP_GAP = 32;
+    const openHeight = () => Math.max(clip.getBoundingClientRect().bottom - TOP_GAP, 160);
 
     const setOpen = (open) => {
         place();

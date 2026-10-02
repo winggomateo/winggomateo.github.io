@@ -1611,6 +1611,11 @@ footer p {
     overflow: hidden;
 }
 
+/* Once open, the text can scroll inside if the window is short */
+.intro-drawer.open .drawer-panel {
+    overflow-y: auto;
+}
+
 .drawer-body {
     padding: 56px 70px 40px;
     opacity: 0;
