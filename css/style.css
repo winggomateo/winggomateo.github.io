@@ -1247,6 +1247,10 @@ footer p {
    (the same cards as on the Design page), each with a small grey label,
    then the "All projects" button */
 .case-end {
+    display: grid;
+    grid-template-columns: 1fr auto;   /* heading left, "All projects" right */
+    align-items: center;
+    column-gap: 30px;
     padding: 10px 5% 70px;
     text-align: left;
 }
@@ -1258,10 +1262,10 @@ footer p {
 }
 
 .case-more {
+    grid-column: 1 / -1;     /* full width, under the heading row */
     display: grid;
     grid-template-columns: 1fr;   /* one card per row, like the Design page */
     gap: 30px;               /* same gap as the homepage card grid */
-    margin-bottom: 40px;
 }
 
 .case-more .project-card {
@@ -1287,10 +1291,12 @@ footer p {
     color: #5a5a5a;   /* same accessible grey as the captions */
 }
 
-/* "All projects": the site's outlined button, centered */
-.case-end .textReturn {
-    display: table;
-    margin: 0 auto;
+/* "All projects": the site's outlined button, at the right end of the
+   heading row */
+.case-end .case-all {
+    margin: 0 0 20px;
+    font-size: 1.1em;
+    white-space: nowrap;
 }
 
 /* Phones and tablets: details stack above the description */
@@ -1304,6 +1310,18 @@ footer p {
     .case-pair {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+
+    /* End of page: "All projects" moves under the cards, full width */
+    .case-end {
+        grid-template-columns: 1fr;
+    }
+
+    .case-end .case-all {
+        order: 1;
+        margin: 30px 0 0;
+        padding: 12px 16px;
+        text-align: center;
     }
 
 
