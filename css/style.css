@@ -1136,10 +1136,12 @@ footer p {
     margin: 0 0 50px;
 }
 
-.case-hero img {
+.case-hero img,
+.case-figure img {
     display: block;
     width: 100%;
     height: auto;
+    border: 2px solid black;   /* same black outline as the project cards */
 }
 
 .case-info {
@@ -1186,12 +1188,6 @@ footer p {
 .case-figure {
     margin: 0 0 40px;
     padding: 0 5%;
-}
-
-.case-figure img {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 .case-figure figcaption {
