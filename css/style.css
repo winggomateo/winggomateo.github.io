@@ -1481,9 +1481,11 @@ footer p {
 
 /* 6b. Introduction (home page)
    Desktop: the tagline under the name is a button with a grey "+ Info"
-   line. Clicking it slides the info drawer, a folder, up from the bottom
-   of the screen over the intro. Close with the × in the folder's tab,
-   Escape, or the tagline again. Nothing shows until it's clicked. Phones and tablets: the same paragraph is a short section between
+   line. Nothing shows at rest. Hovering the tagline makes the info drawer,
+   a folder, peek up from the bottom of the screen with a little wobble;
+   clicking slides it open over the intro. Close with the × in the
+   folder's tab, Escape, or the tagline again. Phones and tablets: the
+   same paragraph is a short section between
    the intro and the project cards. Behavior is in js/intro-info.js.
    ========================================================================== */
 /* The tagline sits above the floating shapes (z-index 1), so a shape
@@ -1562,9 +1564,9 @@ footer p {
 }
 
 .intro-drawer {
-    --tab-h: 34px;
-    --tab-w: 170px;
-    --tab-slope: 30px;
+    --tab-h: 42px;
+    --tab-w: 96px;
+    --tab-slope: 36px;
     position: absolute;
     left: 0;
     right: 0;
@@ -1605,6 +1607,29 @@ footer p {
     stroke: black;
     stroke-width: 2;
     stroke-linejoin: miter;
+}
+
+/* Peek (tagline hovered): the folder pops up just enough to show its tab
+   and top edge, wobbles a little, then holds while the mouse stays there.
+   It can be clicked to open, too. */
+.intro-drawer.peek {
+    height: calc(var(--tab-h) + 14px);
+    visibility: visible;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: visibility 0s;
+    animation: drawer-jiggle 0.75s ease-out, gradient 15s ease infinite;
+    animation-delay: 0s, var(--gradient-delay, 0s);
+}
+
+@keyframes drawer-jiggle {
+    0%   { height: 0; }
+    30%  { height: calc(var(--tab-h) + 26px); }
+    50%  { height: calc(var(--tab-h) + 7px); }
+    66%  { height: calc(var(--tab-h) + 19px); }
+    80%  { height: calc(var(--tab-h) + 11px); }
+    91%  { height: calc(var(--tab-h) + 16px); }
+    100% { height: calc(var(--tab-h) + 14px); }
 }
 
 /* Open: the script sets the height to fit the text */
@@ -1734,9 +1759,14 @@ footer p {
 
 @media (prefers-reduced-motion: reduce) {
     .intro-drawer,
+    .intro-drawer.peek,
     .intro-drawer.open,
     .drawer-body {
         transition-duration: 0s !important;
+    }
+
+    .intro-drawer.peek {
+        animation: gradient 15s ease infinite;
     }
 }
 
