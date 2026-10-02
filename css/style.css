@@ -1487,6 +1487,13 @@ footer p {
    rest. Phones and tablets: the same paragraph is a short section between
    the intro and the project cards. Behavior is in js/intro-info.js.
    ========================================================================== */
+/* The tagline sits above the floating shapes (z-index 1), so a shape
+   drifting past never blocks the hover or click */
+.wrapper .main-content .info {
+    position: relative;
+    z-index: 3;
+}
+
 .tagline-btn {
     all: unset;
     cursor: pointer;
