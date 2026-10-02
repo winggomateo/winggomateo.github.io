@@ -58,72 +58,142 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
                         <h1>CMEP Calendar</h1>
-                        <p>September 2022</p>
-                        <p><b>Lead Designer</b></p>
-                        <p><i>Poster & Layout Design</i></p>
-                        <p>
-                            <small
-                                ><i
-                                    >This was a project for
-                                    <a href="#">The Center of Multicultural Education and Programs</a> at NYU</i
-                                ></small
-                            >
-                        </p>
+                        <p class="case-year"><time datetime="2022">2022</time></p>
                     </div>
-                    <div class="project-right">
-                        <p>
-                            Each semester, the Center for Multicultural Education and Programs (CMEP) distributes a
-                            calendar to keep the NYU community informed of major events and programs. Each calendar also
-                            features a quote that represents the semester, with the Fall Semester of 2022 highlighting
-                            the June Jordan quote, 'We are the ones we have been waiting for.' The design not only
-                            serves as an informative tool but also features the quote on the reverse side, transforming
-                            the calendar into a poster and adding an aesthetic dimension.
-                        </p>
-                    </div>
-                </div>
+                    <p class="case-summary">
+                        A double-sided calendar and poster for NYU’s CMEP, featuring a June Jordan
+                        quote.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Poster</li>
+                        <li>Layout</li>
+                    </ul>
+                </header>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <!-- Main project image -->
+                <figure class="case-hero">
                     <img
                         src="design/Calendar/Calendar1.png"
-                        alt='Calendar poster artwork with colorful blocks reading "We are the ones we have been waiting for," a June Jordan quote' />
+                        alt="Calendar poster artwork with colorful blocks reading &quot;We are the ones we have been waiting for,&quot; a June Jordan quote" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Lead Designer</p>
+                        <p><b>Tools:</b> Illustrator</p>
+                    </div>
+                    <div class="case-description">
+                        <p>
+                            Each semester, the Center for Multicultural Education and Programs
+                            (CMEP) distributes a calendar to keep the NYU community informed of
+                            major events and programs. Each calendar also features a quote that
+                            represents the semester, with the Fall Semester of 2022 highlighting the
+                            June Jordan quote, ‘We are the ones we have been waiting for.’ The
+                            design not only serves as an informative tool but also features the
+                            quote on the reverse side, transforming the calendar into a poster and
+                            adding an aesthetic dimension.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <p>
-                        Given the diverse and expansive community at NYU, accessibility is a key consideration in the
-                        design of the calendar. All text is set to a minimum of 14pt to ensure readability.
-                        Additionally, a QR code on the calendar links to a digital version, where the events can be
-                        accessed and read aloud using text-to-speech technology.
-                    </p>
-                    <p>
-                        In addition to the Calendar, the poster side was reformatted into small sticker for distribution
-                        and a large wall vinyl to be hung in the CMEP student lounge.
-                    </p>
-                </div>
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <!-- Calendar -->
+                <figure class="case-figure">
                     <img
                         src="design/Calendar/Calendar2.jpg"
                         alt="Back of the poster: the Fall 2022 CMEP calendar of events" />
+                    <figcaption>The calendar side, with the semester’s events</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Calendar</h2>
+                    <div>
+                        <p>
+                            Given the diverse and expansive community at NYU, accessibility is a key
+                            consideration in the design of the calendar. All text is set to a
+                            minimum of 14pt to ensure readability. Additionally, a QR code on the
+                            calendar links to a digital version, where the events can be accessed
+                            and read aloud using text-to-speech technology.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stickers &amp; Wall Vinyl -->
+                <figure class="case-figure">
                     <img
                         src="design/Calendar/CalendarStickers.jpg"
                         alt="Close-up of holographic stickers printed with the calendar artwork"
                         loading="lazy" />
+                    <figcaption>Holographic stickers of the poster artwork</figcaption>
+                </figure>
+                <figure class="case-figure">
                     <img
                         src="design/Calendar/CalendarLounge.jpg"
                         alt="The calendar artwork as a large wall graphic in the CMEP lounge"
                         loading="lazy" />
+                    <figcaption>Wall vinyl in the CMEP student lounge</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Stickers &amp; Wall Vinyl</h2>
+                    <div>
+                        <p>
+                            In addition to the calendar, the poster side was reformatted into a
+                            small sticker for distribution and a large wall vinyl to be hung in the
+                            CMEP student lounge.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="nameTag.html">
+                            <div class="project-image">
+                                <img src="design/cmepNameTag.png" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>CMEP Name Tag</h2>
+                                <ul class="tags">
+                                    <li>Print</li>
+                                </ul>
+                                <p>A series of interactive name tags designed to spark meaningful conversations.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="PGIL.html">
+                            <div class="project-image">
+                                <img src="design/PGIL.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>PGIL</h2>
+                                <ul class="tags">
+                                    <li>Brand</li>
+                                    <li>Merchandising</li>
+                                </ul>
+                                <p>A visual identity for an educational video series by NYU’s LGBTQ+ Center.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
