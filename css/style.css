@@ -1084,6 +1084,114 @@ footer p {
 }
 
 
+/* 10b. Project pages, new layout (being tried on MLK Week first)
+   .case-header      title, one-line summary and tags
+   .case-hero        the main project image
+   .case-info        details (role, tools, team) on the left,
+                     description on the right, with a line underneath
+   The rest of the page (images and text sections) stays as in section 10.
+   ========================================================================== */
+.case-header,
+.case-hero,
+.case-info {
+    padding: 0 5%;          /* same side spacing as the image sections */
+    text-align: left;
+}
+
+.case-header {
+    padding-top: 2.2em;
+}
+
+.case-header h1 {
+    font-size: clamp(56px, 6vw, 96px);
+    font-weight: bold;
+    line-height: 1;
+    margin: 0 0 14px;
+}
+
+.case-summary {
+    max-width: 34em;
+    margin: 0 0 18px;
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
+/* Same grey tags as the project cards, a little larger */
+.case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 30px;
+}
+
+.case-tags li {
+    padding: 4px 16px;
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.06);
+    color: #555;
+    font-size: 1.1em;
+}
+
+.case-hero {
+    margin: 0 0 50px;
+}
+
+.case-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.case-info {
+    display: grid;
+    grid-template-columns: 1fr 1.9fr;
+    gap: 0 60px;            /* space between the two columns */
+}
+
+/* The line under the details and description, inset like the content */
+.case-info::after {
+    content: "";
+    grid-column: 1 / -1;
+    height: 2px;
+    margin-top: 1.2em;
+    background: black;
+}
+
+.case-info p {
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
+.case-details p {
+    margin: 0;
+}
+
+/* Team in grey, so it sits apart from the main details */
+.case-team {
+    margin-top: 1.2em;
+}
+
+.case-team p {
+    color: #6b6b6b;
+}
+
+.case-description p {
+    margin: 0 0 0.9em;
+}
+
+/* Phones and tablets: details stack above the description */
+@media only screen and (max-width: 1050px) {
+    .case-info {
+        grid-template-columns: 1fr;
+        gap: 24px 0;
+    }
+
+    .case-header h1 {
+        font-size: 13vw;
+    }
+}
+
+
 /* Sections 7 to 10 on smaller screens
    ========================================================================== */
 @media only screen and (max-width: 1350px) {
@@ -1913,7 +2021,8 @@ footer p {
 /* Keep the project pages' content clear of the lines on narrower screens
    (the lines and their "02 / 13" label take about 85px at the right edge) */
 @media only screen and (min-width: 1051px) {
-    .main-content:has(> .project-top) {
+    .main-content:has(> .project-top),
+    .main-content:has(> .case-header) {
         padding-right: max(0px, calc(100px - 5vw));
     }
 }
