@@ -1693,20 +1693,26 @@ footer p {
        smoothly instead of popping on when the list opens */
     -webkit-backdrop-filter: blur(0px) saturate(1) brightness(1);
     backdrop-filter: blur(0px) saturate(1) brightness(1);
-    opacity: 0.6;   /* always visible at rest, full when the mouse is near */
     transform: translate(0, -50%);
-    transition: opacity 0.25s var(--hover-ease), transform 0.25s var(--hover-ease),
+    transition: transform 0.25s var(--hover-ease),
         background-color 0.35s var(--hover-ease), border-color 0.35s var(--hover-ease),
         box-shadow 0.35s var(--hover-ease), -webkit-backdrop-filter 0.35s var(--hover-ease),
         backdrop-filter 0.35s var(--hover-ease);
 }
 
 /* Two states, set by js/project-nav.js: softened (default, also while the
-   mouse moves elsewhere) -> full when the mouse is near the lines or the list is open */
-.project-list.dim {
-    opacity: 0.6;   /* how visible the lines are while the mouse is elsewhere */
-    transform: translate(0, -50%);
-    pointer-events: auto;
+   mouse moves elsewhere) -> full when the mouse is near the lines or the list
+   is open. Only the lines soften; the "02 / 13" label always stays at full
+   strength so it keeps accessible contrast. */
+.project-list ul {
+    opacity: 0.6;   /* how visible the lines are at rest */
+    transition: opacity 0.25s var(--hover-ease);
+}
+
+.project-list.active ul,
+.project-list.open ul,
+.project-list.nudge ul {
+    opacity: 1;
 }
 
 .project-list.active,
@@ -1796,7 +1802,7 @@ footer p {
     align-items: baseline;
     margin: 0 0 6px;
     font-size: 15px;
-    color: #777;
+    color: #5a5a5a;   /* lightest grey with accessible contrast on the gradient */
     white-space: nowrap;
     transition: padding 0.4s var(--hover-ease);
 }
