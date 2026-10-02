@@ -5,9 +5,9 @@
 // frosted glass panel with every project's name, so visitors can jump
 // straight to another one.
 //
-// Like the shapes pill on the home page, the lines stay hidden until the
-// mouse moves, show faintly while the mouse moves elsewhere, and become
-// fully visible when the mouse comes near them.
+// The lines are always faintly visible, and become fully visible when the
+// mouse comes near them (like the shapes pill on the home page, except they
+// never fully disappear).
 //
 // To add, remove or reorder projects, edit the list below
 // (keep it in the same order as the Design page).
@@ -108,11 +108,10 @@ const PROJECTS = [
         }
     });
 
-    // --- Three states, like the shapes pill on the home page ---
-    //   hidden: the mouse is resting (or off the page)
-    //   dim:    the mouse is moving somewhere on the page
+    // --- States, like the shapes pill on the home page (minus hiding) ---
+    //   dim:    faint (the default, and while the mouse is elsewhere)
     //   active: the mouse is near the lines, or the list is open
-    const HIDE_AFTER_MS = 1000; // mouse resting this long hides it
+    const HIDE_AFTER_MS = 1000; // mouse resting this long fades it back to faint
     const NEAR_PX = 120; // "near" = the mouse is within this distance of it
 
     let hideTimer;
@@ -135,7 +134,7 @@ const PROJECTS = [
         // Resting near it, or with the list open, keeps it visible
         if (nav.classList.contains("open")) return;
         if (lastX !== null && isNear(lastX, lastY)) return;
-        setState("hidden");
+        setState("dim");
     };
 
     document.addEventListener(
@@ -155,6 +154,6 @@ const PROJECTS = [
 
     document.addEventListener("mouseleave", () => {
         clearTimeout(hideTimer);
-        if (!nav.classList.contains("open")) setState("hidden");
+        if (!nav.classList.contains("open")) setState("dim");
     });
 })();

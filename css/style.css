@@ -1687,16 +1687,15 @@ footer p {
     border-radius: 22px;
     border: 1px solid transparent;
     background: rgba(255, 255, 255, 0);
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(6px, -50%);
+    opacity: 0.35;   /* always faintly visible, full when the mouse is near */
+    transform: translate(0, -50%);
     transition: opacity 0.25s var(--hover-ease), transform 0.25s var(--hover-ease),
         background-color 0.35s var(--hover-ease), border-color 0.35s var(--hover-ease),
         box-shadow 0.35s var(--hover-ease), padding 0.35s var(--hover-ease);
 }
 
-/* Three states, set by js/project-nav.js: hidden (default) -> faint while
-   the mouse moves -> full when the mouse is near the lines or the list is open */
+/* Two states, set by js/project-nav.js: faint (default, also while the
+   mouse moves elsewhere) -> full when the mouse is near the lines or the list is open */
 .project-list.dim {
     opacity: 0.35;   /* how faint the lines are while the mouse moves elsewhere */
     transform: translate(0, -50%);
