@@ -58,92 +58,189 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
                         <h1>Twelve Twelve</h1>
-                        <p>December 2021</p>
-                        <p><b>Brand Designer</b></p>
-                        <p><i>Visual Identity, Illustration, Packaging Design & Print Design </i></p>
-                        <p>
-                            <small
-                                ><i
-                                    >This was a project for <a href="#">Design Studio: Branding</a>, a course taught by
-                                    William van Roden.</i
-                                ></small
-                            >
-                        </p>
+                        <p class="case-year"><time datetime="2021">2021</time></p>
                     </div>
-                    <div class="project-right">
+                    <p class="case-summary">
+                        A visual identity for a brand that sustainably supplies Cannabis sativa
+                        seeds.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Brand</li>
+                    </ul>
+                </header>
+
+                <!-- Main project image -->
+                <figure class="case-hero">
+                    <img
+                        src="design/TwelveTwelve/twelvetSeedLong.jpg"
+                        alt="Front and back of a Twelve Twelve seed packet for the NYC Diesel strain" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Brand Designer</p>
+                        <p><b>Tools:</b> InDesign, Illustrator, Photoshop</p>
+                        <div class="case-team">
+                            <p><b>Course</b></p>
+                            <p>Design Studio: Branding</p>
+                            <p>William van Roden, <i>Instructor</i></p>
+                        </div>
+                    </div>
+                    <div class="case-description">
                         <p>
-                            Twelve Twelve is a company specializing in selling Cannabis sativa seeds for customers to
-                            grow at home. Twelve Twelve emphasizes a sustainable approach to marijuana cultivation;
-                            therefore, its visual identity reflects the same direction through an off-white and brown
-                            color palette. Non-bleached organic paper is always used for printed matter, inspiring the
-                            overall brand color palette.
+                            Twelve Twelve is a company specializing in selling Cannabis sativa seeds
+                            for customers to grow at home. Twelve Twelve emphasizes a sustainable
+                            approach to marijuana cultivation; therefore, its visual identity
+                            reflects the same direction through an off-white and brown color
+                            palette. Non-bleached organic paper is always used for printed matter,
+                            inspiring the overall brand color palette.
                         </p>
                         <p>
-                            The logo embodies the concept of cultivation as it resembles a blooming flower.
-                            Additionally, the logo has 12 petals on the interior and 12 round bumps on the exterior of
-                            the icon, referring to the company name and a ratio of light to dark (12:12) per day used in
-                            growing Cannabis sativa.
+                            The logo embodies the concept of cultivation as it resembles a blooming
+                            flower. Additionally, the logo has 12 petals on the interior and 12
+                            round bumps on the exterior of the icon, referring to the company name
+                            and a ratio of light to dark (12:12) per day used in growing Cannabis
+                            sativa.
                         </p>
                     </div>
                 </div>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
-                    <img
-                        src="design/TwelveTwelve/twelvetSeedLong.jpg"
-                        alt="Front and back of a Twelve Twelve seed packet for the NYC Diesel strain" />
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
+
+                <!-- Packaging -->
+                <figure class="case-figure">
                     <img
                         src="design/TwelveTwelve/twelveSeed1.jpg"
                         alt="Two kraft paper seed packets, one for the Northern Lights strain" />
+                    <figcaption>Seed packets on unbleached kraft paper</figcaption>
+                </figure>
+                <figure class="case-figure">
                     <img
                         src="design/TwelveTwelve/twelveManySeed.jpg"
                         alt="Grid of seed packets, each strain with its own color"
                         loading="lazy" />
+                    <figcaption>Each strain gets its own color</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Packaging</h2>
+                    <div>
+                        <p>
+                            Every strain shares the same kraft seed packet, with its own color, so
+                            the range stays consistent while each packet is easy to tell apart.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <h3>Brand Materials and Merchandising</h3>
-                </div>
-
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <!-- Brand Materials and Merchandising -->
+                <figure class="case-figure">
                     <img
                         src="design/TwelveTwelve/twelveTshirt.jpg"
-                        alt='Front and back of a Twelve Twelve T-shirt reading "Grow your weed!"'
+                        alt="Front and back of a Twelve Twelve T-shirt reading &quot;Grow your weed!&quot;"
                         loading="lazy" />
-                    <img
-                        src="design/TwelveTwelve/twelveStationery.jpg"
-                        alt="Twelve Twelve letterhead, envelope and business cards"
-                        loading="lazy" />
-                    <img
-                        src="design/TwelveTwelve/twelveMatches.jpg"
-                        alt="Twelve Twelve branded matchbox"
-                        loading="lazy" />
+                    <figcaption>T-shirt, front and back</figcaption>
+                </figure>
+                <div class="case-pair">
+                    <figure class="case-figure">
+                        <img
+                            src="design/TwelveTwelve/twelveStationery.jpg"
+                            alt="Twelve Twelve letterhead, envelope and business cards"
+                            loading="lazy" />
+                        <figcaption>Stationery</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img
+                            src="design/TwelveTwelve/twelveMatches.jpg"
+                            alt="Twelve Twelve branded matchbox"
+                            loading="lazy" />
+                        <figcaption>Matchbox</figcaption>
+                    </figure>
+                </div>
+                <div class="case-note">
+                    <h2>Brand Materials and Merchandising</h2>
+                    <div>
+                        <p>
+                            The identity carries onto a T-shirt, stationery and matchboxes, all
+                            sharing the brand's off-white and brown palette.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <h3>Web & Marketing</h3>
-                </div>
-
-                <div class="project-image-section">
+                <!-- Web &amp; Marketing -->
+                <figure class="case-figure">
                     <img
                         src="design/TwelveTwelve/twelveWebDesign.jpg"
                         alt="Twelve Twelve website on a phone and a desktop screen"
                         loading="lazy" />
+                    <figcaption>Website on phone and desktop</figcaption>
+                </figure>
+                <figure class="case-figure">
                     <img
                         src="design/TwelveTwelve/twelveAdvert_Long.jpg"
                         alt="Two Twelve Twelve subway posters with botanical cannabis illustrations"
                         loading="lazy" />
+                    <figcaption>Subway posters with botanical illustrations</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Web &amp; Marketing</h2>
+                    <div>
+                        <p>
+                            A website and a pair of subway posters, featuring botanical
+                            illustrations of the plant, bring the brand to a wider audience.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="mlkWeek.html">
+                            <div class="project-image">
+                                <img src="design/mlk2024.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>MLK Week</h2>
+                                <ul class="tags">
+                                    <li>Brand</li>
+                                    <li>Print</li>
+                                    <li>Merchandising</li>
+                                </ul>
+                                <p>A fresh visual identity for NYU’s 19th Annual MLK celebration, inspired by the theme <i>Powered by Love.</i></p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="bikingNYC.html">
+                            <div class="project-image">
+                                <img src="design/bikingNYC.png" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>Biking NYC</h2>
+                                <ul class="tags">
+                                    <li>Data Visualization</li>
+                                </ul>
+                                <p>A set of data visualizations exploring how safe it is to bike in New York City.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
