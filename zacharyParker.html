@@ -58,41 +58,119 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
                         <h1>Zachary Parker</h1>
-                        <p>August 2021</p>
-                        <p><b>Brand Designer</b></p>
-                        <p><i>Visual Identity & Print Design</i></p>
+                        <p class="case-year"><time datetime="2021">2021</time></p>
                     </div>
-                    <div class="project-right">
+                    <p class="case-summary">
+                        A visual identity created for Zachary Parker’s D.C. Council campaign.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Brand</li>
+                        <li>Print</li>
+                    </ul>
+                </header>
+
+                <!-- Main project image -->
+                <figure class="case-hero">
+                    <img
+                        src="design/zachary/zachary4.jpg"
+                        alt="Two Zachary Parker campaign business cards" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Brand Designer (freelance)</p>
+                        <p><b>Agency:</b> Washington Digital Media</p>
+                    </div>
+                    <div class="case-description">
                         <p>
-                            For Zachary Parker, the Ward 5 representative and president of the Washington, D.C. State
-                            Board of Education, I developed a visual identity that is both informative and visually
-                            striking. The design seeks to balance imagery and text, creating a cohesive representation
-                            of Parker’s brand. The logo was kept simple yet meaningful, reflecting Washington, D.C.'s
-                            iconic flag with its two stripes and three stars. The color palette combines a traditional
-                            campaign blue with an energetic orange, symbolizing Parker’s dynamic energy and his fresh
-                            ideas for the future of Washington, D.C.
+                            For Zachary Parker, the Ward 5 representative and president of the
+                            Washington, D.C. State Board of Education, I developed a visual identity
+                            that is both informative and visually striking. The design seeks to
+                            balance imagery and text, creating a cohesive representation of Parker’s
+                            brand. The logo was kept simple yet meaningful, reflecting Washington,
+                            D.C.'s iconic flag with its two stripes and three stars. The color
+                            palette combines a traditional campaign blue with an energetic orange,
+                            symbolizing Parker’s dynamic energy and his fresh ideas for the future
+                            of Washington, D.C.
+                        </p>
+                        <p>
+                            I created the identity while freelancing with Washington Digital Media,
+                            the creative agency working with the campaign. The campaign’s later
+                            print materials were then designed by others, building on this identity.
                         </p>
                     </div>
                 </div>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
-                    <img src="design/zachary/zachary4.jpg" alt="Two Zachary Parker campaign business cards" />
-                    <img
-                        src="design/zachary/zachary2.jpg"
-                        alt="Zachary Parker campaign door hanger with his photo and message" />
-                    <img
-                        src="design/zachary/zachary3.jpg"
-                        alt="Zachary Parker yard sign for DC Council Ward 5"
-                        loading="lazy" />
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
+
+                <!-- Images -->
+                <div class="case-pair">
+                    <figure class="case-figure">
+                        <img
+                            src="design/zachary/zachary2.jpg"
+                            alt="Zachary Parker campaign door hanger with his photo and message" />
+                        <figcaption>Door hanger</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img
+                            src="design/zachary/zachary3.jpg"
+                            alt="Zachary Parker yard sign for DC Council Ward 5"
+                            loading="lazy" />
+                        <figcaption>Yard sign</figcaption>
+                    </figure>
                 </div>
 
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="BookCover.html">
+                            <div class="project-image">
+                                <img src="design/BookCover.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>On Writing Well</h2>
+                                <ul class="tags">
+                                    <li>Book Cover</li>
+                                </ul>
+                                <p>A redesign of William Zinsser’s classic guidebook on nonfiction writing.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="cmepPrints.html">
+                            <div class="project-image">
+                                <img src="design/cmepPrints.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>CMEP Prints & Signs</h2>
+                                <ul class="tags">
+                                    <li>Print</li>
+                                    <li>Signage</li>
+                                    <li>Illustration</li>
+                                </ul>
+                                <p>A series of playful print materials for the CMEP at NYU, communicating office resources and programs.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
