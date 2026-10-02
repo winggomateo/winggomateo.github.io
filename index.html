@@ -80,11 +80,13 @@
                     </div>
 
                     <!-- Info drawer (desktop): a folder that slides up over the intro
-                         with a short introduction. Its tab sits right under the tagline.
+                         with a short introduction.
                          Same text as the section below the intro. See js/intro-info.js. -->
                     <div class="drawer-clip">
                         <div class="intro-drawer" id="intro-drawer" role="region" aria-label="About Mateo">
-                            <button type="button" class="drawer-tab" tabindex="-1" aria-hidden="true"><span class="plus">+</span> Info</button>
+                            <!-- The folder outline (one continuous line with a tab on the
+                                 top edge), drawn by js/intro-info.js to fit the drawer -->
+                            <svg class="drawer-outline" aria-hidden="true"><path /></svg>
                             <div class="drawer-panel">
                                 <button type="button" class="drawer-close" aria-label="Close">&times;</button>
                                 <div class="drawer-body">
