@@ -36,24 +36,26 @@
 
     // Scrolling down while it's open closes it bit by bit: its top stays put
     // while its bottom rides up with the black line, so it folds down into
-    // the line, and the text fades. Once it's down to CLOSE_AT pixels it
-    // closes the rest of the way on its own. Scrolling back up before then
-    // opens it again.
-    const CLOSE_AT = 160;
+    // the line, and the text fades a little. As soon as it would start
+    // cutting off the text, it closes the rest of the way on its own.
+    // Scrolling back up before then opens it again.
+    const closeAt = () => body.offsetHeight + 4;
     let fullHeight = 0; // height when it opened
     let tracking = false;
 
     const followScroll = () => {
         if (!isOpen() || !tracking) return;
         const height = Math.min(fullHeight, clip.getBoundingClientRect().bottom - TOP_GAP);
-        if (height < CLOSE_AT) {
+        if (height < closeAt()) {
             setOpen(false, { fromScroll: true });
             return;
         }
         const shrunk = fullHeight - height;
         drawer.classList.toggle("scroll-closing", shrunk > 0);
         drawer.style.height = `${height}px`;
-        body.style.opacity = shrunk > 0 ? String(Math.max(0, 1 - shrunk / (fullHeight * 0.7))) : "";
+        // fades to 50% by the time it closes
+        const room = Math.max(1, fullHeight - closeAt());
+        body.style.opacity = shrunk > 0 ? String(1 - 0.5 * Math.min(1, shrunk / room)) : "";
     };
 
     // Follow the page on every scroll, plus one last check once scrolling
