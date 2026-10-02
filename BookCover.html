@@ -58,71 +58,145 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
                         <h1>On Writing Well</h1>
-                        <p>December 2022</p>
-                        <p><i>Book Cover Design</i></p>
-                        <p>
-                            <small
-                                ><i
-                                    >This was a project for <a href="#">Design Media Concepts</a>, a course taught by
-                                    Amy Finkel</i
-                                ></small
-                            >
-                        </p>
+                        <p class="case-year"><time datetime="2022">2022</time></p>
                     </div>
-                    <div class="project-right">
-                        <p>
-                            I redesigned the cover of On Writing Well by William Zinsser, a well-known guidebook on
-                            non-fiction writing. The original design was straightforward, but lacked visual interest,
-                            which is common for many guidebooks. For this redesign, I aimed to make the cover more
-                            visually engaging while maintaining a strong connection to the book’s content, which
-                            emphasizes the craft of writing. My goal was to create a cover proposal that would capture
-                            the essence of non-fiction writing—structured, yet creative—while appealing to a wide
-                            audience of writers looking to improve their skills.
-                        </p>
-                    </div>
-                </div>
+                    <p class="case-summary">
+                        A redesign of William Zinsser’s classic guidebook on nonfiction writing.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Book Cover</li>
+                    </ul>
+                </header>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <!-- Main project image -->
+                <figure class="case-hero">
                     <img
                         src="design/BookCover/Cover1.jpg"
-                        alt="Two book laid on a white background, with their covers facing up. They depict the same book, but in two different design proposals." />
+                        alt="Two copies of the book side by side on a white background, showing the two cover proposals" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Designer</p>
+                        <p><b>Tools:</b> Illustrator, Photoshop</p>
+                        <div class="case-team">
+                            <p><b>Course</b></p>
+                            <p>Design Media Concepts</p>
+                            <p>Amy Finkel, <i>Instructor</i></p>
+                        </div>
+                    </div>
+                    <div class="case-description">
+                        <p>
+                            I redesigned the cover of On Writing Well by William Zinsser, a
+                            well-known guidebook on non-fiction writing. The original design was
+                            straightforward, but lacked visual interest, which is common for many
+                            guidebooks. For this redesign, I aimed to make the cover more visually
+                            engaging while maintaining a strong connection to the book’s content,
+                            which emphasizes the craft of writing. My goal was to create a cover
+                            proposal that would capture the essence of non-fiction writing
+                            (structured, yet creative) while appealing to a wide audience of writers
+                            looking to improve their skills.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <p>
-                        In the first design, I wanted to convey the concept of writing and structure, so I used a series
-                        of rectangles to simulate the appearance of words in a paragraph. The title is intertwined into
-                        this pattern, ensuring it remains the focal point through contrast in size and shape. I chose a
-                        typewriter-style font to match the 1976 publication year and the historical role of typewriters
-                        in the writing process, tying the design to the book's era.
-                    </p>
-                    <!-- <br> -->
-                    <p>
-                        For the second design, I focused on Zinsser’s advice, which emphasizes the revisions a writer
-                        goes through before finalizing their work. I decided to incorporate a portion of the book’s text
-                        with pen marks to evoke the process of editing and refining. The title is placed over this with
-                        a white border to keep it readable against the busy background. Blue was chosen as the dominant
-                        color to evoke trust and reliability, creating a calm, professional tone for the cover.
-                    </p>
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
+
+                <!-- Proposal 1: Structure -->
+                <figure class="case-figure">
+                    <img
+                        src="design/BookCover/Cover2.jpg"
+                        alt="Book cover proposal 1: rectangles arranged like words in a paragraph" />
+                    <figcaption>Rectangles arranged like words in a paragraph</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Proposal 1: Structure</h2>
+                    <div>
+                        <p>
+                            In the first design, I wanted to convey the concept of writing and
+                            structure, so I used a series of rectangles to simulate the appearance
+                            of words in a paragraph. The title is intertwined into this pattern,
+                            ensuring it remains the focal point through contrast in size and shape.
+                            I chose a typewriter-style font to match the 1976 publication year and
+                            the historical role of typewriters in the writing process, tying the
+                            design to the book's era.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
-                    <img src="design/BookCover/Cover2.jpg" alt="Image of Book Cover Design, Proposal 1" />
+                <!-- Proposal 2: Revision -->
+                <figure class="case-figure">
                     <img
                         src="design/BookCover/Cover3.jpg"
-                        alt="Image of Book Cover Design, Proposal 2"
+                        alt="Book cover proposal 2: the book’s text marked up with blue pen edits"
                         loading="lazy" />
+                    <figcaption>The book’s own text, marked up with edits</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Proposal 2: Revision</h2>
+                    <div>
+                        <p>
+                            For the second design, I focused on Zinsser’s advice, which emphasizes
+                            the revisions a writer goes through before finalizing their work. I
+                            decided to incorporate a portion of the book’s text with pen marks to
+                            evoke the process of editing and refining. The title is placed over this
+                            with a white border to keep it readable against the busy background.
+                            Blue was chosen as the dominant color to evoke trust and reliability,
+                            creating a calm, professional tone for the cover.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="vinyl.html">
+                            <div class="project-image">
+                                <img src="design/Vinyl.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>Vinyl Playing Cards</h2>
+                                <ul class="tags">
+                                    <li>Print</li>
+                                </ul>
+                                <p>A modern deck of playing cards designed for card flourishes.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="zacharyParker.html">
+                            <div class="project-image">
+                                <img src="design/ZacharyParker.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>Zachary Parker</h2>
+                                <ul class="tags">
+                                    <li>Brand</li>
+                                    <li>Print</li>
+                                </ul>
+                                <p>A visual identity created for Zachary Parker’s D.C. Council campaign.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
