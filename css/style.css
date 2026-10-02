@@ -173,14 +173,19 @@ a:hover {
     cursor: pointer;
 }
 
-/* Teal underline that grows in on hover (About page email and footer links) */
+/* Teal underline that grows in on hover (About page email, footer, and the
+   "About page" link in the home page intro) */
 .bio1 a,
-footer a {
+footer a,
+.drawer-body a,
+.intro-statement a {
     position: relative;
 }
 
 .bio1 a::before,
-footer a::before {
+footer a::before,
+.drawer-body a::before,
+.intro-statement a::before {
     content: "";
     position: absolute;
     display: block;
@@ -194,7 +199,11 @@ footer a::before {
 }
 
 .bio1 a:hover::before,
-footer a:hover::before {
+footer a:hover::before,
+.drawer-body a:hover::before,
+.drawer-body a:focus-visible::before,
+.intro-statement a:hover::before,
+.intro-statement a:focus-visible::before {
     transform: scaleX(1);
 }
 
