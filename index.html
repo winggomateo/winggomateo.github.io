@@ -79,21 +79,27 @@
                         </button>
                     </div>
 
-                    <!-- Info drawer (desktop): a short introduction that slides up
-                         over the intro. Same text as the section below the intro. -->
-                    <div class="intro-drawer" id="intro-drawer" role="region" aria-label="About Mateo">
-                        <button type="button" class="drawer-close" aria-label="Close">&times;</button>
-                        <div class="drawer-body">
-                            <p>
-                                Mateo Villalba-Rodriguez is a graphic designer based in Brooklyn,
-                                focused on branding, print, editorial and exhibition design. He
-                                works with mission-driven organizations, from NYU’s Center for
-                                Multicultural Education and Programs to campaigns and cultural
-                                groups, building identities that are playful, clear and grounded in
-                                the people they serve. He studied at NYU’s Gallatin School of
-                                Individualized Study.
-                            </p>
-                            <a href="about.html">About page &rarr;</a>
+                    <!-- Info drawer (desktop): a folder that slides up over the intro
+                         with a short introduction. Its tab sits right under the tagline.
+                         Same text as the section below the intro. See js/intro-info.js. -->
+                    <div class="drawer-clip">
+                        <div class="intro-drawer" id="intro-drawer" role="region" aria-label="About Mateo">
+                            <button type="button" class="drawer-tab" tabindex="-1" aria-hidden="true"><span class="plus">+</span> Info</button>
+                            <div class="drawer-panel">
+                                <button type="button" class="drawer-close" aria-label="Close">&times;</button>
+                                <div class="drawer-body">
+                                    <p>
+                                        Mateo Villalba-Rodriguez is a graphic designer based in Brooklyn,
+                                        focused on branding, print, editorial and exhibition design. He
+                                        works with mission-driven organizations, from NYU’s Center for
+                                        Multicultural Education and Programs to campaigns and cultural
+                                        groups, building identities that are playful, clear and grounded in
+                                        the people they serve. He studied at NYU’s Gallatin School of
+                                        Individualized Study.
+                                    </p>
+                                    <a href="about.html">About page &rarr;</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!-- Slider to slow down / speed up the floating shapes -->
