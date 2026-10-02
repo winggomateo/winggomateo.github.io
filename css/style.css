@@ -1481,10 +1481,10 @@ footer p {
 
 /* 6b. Introduction (home page)
    Desktop: the tagline under the name is a button with a grey "+ Info"
-   line. Nothing shows at rest. Hovering the tagline makes the info drawer,
-   a folder, peek up from the bottom of the screen with a little wobble;
-   clicking slides it open over the intro. Close with the × in the
-   folder's tab, Escape, or the tagline again. Phones and tablets: the
+   line. Nothing shows at rest. Hovering the tagline makes the info drawer
+   peek up from the bottom of the screen with a little wobble; clicking
+   slides it open over the intro. Close with the ×, Escape, or the tagline
+   again. Phones and tablets: the
    same paragraph is a short section between
    the intro and the project cards. Behavior is in js/intro-info.js.
    ========================================================================== */
@@ -1539,19 +1539,13 @@ footer p {
     transform: rotate(90deg);
 }
 
-/* The drawer is a folder: one continuous black outline whose top edge
-   steps up into a tab on the right (with a slanted edge), filled with the
-   page's own gradient (pinned to the screen, so it matches the page behind
-   it). The fill is cut to the folder shape with clip-path; the outline is
-   an SVG drawn by js/intro-info.js to fit the drawer as it grows.
+/* The drawer is a rectangle with a black outline (no bottom line; it sits
+   on the page's black line), filled with the page's own gradient (pinned
+   to the screen, so it matches the page behind it).
    .drawer-clip is an invisible frame over the intro that hides anything
-   below the black line (or below the screen edge), so at rest the folder
+   below the black line (or below the screen edge), so at rest the drawer
    is tucked away out of sight. The script keeps its bottom on the line or
-   the screen edge (--drawer-bottom). Same width as the project grid.
-   Folder settings:
-     --tab-h      how far the tab rises above the folder's top edge
-     --tab-w      width of the tab's flat top
-     --tab-slope  width of the slanted edge leading up to the tab */
+   the screen edge (--drawer-bottom). Same width as the project grid. */
 .drawer-clip {
     position: absolute;
     z-index: 6;              /* above the shapes and the shapes pill */
@@ -1564,16 +1558,14 @@ footer p {
 }
 
 .intro-drawer {
-    --tab-h: 34px;
-    --tab-w: 72px;
-    --tab-slope: 30px;
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
     height: 0;
-    padding-top: var(--tab-h);
     box-sizing: border-box;
+    border: 2px solid black;
+    border-bottom: 0;
     text-align: left;
     background: linear-gradient(-45deg, #ffe5e9, #e0ffec, #d6ecff, #fed1e7);
     background-color: #ede8ef;
@@ -1581,39 +1573,15 @@ footer p {
     background-attachment: fixed;
     animation: gradient 15s ease infinite;
     animation-delay: var(--gradient-delay, 0s);
-    clip-path: polygon(
-        0 var(--tab-h),
-        calc(100% - var(--tab-w) - var(--tab-slope)) var(--tab-h),
-        calc(100% - var(--tab-w)) 0,
-        100% 0,
-        100% 100%,
-        0 100%
-    );
     visibility: hidden;   /* nothing shows until the tagline is clicked */
     transition: height 0.3s ease, visibility 0s linear 0.3s;   /* closing */
 }
 
-.drawer-outline {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;    /* the sides are drawn long and cut off here */
-    pointer-events: none;
-}
-
-.drawer-outline path {
-    fill: none;
-    stroke: black;
-    stroke-width: 2;
-    stroke-linejoin: miter;
-}
-
-/* Peek (tagline hovered): the folder pops up just enough to show its tab
-   and top edge, wobbles a little, then holds while the mouse stays on the
+/* Peek (tagline hovered): the drawer pops up just enough to show its top
+   edge, wobbles a little, then holds while the mouse stays on the
    tagline. */
 .intro-drawer.peek {
-    height: calc(var(--tab-h) + 14px);
+    height: 26px;
     visibility: visible;
     transition: visibility 0s;
     animation: drawer-jiggle 0.75s ease-out, gradient 15s ease infinite;
@@ -1622,12 +1590,12 @@ footer p {
 
 @keyframes drawer-jiggle {
     0%   { height: 0; }
-    30%  { height: calc(var(--tab-h) + 26px); }
-    50%  { height: calc(var(--tab-h) + 7px); }
-    66%  { height: calc(var(--tab-h) + 19px); }
-    80%  { height: calc(var(--tab-h) + 11px); }
-    91%  { height: calc(var(--tab-h) + 16px); }
-    100% { height: calc(var(--tab-h) + 14px); }
+    30%  { height: 40px; }
+    50%  { height: 18px; }
+    66%  { height: 31px; }
+    80%  { height: 23px; }
+    91%  { height: 28px; }
+    100% { height: 26px; }
 }
 
 /* Open: the script sets the height to fit the text */
@@ -1671,18 +1639,17 @@ footer p {
     color: black;
 }
 
-/* The × sits centered in the folder's tab, with a small hover box
-   sized to the × (same roundness as the tags) */
+/* The × sits in the top-right corner, with a small hover box sized to
+   it (same roundness as the tags) */
 .drawer-close {
     all: unset;
     cursor: pointer;
     position: absolute;
     z-index: 1;
-    --size: 26px;
-    top: calc((var(--tab-h) - var(--size)) / 2 + 1px);   /* centered in the tab */
-    right: calc((var(--tab-w) - var(--size)) / 2);
-    width: var(--size);
-    height: var(--size);
+    top: 16px;
+    right: 16px;
+    width: 30px;
+    height: 30px;
     border-radius: 8px;
     display: grid;
     place-items: center;

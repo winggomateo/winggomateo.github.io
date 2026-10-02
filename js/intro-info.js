@@ -1,11 +1,11 @@
 // Info drawer (home page, desktop)
 // The tagline under the name ("Based in New York City / Designer &
-// Photographer / + Info") is a button, and the drawer is a folder tucked
+// Photographer / + Info") is a button, and the drawer is tucked
 // away below the intro:
-//   hover  -> the folder peeks up from the bottom with a wobble (a hint)
+//   hover  -> the drawer peeks up from the bottom with a wobble (a hint)
 //             while the mouse is on the tagline
-//   click  -> the folder slides open with a short introduction
-//   close  -> the × in the folder's tab, Escape, or clicking the tagline again
+//   click  -> the drawer slides open with a short introduction
+//   close  -> the ×, Escape, or clicking the tagline again
 // Styles are in css/style.css, section 6b. On phones and tablets the drawer
 // is hidden and the same text is shown as a section below the intro.
 
@@ -13,16 +13,14 @@
     const drawer = document.getElementById("intro-drawer");
     const tagline = document.querySelector(".tagline-btn");
     if (!drawer || !tagline) return;
-    const clip = drawer.parentElement; // the invisible frame that tucks the folder away
+    const clip = drawer.parentElement; // the invisible frame that tucks the drawer away
     const intro = clip.parentElement; // the intro block, whose bottom edge is the black line
-    const outline = drawer.querySelector(".drawer-outline");
-    const path = outline.querySelector("path");
     const close = drawer.querySelector(".drawer-close");
     const body = drawer.querySelector(".drawer-body");
 
     const isOpen = () => drawer.classList.contains("open");
 
-    // Keep the folder on the bottom edge of the screen, or on the black line
+    // Keep the drawer on the bottom edge of the screen, or on the black line
     // under the intro once it's on screen (whichever is higher)
     const place = () => {
         const below = intro.getBoundingClientRect().bottom - window.innerHeight;
@@ -34,36 +32,7 @@
         passive: true,
     });
 
-    // Draw the folder outline: up the left side, along the top, up the
-    // slant into the tab, across the tab, and down the right side (no bottom
-    // line; the folder sits on the page's black line). The sides run far
-    // past the bottom and get cut off at the drawer's edge, so the outline
-    // only needs redrawing when the width changes. That keeps it locked to
-    // the fill while the folder wobbles and slides. Matches the clip-path in
-    // the stylesheet.
-    const px = (name) => parseFloat(getComputedStyle(drawer).getPropertyValue(name));
-    const drawOutline = () => {
-        const w = drawer.offsetWidth;
-        const tabH = px("--tab-h");
-        const tabW = px("--tab-w");
-        const slope = px("--tab-slope");
-        const s = 1; // half the line width, so the line sits just inside the fill
-        const far = 4000;
-        path.setAttribute(
-            "d",
-            `M ${s} ${far} L ${s} ${tabH + s} L ${w - tabW - slope + s * 0.4} ${tabH + s} ` +
-                `L ${w - tabW + s * 0.4} ${s} L ${w - s} ${s} L ${w - s} ${far}`,
-        );
-    };
-    let lastWidth = 0;
-    new ResizeObserver(() => {
-        if (drawer.offsetWidth !== lastWidth) {
-            lastWidth = drawer.offsetWidth;
-            drawOutline();
-        }
-    }).observe(drawer);
-
-    const openHeight = () => Math.min(body.scrollHeight + px("--tab-h") + 4, window.innerHeight - 180);
+    const openHeight = () => Math.min(body.scrollHeight + 4, window.innerHeight - 180);
 
     const setOpen = (open) => {
         place();
