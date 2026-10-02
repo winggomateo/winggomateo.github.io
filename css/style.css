@@ -1243,59 +1243,73 @@ footer p {
     line-height: 1.4;
 }
 
-/* End of the page, in the same two columns as the notes: "Next project"
-   with a link to the previous project and the button back to all projects
-   on the left, the next project's card (the same card as on the Design
-   page) on the right */
+/* End of the page: the previous and next projects side by side, each an
+   outlined image with its title and a small grey label, then the "All
+   projects" button */
 .case-end {
-    display: grid;
-    grid-template-columns: 1fr 1.9fr;
-    gap: 0 60px;
-    align-items: stretch;   /* left column as tall as the card */
     padding: 10px 5% 70px;
     text-align: left;
 }
 
-.case-end-side h2 {
-    margin: 0 0 18px;
+.case-end h2 {
+    margin: 0 0 20px;
     font-size: 1.9em;
     line-height: 1.15;
 }
 
-.case-end .project-card {
-    width: 100%;
-    margin: 0;
+.case-more {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-/* Heading at the top, the two links at the bottom, lined up with the
-   card's top and bottom edges */
-.case-end-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.case-end-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-}
-
-.case-prev {
-    padding: 6px 12px;
-    margin-left: -12px;      /* text lines up with the heading */
-    border-radius: 10px;
-    font-size: 1.15em;
-    color: #333;
+.case-more-item {
+    display: block;
+    color: black;
     text-decoration: none;
-    transition: background-color var(--hover-speed) var(--hover-ease), color var(--hover-speed) var(--hover-ease);
 }
 
-.case-prev:hover,
-.case-prev:focus-visible {
-    background-color: var(--button-hover);
+.case-more-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border: 2px solid black;
+    transition: border-color var(--hover-speed) var(--hover-ease), filter var(--hover-speed) var(--hover-ease);
+}
+
+.case-more-title {
+    display: block;
+    margin-top: 12px;
+    font-size: 1.35em;
+    font-weight: bold;
+    transition: color var(--hover-speed) var(--hover-ease);
+}
+
+.case-more-label {
+    display: block;
+    margin-top: 2px;
+    font-size: 1.05em;
+    color: #5a5a5a;   /* same accessible grey as the captions */
+}
+
+/* Hover: teal outline and title, like the project cards */
+.case-more-item:hover img,
+.case-more-item:focus-visible img {
+    border-color: var(--accent-color);
+    filter: brightness(0.92);
+}
+
+.case-more-item:hover .case-more-title,
+.case-more-item:focus-visible .case-more-title {
     color: var(--accent-text);
+}
+
+/* "All projects": the site's outlined button, centered */
+.case-end .textReturn {
+    display: table;
+    margin: 0 auto;
 }
 
 /* Phones and tablets: details stack above the description */
@@ -1311,37 +1325,13 @@ footer p {
         gap: 40px;
     }
 
-    /* End of page: heading, then the card, then the two links as
-       full-width buttons that are easy to tap */
-    .case-end {
-        grid-template-columns: 1fr;
+    /* End of page: the two projects stay side by side, a bit closer */
+    .case-more {
+        gap: 16px;
     }
 
-    .case-end-side {
-        display: contents;
-    }
-
-    .case-end-side h2 {
-        order: 1;
-        margin-bottom: 12px;
-    }
-
-    .case-end .project-card {
-        order: 2;
-        margin-bottom: 20px;
-    }
-
-    .case-end-links {
-        order: 3;
-        align-items: stretch;
-        gap: 12px;
-    }
-
-    .case-prev {
-        margin: 0;
-        padding: 12px 16px;
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.04);
+    .case-more-title {
+        font-size: 1.1em;
     }
 
     .case-header h1 {
