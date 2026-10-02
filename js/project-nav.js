@@ -32,6 +32,14 @@ const PROJECTS = [
     ["zacharyParker.html", "Zachary Parker", "design/ZacharyParker.jpg"],
 ];
 
+// Extras that help people notice the list (set to false to turn one off):
+// Peek: the first time someone opens a project page, the list unfolds on its
+// own for a moment, then folds back into lines (once per visit).
+const PEEK_ON_FIRST_VISIT = true;
+// Next nudge: when you reach the bottom of a project, the next project's line
+// turns teal and its name slides out ("Next: Twelve Twelve").
+const NEXT_NUDGE = true;
+
 (() => {
     // Desktop with a mouse only (phones and tablets use the links at the bottom)
     if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
@@ -65,6 +73,7 @@ const PROJECTS = [
         a.style.setProperty("--i", i); // used to unfold the names one after another
         a.dataset.preview = PROJECTS[i][2];
         if (i === current) a.setAttribute("aria-current", "page");
+        if (i === (current + 1) % PROJECTS.length) a.classList.add("next");
         const text = document.createElement("span");
         text.className = "project-list-name";
         text.textContent = name;
@@ -103,6 +112,8 @@ const PROJECTS = [
     const updateFill = () => {
         const progress = Math.min(1, Math.max(0, scrollAmount() / Math.max(1, scrollRoom())));
         fill.style.transform = `scaleX(${progress})`;
+        // Next nudge: at the bottom of a page that actually scrolls
+        if (NEXT_NUDGE) nav.classList.toggle("nudge", progress >= 0.98 && scrollRoom() > 100);
         ticking = false;
     };
     document.addEventListener(
@@ -237,4 +248,26 @@ const PROJECTS = [
         clearTimeout(hideTimer);
         if (!nav.classList.contains("open")) setState("dim");
     });
+
+    // --- Peek on the first visit ---
+    const PEEK_AFTER_MS = 1500; // wait this long after the page opens
+    const PEEK_FOR_MS = 2200; // stay open this long
+    let peeked = true;
+    try {
+        peeked = sessionStorage.getItem("projectListPeeked") === "1";
+        sessionStorage.setItem("projectListPeeked", "1");
+    } catch (e) {}
+    if (PEEK_ON_FIRST_VISIT && !peeked) {
+        setTimeout(() => {
+            if (nav.classList.contains("open")) return;
+            nav.classList.add("peek");
+            setState("active");
+            setOpen(true);
+            setTimeout(() => {
+                nav.classList.remove("peek");
+                // Leave it open if the visitor has moved onto it meanwhile
+                if (!nav.matches(":hover") && !nav.contains(document.activeElement)) setOpen(false);
+            }, PEEK_FOR_MS);
+        }, PEEK_AFTER_MS);
+    }
 })();
