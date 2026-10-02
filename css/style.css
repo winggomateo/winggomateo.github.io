@@ -1243,43 +1243,40 @@ footer p {
     line-height: 1.4;
 }
 
-/* End of the page: "Next project" card (the same card as on the Design
-   page), then a small link to the previous project and the button back to
-   all projects */
+/* End of the page, in the same two columns as the notes: "Next project"
+   with a link to the previous project and the button back to all projects
+   on the left, the next project's card (the same card as on the Design
+   page) on the right */
 .case-end {
+    display: grid;
+    grid-template-columns: 1fr 1.9fr;
+    gap: 0 60px;
+    align-items: start;
     padding: 10px 5% 70px;
     text-align: left;
 }
 
-.case-end-label {
-    margin: 0 0 12px;
-    font-size: 1.2em;
-    font-weight: bold;
+.case-end-side h2 {
+    margin: 0 0 18px;
+    font-size: 1.9em;
+    line-height: 1.15;
 }
 
 .case-end .project-card {
     width: 100%;
-    margin: 0 0 24px;
-}
-
-/* On wide screens the card is full width, so crop its image a bit wider
-   to keep the card from getting too tall */
-@media only screen and (min-width: 1051px) {
-    .case-end .project-image img {
-        aspect-ratio: 16 / 9;
-    }
+    margin: 0;
 }
 
 .case-end-links {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
 }
 
 .case-prev {
     padding: 6px 12px;
-    margin-left: -12px;      /* text lines up with the card edge */
+    margin-left: -12px;      /* text lines up with the heading */
     border-radius: 10px;
     font-size: 1.15em;
     color: #333;
@@ -1310,9 +1307,28 @@ footer p {
         gap: 40px;
     }
 
-    /* Previous link and "All projects" stack, full width and easy to tap */
+    /* End of page: heading, then the card, then the two links as
+       full-width buttons that are easy to tap */
+    .case-end {
+        grid-template-columns: 1fr;
+    }
+
+    .case-end-side {
+        display: contents;
+    }
+
+    .case-end-side h2 {
+        order: 1;
+        margin-bottom: 12px;
+    }
+
+    .case-end .project-card {
+        order: 2;
+        margin-bottom: 20px;
+    }
+
     .case-end-links {
-        flex-direction: column;
+        order: 3;
         align-items: stretch;
         gap: 12px;
     }
@@ -1325,7 +1341,6 @@ footer p {
     }
 
     .case-prev {
-        border: 2px solid transparent;
         background-color: rgba(0, 0, 0, 0.04);
     }
 

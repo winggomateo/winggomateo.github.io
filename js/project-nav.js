@@ -108,12 +108,14 @@ const NEXT_NUDGE = true;
     const scrollAmount = () => Math.max(window.scrollY, document.documentElement.scrollTop, document.body.scrollTop);
     const scrollRoom = () =>
         Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - window.innerHeight;
+    const hasNextCard = document.querySelector(".case-end") !== null;
     let ticking = false;
     const updateFill = () => {
         const progress = Math.min(1, Math.max(0, scrollAmount() / Math.max(1, scrollRoom())));
         fill.style.transform = `scaleX(${progress})`;
         // Next nudge: at the bottom of a page that actually scrolls
-        if (NEXT_NUDGE) nav.classList.toggle("nudge", progress >= 0.98 && scrollRoom() > 100);
+        // (skipped on pages that already end with a "Next project" card)
+        if (NEXT_NUDGE && !hasNextCard) nav.classList.toggle("nudge", progress >= 0.98 && scrollRoom() > 100);
         ticking = false;
     };
     document.addEventListener(
