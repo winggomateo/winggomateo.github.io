@@ -58,83 +58,175 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
                         <h1>Al Sadeem</h1>
-                        <p>May 2023</p>
-                        <p><b>Designer & Project Lead</b></p>
-                        <p><i>Wayfinding Design </i></p>
+                        <p class="case-year"><time datetime="2023">2023</time></p>
+                    </div>
+                    <p class="case-summary">
+                        A wayfinding system proposal for an observatory in the desert of Abu Dhabi,
+                        UAE.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Wayfinding</li>
+                    </ul>
+                </header>
+
+                <!-- Main project image -->
+                <figure class="case-hero">
+                    <img
+                        src="design/alSadeem/signage.jpg"
+                        alt="Directional signs for three buildings at the observatory" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Team Lead &amp; Designer</p>
+                        <p><b>Tools:</b> Illustrator, Photoshop</p>
+                        <div class="case-team">
+                            <p><b>Team</b></p>
+                            <p>Fatema Alhameli, <i>Designer</i></p>
+                            <p>Shahd Ngim, <i>Designer</i></p>
+                            <p>Maisy Nelson, <i>Designer</i></p>
+                        </div>
+                        <div class="case-team">
+                            <p><b>Course</b></p>
+                            <p>Wayfinding</p>
+                            <p>Goffredo Puccetti, <i>Instructor</i></p>
+                        </div>
+                    </div>
+                    <div class="case-description">
                         <p>
-                            <small
-                                ><i
-                                    >This was a project for <a href="#">Wayfinding</a>, a course taught by Goffredo
-                                    Puccetti</i
-                                ></small
-                            >
+                            Al Sadeem Observatory is dedicated to making astronomy accessible
+                            through stargazing experiences and guided tours. Located in the desert
+                            of Abu Dhabi, Al Sadeem is essential in promoting astronomy education in
+                            the UAE.
+                        </p>
+                        <p>
+                            In line with Al Sadeem’s mission to promote space and astronomy, my team
+                            was tasked with designing a proposal for a wayfinding system. This
+                            system was intended to improve ground navigation while adding to the
+                            visitor experience through placemaking. The designs aimed to blend
+                            functional clarity with the observatory’s education and exploratory
+                            atmosphere, guiding visitors through the site and fueling a connection
+                            to the cosmos.
                         </p>
                     </div>
-                    <div class="project-right">
-                        <p>
-                            Al Sadeem Observatory is dedicated to making astronomy accessible through stargazing
-                            experiences and guided tours. Located in the desert of Abu Dhabi, Al Sadeem is essential in
-                            promoting astronomy education in the UAE.
-                        </p>
-                        <p>
-                            In line with Al Sadeem’s mission to promote space and astronomy, my team was tasked with
-                            designing a proposal for a wayfinding system. This system was intended to improve ground
-                            navigation while adding to the visitor experience through placemaking. The designs aimed to
-                            blend functional clarity with the observatory’s education and exploratory atmosphere,
-                            guiding visitors through the site and fueling a connection to the cosmos.
-                        </p>
-                    </div>
                 </div>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
-                    <img src="design/alSadeem/signage.jpg" alt="Directional Signs for 3 buildings at the Observatory" />
-                    <img src="design/alSadeem/decisionMap2.jpg" alt="Overhead map of observatory grounds" />
-                </div>
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <h3>Signage Design</h3>
-                    <p>
-                        We divided navigation into two spaces – outside and within the observatory. We developed a
-                        flexible signage system for navigation within observatory grounds to accommodate different
-                        priorities, including, identification, information, or world-building. Being in Abu Dhabi, we
-                        also acknowledged the need to design signs in both Arabic and English, paying attention to the
-                        diversity among visitors.
-                    </p>
-                    <p>
-                        In planning signage placement, we relied upon satellite imagery, our observatory visit, and
-                        visitors' testimony. From all our research, we analyzed and identified decision points in the
-                        user journey when navigating and decided on what areas made the most sense to place a sign.
-                    </p>
-                </div>
-
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <!-- Research &amp; Planning -->
+                <figure class="case-figure">
                     <img
-                        src="design/alSadeem/observatory2.jpg"
-                        alt="Night photo of observatory with informational sign"
-                        loading="lazy" />
-                    <img
-                        src="design/alSadeem/observatory1.jpg"
-                        alt="Night photo of outside office entrance with informational sign"
-                        loading="lazy" />
-                    <img
-                        src="design/alSadeem/observatory3.jpg"
-                        alt="Photo of road with directional sign towards observatory"
-                        loading="lazy" />
+                        src="design/alSadeem/decisionMap2.jpg"
+                        alt="Overhead map of the observatory grounds with decision points" />
+                    <figcaption>Decision points mapped across the observatory grounds</figcaption>
+                </figure>
+                <figure class="case-figure">
                     <img
                         src="design/alSadeem/journeyMapping.jpg"
-                        alt="Printed out satellite imagery of observatory annotated with sticky notes"
+                        alt="Printed satellite imagery of the observatory annotated with sticky notes"
                         loading="lazy" />
+                    <figcaption>Mapping the visitor journey on satellite imagery</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Research &amp; Planning</h2>
+                    <div>
+                        <p>
+                            In planning signage placement, we relied upon satellite imagery, our
+                            observatory visit, and visitors' testimony. From all our research, we
+                            analyzed and identified decision points in the user journey when
+                            navigating and decided on what areas made the most sense to place a
+                            sign.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- Signage Design -->
+                <figure class="case-figure">
+                    <img
+                        src="design/alSadeem/observatory2.jpg"
+                        alt="Night photo of the observatory with an informational sign"
+                        loading="lazy" />
+                    <figcaption>Informational sign at the observatory</figcaption>
+                </figure>
+                <div class="case-pair">
+                    <figure class="case-figure">
+                        <img
+                            src="design/alSadeem/observatory1.jpg"
+                            alt="Night photo of the office entrance with an informational sign"
+                            loading="lazy" />
+                        <figcaption>Sign at the office entrance</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img
+                            src="design/alSadeem/observatory3.jpg"
+                            alt="Photo of the road with a directional sign toward the observatory"
+                            loading="lazy" />
+                        <figcaption>Directional sign on the approach road</figcaption>
+                    </figure>
+                </div>
+                <div class="case-note">
+                    <h2>Signage Design</h2>
+                    <div>
+                        <p>
+                            We divided navigation into two spaces: outside and within the
+                            observatory. We developed a flexible signage system for navigation
+                            within observatory grounds to accommodate different priorities,
+                            including identification, information, or world-building. Being in Abu
+                            Dhabi, we also acknowledged the need to design signs in both Arabic and
+                            English, paying attention to the diversity among visitors.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="misMatch.html">
+                            <div class="project-image">
+                                <img src="design/misMatch.png" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>MisMatch</h2>
+                                <ul class="tags">
+                                    <li>Type Design</li>
+                                </ul>
+                                <p>A typeface inspired by an accidental calligraphic stroke, combining traditional script with a modern twist.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="nameTag.html">
+                            <div class="project-image">
+                                <img src="design/cmepNameTag.png" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>CMEP Name Tag</h2>
+                                <ul class="tags">
+                                    <li>Print</li>
+                                </ul>
+                                <p>A series of interactive name tags designed to spark meaningful conversations.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
