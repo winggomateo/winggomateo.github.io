@@ -1968,18 +1968,9 @@ footer p {
     z-index: 60;
     /* Same padding open or closed, so the lines don't shift under the mouse */
     padding: 14px 12px 14px 16px;
-    border-radius: 22px;
-    border: 1px solid transparent;
-    background: rgba(255, 255, 255, 0);
-    /* The glass is always there, just switched off, so it can fade in
-       smoothly instead of popping on when the list opens */
-    -webkit-backdrop-filter: blur(0px) saturate(1) brightness(1);
-    backdrop-filter: blur(0px) saturate(1) brightness(1);
+    border: 2px solid transparent;   /* turns black when open (same width open or closed, so nothing shifts) */
     transform: translate(0, -50%);
-    transition: transform 0.25s var(--hover-ease),
-        background-color 0.35s var(--hover-ease), border-color 0.35s var(--hover-ease),
-        box-shadow 0.35s var(--hover-ease), -webkit-backdrop-filter 0.35s var(--hover-ease),
-        backdrop-filter 0.35s var(--hover-ease);
+    transition: transform 0.25s var(--hover-ease), border-color 0.25s var(--hover-ease);
 }
 
 /* Two states, set by js/project-nav.js: softened (default, also while the
@@ -2004,16 +1995,19 @@ footer p {
     pointer-events: auto;
 }
 
-/* Open: the frosted glass panel (same glass as the home page pill,
-   a bit more frosted so names stay readable over dark images) */
+/* Open: a panel outlined in black like the project cards, filled with
+   the page's own gradient. The gradient is pinned to the screen and runs
+   the same animation, so the fill always matches the page behind it, like
+   a window cut out of the background. It's solid, so names stay readable
+   over dark images. */
 .project-list.open {
-    background: rgba(255, 255, 255, 0.68);
-    /* brightness lifts dark images behind the glass, so the grey text
-       stays readable over anything */
-    -webkit-backdrop-filter: blur(16px) saturate(1.4) brightness(1.35);
-    backdrop-filter: blur(16px) saturate(1.4) brightness(1.35);
-    border-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(-45deg, #ffe5e9, #e0ffec, #d6ecff, #fed1e7);
+    background-color: #ede8ef;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: gradient 15s ease infinite;
+    animation-delay: var(--gradient-delay, 0s);
+    border-color: black;
 }
 
 .project-list ul {
