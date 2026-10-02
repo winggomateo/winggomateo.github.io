@@ -1146,6 +1146,7 @@ footer p {
     display: grid;
     grid-template-columns: 1fr 1.9fr;
     gap: 0 60px;            /* space between the two columns */
+    margin-bottom: 50px;    /* space below the line, before the next group */
 }
 
 /* The line under the details and description, inset like the content */
@@ -1200,15 +1201,29 @@ footer p {
     text-align: left;
 }
 
-/* Notes between images: heading on the left, text on the right, a line
-   underneath. Same columns as the details and description at the top,
+/* Two images side by side (each keeps its own caption) */
+.case-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 0 5%;
+    margin: 0 0 40px;
+}
+
+.case-pair .case-figure {
+    padding: 0;
+    margin: 0;
+}
+
+/* Notes close each group of images: heading on the left, text on the
+   right, a line underneath. Same columns as the details and description at the top,
    so everything lines up down the page. */
 .case-note {
     display: grid;
     grid-template-columns: 1fr 1.9fr;
     gap: 0 60px;
     padding: 0 5%;
-    margin: 0 0 40px;
+    margin: 0 0 50px;       /* space below the line, before the next group */
     text-align: left;
 }
 
@@ -1238,6 +1253,11 @@ footer p {
     .case-note {
         grid-template-columns: 1fr;
         gap: 16px 0;
+    }
+
+    .case-pair {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
     .case-header h1 {
