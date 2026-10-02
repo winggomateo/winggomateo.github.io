@@ -58,64 +58,132 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
                         <h1>CMEP Name Tag</h1>
-                        <p>December 2024</p>
-                        <!-- <p><b>Lead Designer</b></p> -->
-                        <p><i>Print Design </i></p>
+                        <p class="case-year"><time datetime="2024">2024</time></p>
                     </div>
-                    <div class="project-right">
-                        <p>
-                            For NYU's Center for Multicultural Education and Programs (CMEP), I designed a set of
-                            interactive name tags intended to foster connection and conversation at events. Each tag
-                            features three distinct sections: a primary space for one’s name, an area to indicate
-                            pronouns, and a separate box for participants to answer one of twelve conversation-starting
-                            questions.
-                        </p>
-                        <p>
-                            Twelve different name tag variations were created, each featuring a unique question and
-                            color while maintaining a consistent layout. The interactive design encourages attendees to
-                            share their identities and experiences, promoting inclusive conversations and a sense of
-                            community.
-                        </p>
-                    </div>
-                </div>
+                    <p class="case-summary">
+                        A series of interactive name tags designed to spark meaningful
+                        conversations.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Print</li>
+                    </ul>
+                </header>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <!-- Main project image -->
+                <figure class="case-hero">
                     <img
                         src="design/nameTag/cmepNameTags.gif"
                         alt="Animated CMEP name tag cycling through icebreaker questions" />
-                    <img
-                        src="design/nameTag/cmepNameTag1.jpg"
-                        alt="Twelve CMEP name tags in different colors laid out on a table" />
-                    <img
-                        src="design/nameTag/cmepNameTag2.jpg"
-                        alt="Angled close-up of the colorful name tags"
-                        loading="lazy" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Lead Designer</p>
+                        <p><b>Tools:</b> Illustrator</p>
+                    </div>
+                    <div class="case-description">
+                        <p>
+                            For NYU's Center for Multicultural Education and Programs (CMEP), I
+                            designed a set of interactive name tags intended to foster connection
+                            and conversation at events. Each tag features three distinct sections: a
+                            primary space for one’s name, an area to indicate pronouns, and a
+                            separate box for participants to answer one of twelve
+                            conversation-starting questions.
+                        </p>
+                        <p>
+                            Twelve different name tag variations were created, each featuring a
+                            unique question and color while maintaining a consistent layout. The
+                            interactive design encourages attendees to share their identities and
+                            experiences, promoting inclusive conversations and a sense of community.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <h3>Name Tags In Use</h3>
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
+
+                <!-- Images -->
+                <div class="case-pair">
+                    <figure class="case-figure">
+                        <img
+                            src="design/nameTag/cmepNameTag1.jpg"
+                            alt="Twelve CMEP name tags in different colors laid out on a table" />
+                        <figcaption>All twelve variations, each with its own question and color</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img
+                            src="design/nameTag/cmepNameTag2.jpg"
+                            alt="Angled close-up of the colorful name tags"
+                            loading="lazy" />
+                        <figcaption>Close-up of the tags</figcaption>
+                    </figure>
+                </div>
+                <div class="case-pair">
+                    <figure class="case-figure">
+                        <img
+                            src="design/nameTag/cmepNameTagUse3.jpg"
+                            alt="Students laughing and talking at a CMEP event while wearing the name tags"
+                            loading="lazy" />
+                        <figcaption>In use at a CMEP event</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img
+                            src="design/nameTag/cmepNameTagUse2.jpg"
+                            alt="Three people chatting at a CMEP event wearing the name tags"
+                            loading="lazy" />
+                        <figcaption>Conversations started by the questions</figcaption>
+                    </figure>
                 </div>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
-                    <img
-                        src="design/nameTag/cmepNameTagUse3.jpg"
-                        alt="Students laughing and talking at a CMEP event while wearing the name tags"
-                        loading="lazy" />
-                    <img
-                        src="design/nameTag/cmepNameTagUse2.jpg"
-                        alt="Three people chatting at a CMEP event wearing the name tags"
-                        loading="lazy" />
-                </div>
-
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="alSadeem.html">
+                            <div class="project-image">
+                                <img src="design/alSadeem.png" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>Al Sadeem</h2>
+                                <ul class="tags">
+                                    <li>Wayfinding</li>
+                                </ul>
+                                <p>A signage system designed for an observatory located in Abu Dhabi, UAE.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="Calendar.html">
+                            <div class="project-image">
+                                <img src="design/CalendarCover.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>CMEP Calendar</h2>
+                                <ul class="tags">
+                                    <li>Poster</li>
+                                    <li>Layout</li>
+                                </ul>
+                                <p>A double-sided calendar and poster for NYU’s CMEP, featuring a June Jordan quote.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
