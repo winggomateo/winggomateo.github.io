@@ -1626,6 +1626,15 @@ footer p {
     overflow: hidden;
 }
 
+/* While scrolling closes it, the height follows the page exactly */
+.intro-drawer.open.scroll-closing {
+    transition: visibility 0s;
+}
+
+.intro-drawer.open.scroll-closing .drawer-panel {
+    overflow: hidden;   /* no scrollbar flashing in while it shrinks */
+}
+
 /* Once open, the text can scroll inside if the window is short */
 .intro-drawer.open .drawer-panel {
     overflow-y: auto;

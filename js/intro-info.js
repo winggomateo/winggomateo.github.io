@@ -5,7 +5,7 @@
 //   hover  -> the drawer peeks up from the bottom with a wobble (a hint)
 //             while the mouse is on the tagline
 //   click  -> the drawer slides open with a short introduction
-//   close  -> the ×, Escape, or clicking the tagline again
+//   close  -> the ×, Escape, clicking the tagline again, or scrolling down
 // Styles are in css/style.css, section 6b. On phones and tablets the drawer
 // is hidden and the same text is shown as a section below the intro.
 
@@ -27,10 +27,6 @@
         clip.style.setProperty("--drawer-bottom", `${Math.max(0, below)}px`);
     };
     place();
-    document.addEventListener("scroll", () => window.requestAnimationFrame(place), {
-        capture: true,
-        passive: true,
-    });
 
     // Open almost to the top of the screen, leaving a small gap (TOP_GAP) so
     // the page still shows above it. On a short window the text scrolls
@@ -38,16 +34,59 @@
     const TOP_GAP = 32;
     const openHeight = () => Math.max(clip.getBoundingClientRect().bottom - TOP_GAP, 160);
 
-    const setOpen = (open) => {
+    // Scrolling down while it's open closes it bit by bit: its top stays put
+    // while its bottom rides up with the black line, so it folds down into
+    // the line, and the text fades. Once it's down to CLOSE_AT pixels it
+    // closes the rest of the way on its own. Scrolling back up before then
+    // opens it again.
+    const CLOSE_AT = 160;
+    let fullHeight = 0; // height when it opened
+    let tracking = false;
+
+    const followScroll = () => {
+        if (!isOpen() || !tracking) return;
+        const height = Math.min(fullHeight, clip.getBoundingClientRect().bottom - TOP_GAP);
+        if (height < CLOSE_AT) {
+            setOpen(false, { fromScroll: true });
+            return;
+        }
+        const shrunk = fullHeight - height;
+        drawer.classList.toggle("scroll-closing", shrunk > 0);
+        drawer.style.height = `${height}px`;
+        body.style.opacity = shrunk > 0 ? String(Math.max(0, 1 - shrunk / (fullHeight * 0.7))) : "";
+    };
+
+    // Follow the page on every scroll, plus one last check once scrolling
+    // settles (smooth scrolling can finish after its last scroll event)
+    const update = () => {
         place();
-        drawer.classList.remove("peek");
+        followScroll();
+    };
+    let settle;
+    document.addEventListener(
+        "scroll",
+        () => {
+            window.requestAnimationFrame(update);
+            clearTimeout(settle);
+            settle = setTimeout(update, 120);
+        },
+        { capture: true, passive: true },
+    );
+
+    const setOpen = (open, { fromScroll = false } = {}) => {
+        place();
+        drawer.classList.remove("peek", "scroll-closing");
         drawer.classList.toggle("open", open);
         document.body.classList.toggle("intro-open", open);
-        drawer.style.height = open ? `${openHeight()}px` : "";
+        fullHeight = open ? openHeight() : 0;
+        tracking = open;
+        body.style.opacity = "";
+        drawer.style.height = open ? `${fullHeight}px` : "";
         tagline.setAttribute("aria-expanded", String(open));
         // Move keyboard focus into the drawer when it opens, and back when it closes
+        // (not when it closed itself from scrolling: the person is reading on)
         if (open) setTimeout(() => close.focus({ preventScroll: true }), 60);
-        else tagline.focus({ preventScroll: true });
+        else if (!fromScroll) tagline.focus({ preventScroll: true });
     };
 
     // Peek only while the mouse is on the tagline button
@@ -67,6 +106,9 @@
 
     window.addEventListener("resize", () => {
         place();
-        if (isOpen()) drawer.style.height = `${openHeight()}px`;
+        if (isOpen()) {
+            fullHeight = openHeight();
+            drawer.style.height = `${fullHeight}px`;
+        }
     });
 })();
