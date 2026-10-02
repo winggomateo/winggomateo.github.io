@@ -1964,7 +1964,7 @@ footer p {
 .project-list {
     position: fixed;
     right: 16px;
-    top: 16px;          /* top-right corner; the list opens downward */
+    top: 26px;          /* top-right corner, "02 / 13" level with the burst in the sidebar; opens downward */
     z-index: 60;
     /* Same padding open or closed, so the lines don't shift under the mouse */
     padding: 14px 12px 14px 16px;
@@ -2019,10 +2019,16 @@ footer p {
     align-items: center;
     justify-content: flex-end;
     gap: 12px;
-    height: 26px;
+    height: 16px;       /* lines sit close together at rest, so the corner stays compact */
     color: #333;
     text-decoration: none;
     outline: none;
+    transition: height 0.35s var(--hover-ease);
+}
+
+/* Open: rows spread out to fit the names */
+.project-list.open a {
+    height: 26px;
 }
 
 /* The line for each project */
