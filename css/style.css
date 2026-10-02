@@ -173,19 +173,14 @@ a:hover {
     cursor: pointer;
 }
 
-/* Teal underline that grows in on hover (About page email, footer, and the
-   "About page" link in the home page intro) */
+/* Teal underline that grows in on hover (About page email and footer links) */
 .bio1 a,
-footer a,
-.drawer-body a,
-.intro-statement a {
+footer a {
     position: relative;
 }
 
 .bio1 a::before,
-footer a::before,
-.drawer-body a::before,
-.intro-statement a::before {
+footer a::before {
     content: "";
     position: absolute;
     display: block;
@@ -199,11 +194,7 @@ footer a::before,
 }
 
 .bio1 a:hover::before,
-footer a:hover::before,
-.drawer-body a:hover::before,
-.drawer-body a:focus-visible::before,
-.intro-statement a:hover::before,
-.intro-statement a:focus-visible::before {
+footer a:hover::before {
     transform: scaleX(1);
 }
 
@@ -1640,12 +1631,28 @@ footer p {
     line-height: 1.28;
 }
 
+/* "About page →" gets the same hover as the menu links: a soft rounded
+   teal box fades in and the text turns teal. The negative margin keeps the
+   text lined up with the paragraph above. */
 .drawer-body a,
 .intro-statement a {
     display: inline-block;
-    margin-top: 28px;
+    margin: 24px -10px 0;
+    padding: 4px 10px;
+    border-radius: 10px;   /* same roundness as the tags */
     font-size: 18px;
     color: black;
+    transition: color var(--hover-speed) var(--hover-ease),
+        background-color var(--hover-speed) var(--hover-ease);
+}
+
+.drawer-body a:hover,
+.drawer-body a:focus-visible,
+.intro-statement a:hover,
+.intro-statement a:focus-visible {
+    color: var(--accent-text);
+    background-color: var(--button-hover);
+    outline: none;
 }
 
 /* The × sits in the top-right corner, with a small hover box sized to
@@ -1726,7 +1733,7 @@ footer p {
     }
 
     .intro-statement a {
-        margin-top: 18px;
+        margin-top: 14px;
         font-size: 17px;
     }
 }
