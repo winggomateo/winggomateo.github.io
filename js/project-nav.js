@@ -1,5 +1,6 @@
 // Project list (project pages, desktop only)
-// A stack of short lines on the right edge of every project page, one per
+// The project index: a stack of short lines in the top-right corner of every
+// project page, one per
 // project. The line for the project you're on is longer and black, so you
 // can see where you are at a glance. Hovering the lines opens them into a
 // frosted glass panel with every project's name, so visitors can jump

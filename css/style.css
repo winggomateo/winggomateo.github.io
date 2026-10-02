@@ -1954,7 +1954,7 @@ footer p {
 }
 
 
-/* 11d. Project list (project pages, desktop only)
+/* 11d. Project index (project pages, desktop only, top-right corner)
    Short lines on the right edge, one per project; the current project's line
    is longer and fills in black as you scroll down the page. On hover the
    lines open into a frosted glass panel with every project's name, and a
@@ -1964,13 +1964,12 @@ footer p {
 .project-list {
     position: fixed;
     right: 16px;
-    top: 50%;
+    top: 16px;          /* top-right corner; the list opens downward */
     z-index: 60;
     /* Same padding open or closed, so the lines don't shift under the mouse */
     padding: 14px 12px 14px 16px;
     border: 2px solid transparent;   /* turns black when open (same width open or closed, so nothing shifts) */
-    transform: translate(0, -50%);
-    transition: transform 0.25s var(--hover-ease), border-color 0.25s var(--hover-ease);
+    transition: border-color 0.25s var(--hover-ease);
 }
 
 /* Two states, set by js/project-nav.js: softened (default, also while the
@@ -1991,7 +1990,6 @@ footer p {
 .project-list.active,
 .project-list.open {
     opacity: 1;
-    transform: translate(0, -50%);
     pointer-events: auto;
 }
 
