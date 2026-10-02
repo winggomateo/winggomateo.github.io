@@ -9,23 +9,28 @@
 // mouse comes near them (like the shapes pill on the home page, except they
 // never fully disappear).
 //
-// To add, remove or reorder projects, edit the list below
-// (keep it in the same order as the Design page).
+// The line for the current project also works as a scroll bar: it fills in
+// black as you scroll down the page. Hovering a name in the open list shows
+// a small preview image of that project.
+//
+// To add, remove or reorder projects, edit the list below: page, name, and
+// preview image (the same image as its card on the Design page). Keep it in
+// the same order as the Design page.
 
 const PROJECTS = [
-    ["cmepPrints.html", "CMEP Prints & Signs"],
-    ["mlkWeek.html", "MLK Week"],
-    ["twelveTwelve.html", "Twelve Twelve"],
-    ["bikingNYC.html", "Biking NYC"],
-    ["futureFashion.html", "Future Fashion Group"],
-    ["misMatch.html", "MisMatch"],
-    ["alSadeem.html", "Al Sadeem"],
-    ["nameTag.html", "CMEP Name Tag"],
-    ["Calendar.html", "CMEP Calendar"],
-    ["PGIL.html", "PGIL"],
-    ["vinyl.html", "Vinyl Playing Cards"],
-    ["BookCover.html", "On Writing Well"],
-    ["zacharyParker.html", "Zachary Parker"],
+    ["cmepPrints.html", "CMEP Prints & Signs", "design/cmepPrints.jpg"],
+    ["mlkWeek.html", "MLK Week", "design/mlk2024.jpg"],
+    ["twelveTwelve.html", "Twelve Twelve", "design/TwelveTwelve2.jpg"],
+    ["bikingNYC.html", "Biking NYC", "design/bikingNYC.png"],
+    ["futureFashion.html", "Future Fashion Group", "design/FutureFashion.jpg"],
+    ["misMatch.html", "MisMatch", "design/misMatch.png"],
+    ["alSadeem.html", "Al Sadeem", "design/alSadeem.png"],
+    ["nameTag.html", "CMEP Name Tag", "design/cmepNameTag.png"],
+    ["Calendar.html", "CMEP Calendar", "design/CalendarCover.jpg"],
+    ["PGIL.html", "PGIL", "design/PGIL.jpg"],
+    ["vinyl.html", "Vinyl Playing Cards", "design/Vinyl.jpg"],
+    ["BookCover.html", "On Writing Well", "design/BookCover.jpg"],
+    ["zacharyParker.html", "Zachary Parker", "design/ZacharyParker.jpg"],
 ];
 
 (() => {
@@ -51,10 +56,13 @@ const PROJECTS = [
     label.innerHTML = `Projects <span><b>${pad(current + 1)}</b> / ${pad(PROJECTS.length)}</span>`;
 
     const list = document.createElement("ul");
+    let fill;
     PROJECTS.forEach(([href, name], i) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = href;
+        a.style.setProperty("--i", i); // used to unfold the names one after another
+        a.dataset.preview = PROJECTS[i][2];
         if (i === current) a.setAttribute("aria-current", "page");
         const text = document.createElement("span");
         text.className = "project-list-name";
@@ -62,13 +70,83 @@ const PROJECTS = [
         const tick = document.createElement("span");
         tick.className = "project-list-tick";
         tick.setAttribute("aria-hidden", "true");
+        if (i === current) {
+            // The black part that grows as you scroll down this page
+            fill = document.createElement("span");
+            fill.className = "project-list-fill";
+            tick.append(fill);
+        }
         a.append(text, tick);
         li.append(a);
         list.append(li);
     });
 
-    nav.append(label, list);
+    // Preview image shown beside the open list
+    const preview = document.createElement("div");
+    preview.className = "project-list-preview";
+    preview.setAttribute("aria-hidden", "true");
+    const previewImg = document.createElement("img");
+    previewImg.alt = "";
+    preview.append(previewImg);
+
+    nav.append(label, list, preview);
     document.body.append(nav);
+
+    // --- Scroll progress on the current project's line ---
+    // The page can scroll on <body> or on the window depending on the
+    // browser, so check both.
+    const scrollAmount = () => Math.max(window.scrollY, document.documentElement.scrollTop, document.body.scrollTop);
+    const scrollRoom = () =>
+        Math.max(document.documentElement.scrollHeight, document.body.scrollHeight) - window.innerHeight;
+    let ticking = false;
+    const updateFill = () => {
+        const progress = Math.min(1, Math.max(0, scrollAmount() / Math.max(1, scrollRoom())));
+        fill.style.transform = `scaleX(${progress})`;
+        ticking = false;
+    };
+    document.addEventListener(
+        "scroll",
+        () => {
+            if (!ticking) {
+                ticking = true;
+                window.requestAnimationFrame(updateFill);
+            }
+        },
+        { capture: true, passive: true },
+    );
+    window.addEventListener("resize", updateFill);
+    window.addEventListener("load", updateFill);
+    updateFill();
+
+    // --- Preview images ---
+    let previewsLoaded = false;
+    const loadPreviews = () => {
+        // Fetch the preview images the first time the list opens
+        if (previewsLoaded) return;
+        previewsLoaded = true;
+        PROJECTS.forEach(([, , img]) => {
+            new Image().src = img;
+        });
+    };
+
+    const showPreview = (a) => {
+        if (!nav.classList.contains("open")) return;
+        previewImg.src = a.dataset.preview;
+        // Line the preview up with the name, keeping it inside the panel's height
+        const navBox = nav.getBoundingClientRect();
+        const rowBox = a.getBoundingClientRect();
+        const h = preview.offsetHeight;
+        const top = rowBox.top + rowBox.height / 2 - navBox.top - h / 2;
+        preview.style.top = `${Math.min(Math.max(top, 0), navBox.height - h)}px`;
+        preview.classList.add("show");
+    };
+    const hidePreview = () => preview.classList.remove("show");
+
+    list.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("mouseenter", () => showPreview(a));
+        a.addEventListener("focus", () => setTimeout(() => showPreview(a))); // after the list has opened
+    });
+    list.addEventListener("mouseleave", hidePreview);
 
     // --- Opening and closing ---
     // Opens on hover after a short pause (so passing the mouse through the
@@ -80,6 +158,8 @@ const PROJECTS = [
 
     const setOpen = (open) => {
         nav.classList.toggle("open", open);
+        if (open) loadPreviews();
+        else hidePreview();
         // Once closed, fade away as usual if the mouse stays still
         if (!open) {
             clearTimeout(hideTimer);

@@ -1674,8 +1674,9 @@ footer p {
 
 /* 11d. Project list (project pages, desktop only)
    Short lines on the right edge, one per project; the current project's line
-   is longer and black. On hover the lines open into a frosted glass panel
-   with every project's name. Built by js/project-nav.js, which also holds
+   is longer and fills in black as you scroll down the page. On hover the
+   lines open into a frosted glass panel with every project's name, and a
+   preview image of the project you point at. Built by js/project-nav.js, which also holds
    the list of projects.
    ========================================================================== */
 .project-list {
@@ -1740,16 +1741,26 @@ footer p {
 /* The line for each project */
 .project-list-tick {
     flex: none;
-    width: 16px;
+    position: relative;
+    width: 12px;
     height: 3px;
-    background: rgba(0, 0, 0, 0.18);   /* same grey as the home page scroll lines */
+    background: rgba(0, 0, 0, 0.13);   /* quieter than the current project's line */
     transition: width 0.3s var(--hover-ease), background-color 0.3s var(--hover-ease);
 }
 
-/* The project you're on: a longer black line */
+/* The project you're on: a longer, darker line that fills in black from
+   left to right as you scroll down the page (a scroll bar for this page) */
 .project-list a[aria-current] .project-list-tick {
     width: 28px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.project-list-fill {
+    position: absolute;
+    inset: 0;
     background: black;
+    transform: scaleX(0);
+    transform-origin: left;
 }
 
 /* The names and the "Projects 02 / 13" label are folded away until open */
@@ -1787,10 +1798,19 @@ footer p {
     color: black;
 }
 
+/* Names unfold one after another, top to bottom (--i is each project's
+   place in the list, set by js/project-nav.js) */
 .project-list.open .project-list-name {
     max-width: 260px;
     opacity: 1;
     padding: 2px 10px;
+    transition-delay: calc(var(--i) * 18ms);
+}
+
+/* ...but the hover colors respond right away */
+.project-list.open a:hover .project-list-name,
+.project-list.open a:focus-visible .project-list-name {
+    transition-delay: 0s;
 }
 
 .project-list.open .project-list-label {
@@ -1821,6 +1841,44 @@ footer p {
 
 .project-list.open a[aria-current]:hover .project-list-tick {
     width: 28px;
+}
+
+/* Preview image of the project you're pointing at, beside the open list */
+.project-list-preview {
+    position: absolute;
+    top: 0;
+    right: calc(100% + 12px);
+    width: 220px;
+    aspect-ratio: 3 / 2;
+    border: 2px solid black;   /* same border as the project cards */
+    background: var(--card-background);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(8px);
+    pointer-events: none;
+    transition: opacity 0.25s var(--hover-ease), transform 0.25s var(--hover-ease),
+        top 0.3s var(--hover-ease);
+}
+
+.project-list-preview.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.project-list-preview img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Keep the project pages' content clear of the lines on narrower screens
+   (the lines take about 55px at the right edge) */
+@media only screen and (min-width: 1051px) {
+    .main-content:has(> .project-top) {
+        padding-right: max(0px, calc(72px - 5vw));
+    }
 }
 
 @media only screen and (max-width: 1050px) {
