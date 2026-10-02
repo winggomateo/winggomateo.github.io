@@ -1684,7 +1684,7 @@ footer p {
     z-index: 60;
     width: 250px;
     border-radius: 22px;
-    background: rgba(255, 255, 255, 0.35);   /* same glass as the shapes pill on the home page */
+    background: rgba(255, 255, 255, 0.55);   /* same glass as the shapes pill, a bit more frosted so names stay readable over dark images */
     -webkit-backdrop-filter: blur(12px) saturate(1.4);
     backdrop-filter: blur(12px) saturate(1.4);
     border: 1px solid rgba(0, 0, 0, 0.08);   /* faint edge, like the tag grey */
