@@ -1648,20 +1648,24 @@ footer p {
     color: black;
 }
 
-/* The × fills the folder's tab, so the tab doubles as the close button */
+/* The × sits centered in the folder's tab, with a small hover box
+   sized to the × (same roundness as the tags) */
 .drawer-close {
     all: unset;
     cursor: pointer;
     position: absolute;
     z-index: 1;
-    top: 2px;                        /* inside the outline */
-    right: 2px;
-    width: calc(var(--tab-w) - 2px);
-    height: calc(var(--tab-h) - 2px);
+    --size: 26px;
+    top: calc((var(--tab-h) - var(--size)) / 2 + 1px);   /* centered in the tab */
+    right: calc((var(--tab-w) - var(--size)) / 2);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 8px;
     display: grid;
     place-items: center;
     opacity: 0;
-    transition: opacity 0.3s, color var(--hover-speed) var(--hover-ease);
+    transition: opacity 0.3s, background-color var(--hover-speed) var(--hover-ease),
+        color var(--hover-speed) var(--hover-ease);
 }
 
 /* The × is drawn as two lines so it's crisp and sits dead center */
@@ -1669,7 +1673,6 @@ footer p {
     width: 14px;
     height: 14px;
     overflow: visible;
-    transition: transform 0.4s ease;
 }
 
 .drawer-close path {
@@ -1681,22 +1684,17 @@ footer p {
 
 .intro-drawer.open .drawer-close {
     opacity: 1;
-    transition-delay: 0.3s, 0s;
+    transition-delay: 0.3s, 0s, 0s;
 }
 
-/* Hover: no box, the × just turns teal and gives a quarter turn */
 .drawer-close:focus {
     outline: none;
 }
 
 .drawer-close:hover,
 .drawer-close:focus-visible {
+    background-color: var(--button-hover);
     color: var(--accent-text);
-}
-
-.drawer-close:hover svg,
-.drawer-close:focus-visible svg {
-    transform: rotate(90deg);
 }
 
 /* Phones and tablets only */
