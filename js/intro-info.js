@@ -90,11 +90,18 @@
         { capture: true, passive: true },
     );
 
+    const CLOSE_MS = 600;
+    let tuckTimer;
+
     const setOpen = (open, { fromScroll = false } = {}) => {
         place();
         drawer.classList.remove("peek", "scroll-closing");
         drawer.classList.toggle("open", open);
-        document.body.classList.toggle("intro-open", open);
+        // The tagline and shapes stay tucked behind until the drawer has
+        // finished closing (CLOSE_MS matches the closing animation in the CSS)
+        clearTimeout(tuckTimer);
+        if (open) document.body.classList.add("intro-open");
+        else tuckTimer = setTimeout(() => document.body.classList.remove("intro-open"), CLOSE_MS);
         fullHeight = open ? openHeight() : 0;
         tracking = open;
         body.style.opacity = "";
