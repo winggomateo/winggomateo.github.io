@@ -68,9 +68,9 @@
             <main class="main-content">
                 <div class="block1">
                     <div class="header"><h1>Mateo J. Villalba-Rodriguez</h1></div>
-                    <!-- Tagline. On desktop it's also a button: hovering it makes the
-                         info drawer peek up from the bottom of the screen, clicking
-                         opens it (see js/intro-info.js). On phones it's plain text. -->
+                    <!-- Tagline. On desktop it's also a button: clicking it slides the
+                         info drawer up from the bottom of the screen
+                         (see js/intro-info.js). On phones it's plain text. -->
                     <div class="info">
                         <button type="button" class="tagline-btn" aria-expanded="false" aria-controls="intro-drawer">
                             <span class="tagline-line">Based in New York City</span>
@@ -87,8 +87,9 @@
                             <!-- The folder outline (one continuous line with a tab on the
                                  top edge), drawn by js/intro-info.js to fit the drawer -->
                             <svg class="drawer-outline" aria-hidden="true"><path /></svg>
+                            <!-- The × sits in the folder's tab -->
+                            <button type="button" class="drawer-close" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 2 L14 14 M14 2 L2 14" /></svg></button>
                             <div class="drawer-panel">
-                                <button type="button" class="drawer-close" aria-label="Close">&times;</button>
                                 <div class="drawer-body">
                                     <p>
                                         Mateo Villalba-Rodriguez is a graphic designer based in Brooklyn,

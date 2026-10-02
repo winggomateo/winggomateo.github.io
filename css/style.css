@@ -1481,10 +1481,9 @@ footer p {
 
 /* 6b. Introduction (home page)
    Desktop: the tagline under the name is a button with a grey "+ Info"
-   line. Hovering it makes the info drawer peek up from the bottom of the
-   screen with a small bounce; clicking slides the drawer open over the
-   intro. Close with the ×, Escape, or the tagline again. Nothing shows at
-   rest. Phones and tablets: the same paragraph is a short section between
+   line. Clicking it slides the info drawer, a folder, up from the bottom
+   of the screen over the intro. Close with the × in the folder's tab,
+   Escape, or the tagline again. Nothing shows until it's clicked. Phones and tablets: the same paragraph is a short section between
    the intro and the project cards. Behavior is in js/intro-info.js.
    ========================================================================== */
 /* The tagline sits above the floating shapes (z-index 1), so a shape
@@ -1563,7 +1562,7 @@ footer p {
 }
 
 .intro-drawer {
-    --tab-h: 26px;
+    --tab-h: 34px;
     --tab-w: 170px;
     --tab-slope: 30px;
     position: absolute;
@@ -1588,7 +1587,8 @@ footer p {
         100% 100%,
         0 100%
     );
-    transition: height 0.3s ease;   /* closing */
+    visibility: hidden;   /* nothing shows until the tagline is clicked */
+    transition: height 0.3s ease, visibility 0s linear 0.3s;   /* closing */
 }
 
 .drawer-outline {
@@ -1607,31 +1607,11 @@ footer p {
     stroke-linejoin: miter;
 }
 
-/* Peek (tagline hovered): the folder pops up just enough to show its tab
-   and top edge, wobbles a little, then holds while the mouse stays there.
-   It can be clicked to open, too. */
-.intro-drawer.peek {
-    height: calc(var(--tab-h) + 14px);
-    pointer-events: auto;
-    cursor: pointer;
-    animation: drawer-jiggle 0.75s ease-out, gradient 15s ease infinite;
-    animation-delay: 0s, var(--gradient-delay, 0s);
-}
-
-@keyframes drawer-jiggle {
-    0%   { height: 0; }
-    30%  { height: calc(var(--tab-h) + 26px); }
-    50%  { height: calc(var(--tab-h) + 7px); }
-    66%  { height: calc(var(--tab-h) + 19px); }
-    80%  { height: calc(var(--tab-h) + 11px); }
-    91%  { height: calc(var(--tab-h) + 16px); }
-    100% { height: calc(var(--tab-h) + 14px); }
-}
-
 /* Open: the script sets the height to fit the text */
 .intro-drawer.open {
     pointer-events: auto;
-    transition: height 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    visibility: visible;
+    transition: height 0.7s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
 }
 
 .drawer-panel {
@@ -1668,33 +1648,47 @@ footer p {
     color: black;
 }
 
+/* The × fills the folder's tab, so the tab doubles as the close button */
 .drawer-close {
     all: unset;
     cursor: pointer;
     position: absolute;
-    top: 16px;
-    right: 16px;
+    z-index: 1;
+    top: 2px;                        /* inside the outline */
+    right: 2px;
+    width: calc(var(--tab-w) - 2px);
+    height: calc(var(--tab-h) - 2px);
     display: grid;
     place-items: center;
-    width: 38px;
-    height: 38px;
-    border: 2px solid black;
-    font-size: 22px;
     opacity: 0;
     transition: opacity 0.3s, background-color var(--hover-speed) var(--hover-ease),
-        border-color var(--hover-speed) var(--hover-ease), color var(--hover-speed) var(--hover-ease);
+        color var(--hover-speed) var(--hover-ease);
+}
+
+/* The × is drawn as two lines so it's crisp and sits dead center */
+.drawer-close svg {
+    width: 14px;
+    height: 14px;
+    overflow: visible;
+}
+
+.drawer-close path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: square;
 }
 
 .intro-drawer.open .drawer-close {
     opacity: 1;
-    transition-delay: 0.3s, 0s, 0s, 0s;
+    transition-delay: 0.3s, 0s, 0s;
 }
 
 .drawer-close:hover,
 .drawer-close:focus-visible {
     background-color: var(--button-hover);
-    border-color: var(--accent-color);
     color: var(--accent-text);
+    outline: none;
 }
 
 /* Phones and tablets only */
@@ -1734,14 +1728,9 @@ footer p {
 
 @media (prefers-reduced-motion: reduce) {
     .intro-drawer,
-    .intro-drawer.peek,
     .intro-drawer.open,
     .drawer-body {
         transition-duration: 0s !important;
-    }
-
-    .intro-drawer.peek {
-        animation: gradient 15s ease infinite;
     }
 }
 
