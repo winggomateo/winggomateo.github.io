@@ -1181,11 +1181,63 @@ footer p {
     margin: 0 0 0.9em;
 }
 
+/* Images with a short grey caption underneath (the caption is optional) */
+.case-figure {
+    margin: 0 0 40px;
+    padding: 0 5%;
+}
+
+.case-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.case-figure figcaption {
+    margin-top: 12px;
+    font-size: 1.05em;
+    color: #5a5a5a;   /* same accessible grey as the team */
+    text-align: left;
+}
+
+/* Notes between images: heading on the left, text on the right, a line
+   underneath. Same columns as the details and description at the top,
+   so everything lines up down the page. */
+.case-note {
+    display: grid;
+    grid-template-columns: 1fr 1.9fr;
+    gap: 0 60px;
+    padding: 0 5%;
+    margin: 0 0 40px;
+    text-align: left;
+}
+
+.case-note::after {
+    content: "";
+    grid-column: 1 / -1;
+    height: 2px;
+    margin-top: 1.2em;
+    background: black;
+}
+
+.case-note h2 {
+    margin: 0;
+    font-size: 1.9em;
+    line-height: 1.15;
+}
+
+.case-note p {
+    margin: 0 0 0.9em;
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
 /* Phones and tablets: details stack above the description */
 @media only screen and (max-width: 1050px) {
-    .case-info {
+    .case-info,
+    .case-note {
         grid-template-columns: 1fr;
-        gap: 24px 0;
+        gap: 16px 0;
     }
 
     .case-header h1 {
