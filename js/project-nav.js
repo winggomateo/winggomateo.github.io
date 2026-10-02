@@ -1,11 +1,13 @@
 // Project list (project pages, desktop only)
-// A small frosted glass pill in the top-right corner that says which project
-// you're on ("02 / 13 Projects"). Hovering it opens a list of every project,
-// so visitors can jump straight to another one.
+// A stack of short lines on the right edge of every project page, one per
+// project. The line for the project you're on is longer and black, so you
+// can see where you are at a glance. Hovering the lines opens them into a
+// frosted glass panel with every project's name, so visitors can jump
+// straight to another one.
 //
-// Like the shapes pill on the home page, it stays hidden until the mouse
-// moves, shows faintly while the mouse moves elsewhere, and becomes fully
-// visible when the mouse comes near it.
+// Like the shapes pill on the home page, the lines stay hidden until the
+// mouse moves, show faintly while the mouse moves elsewhere, and become
+// fully visible when the mouse comes near them.
 //
 // To add, remove or reorder projects, edit the list below
 // (keep it in the same order as the Design page).
@@ -37,39 +39,35 @@ const PROJECTS = [
 
     const pad = (n) => String(n).padStart(2, "0");
 
-    // --- Build the pill and the list ---
+    // --- Build the lines and the list ---
     const nav = document.createElement("nav");
     nav.className = "project-list";
     nav.setAttribute("aria-label", "All projects");
 
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "project-list-btn";
-    button.setAttribute("aria-expanded", "false");
-    button.setAttribute("aria-controls", "project-list-items");
-    button.innerHTML =
-        `<span class="project-list-count"><b>${pad(current + 1)}</b> / ${pad(PROJECTS.length)}</span>` +
-        `<span class="project-list-title">Projects</span>` +
-        `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>`;
-    button.setAttribute("aria-label", `Project ${current + 1} of ${PROJECTS.length}. Show all projects`);
+    // "Projects 02 / 13", shown at the top once open
+    const label = document.createElement("p");
+    label.className = "project-list-label";
+    label.setAttribute("aria-hidden", "true");
+    label.innerHTML = `Projects <span><b>${pad(current + 1)}</b> / ${pad(PROJECTS.length)}</span>`;
 
     const list = document.createElement("ul");
-    list.id = "project-list-items";
     PROJECTS.forEach(([href, name], i) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = href;
         if (i === current) a.setAttribute("aria-current", "page");
-        const num = document.createElement("span");
-        num.className = "project-list-num";
-        num.textContent = pad(i + 1);
-        num.setAttribute("aria-hidden", "true");
-        a.append(num, name);
+        const text = document.createElement("span");
+        text.className = "project-list-name";
+        text.textContent = name;
+        const tick = document.createElement("span");
+        tick.className = "project-list-tick";
+        tick.setAttribute("aria-hidden", "true");
+        a.append(text, tick);
         li.append(a);
         list.append(li);
     });
 
-    nav.append(button, list);
+    nav.append(label, list);
     document.body.append(nav);
 
     // --- Opening and closing ---
@@ -82,7 +80,6 @@ const PROJECTS = [
 
     const setOpen = (open) => {
         nav.classList.toggle("open", open);
-        button.setAttribute("aria-expanded", String(open));
         // Once closed, fade away as usual if the mouse stays still
         if (!open) {
             clearTimeout(hideTimer);
@@ -99,27 +96,22 @@ const PROJECTS = [
         closeTimer = setTimeout(() => setOpen(false), CLOSE_DELAY_MS);
     });
 
-    // Clicking the pill (or Enter/Space on the keyboard) also opens and closes it
-    button.addEventListener("click", () => {
-        clearTimeout(openTimer);
-        setOpen(!nav.classList.contains("open"));
-    });
-
-    // Escape closes it; tabbing out of it closes it
-    nav.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && nav.classList.contains("open")) {
-            setOpen(false);
-            button.focus();
-        }
-    });
+    // Keyboard: tabbing onto the links opens it, tabbing out or Escape closes it
+    nav.addEventListener("focusin", () => setOpen(true));
     nav.addEventListener("focusout", (e) => {
         if (!nav.contains(e.relatedTarget)) setOpen(false);
+    });
+    nav.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            setOpen(false);
+            document.activeElement.blur();
+        }
     });
 
     // --- Three states, like the shapes pill on the home page ---
     //   hidden: the mouse is resting (or off the page)
     //   dim:    the mouse is moving somewhere on the page
-    //   active: the mouse is near the pill, or the list is open
+    //   active: the mouse is near the lines, or the list is open
     const HIDE_AFTER_MS = 1000; // mouse resting this long hides it
     const NEAR_PX = 120; // "near" = the mouse is within this distance of it
 

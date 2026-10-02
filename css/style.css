@@ -1673,145 +1673,155 @@ footer p {
 
 
 /* 11d. Project list (project pages, desktop only)
-   A frosted glass pill in the top-right corner ("02 / 13 Projects") that
-   opens into a list of every project on hover. Built by js/project-nav.js,
-   which also holds the list of projects.
+   Short lines on the right edge, one per project; the current project's line
+   is longer and black. On hover the lines open into a frosted glass panel
+   with every project's name. Built by js/project-nav.js, which also holds
+   the list of projects.
    ========================================================================== */
 .project-list {
     position: fixed;
-    top: 24px;
-    right: 30px;
+    right: 16px;
+    top: 50%;
     z-index: 60;
-    width: 250px;
+    padding: 10px 6px 10px 10px;
     border-radius: 22px;
-    background: rgba(255, 255, 255, 0.55);   /* same glass as the shapes pill, a bit more frosted so names stay readable over dark images */
-    -webkit-backdrop-filter: blur(12px) saturate(1.4);
-    backdrop-filter: blur(12px) saturate(1.4);
-    border: 1px solid rgba(0, 0, 0, 0.08);   /* faint edge, like the tag grey */
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-6px);
-    transition: opacity 0.25s var(--hover-ease), transform 0.25s var(--hover-ease);   /* fading out */
+    transform: translate(6px, -50%);
+    transition: opacity 0.25s var(--hover-ease), transform 0.25s var(--hover-ease),
+        background-color 0.35s var(--hover-ease), border-color 0.35s var(--hover-ease),
+        box-shadow 0.35s var(--hover-ease), padding 0.35s var(--hover-ease);
 }
 
 /* Three states, set by js/project-nav.js: hidden (default) -> faint while
-   the mouse moves -> full when the mouse is near it or the list is open */
+   the mouse moves -> full when the mouse is near the lines or the list is open */
 .project-list.dim {
-    opacity: 0.35;   /* how faint it is while the mouse moves elsewhere */
-    transform: translateY(0);
+    opacity: 0.35;   /* how faint the lines are while the mouse moves elsewhere */
+    transform: translate(0, -50%);
     pointer-events: auto;
-    transition-duration: 0.4s;   /* fading in */
 }
 
 .project-list.active,
-.project-list.open,
-.project-list:has(:focus-visible) {
+.project-list.open {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, -50%);
     pointer-events: auto;
-    transition-duration: 0.4s;
 }
 
-/* The pill itself: "02 / 13   Projects   v" */
-.project-list-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 10px 16px;
-    border: 0;
-    background: none;
-    font: inherit;
-    font-size: 15px;
-    color: #888;
-    cursor: pointer;
-    text-align: left;
+/* Open: the frosted glass panel (same glass as the home page pill,
+   a bit more frosted so names stay readable over dark images) */
+.project-list.open {
+    padding: 14px 12px 14px 16px;
+    background: rgba(255, 255, 255, 0.55);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+    backdrop-filter: blur(12px) saturate(1.4);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
 }
 
-.project-list-count b {
-    color: black;
-}
-
-.project-list-title {
-    flex: 1;
-    color: #555;
-}
-
-.project-list-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: #333;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: rotate 0.35s var(--hover-ease);
-}
-
-.project-list.open .project-list-btn svg {
-    rotate: 180deg;   /* arrow points up while open */
-}
-
-/* The list: folded away until open, then slides down */
 .project-list ul {
-    max-height: 0;
-    opacity: 0;
-    padding: 0 8px;
-    border-top: 1px solid transparent;
-    transition: max-height 0.4s var(--hover-ease), opacity 0.3s var(--hover-ease),
-        padding 0.4s var(--hover-ease), border-color 0.4s var(--hover-ease);
-}
-
-.project-list.open ul {
-    max-height: 520px;
-    opacity: 1;
-    padding: 8px 8px 10px;
-    border-top-color: rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .project-list a {
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    justify-content: flex-end;
     gap: 12px;
-    padding: 5px 10px;
-    border-radius: 10px;   /* same roundness as the tags */
-    font-size: 16px;
+    height: 26px;
     color: #333;
     text-decoration: none;
-    transition: background-color var(--hover-speed) var(--hover-ease), color var(--hover-speed) var(--hover-ease);
+    outline: none;
 }
 
-.project-list-num {
-    width: 18px;
+/* The line for each project */
+.project-list-tick {
+    flex: none;
+    width: 16px;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.18);   /* same grey as the home page scroll lines */
+    transition: width 0.3s var(--hover-ease), background-color 0.3s var(--hover-ease);
+}
+
+/* The project you're on: a longer black line */
+.project-list a[aria-current] .project-list-tick {
+    width: 28px;
+    background: black;
+}
+
+/* The names and the "Projects 02 / 13" label are folded away until open */
+.project-list-name,
+.project-list-label {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.4s var(--hover-ease), opacity 0.3s var(--hover-ease),
+        padding 0.4s var(--hover-ease), background-color var(--hover-speed) var(--hover-ease),
+        color var(--hover-speed) var(--hover-ease);
+}
+
+.project-list-name {
+    padding: 2px 0;
+    border-radius: 10px;   /* same roundness as the tags */
+    font-size: 16px;
+}
+
+.project-list-label {
+    max-height: 0;
+    margin: 0;
     font-size: 13px;
+    color: #666;
+    text-align: left;
+}
+
+.project-list-label span {
+    margin-left: 6px;
     color: #999;
-    transition: color var(--hover-speed) var(--hover-ease);
+}
+
+.project-list-label b {
+    color: black;
+}
+
+.project-list.open .project-list-name {
+    max-width: 260px;
+    opacity: 1;
+    padding: 2px 10px;
+}
+
+.project-list.open .project-list-label {
+    max-width: 260px;
+    max-height: 30px;
+    opacity: 1;
+    padding: 0 10px 6px;
 }
 
 /* The project you're on: grey box, like the menu's "you are here" box */
-.project-list a[aria-current] {
+.project-list.open a[aria-current] .project-list-name {
     background-color: rgba(0, 0, 0, 0.06);
     color: black;
 }
 
-.project-list a[aria-current] .project-list-num {
-    color: black;
-    font-weight: 700;
-}
-
-/* Hover: light teal box, like the menu links */
-.project-list a:hover,
-.project-list a:focus-visible {
+/* Hover: light teal box and a teal line, like the menu links */
+.project-list.open a:hover .project-list-name,
+.project-list a:focus-visible .project-list-name {
     background-color: var(--button-hover);
     color: var(--accent-text);
-    outline: none;
 }
 
-.project-list a:hover .project-list-num,
-.project-list a:focus-visible .project-list-num {
-    color: var(--accent-text);
+.project-list.open a:hover .project-list-tick,
+.project-list a:focus-visible .project-list-tick {
+    width: 22px;
+    background: var(--accent-color);
+}
+
+.project-list.open a[aria-current]:hover .project-list-tick {
+    width: 28px;
 }
 
 @media only screen and (max-width: 1050px) {
