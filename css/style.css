@@ -1688,17 +1688,17 @@ footer p {
     border-radius: 22px;
     border: 1px solid transparent;
     background: rgba(255, 255, 255, 0);
-    opacity: 0.35;   /* always faintly visible, full when the mouse is near */
+    opacity: 0.6;   /* always visible at rest, full when the mouse is near */
     transform: translate(0, -50%);
     transition: opacity 0.25s var(--hover-ease), transform 0.25s var(--hover-ease),
         background-color 0.35s var(--hover-ease), border-color 0.35s var(--hover-ease),
         box-shadow 0.35s var(--hover-ease), padding 0.35s var(--hover-ease);
 }
 
-/* Two states, set by js/project-nav.js: faint (default, also while the
+/* Two states, set by js/project-nav.js: softened (default, also while the
    mouse moves elsewhere) -> full when the mouse is near the lines or the list is open */
 .project-list.dim {
-    opacity: 0.35;   /* how faint the lines are while the mouse moves elsewhere */
+    opacity: 0.6;   /* how visible the lines are while the mouse is elsewhere */
     transform: translate(0, -50%);
     pointer-events: auto;
 }
@@ -1763,9 +1763,9 @@ footer p {
     transform-origin: left;
 }
 
-/* The names and the "Projects 02 / 13" label are folded away until open */
+/* The names are folded away until open */
 .project-list-name,
-.project-list-label {
+.project-list-word {
     max-width: 0;
     opacity: 0;
     overflow: hidden;
@@ -1781,20 +1781,24 @@ footer p {
     font-size: 16px;
 }
 
+/* "02 / 13" above the lines, so they read as navigation. Once open it
+   becomes "Projects ... 02 / 13" */
 .project-list-label {
-    max-height: 0;
-    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    margin: 0 0 6px;
     font-size: 13px;
-    color: #666;
-    text-align: left;
-}
-
-.project-list-label span {
-    margin-left: 6px;
     color: #999;
+    white-space: nowrap;
+    transition: padding 0.4s var(--hover-ease);
 }
 
-.project-list-label b {
+.project-list-word {
+    color: #666;
+}
+
+.project-list-count b {
     color: black;
 }
 
@@ -1814,10 +1818,14 @@ footer p {
 }
 
 .project-list.open .project-list-label {
+    justify-content: space-between;
+    padding: 0 0 0 10px;
+}
+
+.project-list.open .project-list-word {
     max-width: 260px;
-    max-height: 30px;
     opacity: 1;
-    padding: 0 10px 6px;
+    margin-right: 12px;
 }
 
 /* The project you're on: grey box, like the menu's "you are here" box */

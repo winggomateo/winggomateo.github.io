@@ -5,9 +5,8 @@
 // frosted glass panel with every project's name, so visitors can jump
 // straight to another one.
 //
-// The lines are always faintly visible, and become fully visible when the
-// mouse comes near them (like the shapes pill on the home page, except they
-// never fully disappear).
+// The lines are always visible (softened), with "02 / 13" above them, and
+// become fully visible when the mouse comes near them.
 //
 // The line for the current project also works as a scroll bar: it fills in
 // black as you scroll down the page. Hovering a name in the open list shows
@@ -49,11 +48,13 @@ const PROJECTS = [
     nav.className = "project-list";
     nav.setAttribute("aria-label", "All projects");
 
-    // "Projects 02 / 13", shown at the top once open
+    // "02 / 13" above the lines ("Projects ... 02 / 13" once open)
     const label = document.createElement("p");
     label.className = "project-list-label";
     label.setAttribute("aria-hidden", "true");
-    label.innerHTML = `Projects <span><b>${pad(current + 1)}</b> / ${pad(PROJECTS.length)}</span>`;
+    label.innerHTML =
+        `<span class="project-list-word">Projects</span>` +
+        `<span class="project-list-count"><b>${pad(current + 1)}</b> / ${pad(PROJECTS.length)}</span>`;
 
     const list = document.createElement("ul");
     let fill;
@@ -189,9 +190,9 @@ const PROJECTS = [
     });
 
     // --- States, like the shapes pill on the home page (minus hiding) ---
-    //   dim:    faint (the default, and while the mouse is elsewhere)
+    //   dim:    softened (the default, and while the mouse is elsewhere)
     //   active: the mouse is near the lines, or the list is open
-    const HIDE_AFTER_MS = 1000; // mouse resting this long fades it back to faint
+    const HIDE_AFTER_MS = 1000; // mouse resting this long softens it again
     const NEAR_PX = 120; // "near" = the mouse is within this distance of it
 
     let hideTimer;
