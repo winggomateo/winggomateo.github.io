@@ -1661,8 +1661,7 @@ footer p {
     display: grid;
     place-items: center;
     opacity: 0;
-    transition: opacity 0.3s, background-color var(--hover-speed) var(--hover-ease),
-        color var(--hover-speed) var(--hover-ease);
+    transition: opacity 0.3s, color var(--hover-speed) var(--hover-ease);
 }
 
 /* The × is drawn as two lines so it's crisp and sits dead center */
@@ -1670,6 +1669,7 @@ footer p {
     width: 14px;
     height: 14px;
     overflow: visible;
+    transition: transform 0.4s ease;
 }
 
 .drawer-close path {
@@ -1681,14 +1681,22 @@ footer p {
 
 .intro-drawer.open .drawer-close {
     opacity: 1;
-    transition-delay: 0.3s, 0s, 0s;
+    transition-delay: 0.3s, 0s;
+}
+
+/* Hover: no box, the × just turns teal and gives a quarter turn */
+.drawer-close:focus {
+    outline: none;
 }
 
 .drawer-close:hover,
 .drawer-close:focus-visible {
-    background-color: var(--button-hover);
     color: var(--accent-text);
-    outline: none;
+}
+
+.drawer-close:hover svg,
+.drawer-close:focus-visible svg {
+    transform: rotate(90deg);
 }
 
 /* Phones and tablets only */
