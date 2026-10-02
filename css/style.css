@@ -1256,13 +1256,14 @@ footer p {
 }
 
 .case-end h2 {
-    margin: 0 0 20px;
+    margin: 0;
     font-size: 1.9em;
     line-height: 1.15;
 }
 
 .case-more {
     grid-column: 1 / -1;     /* full width, under the heading row */
+    margin-top: 20px;
     display: grid;
     grid-template-columns: 1fr;   /* one card per row, like the Design page */
     gap: 30px;               /* same gap as the homepage card grid */
@@ -1294,7 +1295,7 @@ footer p {
 /* "All projects": the site's outlined button, at the right end of the
    heading row */
 .case-end .case-all {
-    margin: 0 0 20px;
+    margin: 0;
     font-size: 1.1em;
     white-space: nowrap;
 }
