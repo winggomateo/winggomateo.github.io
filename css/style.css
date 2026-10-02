@@ -1564,9 +1564,9 @@ footer p {
 }
 
 .intro-drawer {
-    --tab-h: 42px;
-    --tab-w: 96px;
-    --tab-slope: 36px;
+    --tab-h: 34px;
+    --tab-w: 72px;
+    --tab-slope: 30px;
     position: absolute;
     left: 0;
     right: 0;
