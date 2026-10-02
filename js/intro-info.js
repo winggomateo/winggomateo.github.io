@@ -42,16 +42,29 @@
     // (even if it was opened partway down the page).
     const closeAt = () => body.offsetHeight + 4;
     const tallest = () => window.innerHeight - TOP_GAP; // its height at the top of the page
-    let fullHeight = 0; // height when it opened
+    let fullHeight = 0; // tallest it has been since it opened
     let tracking = false;
+    let autoScrolling = false; // while the page scrolls itself to make room
+
+    // The element that actually scrolls the page
+    const scroller = (() => {
+        for (let el = intro.parentElement; el; el = el.parentElement) {
+            const overflow = getComputedStyle(el).overflowY;
+            if (/(auto|scroll)/.test(overflow) && el.scrollHeight > el.clientHeight) return el;
+        }
+        return document.scrollingElement;
+    })();
 
     const followScroll = () => {
         if (!isOpen() || !tracking) return;
         const height = Math.min(tallest(), Math.max(clip.getBoundingClientRect().bottom - TOP_GAP, 160));
-        if (height < closeAt()) {
+        // the page has scrolled far enough to show it all: back to normal
+        if (autoScrolling && height >= tallest() - 4) autoScrolling = false;
+        if (height < closeAt() && !autoScrolling) {
             setOpen(false, { fromScroll: true });
             return;
         }
+        fullHeight = Math.max(fullHeight, height);
         const shrunk = Math.max(0, fullHeight - height);
         drawer.classList.toggle("scroll-closing", height !== fullHeight);
         drawer.style.height = `${height}px`;
@@ -91,6 +104,37 @@
         // (not when it closed itself from scrolling: the person is reading on)
         if (open) setTimeout(() => close.focus({ preventScroll: true }), 60);
         else if (!fromScroll) tagline.focus({ preventScroll: true });
+        if (open) makeRoom();
+    };
+
+    // Opened too far down the page to fit the text? Scroll back up until the
+    // drawer can open to its full height (same as opening it from the top of
+    // the page); the drawer grows along with the scroll.
+    const makeRoom = () => {
+        if (clip.getBoundingClientRect().bottom - TOP_GAP >= closeAt() + 120) return;
+        const need = window.innerHeight - clip.getBoundingClientRect().bottom;
+        if (need <= 0) return;
+        autoScrolling = true;
+        // Glide up over half a second (or jump, for reduced motion). Done by
+        // hand rather than with smooth scrolling so it can't get cut short.
+        const from = scroller.scrollTop;
+        const to = Math.max(0, from - need);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            scroller.scrollTop = to;
+            return;
+        }
+        const start = performance.now();
+        const step = (now) => {
+            const t = Math.min(1, (now - start) / 500);
+            const eased = 1 - Math.pow(1 - t, 3);
+            scroller.scrollTop = from + (to - from) * eased;
+            if (t < 1) window.requestAnimationFrame(step);
+        };
+        window.requestAnimationFrame(step);
+        // fallback in case the scroll gets interrupted
+        setTimeout(() => {
+            autoScrolling = false;
+        }, 2000);
     };
 
     // Peek only while the mouse is on the tagline button
