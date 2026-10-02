@@ -58,109 +58,189 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
-                        <h1>Biking in NYC</h1>
-                        <p>October 2023</p>
-                        <p><i>Data Visualization</i></p>
-                        <p>
-                            <small
-                                ><i
-                                    >This was a project for <a href="#">Information Design</a>, a course taught by
-                                    Katherine Dillon.</i
-                                ></small
-                            >
-                        </p>
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
+                        <h1>Biking NYC</h1>
+                        <p class="case-year"><time datetime="2023">2023</time></p>
                     </div>
-                    <div class="project-right">
-                        <p>
-                            The project is a set of data visualizations aiming to answer the question - how safe is it
-                            to bike in NYC? These visualizations were made using publicly available data sets about
-                            biking in New York City, revealing information on Bicycle Counts, Bike Lane Amounts, Biking
-                            Distribution, and Injury and Fatality Counts throughout the past decade.
-                        </p>
-                        <p>
-                            The New York City Department of Transportation and the New York City Department of Planning
-                            are the sources of the data sets.
-                        </p>
-                    </div>
-                </div>
+                    <p class="case-summary">
+                        A set of data visualizations exploring how safe it is to bike in New York
+                        City.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Data Visualization</li>
+                    </ul>
+                </header>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <!-- Main project image -->
+                <figure class="case-hero">
                     <img
                         src="design/bikingNYC/Biking03.png"
                         alt="Bubble chart of weekday bicycle counts at 10 Manhattan locations from 2005 to 2015" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Information Designer</p>
+                        <p><b>Tools:</b> Illustrator, RAWGraphs</p>
+                        <div class="case-team">
+                            <p><b>Course</b></p>
+                            <p>Information Design</p>
+                            <p>Katherine Dillon, <i>Instructor</i></p>
+                        </div>
+                    </div>
+                    <div class="case-description">
+                        <p>
+                            The project is a set of data visualizations aiming to answer the
+                            question: how safe is it to bike in NYC? These visualizations were made
+                            using publicly available data sets about biking in New York City,
+                            revealing information on Bicycle Counts, Bike Lane Amounts, Biking
+                            Distribution, and Injury and Fatality Counts throughout the past decade.
+                        </p>
+                        <p>
+                            The New York City Department of Transportation and the New York City
+                            Department of Planning are the sources of the data sets.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <p>
-                        The design of the visualizations was intentionally crafted to balance complexity and simplicity.
-                        The bicycle count graph, for example, is detailed to emphasize the widespread adoption of biking
-                        in the city, while a simpler pictorial graph gives a quick and direct snapshot of biking’s
-                        prevalence in the city. These choices were made to ensure accessibility for a broad audience,
-                        allowing for both in-depth analysis and immediate understanding.
-                    </p>
-                </div>
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <!-- Biking in the City -->
+                <figure class="case-figure">
                     <img
                         src="design/bikingNYC/BikingCollage1.png"
                         alt="Charts showing annual bike trips growing in NYC and how many adults ride regularly" />
-                    <img
-                        src="design/bikingNYC/BikingCollage2.png"
-                        alt="Bubble charts of biking injuries and fatalities per borough in 2022"
-                        loading="lazy" />
+                    <figcaption>Annual bike trips and how many New Yorkers ride regularly</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Biking in the City</h2>
+                    <div>
+                        <p>
+                            The design of the visualizations was intentionally crafted to balance
+                            complexity and simplicity. The bicycle count graph, for example, is
+                            detailed to emphasize the widespread adoption of biking in the city,
+                            while a simpler pictorial graph gives a quick and direct snapshot of
+                            biking’s prevalence in the city. These choices were made to ensure
+                            accessibility for a broad audience, allowing for both in-depth analysis
+                            and immediate understanding.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <p>
-                        To represent biking safety, I used a layered approach with the injury and fatality data. The
-                        visualizations are designed to be clear and not overwhelming, highlighting that although risks
-                        exist, the percentage of cyclists involved in total traffic accidents is relatively small. This
-                        design choice aims to provide clarity around the safety aspect without diminishing the
-                        importance of the data.
-                    </p>
+                <!-- Safety -->
+                <div class="case-pair">
+                    <figure class="case-figure">
+                        <img
+                            src="design/bikingNYC/BikingCollage2.png"
+                            alt="Bubble charts of biking injuries and fatalities per borough in 2022"
+                            loading="lazy" />
+                        <figcaption>Injuries and fatalities by borough, 2022</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img
+                            src="design/bikingNYC/BikingCollage5.png"
+                            alt="Bar charts comparing injuries and fatalities by road user type in 2022"
+                            loading="lazy" />
+                        <figcaption>Injuries and fatalities by road user, 2022</figcaption>
+                    </figure>
                 </div>
-
-                <!-- Section: Image -->
-                <div class="project-image-section">
+                <figure class="case-figure">
                     <img
                         src="design/bikingNYC/BikingCollage3.png"
                         alt="Charts showing that injuries and fatalities have fallen relative to bike trips since 2012"
                         loading="lazy" />
+                    <figcaption>Injuries and fatalities compared with bike trips since 2012</figcaption>
+                </figure>
+                <figure class="case-figure">
                     <img
                         src="design/bikingNYC/BikingCollage4.png"
                         alt="Statistics on how rare fatal and injury-causing bike rides were in 2021"
                         loading="lazy" />
-                    <img
-                        src="design/bikingNYC/BikingCollage5.png"
-                        alt="Bar charts comparing injuries and fatalities by road user type in 2022"
-                        loading="lazy" />
+                    <figcaption>How rare an injury or fatality is per ride, 2021</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>Safety</h2>
+                    <div>
+                        <p>
+                            To represent biking safety, I used a layered approach with the injury
+                            and fatality data. The visualizations are designed to be clear and not
+                            overwhelming, highlighting that although risks exist, the percentage of
+                            cyclists involved in total traffic accidents is relatively small. This
+                            design choice aims to provide clarity around the safety aspect without
+                            diminishing the importance of the data.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Section: Additional Text -->
-                <div class="project-text">
-                    <p>
-                        Finally, the project concludes with a design focus on the future of biking. The bike lane count
-                        visualizations are presented in a way that signals the positive growth of biking infrastructure,
-                        subtly reinforcing the city's commitment to improving biking conditions.
-                    </p>
-                </div>
-
-                <div class="project-image-section">
+                <!-- The Future of Biking -->
+                <figure class="case-figure">
                     <img
                         src="design/bikingNYC/BikingCollage8.png"
                         alt="Pie chart: 42 percent of NYC bike lane miles are protected"
                         loading="lazy" />
+                    <figcaption>Share of NYC bike lane miles that are protected</figcaption>
+                </figure>
+                <div class="case-note">
+                    <h2>The Future of Biking</h2>
+                    <div>
+                        <p>
+                            Finally, the project concludes with a design focus on the future of
+                            biking. The bike lane count visualizations are presented in a way that
+                            signals the positive growth of biking infrastructure, subtly reinforcing
+                            the city's commitment to improving biking conditions.
+                        </p>
+                    </div>
                 </div>
 
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="twelveTwelve.html">
+                            <div class="project-image">
+                                <img src="design/TwelveTwelve2.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>Twelve Twelve</h2>
+                                <ul class="tags">
+                                    <li>Brand</li>
+                                </ul>
+                                <p>A visual identity for a brand that sustainably supplies Cannabis sativa seeds.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="futureFashion.html">
+                            <div class="project-image">
+                                <img src="design/FutureFashion.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>Future Fashion Group</h2>
+                                <ul class="tags">
+                                    <li>Brand</li>
+                                    <li>Print</li>
+                                    <li>Social</li>
+                                </ul>
+                                <p>A playful and organic visual identity for an NYU club focused on sustainability in the fashion industry.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
