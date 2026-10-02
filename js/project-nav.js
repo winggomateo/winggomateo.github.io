@@ -56,7 +56,7 @@ const NEXT_NUDGE = true;
     nav.className = "project-list";
     nav.setAttribute("aria-label", "All projects");
 
-    // "02 / 13" above the lines ("Projects ... 02 / 13" once open)
+    // "02 / 13" above the lines ("Projects 02 / 13" once open)
     const label = document.createElement("p");
     label.className = "project-list-label";
     label.setAttribute("aria-hidden", "true");

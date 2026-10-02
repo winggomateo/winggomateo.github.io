@@ -1714,9 +1714,11 @@ footer p {
    a bit more frosted so names stay readable over dark images) */
 .project-list.open {
     padding: 14px 12px 14px 16px;
-    background: rgba(255, 255, 255, 0.55);
-    -webkit-backdrop-filter: blur(12px) saturate(1.4);
-    backdrop-filter: blur(12px) saturate(1.4);
+    background: rgba(255, 255, 255, 0.68);
+    /* brightness lifts dark images behind the glass, so the grey text
+       stays readable over anything */
+    -webkit-backdrop-filter: blur(16px) saturate(1.4) brightness(1.35);
+    backdrop-filter: blur(16px) saturate(1.4) brightness(1.35);
     border-color: rgba(0, 0, 0, 0.08);
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
 }
@@ -1782,20 +1784,20 @@ footer p {
 }
 
 /* "02 / 13" above the lines, so they read as navigation. Once open it
-   becomes "Projects ... 02 / 13" */
+   becomes "Projects 02 / 13", right above the lines */
 .project-list-label {
     display: flex;
     justify-content: flex-end;
     align-items: baseline;
     margin: 0 0 6px;
     font-size: 13px;
-    color: #999;
+    color: #777;
     white-space: nowrap;
     transition: padding 0.4s var(--hover-ease);
 }
 
 .project-list-word {
-    color: #666;
+    color: #555;
 }
 
 .project-list-count b {
@@ -1817,15 +1819,10 @@ footer p {
     transition-delay: 0s;
 }
 
-.project-list.open .project-list-label {
-    justify-content: space-between;
-    padding: 0 0 0 10px;
-}
-
 .project-list.open .project-list-word {
     max-width: 260px;
     opacity: 1;
-    margin-right: 12px;
+    margin-right: 6px;   /* "Projects 02 / 13" reads as one label */
 }
 
 /* The project you're on: grey box, like the menu's "you are here" box */
