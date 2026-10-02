@@ -42,6 +42,7 @@
         place();
         drawer.classList.remove("peek");
         drawer.classList.toggle("open", open);
+        document.body.classList.toggle("intro-open", open);
         drawer.style.height = open ? `${openHeight()}px` : "";
         tagline.setAttribute("aria-expanded", String(open));
         // Move keyboard focus into the drawer when it opens, and back when it closes
