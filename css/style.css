@@ -1255,7 +1255,7 @@ footer p {
     text-align: left;
 }
 
-.case-end h2 {
+.case-end > h2 {
     margin: 0;
     font-size: 1.9em;
     line-height: 1.15;
