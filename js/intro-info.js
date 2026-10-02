@@ -3,6 +3,7 @@
 // Photographer / + Info") is a button, and the drawer is a folder tucked
 // away below the intro:
 //   hover  -> the folder peeks up from the bottom with a wobble (a hint)
+//             while the mouse is on the tagline
 //   click  -> the folder slides open with a short introduction
 //   close  -> the × in the folder's tab, Escape, or clicking the tagline again
 // Styles are in css/style.css, section 6b. On phones and tablets the drawer
@@ -20,7 +21,6 @@
     const body = drawer.querySelector(".drawer-body");
 
     const isOpen = () => drawer.classList.contains("open");
-    const isPeeking = () => drawer.classList.contains("peek");
 
     // Keep the folder on the bottom edge of the screen, or on the black line
     // under the intro once it's on screen (whichever is higher)
@@ -34,26 +34,34 @@
         passive: true,
     });
 
-    // Draw the folder outline to match the drawer's current size: up the
-    // left side, along the top, up the slant into the tab, across the tab,
-    // and down the right side (no bottom line; the folder sits on the page's
-    // black line). Matches the clip-path in the stylesheet.
+    // Draw the folder outline: up the left side, along the top, up the
+    // slant into the tab, across the tab, and down the right side (no bottom
+    // line; the folder sits on the page's black line). The sides run far
+    // past the bottom and get cut off at the drawer's edge, so the outline
+    // only needs redrawing when the width changes. That keeps it locked to
+    // the fill while the folder wobbles and slides. Matches the clip-path in
+    // the stylesheet.
     const px = (name) => parseFloat(getComputedStyle(drawer).getPropertyValue(name));
     const drawOutline = () => {
         const w = drawer.offsetWidth;
-        const h = drawer.offsetHeight;
         const tabH = px("--tab-h");
         const tabW = px("--tab-w");
         const slope = px("--tab-slope");
         const s = 1; // half the line width, so the line sits just inside the fill
-        outline.setAttribute("viewBox", `0 0 ${w} ${h}`);
+        const far = 4000;
         path.setAttribute(
             "d",
-            `M ${s} ${h} L ${s} ${tabH + s} L ${w - tabW - slope + s * 0.4} ${tabH + s} ` +
-                `L ${w - tabW + s * 0.4} ${s} L ${w - s} ${s} L ${w - s} ${h}`,
+            `M ${s} ${far} L ${s} ${tabH + s} L ${w - tabW - slope + s * 0.4} ${tabH + s} ` +
+                `L ${w - tabW + s * 0.4} ${s} L ${w - s} ${s} L ${w - s} ${far}`,
         );
     };
-    new ResizeObserver(drawOutline).observe(drawer);
+    let lastWidth = 0;
+    new ResizeObserver(() => {
+        if (drawer.offsetWidth !== lastWidth) {
+            lastWidth = drawer.offsetWidth;
+            drawOutline();
+        }
+    }).observe(drawer);
 
     const openHeight = () => Math.min(body.scrollHeight + px("--tab-h") + 4, window.innerHeight - 180);
 
@@ -68,39 +76,15 @@
         else tagline.focus({ preventScroll: true });
     };
 
-    // Peek while the mouse is on the tagline, on the column below it down
-    // to the folder, or on the peeking folder itself, so it doesn't drop
-    // while the mouse travels between them
-    const inHoverZone = (x, y) => {
-        const t = tagline.getBoundingClientRect();
-        const c = clip.getBoundingClientRect();
-        const inColumn = x >= t.left - 8 && x <= t.right + 8 && y >= t.top - 4 && y <= c.bottom;
-        const d = drawer.getBoundingClientRect();
-        const onFolder = isPeeking() && x >= d.left && x <= d.right && y >= d.top && y <= d.bottom;
-        return inColumn || onFolder;
-    };
-
-    document.addEventListener(
-        "mousemove",
-        (e) => {
-            if (isOpen()) return;
-            const inside = inHoverZone(e.clientX, e.clientY);
-            if (inside && !isPeeking()) {
-                place();
-                drawer.classList.add("peek");
-            } else if (!inside && isPeeking()) {
-                drawer.classList.remove("peek");
-            }
-        },
-        { passive: true },
-    );
-    document.addEventListener("mouseleave", () => drawer.classList.remove("peek"));
+    // Peek only while the mouse is on the tagline button
+    tagline.addEventListener("mouseenter", () => {
+        if (isOpen()) return;
+        place();
+        drawer.classList.add("peek");
+    });
+    tagline.addEventListener("mouseleave", () => drawer.classList.remove("peek"));
 
     tagline.addEventListener("click", () => setOpen(!isOpen()));
-    // Clicking the peeking folder opens it too
-    drawer.addEventListener("click", (e) => {
-        if (isPeeking() && !e.target.closest("a, button")) setOpen(true);
-    });
     close.addEventListener("click", () => setOpen(false));
 
     document.addEventListener("keydown", (e) => {
