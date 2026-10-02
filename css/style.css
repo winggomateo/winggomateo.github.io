@@ -1911,10 +1911,10 @@ footer p {
 }
 
 /* Keep the project pages' content clear of the lines on narrower screens
-   (the lines take about 55px at the right edge) */
+   (the lines and their "02 / 13" label take about 85px at the right edge) */
 @media only screen and (min-width: 1051px) {
     .main-content:has(> .project-top) {
-        padding-right: max(0px, calc(72px - 5vw));
+        padding-right: max(0px, calc(100px - 5vw));
     }
 }
 
