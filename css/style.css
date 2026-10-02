@@ -1684,15 +1684,21 @@ footer p {
     right: 16px;
     top: 50%;
     z-index: 60;
-    padding: 10px 6px 10px 10px;
+    /* Same padding open or closed, so the lines don't shift under the mouse */
+    padding: 14px 12px 14px 16px;
     border-radius: 22px;
     border: 1px solid transparent;
     background: rgba(255, 255, 255, 0);
+    /* The glass is always there, just switched off, so it can fade in
+       smoothly instead of popping on when the list opens */
+    -webkit-backdrop-filter: blur(0px) saturate(1) brightness(1);
+    backdrop-filter: blur(0px) saturate(1) brightness(1);
     opacity: 0.6;   /* always visible at rest, full when the mouse is near */
     transform: translate(0, -50%);
     transition: opacity 0.25s var(--hover-ease), transform 0.25s var(--hover-ease),
         background-color 0.35s var(--hover-ease), border-color 0.35s var(--hover-ease),
-        box-shadow 0.35s var(--hover-ease), padding 0.35s var(--hover-ease);
+        box-shadow 0.35s var(--hover-ease), -webkit-backdrop-filter 0.35s var(--hover-ease),
+        backdrop-filter 0.35s var(--hover-ease);
 }
 
 /* Two states, set by js/project-nav.js: softened (default, also while the
@@ -1713,7 +1719,6 @@ footer p {
 /* Open: the frosted glass panel (same glass as the home page pill,
    a bit more frosted so names stay readable over dark images) */
 .project-list.open {
-    padding: 14px 12px 14px 16px;
     background: rgba(255, 255, 255, 0.68);
     /* brightness lifts dark images behind the glass, so the grey text
        stays readable over anything */
@@ -1790,7 +1795,7 @@ footer p {
     justify-content: flex-end;
     align-items: baseline;
     margin: 0 0 6px;
-    font-size: 13px;
+    font-size: 15px;
     color: #777;
     white-space: nowrap;
     transition: padding 0.4s var(--hover-ease);
