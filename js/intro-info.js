@@ -38,20 +38,22 @@
     // while its bottom rides up with the black line, so it folds down into
     // the line, and the text fades a little. As soon as it would start
     // cutting off the text, it closes the rest of the way on its own.
-    // Scrolling back up before then opens it again.
+    // Scrolling back up before then opens it again, up to its full height
+    // (even if it was opened partway down the page).
     const closeAt = () => body.offsetHeight + 4;
+    const tallest = () => window.innerHeight - TOP_GAP; // its height at the top of the page
     let fullHeight = 0; // height when it opened
     let tracking = false;
 
     const followScroll = () => {
         if (!isOpen() || !tracking) return;
-        const height = Math.min(fullHeight, clip.getBoundingClientRect().bottom - TOP_GAP);
+        const height = Math.min(tallest(), Math.max(clip.getBoundingClientRect().bottom - TOP_GAP, 160));
         if (height < closeAt()) {
             setOpen(false, { fromScroll: true });
             return;
         }
-        const shrunk = fullHeight - height;
-        drawer.classList.toggle("scroll-closing", shrunk > 0);
+        const shrunk = Math.max(0, fullHeight - height);
+        drawer.classList.toggle("scroll-closing", height !== fullHeight);
         drawer.style.height = `${height}px`;
         // fades to 50% by the time it closes
         const room = Math.max(1, fullHeight - closeAt());
