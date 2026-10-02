@@ -1682,10 +1682,10 @@ footer p {
     cursor: pointer;
     position: absolute;
     z-index: 3;              /* above the floating shapes and the text */
-    top: 16px;
-    right: 16px;
-    width: 30px;
-    height: 30px;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
     border-radius: 8px;
     display: grid;
     place-items: center;
@@ -1696,8 +1696,8 @@ footer p {
 
 /* The × is drawn as two lines so it's crisp and sits dead center */
 .drawer-close svg {
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
     overflow: visible;
 }
 
