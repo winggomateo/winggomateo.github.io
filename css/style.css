@@ -1259,15 +1259,25 @@ footer p {
 
 .case-more {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;   /* one card per row, like the Design page */
     gap: 30px;               /* same gap as the homepage card grid */
     margin-bottom: 40px;
 }
 
 .case-more .project-card {
     width: 100%;
-    height: calc(100% - 2em);   /* both cards the same height */
     margin: 0;
+}
+
+/* Side by side only where the Design page also shows two columns */
+@media only screen and (min-width: 1351px) {
+    .case-more {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .case-more .project-card {
+        height: calc(100% - 2em);   /* both cards the same height */
+    }
 }
 
 /* "Previous project" / "Next project" above each card */
@@ -1296,14 +1306,6 @@ footer p {
         gap: 40px;
     }
 
-    /* End of page: the two cards stack */
-    .case-more {
-        grid-template-columns: 1fr;
-    }
-
-    .case-more .project-card {
-        height: auto;
-    }
 
     .case-header h1 {
         font-size: 13vw;
