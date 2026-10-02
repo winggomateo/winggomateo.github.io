@@ -1196,6 +1196,21 @@ footer p {
     color: #5a5a5a;
 }
 
+/* A team member's name can link to their portfolio: underlined in the
+   same grey, teal on hover like the other links */
+.case-team a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color var(--hover-speed) var(--hover-ease);
+}
+
+.case-team a:hover,
+.case-team a:focus-visible {
+    color: var(--accent-text);
+}
+
 .case-description p {
     margin: 0 0 0.9em;
 }
