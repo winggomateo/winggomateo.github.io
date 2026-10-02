@@ -1102,17 +1102,20 @@ footer p {
     padding-top: 2.2em;
 }
 
-/* Title on the left, the year at the far right on the same line */
+/* Title on the left, the year at the far right, its top lined up with the
+   top of the title's capital letters */
 .case-title-row {
+    --title-size: clamp(56px, 6vw, 96px);
+    --year-size: 26px;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-start;
     gap: 30px;
     margin: 0 0 14px;
 }
 
 .case-header h1 {
-    font-size: clamp(56px, 6vw, 96px);
+    font-size: var(--title-size);
     font-weight: bold;
     line-height: 1;
     margin: 0;
@@ -1120,8 +1123,12 @@ footer p {
 
 .case-year {
     flex: none;
-    margin: 0;
-    font-size: 1.6em;
+    /* Both use line-height 1, so the tops of the capitals sit the same share
+       of the font size below the top of each line (0.1955 for this font).
+       Pushing the year down by the difference lines the tops up. */
+    margin: calc((var(--title-size) - var(--year-size)) * 0.1955) 0 0;
+    font-size: var(--year-size);
+    line-height: 1;
     color: #5a5a5a;   /* same accessible grey as the captions */
 }
 
@@ -1361,7 +1368,9 @@ footer p {
     }
 
     .case-year {
-        font-size: 1.3em;
+        --year-size: 1.3em;
+        margin: 0;
+        line-height: 1.3;
     }
 }
 
