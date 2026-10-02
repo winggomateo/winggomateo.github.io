@@ -703,6 +703,42 @@ footer p {
     padding-bottom: 0.15em;
 }
 
+/* Floating name (home page): js/name-float.js splits the name into
+   letters, and each one bobs and tilts very slightly on its own slow rhythm.
+   Settings:
+     --name-bob   how far a letter moves up and down
+     --name-tilt  how far a letter tilts, in degrees */
+.home .header h1 {
+    --name-bob: 0.035em;
+    --name-tilt: 2.5deg;
+}
+
+.name-word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.name-letter {
+    display: inline-block;
+    animation:
+        name-bob var(--bob-time) ease-in-out var(--bob-start) infinite alternate,
+        name-tilt var(--tilt-time) ease-in-out var(--tilt-start) infinite alternate;
+}
+
+@keyframes name-bob {
+    from { translate: 0 calc(var(--name-bob) * var(--bob) * -1); }
+    to   { translate: 0 calc(var(--name-bob) * var(--bob)); }
+}
+
+@keyframes name-tilt {
+    from { rotate: calc(var(--name-tilt) * var(--tilt) * -1); }
+    to   { rotate: calc(var(--name-tilt) * var(--tilt)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .name-letter { animation: none; }
+}
+
 /* Wraps the About page content */
 .wrapper .block2 {
     display: flex;
