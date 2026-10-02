@@ -1608,9 +1608,9 @@ footer p {
     z-index: 0;
 }
 
-/* ...and the shapes soften a little so the text stays easy to read */
+/* ...and the shapes fade well back so the text stays easy to read */
 .intro-open .shapes:not(.off) {
-    filter: opacity(0.55);
+    filter: opacity(0.3);
 }
 
 /* Open: the script sets the height to fit the text */
