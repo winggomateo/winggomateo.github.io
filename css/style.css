@@ -1605,10 +1605,19 @@ footer p {
     transition: height 0.7s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s;
 }
 
+/* The text sits at the bottom of the box, near the tagline that opened
+   it; the empty space goes above. (margin-top: auto rather than
+   justify-content, so the text can still scroll on a short window.) */
 .drawer-panel {
     position: relative;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     overflow: hidden;
+}
+
+.drawer-body {
+    margin-top: auto;
 }
 
 /* Once open, the text can scroll inside if the window is short */
@@ -1617,7 +1626,7 @@ footer p {
 }
 
 .drawer-body {
-    padding: 56px 70px 40px;
+    padding: 56px 70px 56px;
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.25s ease, transform 0.5s ease;
