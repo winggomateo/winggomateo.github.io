@@ -58,54 +58,123 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
-                        <h1>Pronouns & Gender Inclusive Language</h1>
-                        <p>October 2022</p>
-                        <p><b>Lead Designer</b></p>
-                        <p><i>Visual Identity</i></p>
-                        <p>
-                            <small
-                                ><i>This was a project for <a href="#">The LGBTQ+ Center</a> at NYU</i></small
-                            >
-                        </p>
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
+                        <h1>PGIL Video Series</h1>
+                        <p class="case-year"><time datetime="2022">2022</time></p>
                     </div>
-                    <div class="project-right">
+                    <p class="case-summary">
+                        A visual identity for an educational video series by NYU’s LGBTQ+ Center.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Brand</li>
+                        <li>Merchandising</li>
+                    </ul>
+                </header>
+
+                <!-- Main project image -->
+                <figure class="case-hero">
+                    <img
+                        src="design/PGIL/PGIL1.gif"
+                        alt="Animated title card: Pronouns and Gender Inclusive Language, with colorful floating shapes" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Lead Designer</p>
+                        <div class="case-team">
+                            <p><b>Team</b></p>
+                            <p>Tera Nakata, <i>Project Manager</i></p>
+                        </div>
+                    </div>
+                    <div class="case-description">
                         <p>
-                            Pronouns and Gender Inclusive Language (PGIL) is an educational video series created by the
-                            NYU’s LGBTQ+ Center targeted for both the NYU community and the general public. It’s visual
-                            identity is characterized by a pattern of interlocking clusters that, when in motion, sway
-                            between interlocked and floating states.
+                            Pronouns and Gender Inclusive Language (PGIL) is an educational video
+                            series created by NYU’s LGBTQ+ Center for both the NYU community and the
+                            general public. Its visual identity is characterized by a pattern of
+                            interlocking clusters that, when in motion, sway between interlocked and
+                            floating states.
                         </p>
                         <p>
-                            The design aims to reflect the concept of togetherness as the once losely floating clusters
-                            come together in an interlocking pattern. Yet, it also highlights individualism, as the
-                            clusters are all different colors and are capable of floating independently.
+                            The design aims to reflect the concept of togetherness as the once
+                            loosely floating clusters come together in an interlocking pattern. Yet,
+                            it also highlights individualism, as the clusters are all different
+                            colors and are capable of floating independently.
                         </p>
                     </div>
                 </div>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
-                    <img
-                        src="design/PGIL/PGIL1.gif"
-                        alt="Animated title card: Pronouns and Gender Inclusive Language, with colorful floating shapes" />
-                    <img
-                        src="design/PGIL/PGIL_Slide1.png"
-                        alt="Two title slide layouts for the Pronouns and Gender Inclusive Language series" />
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
+
+                <!-- Images -->
+                <figure class="case-figure">
                     <img
                         src="design/PGIL/PGIL4.png"
-                        alt="Pattern of interlocking circles in pink, red, yellow and navy"
+                        alt="Pattern of interlocking circles in pink, red, yellow and navy" />
+                    <figcaption>The interlocking pattern</figcaption>
+                </figure>
+                <figure class="case-figure">
+                    <img
+                        src="design/PGIL/PGIL_Slide1.png"
+                        alt="Two title slide layouts for the Pronouns and Gender Inclusive Language series"
                         loading="lazy" />
+                    <figcaption>Title slides</figcaption>
+                </figure>
+                <figure class="case-figure">
                     <img
                         src="design/PGIL/PGIL_Slide2.png"
                         alt="Two content slides defining social transition and gender transition"
                         loading="lazy" />
-                </div>
+                    <figcaption>Content slides</figcaption>
+                </figure>
 
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="Calendar.html">
+                            <div class="project-image">
+                                <img src="design/CalendarCover.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>CMEP Calendar</h2>
+                                <ul class="tags">
+                                    <li>Poster</li>
+                                    <li>Layout</li>
+                                </ul>
+                                <p>A double-sided calendar and poster for NYU’s CMEP, featuring a June Jordan quote.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="vinyl.html">
+                            <div class="project-image">
+                                <img src="design/Vinyl.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>Vinyl Playing Cards</h2>
+                                <ul class="tags">
+                                    <li>Print</li>
+                                </ul>
+                                <p>A modern deck of playing cards designed for card flourishes.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
