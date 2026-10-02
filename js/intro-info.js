@@ -14,9 +14,24 @@
     const close = drawer.querySelector(".drawer-close");
     const body = drawer.querySelector(".drawer-body");
 
+    const intro = drawer.parentElement; // the intro block, whose bottom edge is the black line
     const isOpen = () => drawer.classList.contains("open");
 
+    // Sit on the bottom edge of the screen, or on the black line under the
+    // intro once it's on screen (whichever is higher), so there's never a gap
+    const placeDrawer = () => {
+        const below = intro.getBoundingClientRect().bottom - window.innerHeight;
+        drawer.style.setProperty("--drawer-bottom", `${Math.max(0, below)}px`);
+    };
+    placeDrawer();
+    document.addEventListener("scroll", () => window.requestAnimationFrame(placeDrawer), {
+        capture: true,
+        passive: true,
+    });
+    window.addEventListener("resize", placeDrawer);
+
     const setOpen = (open) => {
+        placeDrawer();
         drawer.classList.remove("peek");
         drawer.classList.toggle("open", open);
         // Open just tall enough for the text, but leave the top of the screen clear
@@ -28,6 +43,7 @@
     };
 
     tagline.addEventListener("mouseenter", () => {
+        placeDrawer();
         if (!isOpen()) drawer.classList.add("peek");
     });
     tagline.addEventListener("mouseleave", () => drawer.classList.remove("peek"));

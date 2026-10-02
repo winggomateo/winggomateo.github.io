@@ -1533,14 +1533,15 @@ footer p {
 
 /* The drawer: outlined like the project cards, filled with the page's own
    gradient (pinned to the screen, so it matches the page behind it).
-   It sits on the bottom edge of the screen; the intro starts 32px down
-   the page, hence bottom: 32px. Same width as the project grid. */
+   It sits on the bottom edge of the screen, or on the black line under the
+   intro once that line scrolls into view (js/intro-info.js sets --drawer-
+   bottom). Same width as the project grid. */
 .intro-drawer {
     position: absolute;
     z-index: 6;              /* above the shapes and the shapes pill */
     left: 30px;
     right: 60px;
-    bottom: 32px;
+    bottom: var(--drawer-bottom, 32px);
     height: 0;
     overflow: hidden;
     border: 2px solid transparent;
@@ -1556,11 +1557,24 @@ footer p {
     transition: height 0.3s ease, border-color 0s linear 0.3s;   /* closing */
 }
 
-/* Peek (tagline hovered): a sliver rises and overshoots a little, the bounce */
+/* Peek (tagline hovered): a sliver pops up, wobbles a little, then holds
+   while the mouse stays on the tagline */
 .intro-drawer.peek {
     height: 26px;
     border-color: black;
-    transition: height 0.5s cubic-bezier(0.34, 1.8, 0.64, 1), border-color 0s;
+    transition: border-color 0s;
+    animation: drawer-jiggle 0.75s ease-out, gradient 15s ease infinite;
+    animation-delay: 0s, var(--gradient-delay, 0s);
+}
+
+@keyframes drawer-jiggle {
+    0%   { height: 0; }
+    30%  { height: 36px; }
+    50%  { height: 19px; }
+    66%  { height: 31px; }
+    80%  { height: 23px; }
+    91%  { height: 28px; }
+    100% { height: 26px; }
 }
 
 /* Open: the script sets the height to fit the text */
