@@ -58,53 +58,131 @@
 
             <!-- Main Content -->
             <main class="main-content">
-                <!-- Top Section: Title and Summary -->
-                <div class="project-top">
-                    <div class="project-left">
+                <!-- Top: title (with the year on the right), one-line summary, tags -->
+                <header class="case-header">
+                    <div class="case-title-row">
                         <h1>Vinyl Playing Cards</h1>
-                        <p>November 2020</p>
-                        <p><i>Visual Identity & Print Design</i></p>
+                        <p class="case-year"><time datetime="2020">2020</time></p>
                     </div>
-                    <div class="project-right">
+                    <p class="case-summary">
+                        A modern deck of playing cards designed for card flourishes.
+                    </p>
+                    <ul class="case-tags">
+                        <li>Print</li>
+                    </ul>
+                </header>
+
+                <!-- Main project image -->
+                <figure class="case-hero">
+                    <img
+                        src="design/vinyl/VinylDeskLong.jpg"
+                        alt="The full Vinyl deck fanned out on a table" />
+                </figure>
+
+                <!-- Project details (left) and description (right) -->
+                <div class="case-info">
+                    <div class="case-details">
+                        <p><b>Role:</b> Designer</p>
+                        <p><b>Tools:</b> Illustrator</p>
+                    </div>
+                    <div class="case-description">
                         <p>
-                            Vinyl Playing Cards is a personal project to create a deck of playing cards to be used for
-                            Cardistry, a performance art relating to the display and arrangement of card flourishes.
-                            Contrasting from magic, cardistry is meant to be focused on visual impressiveness derived
-                            from the difficulty to perform specific flourishes.
+                            Vinyl Playing Cards is a personal project to create a deck of playing
+                            cards to be used for Cardistry, a performance art relating to the
+                            display and arrangement of card flourishes. Contrasting from magic,
+                            cardistry is meant to be focused on visual impressiveness derived from
+                            the difficulty to perform specific flourishes.
                         </p>
                         <p>
-                            Because of cardistry’s inherent vibrance, the design of the playing cards is made to
-                            juxtapose the eye-catching movements, bringing further excitement to the performance. The
-                            back design contains a strong contrast between a series of white circular outlines with
-                            black vertical stripes, immediately striking attention visually. The deck especially comes
-                            to life under circular movements, creating a unique blur of the card’s lines while the
-                            center circle remains clear.
+                            Because of cardistry’s inherent vibrance, the design of the playing
+                            cards is made to juxtapose the eye-catching movements, bringing further
+                            excitement to the performance. The back design contains a strong
+                            contrast between a series of white circular outlines with black vertical
+                            stripes, immediately striking attention visually. The deck especially
+                            comes to life under circular movements, creating a unique blur of the
+                            card’s lines while the center circle remains clear.
                         </p>
                     </div>
                 </div>
 
-                <!-- Section: Image -->
-                <div class="project-image-section">
-                    <img
-                        src="design/vinyl/vinylDesk1.jpg"
-                        alt="Vinyl playing cards on a desk next to a clock, with the joker card on top" />
-                    <img src="design/vinyl/VinylDeskLong.jpg" alt="The full Vinyl deck fanned out on a table" />
+                <!-- Each group: images (each with an optional grey caption), then a note
+                     (heading left, text right), closed by a line. case-pair puts two
+                     images side by side. -->
+
+                <!-- Images -->
+                <figure class="case-figure">
                     <img
                         src="design/vinyl/VinylDeskLong2.jpg"
-                        alt="Card backs with a record-groove pattern and a spread of face cards"
-                        loading="lazy" />
-                    <img
-                        src="design/vinyl/vinyl1.jpg"
-                        alt="The Vinyl card box and a card back held up against green leaves"
-                        loading="lazy" />
+                        alt="Card backs with a record-groove pattern and a spread of face cards" />
+                    <figcaption>Card backs and face cards</figcaption>
+                </figure>
+                <div class="case-pair">
+                    <figure class="case-figure">
+                        <img
+                            src="design/vinyl/vinylDesk1.jpg"
+                            alt="Vinyl playing cards on a desk next to a clock, with the joker card on top"
+                            loading="lazy" />
+                        <figcaption>The joker</figcaption>
+                    </figure>
+                    <figure class="case-figure">
+                        <img
+                            src="design/vinyl/vinyl1.jpg"
+                            alt="The Vinyl card box and a card back held up against green leaves"
+                            loading="lazy" />
+                        <figcaption>The box and a card back</figcaption>
+                    </figure>
+                </div>
+                <figure class="case-figure">
                     <img
                         src="design/vinyl/vinylLong.jpg"
                         alt="Side of the card box with a column of colored dots, held among leaves"
                         loading="lazy" />
-                </div>
+                    <figcaption>Side of the box</figcaption>
+                </figure>
 
-                <!-- CTA Button -->
-                <a href="design.html" class="textReturn"> View Other Work </a>
+                <!-- End of page: the previous and next projects' cards side by side
+                     (the same cards as on the Design page), with the button back to
+                     all projects beside the heading (below the cards on phones).
+                     The last project's "next" goes back to the first. -->
+                <nav class="case-end" aria-label="More projects">
+                    <h2>More projects</h2>
+                    <a class="textReturn case-all" href="design.html">All projects <span aria-hidden="true">&rarr;</span></a>
+                    <div class="case-more">
+                    <div>
+                        <p class="case-more-label">Previous project</p>
+                        <a class="project-card" href="PGIL.html">
+                            <div class="project-image">
+                                <img src="design/PGIL.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>PGIL</h2>
+                                <ul class="tags">
+                                    <li>Brand</li>
+                                    <li>Merchandising</li>
+                                </ul>
+                                <p>A visual identity for an educational video series by NYU’s LGBTQ+ Center.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="case-more-label">Next project</p>
+                        <a class="project-card" href="BookCover.html">
+                            <div class="project-image">
+                                <img src="design/BookCover.jpg" alt="" loading="lazy" />
+                            </div>
+                            <div class="project-info">
+                                <h2>On Writing Well</h2>
+                                <ul class="tags">
+                                    <li>Book Cover</li>
+                                </ul>
+                                <p>A redesign of William Zinsser’s classic guidebook on nonfiction writing.</p>
+                                <span class="read-more-btn">Read More</span>
+                            </div>
+                        </a>
+                    </div>
+                    </div>
+                </nav>
             </main>
         </div>
 
