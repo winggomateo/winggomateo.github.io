@@ -1102,11 +1102,27 @@ footer p {
     padding-top: 2.2em;
 }
 
+/* Title on the left, the year at the far right on the same line */
+.case-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 30px;
+    margin: 0 0 14px;
+}
+
 .case-header h1 {
     font-size: clamp(56px, 6vw, 96px);
     font-weight: bold;
     line-height: 1;
-    margin: 0 0 14px;
+    margin: 0;
+}
+
+.case-year {
+    flex: none;
+    margin: 0;
+    font-size: 1.6em;
+    color: #5a5a5a;   /* same accessible grey as the captions */
 }
 
 .case-summary {
@@ -1336,6 +1352,16 @@ footer p {
 
     .case-header h1 {
         font-size: 13vw;
+    }
+
+    /* Phones and tablets: the year sits just under the title */
+    .case-title-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .case-year {
+        font-size: 1.3em;
     }
 }
 
