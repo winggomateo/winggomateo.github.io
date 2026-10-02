@@ -1243,9 +1243,9 @@ footer p {
     line-height: 1.4;
 }
 
-/* End of the page: the previous and next projects side by side, each an
-   outlined image with its title and a small grey label, then the "All
-   projects" button */
+/* End of the page: the previous and next projects' cards side by side
+   (the same cards as on the Design page), each with a small grey label,
+   then the "All projects" button */
 .case-end {
     padding: 10px 5% 70px;
     text-align: left;
@@ -1260,50 +1260,21 @@ footer p {
 .case-more {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 30px;               /* same gap as the homepage card grid */
     margin-bottom: 40px;
 }
 
-.case-more-item {
-    display: block;
-    color: black;
-    text-decoration: none;
-}
-
-.case-more-item img {
-    display: block;
+.case-more .project-card {
     width: 100%;
-    aspect-ratio: 3 / 2;
-    object-fit: cover;
-    border: 2px solid black;
-    transition: border-color var(--hover-speed) var(--hover-ease), filter var(--hover-speed) var(--hover-ease);
+    height: calc(100% - 2em);   /* both cards the same height */
+    margin: 0;
 }
 
-.case-more-title {
-    display: block;
-    margin-top: 12px;
-    font-size: 1.35em;
-    font-weight: bold;
-    transition: color var(--hover-speed) var(--hover-ease);
-}
-
+/* "Previous project" / "Next project" above each card */
 .case-more-label {
-    display: block;
-    margin-top: 2px;
+    margin: 0 0 8px;
     font-size: 1.05em;
     color: #5a5a5a;   /* same accessible grey as the captions */
-}
-
-/* Hover: teal outline and title, like the project cards */
-.case-more-item:hover img,
-.case-more-item:focus-visible img {
-    border-color: var(--accent-color);
-    filter: brightness(0.92);
-}
-
-.case-more-item:hover .case-more-title,
-.case-more-item:focus-visible .case-more-title {
-    color: var(--accent-text);
 }
 
 /* "All projects": the site's outlined button, centered */
@@ -1325,13 +1296,13 @@ footer p {
         gap: 40px;
     }
 
-    /* End of page: the two projects stay side by side, a bit closer */
+    /* End of page: the two cards stack */
     .case-more {
-        gap: 16px;
+        grid-template-columns: 1fr;
     }
 
-    .case-more-title {
-        font-size: 1.1em;
+    .case-more .project-card {
+        height: auto;
     }
 
     .case-header h1 {
