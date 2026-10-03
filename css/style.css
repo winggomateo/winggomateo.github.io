@@ -423,7 +423,8 @@ a:hover {
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1;
+        z-index: 10;   /* the open menu covers everything on the page, including
+                          the tagline and intro text (which sit above the shapes) */
     }
 
     /* Invisible checkbox on top of the hamburger icon. Checking it opens the menu.
