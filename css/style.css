@@ -1664,6 +1664,11 @@ footer p {
     line-height: 1.22;
 }
 
+/* The opening line is a step heavier, so it reads first */
+.drawer-body p:first-child {
+    font-weight: 600;
+}
+
 .drawer-body p + p {
     margin-top: 0.7em;
     text-wrap: balance;   /* on some laptop widths its last line was just two
@@ -1771,6 +1776,10 @@ footer p {
         margin: 0;
         font-size: 23px;
         line-height: 1.25;
+    }
+
+    .intro-statement p:first-child {
+        font-weight: 600;
     }
 
     .intro-statement p + p {
