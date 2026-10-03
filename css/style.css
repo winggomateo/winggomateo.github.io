@@ -1776,6 +1776,7 @@ footer p {
         margin: 0;
         font-size: 23px;
         line-height: 1.25;
+        text-wrap: pretty;   /* no single word alone on a last line */
     }
 
     .intro-statement p:first-child {
@@ -1786,9 +1787,19 @@ footer p {
         margin-top: 0.7em;
     }
 
+    /* On phones the link is an outlined button, like the cards' "Read More",
+       so it's easy to spot and tap */
     .intro-statement a {
-        margin-top: 14px;
+        margin: 22px 0 0;
+        padding: 10px 15px;
+        border: 2px solid black;
+        border-radius: 0;
         font-size: 17px;
+    }
+
+    .intro-statement a:hover,
+    .intro-statement a:focus-visible {
+        border-color: var(--accent-color);
     }
 }
 
