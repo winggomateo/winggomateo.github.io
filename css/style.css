@@ -1653,9 +1653,13 @@ footer p {
     transition-delay: 0.3s;   /* text fades in once the drawer is mostly open */
 }
 
-/* The intro is two short paragraphs, both large, with a gap between */
+/* The intro is two short paragraphs, both large, with a gap between. The
+   text runs close to the full width of the box, capped on very wide screens
+   so lines don't get too long to read. text-wrap: pretty stops a single
+   word from ending up alone on the last line. */
 .drawer-body p {
-    max-width: 26em;
+    max-width: 30em;
+    text-wrap: pretty;
     margin: 0;
     font-size: clamp(28px, 2.6vw, 42px);
     line-height: 1.22;
