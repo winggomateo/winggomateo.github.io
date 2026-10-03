@@ -1658,7 +1658,7 @@ footer p {
    so lines don't get too long to read. */
 .drawer-body p {
     max-width: 30em;
-    text-wrap: balance;   /* evens out line lengths, so no short last line */
+    text-wrap: pretty;    /* avoids a single word alone on the last line */
     margin: 0;
     font-size: clamp(28px, 2.6vw, 42px);
     line-height: 1.22;
