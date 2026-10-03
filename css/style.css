@@ -173,23 +173,19 @@ a:hover {
     cursor: pointer;
 }
 
-/* Links in the About page text hover like the menu: a soft rounded teal
-   box fades in and the text turns teal. The negative margin keeps the text
-   where it was. */
+/* Links in the About page text: underlined, turning teal on hover (same as
+   the team links on project pages) */
 .bio1 a {
-    display: inline-block;
-    padding: 1px 8px;
-    margin: -1px -8px;
-    border-radius: 10px;   /* same roundness as the tags */
-    transition: color var(--hover-speed) var(--hover-ease),
-        background-color var(--hover-speed) var(--hover-ease);
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color var(--hover-speed) var(--hover-ease);
 }
 
 .bio1 a:hover,
 .bio1 a:focus-visible {
     color: var(--accent-text);
-    background-color: var(--button-hover);
-    outline: none;
 }
 
 
