@@ -1653,7 +1653,7 @@ footer p {
     transition-delay: 0.3s;   /* text fades in once the drawer is mostly open */
 }
 
-/* The intro is split into three short paragraphs: a large opening line,
+/* The intro is split into two short paragraphs: a large opening line,
    then the rest a step smaller, in a narrower column so lines stay an
    easy length to read */
 .drawer-body p {
