@@ -1666,6 +1666,8 @@ footer p {
 
 .drawer-body p + p {
     margin-top: 0.7em;
+    text-wrap: balance;   /* on some laptop widths its last line was just two
+                             words; this evens the lines out instead */
 }
 
 /* "About page →" gets the same hover as the menu links: a soft rounded
