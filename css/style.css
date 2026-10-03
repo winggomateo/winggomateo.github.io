@@ -173,26 +173,23 @@ a:hover {
     cursor: pointer;
 }
 
-/* Teal underline that grows in on hover (About page email) */
+/* Links in the About page text hover like the menu: a soft rounded teal
+   box fades in and the text turns teal. The negative margin keeps the text
+   where it was. */
 .bio1 a {
-    position: relative;
+    display: inline-block;
+    padding: 1px 8px;
+    margin: -1px -8px;
+    border-radius: 10px;   /* same roundness as the tags */
+    transition: color var(--hover-speed) var(--hover-ease),
+        background-color var(--hover-speed) var(--hover-ease);
 }
 
-.bio1 a::before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 2px;
-    bottom: -3px;
-    left: 0;
-    background-color: var(--accent-color);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-}
-
-.bio1 a:hover::before {
-    transform: scaleX(1);
+.bio1 a:hover,
+.bio1 a:focus-visible {
+    color: var(--accent-text);
+    background-color: var(--button-hover);
+    outline: none;
 }
 
 
