@@ -173,14 +173,12 @@ a:hover {
     cursor: pointer;
 }
 
-/* Teal underline that grows in on hover (About page email and footer links) */
-.bio1 a,
-footer a {
+/* Teal underline that grows in on hover (About page email) */
+.bio1 a {
     position: relative;
 }
 
-.bio1 a::before,
-footer a::before {
+.bio1 a::before {
     content: "";
     position: absolute;
     display: block;
@@ -193,8 +191,7 @@ footer a::before {
     transition: transform 0.3s ease;
 }
 
-.bio1 a:hover::before,
-footer a:hover::before {
+.bio1 a:hover::before {
     transform: scaleX(1);
 }
 
@@ -672,6 +669,24 @@ footer .bottom {
 
 footer p {
     font-size: 1.2vw;
+}
+
+/* Footer links hover like the menu: a soft rounded teal box fades in and the
+   text turns teal. The negative margin keeps the spacing the same. */
+footer a {
+    display: inline-block;
+    padding: 3px 10px;
+    margin: -3px -10px;
+    border-radius: 10px;   /* same roundness as the tags */
+    transition: color var(--hover-speed) var(--hover-ease),
+        background-color var(--hover-speed) var(--hover-ease);
+}
+
+footer a:hover,
+footer a:focus-visible {
+    color: var(--accent-text);
+    background-color: var(--button-hover);
+    outline: none;
 }
 
 
