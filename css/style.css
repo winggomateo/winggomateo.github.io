@@ -1653,11 +1653,25 @@ footer p {
     transition-delay: 0.3s;   /* text fades in once the drawer is mostly open */
 }
 
+/* The intro is split into three short paragraphs: a large opening line,
+   then the rest a step smaller, in a narrower column so lines stay an
+   easy length to read */
 .drawer-body p {
-    max-width: 32em;
+    max-width: 36em;
     margin: 0;
-    font-size: clamp(26px, 2.5vw, 40px);
-    line-height: 1.28;
+    font-size: clamp(19px, 1.55vw, 25px);
+    line-height: 1.4;
+}
+
+.drawer-body p + p {
+    margin-top: 0.9em;
+}
+
+.drawer-body .intro-lead {
+    max-width: 26em;
+    margin-bottom: 0.9em;
+    font-size: clamp(28px, 2.6vw, 42px);
+    line-height: 1.22;
 }
 
 /* "About page →" gets the same hover as the menu links: a soft rounded
@@ -1759,8 +1773,18 @@ footer p {
 
     .intro-statement p {
         margin: 0;
-        font-size: 21px;
-        line-height: 1.35;
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .intro-statement p + p {
+        margin-top: 0.8em;
+    }
+
+    .intro-statement .intro-lead {
+        margin-bottom: 0.7em;
+        font-size: 24px;
+        line-height: 1.25;
     }
 
     .intro-statement a {
