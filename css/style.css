@@ -1750,6 +1750,8 @@ footer p {
 
     .intro-statement {
         display: block;
+        position: relative;
+        z-index: 2;              /* text above the floating shapes, like the desktop box */
         padding: 40px 5% 38px;
         border-bottom: 2px solid black;
         text-align: left;
