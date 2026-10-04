@@ -34,9 +34,11 @@ const PROJECTS = [
 ];
 
 // Extras that help people notice the list (set to false to turn one off):
-// Peek: the first time someone opens a project page, the list unfolds on its
-// own for a moment, then folds back into lines (once per visit).
-const PEEK_ON_FIRST_VISIT = true;
+// Peek: when someone opens a project page from elsewhere on the site (the
+// Design page, the homepage, a link), the list unfolds on its own for a
+// moment so they see it's there, then folds back into lines. Moving between
+// projects (with the list or the cards at the bottom) doesn't peek again.
+const PEEK_ON_ARRIVAL = true;
 // Next nudge: when you reach the bottom of a project, the next project's line
 // turns teal and its name slides out ("Next: Twelve Twelve").
 const NEXT_NUDGE = true;
@@ -252,15 +254,19 @@ const NEXT_NUDGE = true;
         if (!nav.classList.contains("open")) setState("dim");
     });
 
-    // --- Peek on the first visit ---
-    const PEEK_AFTER_MS = 1500; // wait this long after the page opens
-    const PEEK_FOR_MS = 2200; // stay open this long
-    let peeked = true;
-    try {
-        peeked = sessionStorage.getItem("projectListPeeked") === "1";
-        sessionStorage.setItem("projectListPeeked", "1");
-    } catch (e) {}
-    if (PEEK_ON_FIRST_VISIT && !peeked) {
+    // --- Peek when arriving from outside the project pages ---
+    const PEEK_AFTER_MS = 1200; // wait this long after the page appears
+    const PEEK_FOR_MS = 2500; // stay open this long
+    const cameFrom = (() => {
+        try {
+            return decodeURIComponent(new URL(document.referrer).pathname.split("/").pop() || "").toLowerCase();
+        } catch (e) {
+            return "";
+        }
+    })();
+    const fromAnotherProject = PROJECTS.some(([href]) => href.toLowerCase() === cameFrom);
+
+    const peek = () => {
         setTimeout(() => {
             if (nav.classList.contains("open")) return;
             nav.classList.add("peek");
@@ -272,5 +278,12 @@ const NEXT_NUDGE = true;
                 if (!nav.matches(":hover") && !nav.contains(document.activeElement)) setOpen(false);
             }, PEEK_FOR_MS);
         }, PEEK_AFTER_MS);
+    };
+
+    if (PEEK_ON_ARRIVAL && !fromAnotherProject) {
+        // Pages can be loaded ahead of time in the background; wait until
+        // this one is actually on screen
+        if (document.prerendering) document.addEventListener("prerenderingchange", peek, { once: true });
+        else peek();
     }
 })();
