@@ -127,9 +127,15 @@ body {
     background: linear-gradient(-45deg, #ffe5e9, #e0ffec, #d6ecff, #fed1e7);
     background-color: #ede8ef;   /* average of the gradient colors, shown if the gradient isn't drawn yet */
     background-size: 400% 400%;
+    height: 100vh;
+}
+
+/* Only the body's gradient moves: the page scrolls inside <body>, which
+   covers the whole screen, so the <html> one behind it is never seen
+   (animating both just made phones repaint the screen twice) */
+body {
     animation: gradient 15s ease infinite;
     animation-delay: var(--gradient-delay, 0s);   /* set by js/gradient.js so it continues across pages */
-    height: 100vh;
 }
 
 @keyframes gradient {
@@ -138,16 +144,46 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* Film grain overlay (drawn by js/noise.js) */
+/* Film grain overlay. The grain tile (made by js/noise.js) repeats across a layer a little
+   bigger than the screen; the layer jumps to a new spot 25 times a second
+   (10 spots in 0.4s), so the grain flickers. Moving it with a transform
+   keeps it cheap, even on phones. */
 .noise {
     z-index: 100;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    top: -256px;
+    left: -256px;
+    width: calc(100vw + 512px);
+    height: calc(100vh + 512px);
     pointer-events: none;
     opacity: .03;
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    image-rendering: pixelated;
+    will-change: transform;
+}
+
+.noise.ready {
+    animation: grain 0.4s steps(1, end) infinite;
+}
+
+@keyframes grain {
+    0%   { transform: translate(0, 0); }
+    10%  { transform: translate(-97px, 61px); }
+    20%  { transform: translate(43px, -118px); }
+    30%  { transform: translate(-151px, -37px); }
+    40%  { transform: translate(122px, 89px); }
+    50%  { transform: translate(-29px, 173px); }
+    60%  { transform: translate(167px, -71px); }
+    70%  { transform: translate(-188px, 131px); }
+    80%  { transform: translate(78px, -160px); }
+    90%  { transform: translate(-61px, -205px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .noise.ready {
+        animation: none;
+    }
 }
 
 
@@ -1873,30 +1909,28 @@ footer a:focus-visible {
 #shape-star,
 #shape-sparkle {
     position: absolute;
+    left: 0;
+    top: 0;
     opacity: 85%;
 }
 
 #shape-burst {
-    left: 10%;
-    top: 60%;
+    translate: 10vw 60vh;
     animation: drift-burst 40s infinite;
 }
 
 #shape-flower {
-    left: 80%;
-    top: 1%;
+    translate: 80vw 1vh;
     animation: drift-flower 40s infinite;
 }
 
 #shape-star {
-    left: 8%;
-    top: 1%;
+    translate: 8vw 1vh;
     animation: drift-star 40s infinite;
 }
 
 #shape-sparkle {
-    left: 65%;
-    top: 70%;
+    translate: 65vw 70vh;
     animation: drift-sparkle 40s infinite;
 }
 
@@ -1910,84 +1944,84 @@ footer a:focus-visible {
 
 @keyframes drift-burst {
     0%      { opacity: 0; }
-    6.25%   { opacity: 1; left: 30%; top: 50%; scale: 1; }   /* layout 1 */
+    6.25%   { opacity: 1; translate: 30vw 50vh; scale: 1; }   /* layout 1 */
     12.5%   { opacity: 0; }
-    18.75%  { opacity: 1; left: 78%; top: 12%; scale: 1.2; }   /* layout 2 */
+    18.75%  { opacity: 1; translate: 78vw 12vh; scale: 1.2; }   /* layout 2 */
     25%     { opacity: 0; }
-    31.25%  { opacity: 1; left: 90%; top: 80%; scale: 0.85; }   /* layout 3 */
+    31.25%  { opacity: 1; translate: 90vw 80vh; scale: 0.85; }   /* layout 3 */
     37.5%   { opacity: 0; }
-    43.75%  { opacity: 1; left: 20%; top: 15%; scale: 1.1; }   /* layout 4 */
+    43.75%  { opacity: 1; translate: 20vw 15vh; scale: 1.1; }   /* layout 4 */
     50%     { opacity: 0; }
-    56.25%  { opacity: 1; left: 50%; top: 82%; scale: 0.9; }   /* layout 5 */
+    56.25%  { opacity: 1; translate: 50vw 82vh; scale: 0.9; }   /* layout 5 */
     62.5%   { opacity: 0; }
-    68.75%  { opacity: 1; left: 8%; top: 75%; scale: 1.25; }   /* layout 6 */
+    68.75%  { opacity: 1; translate: 8vw 75vh; scale: 1.25; }   /* layout 6 */
     75%     { opacity: 0; }
-    81.25%  { opacity: 1; left: 85%; top: 30%; scale: 0.8; }   /* layout 7 */
+    81.25%  { opacity: 1; translate: 85vw 30vh; scale: 0.8; }   /* layout 7 */
     87.5%   { opacity: 0; }
-    93.75%  { opacity: 1; left: 35%; top: 5%; scale: 1.05; }   /* layout 8 */
+    93.75%  { opacity: 1; translate: 35vw 5vh; scale: 1.05; }   /* layout 8 */
     100%    { opacity: 0; }
 }
 
 
 @keyframes drift-flower {
     0%      { opacity: 0; }
-    6.25%   { opacity: 1; left: 15%; top: 85%; scale: 1; }   /* layout 1 */
+    6.25%   { opacity: 1; translate: 15vw 85vh; scale: 1; }   /* layout 1 */
     12.5%   { opacity: 0; }
-    18.75%  { opacity: 1; left: 8%; top: 40%; scale: 0.85; }   /* layout 2 */
+    18.75%  { opacity: 1; translate: 8vw 40vh; scale: 0.85; }   /* layout 2 */
     25%     { opacity: 0; }
-    31.25%  { opacity: 1; left: 86%; top: 57%; scale: 1.2; }   /* layout 3 */
+    31.25%  { opacity: 1; translate: 86vw 57vh; scale: 1.2; }   /* layout 3 */
     37.5%   { opacity: 0; }
-    43.75%  { opacity: 1; left: 60%; top: 30%; scale: 0.9; }   /* layout 4 */
+    43.75%  { opacity: 1; translate: 60vw 30vh; scale: 0.9; }   /* layout 4 */
     50%     { opacity: 0; }
-    56.25%  { opacity: 1; left: 70%; top: 5%; scale: 1.15; }   /* layout 5 */
+    56.25%  { opacity: 1; translate: 70vw 5vh; scale: 1.15; }   /* layout 5 */
     62.5%   { opacity: 0; }
-    68.75%  { opacity: 1; left: 40%; top: 60%; scale: 0.8; }   /* layout 6 */
+    68.75%  { opacity: 1; translate: 40vw 60vh; scale: 0.8; }   /* layout 6 */
     75%     { opacity: 0; }
-    81.25%  { opacity: 1; left: 25%; top: 8%; scale: 1.1; }   /* layout 7 */
+    81.25%  { opacity: 1; translate: 25vw 8vh; scale: 1.1; }   /* layout 7 */
     87.5%   { opacity: 0; }
-    93.75%  { opacity: 1; left: 90%; top: 75%; scale: 0.95; }   /* layout 8 */
+    93.75%  { opacity: 1; translate: 90vw 75vh; scale: 0.95; }   /* layout 8 */
     100%    { opacity: 0; }
 }
 
 
 @keyframes drift-star {
     0%      { opacity: 0; }
-    6.25%   { opacity: 1; left: 70%; top: 68%; scale: 1; }   /* layout 1 */
+    6.25%   { opacity: 1; translate: 70vw 68vh; scale: 1; }   /* layout 1 */
     12.5%   { opacity: 0; }
-    18.75%  { opacity: 1; left: 45%; top: 78%; scale: 1.15; }   /* layout 2 */
+    18.75%  { opacity: 1; translate: 45vw 78vh; scale: 1.15; }   /* layout 2 */
     25%     { opacity: 0; }
-    31.25%  { opacity: 1; left: 30%; top: 23%; scale: 0.8; }   /* layout 3 */
+    31.25%  { opacity: 1; translate: 30vw 23vh; scale: 0.8; }   /* layout 3 */
     37.5%   { opacity: 0; }
-    43.75%  { opacity: 1; left: 10%; top: 70%; scale: 1.2; }   /* layout 4 */
+    43.75%  { opacity: 1; translate: 10vw 70vh; scale: 1.2; }   /* layout 4 */
     50%     { opacity: 0; }
-    56.25%  { opacity: 1; left: 85%; top: 40%; scale: 0.9; }   /* layout 5 */
+    56.25%  { opacity: 1; translate: 85vw 40vh; scale: 0.9; }   /* layout 5 */
     62.5%   { opacity: 0; }
-    68.75%  { opacity: 1; left: 62%; top: 8%; scale: 1.05; }   /* layout 6 */
+    68.75%  { opacity: 1; translate: 62vw 8vh; scale: 1.05; }   /* layout 6 */
     75%     { opacity: 0; }
-    81.25%  { opacity: 1; left: 55%; top: 55%; scale: 0.85; }   /* layout 7 */
+    81.25%  { opacity: 1; translate: 55vw 55vh; scale: 0.85; }   /* layout 7 */
     87.5%   { opacity: 0; }
-    93.75%  { opacity: 1; left: 15%; top: 35%; scale: 1.25; }   /* layout 8 */
+    93.75%  { opacity: 1; translate: 15vw 35vh; scale: 1.25; }   /* layout 8 */
     100%    { opacity: 0; }
 }
 
 
 @keyframes drift-sparkle {
     0%      { opacity: 0; }
-    6.25%   { opacity: 1; left: 30%; top: 25%; scale: 1; }   /* layout 1 */
+    6.25%   { opacity: 1; translate: 30vw 25vh; scale: 1; }   /* layout 1 */
     12.5%   { opacity: 0; }
-    18.75%  { opacity: 1; left: 88%; top: 60%; scale: 0.9; }   /* layout 2 */
+    18.75%  { opacity: 1; translate: 88vw 60vh; scale: 0.9; }   /* layout 2 */
     25%     { opacity: 0; }
-    31.25%  { opacity: 1; left: 55%; top: 79%; scale: 1.25; }   /* layout 3 */
+    31.25%  { opacity: 1; translate: 55vw 79vh; scale: 1.25; }   /* layout 3 */
     37.5%   { opacity: 0; }
-    43.75%  { opacity: 1; left: 80%; top: 82%; scale: 0.8; }   /* layout 4 */
+    43.75%  { opacity: 1; translate: 80vw 82vh; scale: 0.8; }   /* layout 4 */
     50%     { opacity: 0; }
-    56.25%  { opacity: 1; left: 12%; top: 55%; scale: 1.1; }   /* layout 5 */
+    56.25%  { opacity: 1; translate: 12vw 55vh; scale: 1.1; }   /* layout 5 */
     62.5%   { opacity: 0; }
-    68.75%  { opacity: 1; left: 20%; top: 10%; scale: 0.95; }   /* layout 6 */
+    68.75%  { opacity: 1; translate: 20vw 10vh; scale: 0.95; }   /* layout 6 */
     75%     { opacity: 0; }
-    81.25%  { opacity: 1; left: 40%; top: 82%; scale: 1.2; }   /* layout 7 */
+    81.25%  { opacity: 1; translate: 40vw 82vh; scale: 1.2; }   /* layout 7 */
     87.5%   { opacity: 0; }
-    93.75%  { opacity: 1; left: 75%; top: 45%; scale: 0.85; }   /* layout 8 */
+    93.75%  { opacity: 1; translate: 75vw 45vh; scale: 0.85; }   /* layout 8 */
     100%    { opacity: 0; }
 }
 
