@@ -1,7 +1,6 @@
 // Playing with the floating shapes (home page, desktop only)
 //  - Click a shape: it spins and bounces.
-//  - Grab a shape and throw it: it feels tethered to its path, with a
-//    little resistance while you pull it, and once let go it's drawn back
+//  - Grab a shape and throw it: once let go it's drawn back to its path
 //    like on a soft spring, in step with the other shapes.
 //  - Shuffle button (in the glass pill): all shapes glide to a new layout.
 
@@ -18,7 +17,6 @@
 
     // ---------- Click to spin, grab to throw ----------
 
-    const RESIST = 2000; // pulling resistance: the farther you pull, the more it lags (lower = stiffer)
     const PULL = 0.005; // how strongly its path pulls it back after letting go (higher = quicker)
     const DAMPING = 0.88; // 1 = no wobble past its path; lower lets it overshoot a little
     const THROW = 0.7; // how much of the mouse's speed a throw keeps
@@ -32,9 +30,6 @@
         let dragging = false;
         let moved = false;
         let startX, startY, baseX, baseY, lastX, lastY, lastT, loop;
-        // Pulling it away from its path gets harder the farther it goes
-        const resist = (d) => d / (1 + Math.abs(d) / RESIST);
-        const unresist = (e) => e / Math.max(1 - Math.abs(e) / RESIST, 0.05); // the reverse, for re-grabbing
 
         // The drag offset is added on top of the shape's drifting path. The
         // path itself moves the shape with "translate" (css/style.css), and an
@@ -142,8 +137,8 @@
             if (drift) drift.pause(); // stop drifting while it's held
             startX = lastX = e.clientX;
             startY = lastY = e.clientY;
-            baseX = unresist(x);
-            baseY = unresist(y);
+            baseX = x;
+            baseY = y;
             lastT = performance.now();
             vx = vy = 0;
             el.classList.add("grabbed");
@@ -152,8 +147,8 @@
         el.addEventListener("pointermove", (e) => {
             if (!dragging) return;
             if (Math.hypot(e.clientX - startX, e.clientY - startY) > 5) moved = true;
-            x = resist(baseX + (e.clientX - startX));
-            y = resist(baseY + (e.clientY - startY));
+            x = baseX + (e.clientX - startX);
+            y = baseY + (e.clientY - startY);
             const now = performance.now();
             const frames = Math.max((now - lastT) / 16.7, 0.5);
             // remember the recent speed, smoothed, for the throw
