@@ -1,7 +1,8 @@
 // Playing with the floating shapes (home page, desktop only)
 //  - Click a shape: it spins and bounces.
-//  - Grab a shape and throw it: it flies off, slows down, then drifts back
-//    to where it was floating, back in step with the other shapes.
+//  - Grab a shape and throw it: it feels tethered to its path, with a
+//    little resistance while you pull it, and once let go it's drawn back
+//    like on a soft spring, in step with the other shapes.
 //  - Shuffle button (in the glass pill): all shapes glide to a new layout.
 
 (() => {
@@ -17,10 +18,10 @@
 
     // ---------- Click to spin, grab to throw ----------
 
-    const FRICTION = 0.9; // how quickly a thrown shape slows down (lower = stops sooner)
-    const RETURN_PAUSE = 250; // ms it rests before heading back
-    const RETURN_MIN = 1200; // ms the trip back takes, at the least...
-    const RETURN_MAX = 2800; // ...and at the most (farther throws take longer)
+    const RESIST = 500; // pulling resistance: the farther you pull, the more it lags (lower = stiffer)
+    const PULL = 0.009; // how strongly its path pulls it back after letting go (higher = quicker)
+    const DAMPING = 0.88; // 1 = no wobble past its path; lower lets it overshoot a little
+    const THROW = 0.7; // how much of the mouse's speed a throw keeps
 
     shapes.forEach((el) => {
         el.draggable = false;
@@ -31,6 +32,9 @@
         let dragging = false;
         let moved = false;
         let startX, startY, baseX, baseY, lastX, lastY, lastT, loop;
+        // Pulling it away from its path gets harder the farther it goes
+        const resist = (d) => d / (1 + Math.abs(d) / RESIST);
+        const unresist = (e) => e / Math.max(1 - Math.abs(e) / RESIST, 0.05); // the reverse, for re-grabbing
 
         // The drag offset is added on top of the shape's drifting path. The
         // path itself moves the shape with "translate" (css/style.css), and an
@@ -92,43 +96,33 @@
             });
         };
 
+        // After letting go: a soft spring draws it back onto its path, carrying
+        // a bit of the throw's speed first, then easing in without snapping
         const settle = () => {
             cancelAnimationFrame(loop);
             resync();
+            vx *= THROW;
+            vy *= THROW;
+            const k = PULL;
+            const c = 2 * Math.sqrt(k) * DAMPING;
             let last = performance.now();
-            let returning = null; // { from: [x, y], start, duration } once gliding back
 
             const step = (now) => {
                 const dt = Math.min((now - last) / 16.7, 3); // in 60fps frames
                 last = now;
-
-                if (!returning) {
-                    // Coasting: keep moving and slow down
-                    x += vx * dt;
-                    y += vy * dt;
-                    vx *= Math.pow(FRICTION, dt);
-                    vy *= Math.pow(FRICTION, dt);
-                    if (Math.hypot(vx, vy) < 0.2) {
-                        const distance = Math.hypot(x, y);
-                        returning = {
-                            from: [x, y],
-                            start: now + RETURN_PAUSE,
-                            // farther away = takes a little longer
-                            duration: Math.min(Math.max(RETURN_MIN + distance * 4, RETURN_MIN), RETURN_MAX),
-                        };
-                    }
-                } else {
-                    // Gliding back: ease in and out
-                    const p = Math.min(Math.max((now - returning.start) / returning.duration, 0), 1);
-                    const eased = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-                    x = returning.from[0] * (1 - eased);
-                    y = returning.from[1] * (1 - eased);
-                    if (p >= 1) {
-                        clearOffset();
-                        el.dataset.held = "";
-                        x = y = 0;
-                        return;
-                    }
+                // a few small steps per frame keeps the spring steady
+                for (let i = 0; i < 4; i++) {
+                    const h = dt / 4;
+                    vx += (-k * x - c * vx) * h;
+                    vy += (-k * y - c * vy) * h;
+                    x += vx * h;
+                    y += vy * h;
+                }
+                if (Math.hypot(x, y) < 0.4 && Math.hypot(vx, vy) < 0.05) {
+                    clearOffset();
+                    el.dataset.held = "";
+                    x = y = vx = vy = 0;
+                    return;
                 }
                 apply();
                 loop = requestAnimationFrame(step);
@@ -148,8 +142,8 @@
             if (drift) drift.pause(); // stop drifting while it's held
             startX = lastX = e.clientX;
             startY = lastY = e.clientY;
-            baseX = x;
-            baseY = y;
+            baseX = unresist(x);
+            baseY = unresist(y);
             lastT = performance.now();
             vx = vy = 0;
             el.classList.add("grabbed");
@@ -158,8 +152,8 @@
         el.addEventListener("pointermove", (e) => {
             if (!dragging) return;
             if (Math.hypot(e.clientX - startX, e.clientY - startY) > 5) moved = true;
-            x = baseX + (e.clientX - startX);
-            y = baseY + (e.clientY - startY);
+            x = resist(baseX + (e.clientX - startX));
+            y = resist(baseY + (e.clientY - startY));
             const now = performance.now();
             const frames = Math.max((now - lastT) / 16.7, 0.5);
             // remember the recent speed, smoothed, for the throw
