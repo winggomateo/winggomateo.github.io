@@ -17,7 +17,7 @@
 
     // ---------- Click to spin, grab to throw ----------
 
-    const PULL = 0.005; // how strongly its path pulls it back after letting go (higher = quicker)
+    const PULL = 0.007; // how strongly its path pulls it back after letting go (higher = quicker)
     const DAMPING = 0.88; // 1 = no wobble past its path; lower lets it overshoot a little
     const THROW = 0.7; // how much of the mouse's speed a throw keeps
 
