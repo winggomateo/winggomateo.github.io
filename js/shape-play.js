@@ -17,10 +17,10 @@
 
     // ---------- Click to spin, grab to throw ----------
 
-    const PULL = 0.007; // how strongly its path pulls it back after letting go (higher = quicker)
+    const PULL = 0.006; // how strongly its path pulls it back after letting go (higher = quicker)
     const DAMPING = 0.88; // 1 = no wobble past its path; lower lets it overshoot a little
     const THROW = 0.7; // how much of the mouse's speed a throw keeps
-    const NUDGE = 0.02; // how quickly it starts heading back the moment you let go
+    const NUDGE = 0.006; // how quickly it starts heading back the moment you let go
 
     shapes.forEach((el) => {
         el.draggable = false;
