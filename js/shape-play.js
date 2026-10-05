@@ -32,7 +32,20 @@
         let moved = false;
         let startX, startY, baseX, baseY, lastX, lastY, lastT, loop;
 
-        const apply = () => (el.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`);
+        // The drag offset is added on top of the shape's drifting path. The
+        // path itself moves the shape with "translate" (css/style.css), and an
+        // animation would override a plain style, so the offset is its own
+        // small animation, added to the path's ("composite: add").
+        let offset = null;
+        const apply = () => {
+            const frame = { translate: `${x.toFixed(1)}px ${y.toFixed(1)}px` };
+            if (offset) offset.effect.setKeyframes([frame, frame]);
+            else offset = el.animate([frame, frame], { duration: 1, fill: "forwards", composite: "add" });
+        };
+        const clearOffset = () => {
+            if (offset) offset.cancel();
+            offset = null;
+        };
 
         const spin = () => {
             if (reduceMotion) return;
@@ -111,7 +124,7 @@
                     x = returning.from[0] * (1 - eased);
                     y = returning.from[1] * (1 - eased);
                     if (p >= 1) {
-                        el.style.translate = "";
+                        clearOffset();
                         el.dataset.held = "";
                         x = y = 0;
                         return;
