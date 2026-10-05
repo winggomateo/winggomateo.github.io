@@ -17,10 +17,12 @@
 
     // ---------- Click to spin, grab to throw ----------
 
-    const PULL = 0.006; // how strongly its path pulls it back after letting go (higher = quicker)
+    const PULL = 0.005; // how strongly its path pulls it back, once fully on (higher = quicker)
+    const RAMP_MS = 900; // the pull starts weak and builds up over this long, so throws can fly far
+    const FRICTION = 0.97; // how quickly a thrown shape slows down on its own (lower = stops sooner)
     const DAMPING = 0.88; // 1 = no wobble past its path; lower lets it overshoot a little
-    const THROW = 0.7; // how much of the mouse's speed a throw keeps
-    const NUDGE = 0.003; // how quickly it starts heading back the moment you let go
+    const THROW = 1; // how much of the mouse's speed a throw keeps
+    const NUDGE = 0.002; // a slow drift back the moment you let go, so it never hangs still
 
     shapes.forEach((el) => {
         el.draggable = false;
@@ -60,8 +62,6 @@
             );
         };
 
-        // After a throw: coast and slow down, then glide back to the path with
-        // a gentle start and finish, and resume floating
         // While held, the shape's path was paused. On release, jump its path
         // back in step with the other shapes (so their fade cycles stay in
         // sync), without the shape itself jumping: its position and opacity
@@ -92,8 +92,8 @@
             });
         };
 
-        // After letting go: a soft spring draws it back onto its path, carrying
-        // a bit of the throw's speed first, then easing in without snapping
+        // After letting go: a thrown shape flies on and slows down, while a soft
+        // spring that starts weak and builds up draws it back onto its path
         const settle = () => {
             cancelAnimationFrame(loop);
             resync();
@@ -103,18 +103,22 @@
             // hangs still after you let go (it speeds up from there)
             vx -= x * NUDGE;
             vy -= y * NUDGE;
-            const k = PULL;
-            const c = 2 * Math.sqrt(k) * DAMPING;
-            let last = performance.now();
+            const start = performance.now();
+            let last = start;
 
             const step = (now) => {
                 const dt = Math.min((now - last) / 16.7, 3); // in 60fps frames
                 last = now;
+                // The pull builds up gently after letting go
+                const ramp = Math.min((now - start) / RAMP_MS, 1);
+                const k = PULL * (0.1 + 0.9 * ramp * ramp);
+                const c = 2 * Math.sqrt(k) * DAMPING;
                 // a few small steps per frame keeps the spring steady
                 for (let i = 0; i < 4; i++) {
                     const h = dt / 4;
-                    vx += (-k * x - c * vx) * h;
-                    vy += (-k * y - c * vy) * h;
+                    const drag = Math.pow(FRICTION, h);
+                    vx = vx * drag + (-k * x - c * vx) * h;
+                    vy = vy * drag + (-k * y - c * vy) * h;
                     x += vx * h;
                     y += vy * h;
                 }
