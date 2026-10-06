@@ -1039,8 +1039,8 @@ footer a:focus-visible {
 /* 9b. More work (Design page)
    Smaller projects as a simple list under the cards: title, tags and year
    in three columns, a black line under each row. Hovering a row turns it
-   teal (like the menu) and shows a preview image beside the mouse
-   (js/more-work.js). On phones each row stacks: title, then tags and year.
+   teal (like the menu) and shows a preview image that trails the mouse
+   and crossfades between projects (js/more-work.js). On phones each row stacks: title, then tags and year.
    ========================================================================== */
 .more-work {
     padding: 0 30px 90px;       /* same side spacing as the cards; the space
@@ -1147,14 +1147,31 @@ footer a:focus-visible {
     left: 0;
     width: 240px;
     aspect-ratio: 3 / 2;
-    object-fit: cover;
     border: 2px solid black;
+    background-color: #ede8ef;
+    overflow: hidden;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.25s ease;
 }
 
 .more-work-preview.show {
+    opacity: 1;
+}
+
+/* Two stacked images, so moving between rows crossfades from one project
+   to the next */
+.more-work-preview img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.more-work-preview img.on {
     opacity: 1;
 }
 
