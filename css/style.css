@@ -907,7 +907,7 @@ footer a:focus-visible {
 .wrapper .about-text .about-more {
     display: block;
     width: fit-content;
-    margin: 24px -10px 0 auto;  /* right-aligned, text lined up with the edge of the line above */
+    margin: 44px -10px 0 auto;  /* right-aligned, text lined up with the edge of the line above */
     font-weight: 600;
 }
 
