@@ -42,6 +42,7 @@
 
     let current = -1;
     let opener = null;
+    let byKeyboard = false; // opened with the keyboard (then focus goes back to the image on close)
 
     // Images look clickable, and keyboard users can open them with Enter
     images.forEach((img, i) => {
@@ -49,10 +50,14 @@
         img.tabIndex = 0;
         img.setAttribute("role", "button");
         img.setAttribute("aria-label", `Enlarge image${img.alt ? ": " + img.alt : ""}`);
-        img.addEventListener("click", () => open(i));
+        img.addEventListener("click", () => {
+            byKeyboard = false;
+            open(i);
+        });
         img.addEventListener("keydown", (e) => {
             if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
+                byKeyboard = true;
                 open(i);
             }
         });
@@ -111,7 +116,7 @@
         big.style.visibility = "";
         await growing;
         images[i].style.visibility = "";
-        closeBtn.focus({ preventScroll: true });
+        if (byKeyboard) closeBtn.focus({ preventScroll: true });
     };
 
     const close = async () => {
@@ -129,7 +134,10 @@
         flight = null;
         document.documentElement.classList.remove("lightbox-open");
         requestAnimationFrame(() => box.classList.remove("instant"));
-        if (opener) opener.focus({ preventScroll: true });
+        // Keyboard users get their place back; mouse users don't need the
+        // focus outline showing up on the image
+        if (byKeyboard && opener) opener.focus({ preventScroll: true });
+        else if (document.activeElement && box.contains(document.activeElement)) document.activeElement.blur();
     };
 
     // Click anywhere closes, except on the arrow buttons
