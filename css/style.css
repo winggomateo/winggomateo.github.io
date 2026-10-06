@@ -899,6 +899,13 @@ footer a:focus-visible {
     }
 }
 
+/* "See my work →" at the end of the page (styled with the homepage's
+   "About page →" link, section 6b) */
+.wrapper .about-text .about-more {
+    margin-top: 40px;
+    font-weight: 600;
+}
+
 /* Oval portrait */
 .wrapper .containerAbout {
     width: 32vw;
@@ -1883,7 +1890,8 @@ footer a:focus-visible {
    teal box fades in and the text turns teal. The negative margin keeps the
    text lined up with the paragraph above. */
 .drawer-body a,
-.intro-statement a {
+.intro-statement a,
+.about-more {
     display: inline-block;
     margin: 24px -10px 0;
     padding: 4px 10px;
@@ -1897,7 +1905,9 @@ footer a:focus-visible {
 .drawer-body a:hover,
 .drawer-body a:focus-visible,
 .intro-statement a:hover,
-.intro-statement a:focus-visible {
+.intro-statement a:focus-visible,
+.about-more:hover,
+.about-more:focus-visible {
     color: var(--accent-text);
     background-color: var(--button-hover);
     outline: none;
