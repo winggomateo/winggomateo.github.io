@@ -1043,7 +1043,8 @@ footer a:focus-visible {
    (js/more-work.js). On phones each row stacks: title, then tags and year.
    ========================================================================== */
 .more-work {
-    padding: 70px 30px 90px;   /* same side spacing as the cards */
+    padding: 0 30px 90px;       /* same side spacing as the cards; the space
+                                   above comes from the card grid's own bottom space */
     text-align: left;
 }
 
@@ -1139,7 +1140,7 @@ footer a:focus-visible {
     .more-work {
         width: 78vw;            /* same width as the cards on phones */
         margin: 0 auto;
-        padding: 40px 0 70px;
+        padding: 0 0 70px;
     }
 
     .more-work h2 {
