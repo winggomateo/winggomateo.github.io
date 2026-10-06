@@ -309,53 +309,10 @@
                     </a>
 
                     <!-- PGIL -->
-                    <a class="project-card" href="PGIL.html">
-                        <div class="project-image">
-                            <img src="design/PGIL.jpg" alt="" loading="lazy"
-                            />
-                        </div>
-                        <div class="project-info">
-                            <h2>PGIL</h2>
-                            <ul class="tags">
-                                <li>Brand</li>
-                                <li>Merchandising</li>
-                            </ul>
-                            <p>A visual identity for an educational video series by NYU’s LGBTQ+ Center.</p>
-                            <span class="read-more-btn">Read More</span>
-                        </div>
-                    </a>
 
                     <!-- Vinyl Playing Cards -->
-                    <a class="project-card" href="vinyl.html">
-                        <div class="project-image">
-                            <img src="design/Vinyl.jpg" alt="" loading="lazy"
-                            />
-                        </div>
-                        <div class="project-info">
-                            <h2>Vinyl Playing Cards</h2>
-                            <ul class="tags">
-                                <li>Print</li>
-                            </ul>
-                            <p>A modern deck of playing cards designed for card flourishes.</p>
-                            <span class="read-more-btn">Read More</span>
-                        </div>
-                    </a>
 
                     <!-- On Writing Well -->
-                    <a class="project-card" href="BookCover.html">
-                        <div class="project-image">
-                            <img src="design/BookCover.jpg" alt="" loading="lazy"
-                            />
-                        </div>
-                        <div class="project-info">
-                            <h2>On Writing Well</h2>
-                            <ul class="tags">
-                                <li>Book Cover</li>
-                            </ul>
-                            <p>A redesign of William Zinsser’s classic guidebook on nonfiction writing.</p>
-                            <span class="read-more-btn">Read More</span>
-                        </div>
-                    </a>
 
                     <!-- Zachary Parker -->
                     <a class="project-card" href="zacharyParker.html">
@@ -374,6 +331,35 @@
                         </div>
                     </a>
                 </div>
+                <!-- More work: smaller projects as a simple list under the cards.
+                     Each row: link, title, tags and year. data-preview is the
+                     image shown beside the mouse on hover (js/more-work.js). -->
+                <section class="more-work" aria-labelledby="more-work-heading">
+                    <h2 id="more-work-heading">More work</h2>
+                    <ul class="more-work-list">
+                        <li>
+                            <a href="PGIL.html" data-preview="design/PGIL.jpg">
+                                <span class="more-work-title">PGIL Video Series</span>
+                                <ul class="tags"><li>Brand</li><li>Merchandising</li></ul>
+                                <span class="more-work-year">2022</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="BookCover.html" data-preview="design/BookCover.jpg">
+                                <span class="more-work-title">On Writing Well</span>
+                                <ul class="tags"><li>Book Cover</li></ul>
+                                <span class="more-work-year">2022</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="vinyl.html" data-preview="design/Vinyl.jpg">
+                                <span class="more-work-title">Vinyl Playing Cards</span>
+                                <ul class="tags"><li>Print</li></ul>
+                                <span class="more-work-year">2020</span>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
             </main>
         </div>
 
@@ -398,6 +384,7 @@
         </nav>
         <script src="js/section-nav.js"></script>
         <script src="js/noise.js"></script>
+        <script src="js/more-work.js"></script>
         <!-- Visitor stats (GoatCounter: no cookies; see mateovr.goatcounter.com) -->
         <script data-goatcounter="https://mateovr.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
     </body>
