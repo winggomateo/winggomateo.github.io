@@ -1617,7 +1617,7 @@ footer a:focus-visible {
         width: 70vw;
         height: 70vw;
         margin-top: 0;
-        margin-bottom: 1vw;
+        margin-bottom: 36px; /* room before the text starts */
     }
 
     .wrapper .container4 {
