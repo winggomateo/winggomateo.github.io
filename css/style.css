@@ -895,7 +895,7 @@ footer a:focus-visible {
         justify-content: space-evenly;
     }
 
-    .wrapper .block2 .containerAbout,
+    .wrapper .block2 .about-portrait,
     .wrapper .block2 .about-text {
         margin-left: 0;
         margin-right: 0;
@@ -909,6 +909,42 @@ footer a:focus-visible {
     width: fit-content;
     margin: 24px -10px 0 auto;  /* right-aligned, text lined up with the edge of the line above */
     font-weight: 600;
+}
+
+/* Shapes stuck around the portrait's edge. Sizes and spots are a share of
+   the portrait's width, so they stay put on phones too. Each turns slowly
+   (some one way, some the other); js/stickers.js adds a spin on click. */
+.about-portrait {
+    position: relative;
+    width: fit-content;
+}
+
+.sticker {
+    position: absolute;
+    z-index: 2;
+    height: auto;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+    animation: sticker-turn 90s linear infinite;
+    transition: scale 0.3s var(--hover-ease);
+}
+
+.sticker:hover {
+    scale: 1.12;
+}
+
+.sticker-burst   { width: 23%; top: 2%;     right: -7%; }
+.sticker-sparkle { width: 19%; top: 24%;    left: -9%;  animation-direction: reverse; animation-duration: 70s; }
+.sticker-flower  { width: 18%; bottom: 20%; right: -8%; animation-duration: 110s; }
+.sticker-star    { width: 24%; bottom: -3%; left: 4%;   animation-direction: reverse; }
+
+@keyframes sticker-turn {
+    to { rotate: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sticker { animation: none; }
 }
 
 /* Oval portrait */
@@ -1643,6 +1679,10 @@ footer a:focus-visible {
     .about-lists h2,
     .about-lists p {
         font-size: 17px;
+    }
+
+    .about-portrait {
+        margin: 0 auto 14px;   /* a little extra, for the star below the photo */
     }
 
     .wrapper .containerAbout {
