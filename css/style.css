@@ -13,6 +13,7 @@
    9.  Design page (project cards)
    9b. More work list (Design page)
    10. Project pages (title, summary, images, "View Other Work")
+   10c. Click to enlarge (project pages)
    11. Floating shapes (home page animation)
    11b. Section indicator (home page, desktop only)
    11c. Page transitions
@@ -1982,6 +1983,177 @@ footer a:focus-visible {
 
     .intro-drawer.peek {
         animation: gradient 15s ease infinite;
+    }
+}
+
+
+/* 10c. Click to enlarge (project pages, js/lightbox.js)
+   Images in a project open large over a see-through version of the page
+   gradient, with the caption underneath, arrows to step through the
+   project's images, and a × to close. The cursor becomes a magnifying
+   glass over images that can be enlarged.
+   ========================================================================== */
+.zoomable {
+    cursor: zoom-in;
+}
+
+.zoomable:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+html.lightbox-open,
+html.lightbox-open body {
+    overflow: hidden;           /* the page behind doesn't scroll */
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 70px 90px 60px;
+    cursor: zoom-out;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+/* The see-through gradient behind the image, on its own layer so it can
+   fade out while the image shrinks back into place */
+.lightbox::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(-45deg, rgba(255, 229, 233, 0.9), rgba(224, 255, 236, 0.9),
+        rgba(214, 236, 255, 0.9), rgba(254, 209, 231, 0.9));
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: gradient 15s ease infinite;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: opacity 0.35s ease;
+}
+
+.lightbox.open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0s;
+}
+
+/* Closing: everything but the image fades while it shrinks back */
+.lightbox.closing::before,
+.lightbox.closing .lightbox-caption,
+.lightbox.closing .lightbox-count,
+.lightbox.closing button {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.lightbox-img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 170px);
+    object-fit: contain;
+    border: 2px solid black;    /* same outline as the images on the page */
+}
+
+.lightbox-caption {
+    margin: 0;
+    color: #5a5a5a;
+    font-size: 1em;
+    text-align: center;
+}
+
+.lightbox-count {
+    position: absolute;
+    top: 26px;
+    left: 30px;
+    margin: 0;
+    color: #5a5a5a;
+    font-size: 0.95em;
+}
+
+.lightbox.single .lightbox-count,
+.lightbox.single button.lightbox-prev,
+.lightbox.single button.lightbox-next {
+    display: none;
+}
+
+/* Buttons: same small rounded teal hover as the info drawer's ×.
+   (The rules for each button below are written as ".lightbox .lightbox-…"
+   so they win over this one's "all: unset".) */
+.lightbox button {
+    all: unset;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: black;
+    transition: background-color var(--hover-speed) var(--hover-ease),
+        color var(--hover-speed) var(--hover-ease);
+}
+
+.lightbox button:hover,
+.lightbox button:focus-visible {
+    background-color: var(--button-hover);
+    color: var(--accent-text);
+}
+
+.lightbox button svg {
+    width: 20px;
+    height: 20px;
+    overflow: visible;
+}
+
+.lightbox button path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: square;
+}
+
+.lightbox .lightbox-close {
+    top: 16px;
+    right: 18px;
+}
+
+.lightbox .lightbox-prev {
+    left: 24px;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+.lightbox .lightbox-next {
+    right: 24px;
+    top: 50%;
+    translate: 0 -50%;
+}
+
+@media only screen and (max-width: 1050px) {
+    .lightbox {
+        padding: 64px 16px 40px;
+    }
+
+    /* On phones, swipe instead of arrows */
+    .lightbox .lightbox-prev,
+    .lightbox .lightbox-next {
+        display: none;
     }
 }
 
