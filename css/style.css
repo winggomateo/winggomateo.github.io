@@ -211,22 +211,6 @@ a:hover {
     cursor: pointer;
 }
 
-/* Links in the About page text: underlined, turning teal on hover (same as
-   the team links on project pages) */
-.bio1 a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-    transition: color var(--hover-speed) var(--hover-ease);
-}
-
-.bio1 a:hover,
-.bio1 a:focus-visible {
-    color: var(--accent-text);
-}
-
-
 /* 4. Navigation
    The menu HTML is the same on every page. On desktop it's a bar turned on
    its side along the left edge. On tablets and phones it becomes a
@@ -816,17 +800,6 @@ footer a:focus-visible {
     .wrapper .block1 {
         padding-bottom: 10vw;
     }
-
-    .wrapper .container2 {
-        width: 70vw;
-        margin: 0%;
-        height: auto;
-        transition: .5s ease;
-    }
-
-    .wrapper .container2:hover {
-        transform: scale(1.05);
-    }
 }
 
 @media only screen and (max-width: 380px) {
@@ -837,40 +810,76 @@ footer a:focus-visible {
 /* 7. About page
    ========================================================================== */
 
-/* Bio text */
-.wrapper .bio1 {
-    font-size: 1.5vw;
-    margin: 0%;
-    padding: 1vw 0 1vw 0;
+/* Text column beside the portrait: a short intro (first paragraph
+   semibold, like the homepage intro), then lists under a black line.
+   Labels are semibold black, like the details on the project pages. */
+.wrapper .about-text {
+    width: 48vw;
+    margin: 0 auto 4vw;
     text-align: left;
-    width: 100%;
 }
 
-/* Section headings ("About Me", "What I Do", ...) */
-.heading2 {
+.about-intro {
+    margin: 0 0 0.7em;
+    font-size: clamp(20px, 1.75vw, 28px);
+    line-height: 1.3;
     font-weight: 600;
-    font-size: 1.5vw;
-    margin: 0%;
-    padding: 1.3vw 0 0vw 0;
-    text-align: left;
-    width: 100%;
+    text-wrap: pretty;
 }
 
-/* Column that holds the bio */
-.wrapper .container2 {
-    width: 40vw;
-    margin: auto;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 2.5vw;
-    margin-bottom: 2.5vw;
+.about-intro-2 {
+    font-weight: 400;
+}
+
+.about-lists {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    grid-auto-flow: row dense;
+    gap: 28px 40px;
+    margin-top: 2.2em;
+    padding-top: 1.6em;
+    border-top: 2px solid black;
+}
+
+.about-worked {
+    grid-row: span 2;      /* the long list sits beside Focus and Education */
+}
+
+.about-lists h2 {
+    margin: 0 0 0.35em;
+    font-size: clamp(14px, 1.05vw, 17px);
+    font-weight: 600;
+}
+
+.about-lists p {
+    margin: 0;
+    font-size: clamp(14px, 1.05vw, 17px);
+    line-height: 1.45;
+}
+
+.about-lists .about-sub {
+    color: #5a5a5a;
+}
+
+/* Underlined links, turning teal on hover (same as the team links on
+   project pages) */
+.about-lists a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color var(--hover-speed) var(--hover-ease);
+}
+
+.about-lists a:hover,
+.about-lists a:focus-visible {
+    color: var(--accent-text);
 }
 
 /* Oval portrait */
 .wrapper .containerAbout {
-    width: 40vw;
-    height: 48vw;
+    width: 32vw;
+    height: 39vw;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2vw;
@@ -1565,18 +1574,27 @@ footer a:focus-visible {
 }
 
 @media only screen and (max-width: 1050px) {
-    .wrapper .bio1 {
-        font-size: 2.5vw;
-        margin: 0%;
+    .wrapper .about-text {
+        width: auto;
+        margin: 0 6% 40px;
     }
 
-    .heading2 {
-        font-size: 2.5vw;
-        margin: 0%;
+    .about-intro {
+        font-size: 21px;
     }
 
-    .wrapper .container2 {
-        width: 80vw;
+    .about-lists {
+        gap: 24px 20px;
+    }
+
+    .about-worked {
+        grid-row: auto;
+        grid-column: 1 / -1;
+    }
+
+    .about-lists h2,
+    .about-lists p {
+        font-size: 15px;
     }
 
     .wrapper .containerAbout {
@@ -1618,14 +1636,6 @@ footer a:focus-visible {
 }
 
 @media only screen and (max-width: 800px) {
-    .wrapper .bio1 {
-        font-size: 3.5vw;
-    }
-
-    .wrapper .heading2 {
-        font-size: 3.5vw;
-    }
-
     .textReturn {
         width: auto;
     }
