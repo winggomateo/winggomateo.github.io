@@ -867,6 +867,12 @@ footer a:focus-visible {
     margin-bottom: 0;
 }
 
+/* The minor is its own item: a little gap separates it from the school
+   and concentration above */
+.about-lists .about-minor {
+    margin-top: 0.6em;
+}
+
 /* The concentration belongs with the school above it */
 .about-lists .about-sub {
     margin-top: -0.15em;
