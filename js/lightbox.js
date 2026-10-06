@@ -76,7 +76,12 @@
     };
 
     // Grow out of (or shrink back into) the image's spot on the page
+    // (It holds its last frame until we're done with it, so the big image
+    // never flashes back to full size at the end.)
+    let flight = null;
     const fly = (img, opening) => {
+        if (flight) flight.cancel();
+        flight = null;
         if (reduceMotion) return Promise.resolve();
         const from = img.getBoundingClientRect();
         const to = big.getBoundingClientRect();
@@ -86,20 +91,25 @@
         const s = from.width / to.width;
         const small = { transform: `translate(${dx}px, ${dy}px) scale(${s})` };
         const full = { transform: "none" };
-        return big.animate(opening ? [small, full] : [full, small], {
-            duration: 380,
-            easing: "cubic-bezier(0.22, 1, 0.36, 1)",
-        }).finished;
+        flight = big.animate(opening ? [small, full] : [full, small], {
+            duration: opening ? 380 : 340,
+            easing: opening ? "cubic-bezier(0.22, 1, 0.36, 1)" : "cubic-bezier(0.4, 0, 0.2, 1)",
+            fill: "both",
+        });
+        return flight.finished.catch(() => {});
     };
 
     const open = async (i) => {
         opener = images[i];
         show(i);
+        big.style.visibility = "hidden"; // until it's ready to grow from the image's spot
         document.documentElement.classList.add("lightbox-open");
         box.classList.add("open");
         if (!big.complete) await new Promise((r) => big.addEventListener("load", r, { once: true }));
         images[i].style.visibility = "hidden"; // so it doesn't show twice while flying
-        await fly(images[i], true);
+        const growing = fly(images[i], true);
+        big.style.visibility = "";
+        await growing;
         images[i].style.visibility = "";
         closeBtn.focus({ preventScroll: true });
     };
@@ -110,9 +120,15 @@
         box.classList.add("closing");
         img.style.visibility = "hidden";
         await fly(img, false);
+        // Swap back in the same frame: the page image reappears exactly where
+        // the shrunken one ends, and the overlay disappears at once
         img.style.visibility = "";
+        box.classList.add("instant");
         box.classList.remove("open", "closing");
+        if (flight) flight.cancel();
+        flight = null;
         document.documentElement.classList.remove("lightbox-open");
+        requestAnimationFrame(() => box.classList.remove("instant"));
         if (opener) opener.focus({ preventScroll: true });
     };
 

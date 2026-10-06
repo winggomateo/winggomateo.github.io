@@ -2038,6 +2038,12 @@ html.lightbox-open body {
     transition: opacity 0.3s ease, visibility 0s;
 }
 
+/* Used for the last moment of closing, so the overlay goes away at once */
+.lightbox.instant,
+.lightbox.instant::before {
+    transition: none;
+}
+
 /* Closing: everything but the image fades while it shrinks back */
 .lightbox.closing::before,
 .lightbox.closing .lightbox-caption,
