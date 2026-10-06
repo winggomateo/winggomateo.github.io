@@ -836,15 +836,18 @@ footer a:focus-visible {
 .about-lists {
     display: grid;
     grid-template-columns: 1.25fr 1fr;
-    grid-auto-flow: row dense;
     gap: 30px 40px;
     margin-top: 2.2em;
     padding-top: 1.6em;
     border-top: 2px solid black;
 }
 
-.about-worked {
-    grid-row: span 2;      /* the long list sits beside Focus and Education */
+/* Each column stacks its sections with the same gap, so Contact sits just
+   under Worked with, however long the right column is */
+.about-col {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .about-lists h2 {
@@ -902,7 +905,9 @@ footer a:focus-visible {
 /* "See my work →" at the end of the page (styled with the homepage's
    "About page →" link, section 6b) */
 .wrapper .about-text .about-more {
-    margin-top: 40px;
+    display: block;
+    width: fit-content;
+    margin: 24px -10px 0 auto;  /* right-aligned, text lined up with the edge of the line above */
     font-weight: 600;
 }
 
@@ -1617,10 +1622,23 @@ footer a:focus-visible {
         gap: 26px 20px;
     }
 
-    .about-worked {
-        grid-row: auto;
-        grid-column: 1 / -1;
+    /* Phones: Worked with across the top, Focus and Education side by
+       side, then Contact */
+    .about-lists {
+        grid-template-areas:
+            "worked worked"
+            "focus edu"
+            "contact contact";
     }
+
+    .about-col {
+        display: contents;
+    }
+
+    .about-worked { grid-area: worked; }
+    .about-focus { grid-area: focus; }
+    .about-edu { grid-area: edu; }
+    .about-contact { grid-area: contact; }
 
     .about-lists h2,
     .about-lists p {
