@@ -878,6 +878,20 @@ footer a:focus-visible {
     color: var(--accent-text);
 }
 
+/* On desktop the space left over is shared out evenly: the gap left of the
+   portrait, between the portrait and the text, and right of the text all match */
+@media only screen and (min-width: 1051px) {
+    .wrapper .block2 {
+        justify-content: space-evenly;
+    }
+
+    .wrapper .block2 .containerAbout,
+    .wrapper .block2 .about-text {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 /* Oval portrait */
 .wrapper .containerAbout {
     width: 32vw;
