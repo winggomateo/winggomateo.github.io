@@ -849,13 +849,13 @@ footer a:focus-visible {
 
 .about-lists h2 {
     margin: 0 0 0.35em;
-    font-size: clamp(14px, 1.05vw, 17px);
+    font-size: 1.1em; /* same as the details on the project pages */
     font-weight: 600;
 }
 
 .about-lists p {
     margin: 0;
-    font-size: clamp(14px, 1.05vw, 17px);
+    font-size: 1.1em; /* same as the details on the project pages */
     line-height: 1.45;
 }
 
@@ -1610,7 +1610,7 @@ footer a:focus-visible {
 
     .about-lists h2,
     .about-lists p {
-        font-size: 15px;
+        font-size: 17px;
     }
 
     .wrapper .containerAbout {
