@@ -2380,6 +2380,11 @@ html.lightbox-open body {
         padding-right: calc(30px + var(--grid-gap));
     }
 
+    /* ...and the More work list below the cards lines up with them */
+    .home .more-work {
+        padding-right: 60px;
+    }
+
     .block3 > .project-card {
         width: 100%;               /* one column: the full width of the grid */
         margin-left: 0;
