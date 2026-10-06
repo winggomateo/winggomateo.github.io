@@ -1067,7 +1067,7 @@ footer a:focus-visible {
 
 .more-work-list a {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 70px;
+    grid-template-columns: 1.2fr 1fr 60px auto;
     gap: 24px;
     align-items: center;
     padding: 16px 14px;         /* text sits a little in from the line ends */
@@ -1103,6 +1103,26 @@ footer a:focus-visible {
 .more-work-year {
     color: #5a5a5a;
     text-align: right;
+}
+
+/* A small "Read More" box at the end of each row, like the cards' button,
+   so the rows read as links (especially on phones, where there's no hover) */
+.more-work-more {
+    padding: 5px 12px;
+    border: 2px solid black;
+    font-size: 0.9em;
+    white-space: nowrap;
+    transition: border-color var(--hover-speed) var(--hover-ease);
+}
+
+/* Phones show an arrow beside the title instead (see below) */
+.more-work-arrow {
+    display: none;
+}
+
+.more-work-list a:hover .more-work-more,
+.more-work-list a:focus-visible .more-work-more {
+    border-color: var(--accent-color);
 }
 
 /* Hover: the teal fills the row exactly between its two lines */
@@ -1154,8 +1174,31 @@ footer a:focus-visible {
     }
 
     .more-work-title {
-        grid-column: 1 / -1;
         font-size: 1.2em;
+    }
+
+    /* Phones: an arrow at the end of the title line hints that the row is a
+       link (like a list index), instead of the Read More box */
+    .more-work-more {
+        display: none;
+    }
+
+    .more-work-arrow {
+        display: block;
+        justify-self: end;
+    }
+
+    .more-work-arrow svg {
+        display: block;
+        width: 22px;
+        height: 15px;
+        overflow: visible;
+    }
+
+    .more-work-arrow path {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.5;
     }
 }
 
