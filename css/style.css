@@ -1105,16 +1105,24 @@ footer a:focus-visible {
     text-align: right;
 }
 
-/* "Read More" as plain text at the end of each row, so the rows read as
-   links. It turns teal with the rest of the row on hover. */
-.more-work-more {
-    font-size: 0.95em;
-    white-space: nowrap;
+/* An arrow at the end of each row, so the rows read as links (it turns
+   teal with the rest of the row on hover) */
+.more-work-arrow {
+    display: block;
+    justify-self: end;
 }
 
-/* Phones show an arrow beside the title instead (see below) */
-.more-work-arrow {
-    display: none;
+.more-work-arrow svg {
+    display: block;
+    width: 22px;
+    height: 15px;
+    overflow: visible;
+}
+
+.more-work-arrow path {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
 }
 
 
@@ -1171,28 +1179,10 @@ footer a:focus-visible {
         font-size: 1.2em;
     }
 
-    /* Phones: an arrow at the end of the title line hints that the row is a
-       link (like a list index), instead of the Read More box */
-    .more-work-more {
-        display: none;
-    }
-
+    /* Phones: the arrow sits at the end of the title line */
     .more-work-arrow {
-        display: block;
-        justify-self: end;
-    }
-
-    .more-work-arrow svg {
-        display: block;
-        width: 22px;
-        height: 15px;
-        overflow: visible;
-    }
-
-    .more-work-arrow path {
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 1.5;
+        grid-row: 1;
+        grid-column: 2;
     }
 }
 
