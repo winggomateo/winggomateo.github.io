@@ -27,10 +27,11 @@ const PROJECTS = [
     ["alSadeem.html", "Al Sadeem", "design/alSadeem.png"],
     ["nameTag.html", "CMEP Name Tag", "design/cmepNameTag.png"],
     ["Calendar.html", "CMEP Calendar", "design/CalendarCover.jpg"],
-    ["PGIL.html", "PGIL", "design/PGIL.jpg"],
-    ["vinyl.html", "Vinyl Playing Cards", "design/Vinyl.jpg"],
-    ["BookCover.html", "On Writing Well", "design/BookCover.jpg"],
     ["zacharyParker.html", "Zachary Parker", "design/ZacharyParker.jpg"],
+    // "More work" list on the Design page
+    ["PGIL.html", "PGIL Video Series", "design/PGIL.jpg"],
+    ["BookCover.html", "On Writing Well", "design/BookCover.jpg"],
+    ["vinyl.html", "Vinyl Playing Cards", "design/Vinyl.jpg"],
 ];
 
 // Extras that help people notice the list (set to false to turn one off):

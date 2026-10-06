@@ -11,6 +11,7 @@
    7.  About page
    8.  Photography page
    9.  Design page (project cards)
+   9b. More work list (Design page)
    10. Project pages (title, summary, images, "View Other Work")
    11. Floating shapes (home page animation)
    11b. Section indicator (home page, desktop only)
@@ -1031,6 +1032,125 @@ footer a:focus-visible {
     background-color: var(--button-hover);
     border-color: var(--accent-color);
     color: var(--accent-text);
+}
+
+
+/* 9b. More work (Design page)
+   Smaller projects as a simple list under the cards: title, tags and year
+   in three columns, a black line under each row. Hovering a row turns it
+   teal (like the menu) and shows a preview image beside the mouse
+   (js/more-work.js). On phones each row stacks: title, then tags and year.
+   ========================================================================== */
+.more-work {
+    padding: 70px 30px 90px;   /* same side spacing as the cards */
+    text-align: left;
+}
+
+.more-work h2 {
+    margin: 0 0 16px;
+    font-size: 1.9em;
+}
+
+.more-work-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid black;
+}
+
+.more-work-list > li {
+    border-bottom: 2px solid black;
+}
+
+.more-work-list a {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 70px;
+    gap: 24px;
+    align-items: center;
+    padding: 16px 12px;
+    margin: 0 -12px;            /* the hover color reaches a little past the text */
+    color: #222;
+    text-decoration: none;
+    transition: background-color var(--hover-speed) var(--hover-ease),
+        color var(--hover-speed) var(--hover-ease);
+}
+
+.more-work-title {
+    font-size: 1.35em;
+    font-weight: 600;           /* same as the card titles */
+}
+
+/* Same soft grey pills as the tags on the cards */
+.more-work .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.more-work .tags li {
+    font-size: 0.85em;
+    color: #555;
+    background-color: rgba(0, 0, 0, 0.06);
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.more-work-year {
+    color: #5a5a5a;
+    text-align: right;
+}
+
+.more-work-list a:hover,
+.more-work-list a:focus-visible {
+    background-color: var(--button-hover);
+    color: var(--accent-text);
+    outline: none;
+}
+
+.more-work-list a:hover .more-work-year,
+.more-work-list a:focus-visible .more-work-year {
+    color: var(--accent-text);
+}
+
+.more-work-preview {
+    position: fixed;
+    z-index: 70;
+    top: 0;
+    left: 0;
+    width: 240px;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border: 2px solid black;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.more-work-preview.show {
+    opacity: 1;
+}
+
+@media only screen and (max-width: 1050px) {
+    .more-work {
+        width: 78vw;            /* same width as the cards on phones */
+        margin: 0 auto;
+        padding: 40px 0 70px;
+    }
+
+    .more-work-list a {
+        grid-template-columns: 1fr auto;
+        gap: 8px 12px;
+        margin: 0;
+        padding: 14px 0;
+    }
+
+    .more-work-title {
+        grid-column: 1 / -1;
+        font-size: 1.2em;
+    }
 }
 
 
