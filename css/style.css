@@ -815,7 +815,9 @@ footer a:focus-visible {
    Labels are semibold black, like the details on the project pages. */
 .wrapper .about-text {
     width: 48vw;
-    margin: 0 auto 4vw;
+    /* Starts level with the top of the portrait (which sits 2vw down); the
+       small negative part lines up the tops of the letters, not the line box */
+    margin: calc(2vw - 0.3em) auto 4vw;
     text-align: left;
 }
 
