@@ -857,9 +857,9 @@ footer a:focus-visible {
 }
 
 .about-lists p {
-    margin: 0 0 0.3em;      /* space between entries... */
+    margin: 0 0 0.2em;      /* space between entries... */
     font-size: 1.1em; /* same as the details on the project pages */
-    line-height: 1.25;      /* ...and tight lines within one, so a name that
+    line-height: 1.18;      /* ...and tight lines within one, so a name that
                                runs onto two lines still reads as one */
 }
 
