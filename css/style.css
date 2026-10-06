@@ -837,7 +837,7 @@ footer a:focus-visible {
     display: grid;
     grid-template-columns: 1.25fr 1fr;
     grid-auto-flow: row dense;
-    gap: 28px 40px;
+    gap: 36px 40px;
     margin-top: 2.2em;
     padding-top: 1.6em;
     border-top: 2px solid black;
@@ -854,12 +854,19 @@ footer a:focus-visible {
 }
 
 .about-lists p {
-    margin: 0;
+    margin: 0 0 0.5em;      /* space between entries... */
     font-size: 1.1em; /* same as the details on the project pages */
-    line-height: 1.45;
+    line-height: 1.25;      /* ...and tight lines within one, so a name that
+                               runs onto two lines still reads as one */
 }
 
+.about-lists p:last-child {
+    margin-bottom: 0;
+}
+
+/* The concentration belongs with the school above it */
 .about-lists .about-sub {
+    margin-top: -0.3em;
     color: #5a5a5a;
 }
 
@@ -1600,7 +1607,7 @@ footer a:focus-visible {
     }
 
     .about-lists {
-        gap: 24px 20px;
+        gap: 30px 20px;
     }
 
     .about-worked {
