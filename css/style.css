@@ -1105,14 +1105,11 @@ footer a:focus-visible {
     text-align: right;
 }
 
-/* A small "Read More" box at the end of each row, like the cards' button,
-   so the rows read as links (especially on phones, where there's no hover) */
+/* "Read More" as plain text at the end of each row, so the rows read as
+   links. It turns teal with the rest of the row on hover. */
 .more-work-more {
-    padding: 5px 12px;
-    border: 2px solid black;
-    font-size: 0.9em;
+    font-size: 0.95em;
     white-space: nowrap;
-    transition: border-color var(--hover-speed) var(--hover-ease);
 }
 
 /* Phones show an arrow beside the title instead (see below) */
@@ -1120,10 +1117,7 @@ footer a:focus-visible {
     display: none;
 }
 
-.more-work-list a:hover .more-work-more,
-.more-work-list a:focus-visible .more-work-more {
-    border-color: var(--accent-color);
-}
+
 
 /* Hover: the teal fills the row exactly between its two lines */
 .more-work-list a:hover,
