@@ -1988,8 +1988,8 @@ footer a:focus-visible {
 
 
 /* 10c. Click to enlarge (project pages, js/lightbox.js)
-   Images in a project open large over a see-through version of the page
-   gradient, with the caption underneath, arrows to step through the
+   Images in a project open large over a dark, theater-like backdrop,
+   with the caption underneath, arrows to step through the
    project's images, and a × to close. The cursor becomes a magnifying
    glass over images that can be enlarged.
    ========================================================================== */
@@ -2020,20 +2020,15 @@ html.lightbox-open body {
     transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
-/* The see-through gradient behind the image, on its own layer so it can
-   fade out while the image shrinks back into place */
+/* A dark backdrop that dims the page, like the lights going down in a
+   theater, so the image is in the spotlight. On its own layer so it can
+   fade out while the image shrinks back into place. */
 .lightbox::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(-45deg, rgba(255, 229, 233, 0.9), rgba(224, 255, 236, 0.9),
-        rgba(214, 236, 255, 0.9), rgba(254, 209, 231, 0.9));
-    background-size: 400% 400%;
-    background-attachment: fixed;
-    animation: gradient 15s ease infinite;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    background: rgba(14, 14, 16, 0.96);
     transition: opacity 0.35s ease;
 }
 
@@ -2067,12 +2062,12 @@ html.lightbox-open body {
     max-width: 100%;
     max-height: calc(100vh - 170px);
     object-fit: contain;
-    border: 2px solid black;    /* same outline as the images on the page */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
 .lightbox-caption {
     margin: 0;
-    color: #5a5a5a;
+    color: #c4c4c4;
     font-size: 1em;
     text-align: center;
 }
@@ -2082,7 +2077,7 @@ html.lightbox-open body {
     top: 26px;
     left: 30px;
     margin: 0;
-    color: #5a5a5a;
+    color: #a8a8a8;
     font-size: 0.95em;
 }
 
@@ -2092,7 +2087,7 @@ html.lightbox-open body {
     display: none;
 }
 
-/* Buttons: same small rounded teal hover as the info drawer's ×.
+/* Buttons: same small rounded hover box as the info drawer's ×.
    (The rules for each button below are written as ".lightbox .lightbox-…"
    so they win over this one's "all: unset".) */
 .lightbox button {
@@ -2104,15 +2099,16 @@ html.lightbox-open body {
     height: 42px;
     border-radius: 8px;
     cursor: pointer;
-    color: black;
+    color: white;
     transition: background-color var(--hover-speed) var(--hover-ease),
         color var(--hover-speed) var(--hover-ease);
 }
 
+/* On the dark backdrop the hover is a soft light box with the site's teal */
 .lightbox button:hover,
 .lightbox button:focus-visible {
-    background-color: var(--button-hover);
-    color: var(--accent-text);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #6fd3c4;
 }
 
 .lightbox button svg {

@@ -1,6 +1,6 @@
 // Click to enlarge (project pages)
-// Clicking an image in a project opens it large over a soft, see-through
-// version of the page gradient, growing out of the spot where it sits.
+// Clicking an image in a project opens it large over a dark backdrop (the
+// page dims like a theater), growing out of the spot where it sits.
 // Its caption shows underneath. Left and right arrow keys (or swiping on a
 // phone) step through the project's other images. Click anywhere, press
 // Escape or use the × to close; it shrinks back into place.
