@@ -1048,6 +1048,7 @@ footer a:focus-visible {
 
 .more-work h2 {
     margin: 0 0 16px;
+    padding-left: 14px;         /* lines up with the titles below */
     font-size: 1.9em;
 }
 
@@ -1067,12 +1068,11 @@ footer a:focus-visible {
     grid-template-columns: 1.2fr 1fr 70px;
     gap: 24px;
     align-items: center;
-    padding: 16px 0;
+    padding: 16px 14px;         /* text sits a little in from the line ends */
     color: #222;
     text-decoration: none;
     transition: background-color var(--hover-speed) var(--hover-ease),
-        color var(--hover-speed) var(--hover-ease),
-        padding var(--hover-speed) var(--hover-ease);
+        color var(--hover-speed) var(--hover-ease);
 }
 
 .more-work-title {
@@ -1103,13 +1103,11 @@ footer a:focus-visible {
     text-align: right;
 }
 
-/* Hover: the teal fills the row exactly between its two lines, and the
-   text slides in a little from the edges */
+/* Hover: the teal fills the row exactly between its two lines */
 .more-work-list a:hover,
 .more-work-list a:focus-visible {
     background-color: var(--button-hover);
     color: var(--accent-text);
-    padding: 16px 14px;
     outline: none;
 }
 
@@ -1141,6 +1139,10 @@ footer a:focus-visible {
         width: 78vw;            /* same width as the cards on phones */
         margin: 0 auto;
         padding: 40px 0 70px;
+    }
+
+    .more-work h2 {
+        padding-left: 0;
     }
 
     .more-work-list a {
