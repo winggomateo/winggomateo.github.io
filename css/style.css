@@ -1450,6 +1450,12 @@ footer a:focus-visible {
     margin: 0;
 }
 
+/* Labels (Role, For, Tools, Team) in semibold, same as the labels on the
+   About page */
+.case-details b {
+    font-weight: 600;
+}
+
 /* Team in grey, so it sits apart from the main details. #5a5a5a is the
    lightest grey that still meets accessible contrast (WCAG AA, 4.5:1) on
    every color of the background gradient. */
